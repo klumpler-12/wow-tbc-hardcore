@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  tbc-hardcore-web:
+    build: .
+    container_name: tbc-hardcore-concept
+    restart: unless-stopped
+    ports:
+      - "8420:80"
+    labels:
+      - "com.docker.compose.project=tbc-hardcore"
