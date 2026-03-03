@@ -95,11 +95,11 @@
           <div class="hcplus-featured-badge">⭐ Recommended</div>
           <div class="mode-icon">⚡</div>
           <h3 class="mode-name">Hardcore Plus</h3>
-          <p class="mode-tagline">Permadeath with progression. Guild Master controls every rule — deaths, trading,
-            scoring. Your guild, your difficulty.</p>
+          <p class="mode-tagline">Like Retro, but adapted for TBC. Strict rules with critical adjustments to make
+            Outland progression feasible.</p>
           <div class="mode-details">
             <div class="mode-detail"><span class="mode-detail-icon">⚰️</span><span><strong
-                  class="highlight-red">Permadeath</strong> — same finality as HC Classic</span></div>
+                  class="highlight-red">Forgiving Permadeath</strong> — 1 death allowed before deletion</span></div>
             <div class="mode-detail"><span class="mode-detail-icon">🔓</span><span><strong
                   class="highlight-purple">Checkpoint boost</strong>: reach 70 once → unlock <strong>58 boost</strong>
                 for alts</span></div>
@@ -127,16 +127,18 @@
         <div class="mode-card softcore reveal">
           <div class="mode-icon">⚖️</div>
           <h3 class="mode-name">Hybrid Hardcore</h3>
-          <p class="mode-tagline">Dynamic penalties that scale. Permadeath while leveling, mitigated losses in endgame.
+          <p class="mode-tagline">Built for streamers and custom events. Deeply customizable rules mixing hardcore
+            tension with TBC needs.
           </p>
           <div class="mode-details" style="margin-bottom: auto;">
-            <div class="mode-detail"><span class="mode-detail-icon">☠️</span><span><strong
-                  class="highlight-orange">Permadeath</strong> up to Level 60 (Adjustable)</span></div>
-            <div class="mode-detail"><span class="mode-detail-icon">⚔️</span><span>Heroic/Mythic focus: Penalties
-                downgrade to gear wipes or durability loss later</span>
+            <div class="mode-detail"><span class="mode-detail-icon">⚙️</span><span><strong
+                  class="highlight-orange">Custom Rules</strong> — Guild Master controls deaths, trading, and
+                scoring</span></div>
+            <div class="mode-detail"><span class="mode-detail-icon">⚔️</span><span>Interactive focus: Penalties scale
+                from gear wipes to score drops based on events</span>
             </div>
-            <div class="mode-detail"><span class="mode-detail-icon">🎁</span><span>Earn Guild Bank unlocks and
-                GM-rewarded lootboxes</span>
+            <div class="mode-detail"><span class="mode-detail-icon">🎁</span><span>Streamer tools: Earn Guild Bank
+                unlocks and GM-rewarded lootboxes</span>
             </div>
           </div>
           <div class="mode-severity">
@@ -162,8 +164,8 @@
             </svg>
           </div>
           <h3>Your Rules, Your Realm</h3>
-          <p>Both <strong class="highlight-purple">Hardcore Plus</strong> and <strong
-              class="highlight-orange">Softcore</strong> allow the Guild Master to fine-tune the experience.</p>
+          <p>Especially in <strong class="highlight-orange">Hybrid Hardcore</strong>, the Guild Master can fine-tune
+            every rule, penalty, and interaction.</p>
         </div>
         <div class="gm-guide-line-bottom"></div>
       </div>
@@ -503,10 +505,33 @@
           </div>
 
           <div class="ps-visual">
-            <div class="ps-vs-mock">
-              <div class="psv-guild blue">Team Tyler<br><span>Score: 142k</span></div>
-              <div class="psv-vs">VS</div>
-              <div class="psv-guild red">Team Soda<br><span>Score: 138k</span></div>
+            <div class="ps-superguild-mock"
+              style="text-align: center; margin-bottom: 0px; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; position:relative; z-index:2;">
+              <strong
+                style="color: var(--highlight-purple); font-family: var(--font-display); font-size: 1.1rem;">OnlyFangs
+                3</strong><br>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">Super Guild</span>
+            </div>
+            <div style="display: flex; justify-content: center;">
+              <div style="width: 2px; height: 16px; background: var(--glass-border); position:relative; z-index:1;">
+              </div>
+            </div>
+            <div class="ps-vs-mock" style="position: relative; margin-top: 0;">
+              <div
+                style="position: absolute; top: -16px; left: 25%; right: 25%; height: 2px; background: var(--glass-border);">
+              </div>
+              <div
+                style="position: absolute; top: -16px; left: 25%; width: 2px; height: 16px; background: var(--glass-border);">
+              </div>
+              <div
+                style="position: absolute; top: -16px; right: 25%; width: 2px; height: 16px; background: var(--glass-border);">
+              </div>
+
+              <div class="psv-guild blue" style="position:relative; z-index: 2;">Team Tyler<br><span>Score: 142k</span>
+              </div>
+              <div class="psv-vs" style="margin-top: 8px; position:relative; z-index: 2;">VS</div>
+              <div class="psv-guild red" style="position:relative; z-index: 2;">Team Soda<br><span>Score: 138k</span>
+              </div>
             </div>
           </div>
         </div>
@@ -518,27 +543,26 @@
     <!-- Full Width: Active Mechanics Trackers -->
     <div class="mechanics-trackers reveal"
       style="margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;">
-      <!-- PvP Bounties -->
+      <!-- PvE & PvP Rulesets -->
       <div class="tracker-card">
         <div class="tracker-header">
-          <span class="tracker-icon">🎯</span>
+          <span class="tracker-icon">📜</span>
           <div>
-            <h4 style="font-family: var(--font-display); font-size: 1.1rem;">Live PvP Bounties</h4>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Assassinate targets to siphon their score</p>
+            <h4 style="font-family: var(--font-display); font-size: 1.1rem;">All Content Rulesets: PvE & PvP</h4>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Play everything. Adjust rules. Still get punished.
+            </p>
           </div>
         </div>
         <div class="tracker-body">
-          <div class="bounty-row">
-            <span class="bounty-name red">Gothik (Horde)</span>
-            <span class="bounty-reward">+450 Pts</span>
-          </div>
-          <div class="bounty-row">
-            <span class="bounty-name blue">Pupi (Alliance)</span>
-            <span class="bounty-reward">+320 Pts</span>
-          </div>
-          <div class="bounty-row resolved" style="opacity: 0.5;">
-            <span class="bounty-name" style="text-decoration: line-through;">Ziqo (Horde)</span>
-            <span class="bounty-reward">Claimed!</span>
+          <div style="display: block;">
+            <p style="font-size: 0.85rem; margin-bottom: 8px; color: var(--text-primary);">TBC content is vast. The
+              mindset remains: <strong class="highlight-red">You fail, you die. You get a punish.</strong></p>
+            <ul style="font-size: 0.8rem; color: var(--text-muted); padding-left: 16px; margin: 0;">
+              <li style="margin-bottom: 6px;"><strong class="highlight-purple">PvE Focus (All Modes):</strong> Adjust
+                rules to make high-end raids possible, translating permadeath into gear drops or heavy score loss.</li>
+              <li><strong class="highlight-orange">PvP Focus (Hybrid):</strong> Enable special rules for Arenas and BGs
+                where death results in gear lockouts or rank loss instead of deletion.</li>
+            </ul>
           </div>
         </div>
       </div>

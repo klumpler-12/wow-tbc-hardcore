@@ -30,19 +30,19 @@ const translations = {
             },
             plus: {
                 name: 'Hardcore Plus',
-                tagline: 'Permadeath with progression. Hit checkpoints to unlock boosts for future characters.',
-                p1: '<strong class="highlight-red">Permadeath</strong> — same finality as HC Classic',
+                tagline: 'Like Retro, but adapted for TBC. Strict rules with critical adjustments to make Outland feasible.',
+                p1: '<strong class="highlight-red">Forgiving Permadeath</strong> — 1 death allowed before character deletion',
                 p2: '<strong class="highlight-purple">Checkpoint boost</strong>: reach level 70 once → unlock <strong>58 boost</strong> for future characters',
                 p3: 'Account-wide <strong class="highlight-green">scoring</strong> — earn points for quests, milestones, achievements',
                 p4: 'Leaderboards and seasonal rankings with titles'
             },
             softcore: {
-                name: 'Softcore',
-                tagline: 'You survive death, but lose everything equipped. Rebuild from your bank and keep going.',
-                p1: 'All equipped gear, inventory, and gold <strong class="highlight-orange">destroyed</strong> on death',
-                p2: 'Bank and alts are safe — rebuild from your stash',
+                name: 'Hybrid Hardcore',
+                tagline: 'Built for streamers and custom events. Deeply customizable rules mixing hardcore tension with TBC needs.',
+                p1: 'Guild Master fully controls <strong class="highlight-orange">custom penalties</strong> — from gear wipe to score drops',
+                p2: 'Interactive focus — stream viewers can trigger events and penalties',
                 p3: 'Guild trading allowed — partial SSF with trusted allies',
-                p4: 'No character deletion — death is costly but not final'
+                p4: 'No mandatory character deletion — penalties are severe but adjustable'
             },
             nullcore: {
                 name: 'Nullcore League',
@@ -139,19 +139,19 @@ const translations = {
             },
             plus: {
                 name: 'Hardcore Plus',
-                tagline: 'Permadeath mit Fortschritt. Erreiche Checkpoints, um Boosts freizuschalten.',
-                p1: '<strong class="highlight-red">Permadeath</strong> — gleiche Endgültigkeit wie HC Classic',
+                tagline: 'Wie Retro, aber optimiert für TBC. Strikte Regeln mit nötigen Anpassungen für die Scherbenwelt.',
+                p1: '<strong class="highlight-red">Verzeihender Permadeath</strong> — 1 Tod erlaubt, bevor der Charakter gelöscht wird',
                 p2: '<strong class="highlight-purple">Checkpoint-Boost</strong>: Einmal Stufe 70 erreichen → schaltet <strong>Stufe-58-Boost</strong> für zukünftige Charaktere frei',
                 p3: 'Accountweite <strong class="highlight-green">Wertung</strong> — verdiene Punkte für Quests, Meilensteine, Erfolge',
                 p4: 'Bestenlisten und saisonale Rankings mit Titeln'
             },
             softcore: {
-                name: 'Softcore',
-                tagline: 'Du überlebst den Tod, verlierst aber alles Ausgerüstete. Baue dich aus der Bank wieder auf.',
-                p1: 'Alle ausgerüsteten Gegenstände, Inventar und Gold werden beim Tod <strong class="highlight-orange">zerstört</strong>',
-                p2: 'Bank und Twinks sind sicher — baue dich aus deinem Vorrat wieder auf',
+                name: 'Hybrid Hardcore',
+                tagline: 'Für Streamer und eigene Events. Anpassbare Regeln, die Hardcore-Spannung mit TBC-Bedürfnissen mixen.',
+                p1: 'Gildenmeister kontrolliert <strong class="highlight-orange">Strafen</strong> — von Ausrüstungsverlust bis Punkteabzug',
+                p2: 'Interaktiver Fokus — Stream-Zuschauer können Events auslösen',
                 p3: 'Gildenhandel erlaubt — partielles SSF mit vertrauten Verbündeten',
-                p4: 'Keine Charakterlöschung — der Tod ist teuer, aber nicht das Ende'
+                p4: 'Keine zwingende Charakterlöschung — Strafen sind hart, aber anpassbar'
             },
             nullcore: {
                 name: 'Nullcore-Liga',
