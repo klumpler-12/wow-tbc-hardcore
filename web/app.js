@@ -953,10 +953,30 @@ function initGithubProgress() {
       // Failsafe bounds
       percentage = Math.max(0, Math.min(100, percentage));
 
+      // Calculate Expected Progression visually based on Schedule
+      // Mar 1, 2026 to Aug 1, 2026
+      const startDate = new Date('2026-03-01T00:00:00Z').getTime();
+      const endDate = new Date('2026-08-01T00:00:00Z').getTime();
+      const now = Date.now();
+
+      let expectedPercentage = 0;
+      if (now >= endDate) {
+        expectedPercentage = 100;
+      } else if (now <= startDate) {
+        expectedPercentage = 0;
+      } else {
+        expectedPercentage = Math.round(((now - startDate) / (endDate - startDate)) * 100);
+      }
+
       // Animate in
       setTimeout(() => {
         progressText.innerText = percentage + '%';
         progressBar.style.width = percentage + '%';
+
+        const targetMarker = document.getElementById('roadmapTargetMarker');
+        if (targetMarker) {
+          targetMarker.style.left = expectedPercentage + '%';
+        }
       }, 500);
 
       const infoLabel = totalIssues > 0 ? `${totalIssues} tracking` : `Milestones`;
