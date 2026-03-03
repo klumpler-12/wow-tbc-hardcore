@@ -5,6 +5,118 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* ═══ Refined Hybrid Showcase ═══ */
+.hybrid-showcase-container {
+  grid-column: 1 / -1;
+  display: flex;
+  background: rgba(20, 10, 30, 0.4);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 32px;
+  backdrop-filter: blur(10px);
+}
+
+.hsc-visual {
+  flex: 1.5;
+  position: relative;
+  min-height: 400px;
+}
+
+.hsc-content {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid var(--glass-border);
+}
+
+.hsc-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--portal-purple);
+  margin-bottom: 16px;
+}
+
+.hsc-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.hsc-penalty-list {
+  list-style: none;
+  padding: 0;
+}
+
+.hsc-penalty-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+}
+
+.hsc-pi-icon {
+  font-size: 1.2rem;
+}
+
+/* Skull Life Counter Overlay */
+.skull-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--blood-red);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 10;
+}
+
+.skull-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skull-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  width: 45px;
+}
+
+.skull-icons {
+  display: flex;
+  gap: 4px;
+}
+
+.skull-icon {
+  font-size: 0.9rem;
+  filter: drop-shadow(0 0 5px rgba(230, 57, 70, 0.5));
+}
+
+.skull-icon.lost {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+
+@media (max-width: 992px) {
+  .hybrid-showcase-container {
+    flex-direction: column;
+  }
+
+  .hsc-content {
+    border-left: none;
+    border-top: 1px solid var(--glass-border);
+  }
+}
+
 /* --- Design Tokens --- */
 :root {
   /* Core palette — Outland-inspired */

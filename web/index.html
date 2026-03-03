@@ -711,25 +711,60 @@
 
     </div>
 
-    <!-- Row 2: Hybrid Raid Feature (New) -->
-    <div class="mockup-row" style="margin-top: 32px;">
-      <div class="mockup-panel reveal" style="grid-column: 1 / -1;">
-        <div class="mockup-label">Hybrid Hardcore — <strong class="highlight-purple">Rule Example</strong>: Raid Life
-          Counter</div>
-        <div class="obs-scene" style="height: auto;">
-          <img src="assets/hybrid_raid_overlay.png" alt="Hybrid Raid Overlay" class="obs-bg-img"
-            style="aspect-ratio: 16/9; object-fit: cover; border-radius: 12px;">
-          <div
-            style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.8); padding: 12px 20px; border-radius: 12px; border: 1px solid var(--portal-purple); backdrop-filter: blur(10px);">
-            <h4 style="color: var(--portal-purple); margin-bottom: 4px; font-size: 0.9rem;">Hybrid Toolkit: <span
-                class="highlight-green">Configurable Lives</span></h4>
-            <p style="font-size: 0.75rem; color: var(--text-secondary); max-width: 300px;">
-              In <strong class="highlight-purple">Hybrid Mode</strong>, GMs can enable "Instance Lives". This example
-              shows a <strong class="highlight-green">3-heart counter</strong> for raiding—once depleted, the chosen
-              penalty triggers.
-            </p>
+    <!-- Row 2: Refined Hybrid Raid Showcase -->
+    <div class="hybrid-showcase-container reveal">
+      <!-- Left: Visual Mockup -->
+      <div class="hsc-visual">
+        <img src="assets/hybrid_raid_overlay.png" alt="Hybrid Raid Overlay" class="obs-bg-img"
+          style="width:100%; height:100%; object-fit: cover;">
+
+        <!-- Skull Life Counter Overlay -->
+        <div class="skull-overlay">
+          <div class="skull-row">
+            <span class="skull-label">Player</span>
+            <div class="skull-icons">
+              <span class="skull-icon">💀</span>
+              <span class="skull-icon">💀</span>
+              <span class="skull-icon lost">💀</span>
+            </div>
+          </div>
+          <div class="skull-row">
+            <span class="skull-label">Group</span>
+            <div class="skull-icons">
+              <span class="skull-icon">💀</span>
+              <span class="skull-icon">💀</span>
+              <span class="skull-icon">💀</span>
+            </div>
           </div>
         </div>
+      </div>
+
+      <!-- Right: Explanation Content -->
+      <div class="hsc-content">
+        <h4 class="hsc-title">Hybrid Hardcore — <strong class="highlight-purple">Possible</strong> Rule Example: Raid
+          Life Counter</h4>
+        <p class="hsc-text">
+          In <strong class="highlight-purple">Hybrid Mode</strong>, the Hardcore experience is modular. This example
+          shows an "Instance Life" system where players balance risk with progression.
+        </p>
+        <ul class="hsc-penalty-list">
+          <li class="hsc-penalty-item">
+            <span class="hsc-pi-icon">🛡️</span>
+            <div>
+              <strong>Gear Penalty (Anti-Abuse)</strong><br>
+              To avoid rule abuse, failing to clear the instance within the allocated lives triggers a <strong
+                class="highlight-orange">Global Gear Wipe</strong> for the entire group.
+            </div>
+          </li>
+          <li class="hsc-penalty-item">
+            <span class="hsc-pi-icon">⚰️</span>
+            <div>
+              <strong>Elimination Policy</strong><br>
+              Once all lives (represented by skulls) are depleted, the chosen penalty triggers—from <strong
+                class="highlight-red">Character Deletion</strong> to permanent raid lockouts.
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
 
