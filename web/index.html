@@ -136,23 +136,22 @@
           <div class="mode-icon">⚖️</div>
           <h3 class="mode-name" data-i18n="modes.softcore.title">Hybrid Hardcore</h3>
           <p class="mode-tagline" data-i18n="modes.softcore.desc">
-            <strong>Your Guild, Your Rules.</strong> Enable dynamic, viewer-driven events where deaths mean punishment,
-            not the end of the journey.
-            <br><br>Built for streamers and custom events. Deeply customizable rules mixing hardcore tension with TBC
-            needs.
+            <strong>Your Guild, Your Rules.</strong> Enable dynamic events where deaths mean punishment, not the
+            immediate end of the journey.<br><br>Built for streamers and custom events. Deeply customizable rules mixing
+            hardcore tension with TBC needs.
           </p>
-          <div class="mode-details" style="margin-bottom: auto;">
+          <div class="mode-details" style="font-size: 0.8rem;">
             <div class="mode-detail"><span class="mode-detail-icon">⚙️</span><span
-                data-i18n="modes.softcore.bullet1"><strong class="highlight-orange">Custom Rules</strong> — Guild Master
-                controls deaths, trading, and
-                scoring</span></div>
+                data-i18n="modes.softcore.bullet1">Guild Master rules: <strong class="highlight-orange">Multiple
+                  lives</strong> before reaching permadeath</span>
+            </div>
             <div class="mode-detail"><span class="mode-detail-icon">⚔️</span><span
-                data-i18n="modes.softcore.bullet2">Interactive focus: Penalties scale
-                from gear wipes to score drops based on events</span>
+                data-i18n="modes.softcore.bullet2">Penalties over deletion: <strong class="highlight-red">Gear
+                  deletion</strong> or massive score drops</span>
             </div>
             <div class="mode-detail"><span class="mode-detail-icon">🎁</span><span
-                data-i18n="modes.softcore.bullet3">Streamer tools: Earn Guild Bank
-                unlocks and GM-rewarded lootboxes</span>
+                data-i18n="modes.softcore.bullet3">Save your progress: <strong
+                  class="highlight-green">Checkpoints</strong> upon completing specific zones</span>
             </div>
           </div>
           <div class="mode-severity">
@@ -208,8 +207,8 @@
                     <strong>Trading Allowed</strong>
                     <span>Can guild members trade with each other?</span>
                   </div>
-                  <div class="gmc-toggle active"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                  <div class="gmc-toggle active" id="toggleTrading"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF'; window.updateRulesetTags();">
                     ON</div>
                 </div>
                 <div class="gmc-setting-row">
@@ -217,8 +216,8 @@
                     <strong>Auction House Lock</strong>
                     <span>Are players blocked from using the AH?</span>
                   </div>
-                  <div class="gmc-toggle active"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                  <div class="gmc-toggle active" id="toggleAH"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF'; window.updateRulesetTags();">
                     ON</div>
                 </div>
                 <div class="gmc-setting-row">
@@ -227,7 +226,7 @@
                     <span>Disable sending/receiving mail to non-guildies.</span>
                   </div>
                   <div class="gmc-toggle"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF'; window.updateRulesetTags();">
                     OFF</div>
                 </div>
               </div>
@@ -263,8 +262,8 @@
                     <strong>Chronoboon Dispenser</strong>
                     <span>Allow storing world buffs?</span>
                   </div>
-                  <div class="gmc-toggle active"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                  <div class="gmc-toggle active" id="toggleChrono"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF'; window.updateRulesetTags();">
                     ON</div>
                 </div>
                 <div class="gmc-setting-row">
@@ -273,7 +272,7 @@
                     <span>Automatically remove WBs when engaging raid bosses.</span>
                   </div>
                   <div class="gmc-toggle"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF'; window.updateRulesetTags();">
                     OFF</div>
                 </div>
               </div>
@@ -297,8 +296,8 @@
                     <strong>Gear Drop on Death</strong>
                     <span>Player drops an equipped item upon dying.</span>
                   </div>
-                  <div class="gmc-toggle active"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                  <div class="gmc-toggle active" id="toggleDrop"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF'; window.updateRulesetTags();">
                     ON</div>
                 </div>
                 <div class="gmc-setting-row">
@@ -344,15 +343,15 @@
               Generated Ruleset Tags</h4>
             <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">These tags are automatically
               generated from your settings and visible to everyone inspecting your guild.</p>
-            <div class="hcplus-tags-preview" style="gap: 12px;">
+            <div class="hcplus-tags-preview" id="dynamicRulesetTags" style="gap: 12px; display: flex; flex-wrap: wrap;">
               <span class="tag tag-mode">Hybrid</span>
-              <span class="tag tag-rule"
+              <span class="tag tag-rule" data-feature="trading"
                 style="background: rgba(46, 204, 113, 0.1); color: var(--highlight-green);">Trading: ON</span>
-              <span class="tag tag-rule" style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">AH:
-                Locked</span>
-              <span class="tag tag-rule">Max 5 per Class</span>
-              <span class="tag tag-rule" style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">Drop Item
-                on Death</span>
+              <span class="tag tag-rule" data-feature="ahl"
+                style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">AH: Locked</span>
+              <span class="tag tag-rule" data-feature="chr">Chronoboon: ON</span>
+              <span class="tag tag-rule" data-feature="drp"
+                style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">Drop Item on Death</span>
             </div>
           </div>
         </div>
@@ -619,6 +618,77 @@
     </div>
 
 
+    </div>
+  </section>
+
+  <!-- ═══ Development Roadmap Timeline ═══ -->
+  <section class="roadmap-section" id="roadmap" style="padding: 60px 0; background: var(--bg-dark);">
+    <div class="container reveal">
+      <div class="section-label" style="text-align: center;">Project Schedule</div>
+      <h2 class="section-title" style="text-align: center; margin-bottom: 48px;">📅 Development Roadmap</h2>
+
+      <!-- Reusing the CSS from the Ideas Lab timeline -->
+      <div class="achievement-timeline" style="max-width: 800px; margin: 0 auto;">
+        <div class="ach-entry milestone">
+          <div class="ach-timestamp">March 2026</div>
+          <div class="ach-content">
+            <span class="ach-icon">🛠️</span>
+            <div class="ach-text">
+              <strong class="ach-headline">Project Initialization</strong>
+              <div class="ach-detail">Work started on TBC Hardcore architecture, UI mockups, and core tracker logic.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ach-entry unlock">
+          <div class="ach-timestamp">May 2026</div>
+          <div class="ach-content">
+            <span class="ach-icon">🗳️</span>
+            <div class="ach-text">
+              <strong class="ach-headline">Community Voting on Core Features</strong>
+              <div class="ach-detail">Opening polls for scoring systems regarding TBC dungeons and raids. Let the
+                community decide the meta.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ach-entry milestone">
+          <div class="ach-timestamp">June 2026</div>
+          <div class="ach-content">
+            <span class="ach-icon">📊</span>
+            <div class="ach-text">
+              <strong class="ach-headline">Result Summary & Final Ruleset</strong>
+              <div class="ach-detail">Publishing the finalized logic for scoring, death appeals, and streamer
+                integrations based on May's votes.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ach-entry unlock">
+          <div class="ach-timestamp">July 2026</div>
+          <div class="ach-content">
+            <span class="ach-icon">🧪</span>
+            <div class="ach-text">
+              <strong class="ach-headline">First Test Version Released</strong>
+              <div class="ach-detail">Closed beta for Guild Masters and streamers to test the overlay and
+                death-detection stability.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ach-entry unlock" style="border-color: var(--highlight-gold);">
+          <div class="ach-timestamp" style="color: var(--highlight-gold);">August 2026</div>
+          <div class="ach-content"
+            style="background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.2);">
+            <span class="ach-icon">🚀</span>
+            <div class="ach-text">
+              <strong class="ach-headline" style="color: var(--highlight-gold);">First Full Version Released</strong>
+              <div class="ach-detail">Public launch of TBC Hardcore (Version 1.0).</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

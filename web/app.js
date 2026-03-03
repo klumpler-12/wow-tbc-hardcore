@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initDiscordFeed();
   initOnboarding();
   initGearBattle();
+  initRulesetTags();
 });
 
 /* ─── Onboarding Flow ─── */
@@ -864,4 +865,47 @@ function initDiscordFeed() {
     }
   }, { threshold: 0.3 });
   observer.observe(container);
+}
+
+/* ─── GM Ruleset Tags Update ─── */
+function initRulesetTags() {
+  window.updateRulesetTags = function () {
+    const container = document.getElementById('dynamicRulesetTags');
+    const trading = document.getElementById('toggleTrading');
+    const ah = document.getElementById('toggleAH');
+    const chrono = document.getElementById('toggleChrono');
+    const drop = document.getElementById('toggleDrop');
+
+    if (!container || !trading || !ah || !chrono || !drop) return;
+
+    // Clear existing rule tags, keep mode tag
+    const modeTagHTML = '<span class="tag tag-mode">Hybrid</span>';
+    const tagClassLimit = '<span class="tag tag-rule">Max 5 per Class</span>'; // Static for demo
+
+    let html = modeTagHTML + tagClassLimit;
+
+    if (trading.classList.contains('active')) {
+      html += '<span class="tag tag-rule" data-feature="trading" style="background: rgba(46, 204, 113, 0.1); color: var(--highlight-green);">Trading: ON</span> ';
+    } else {
+      html += '<span class="tag tag-rule" data-feature="trading" style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">Trading: OFF</span> ';
+    }
+
+    if (ah.classList.contains('active')) {
+      html += '<span class="tag tag-rule" data-feature="ahl" style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">AH: Locked</span> ';
+    } else {
+      html += '<span class="tag tag-rule" data-feature="ahl" style="background: rgba(46, 204, 113, 0.1); color: var(--highlight-green);">AH: Open</span> ';
+    }
+
+    if (chrono.classList.contains('active')) {
+      html += '<span class="tag tag-rule" data-feature="chr">Chronoboon: ON</span> ';
+    } else {
+      html += '<span class="tag tag-rule" data-feature="chr">Chronoboon: OFF</span> ';
+    }
+
+    if (drop.classList.contains('active')) {
+      html += '<span class="tag tag-rule" data-feature="drp" style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">Drop Item on Death</span> ';
+    }
+
+    container.innerHTML = html;
+  };
 }

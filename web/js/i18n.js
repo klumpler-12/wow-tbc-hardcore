@@ -39,10 +39,10 @@ const translations = {
             },
             softcore: {
                 title: 'Hybrid Hardcore',
-                desc: '<strong>Your Guild, Your Rules.</strong> Enable dynamic, viewer-driven events where deaths mean punishment, not the end of the journey.<br><br>Built for streamers and custom events. Deeply customizable rules mixing hardcore tension with TBC needs.',
-                bullet1: '<strong class="highlight-orange">Custom Rules</strong> — Guild Master controls deaths, trading, and scoring',
-                bullet2: 'Interactive focus: Penalties scale from gear wipes to score drops based on events',
-                bullet3: 'Streamer tools: Earn Guild Bank unlocks and GM-rewarded lootboxes'
+                desc: '<strong>Your Guild, Your Rules.</strong> Enable dynamic events where deaths mean punishment, not the immediate end of the journey.<br><br>Built for streamers and custom events. Deeply customizable rules mixing hardcore tension with TBC needs.',
+                bullet1: 'Guild Master rules: <strong class="highlight-orange">Multiple lives</strong> before reaching permadeath',
+                bullet2: 'Penalties over deletion: <strong class="highlight-red">Gear deletion</strong> or massive score drops',
+                bullet3: 'Save your progress: <strong class="highlight-green">Checkpoints</strong> upon completing specific zones'
             },
             nullcore: {
                 name: 'Nullcore League',
@@ -148,10 +148,10 @@ const translations = {
             },
             softcore: {
                 title: 'Hybrid Hardcore',
-                desc: '<strong>Deine Gilde, Deine Regeln.</strong> Aktiviere dynamische, zuschauergesteuerte Events, bei denen Tode Strafe bedeuten, aber nicht das Ende der Reise.<br><br>Für Streamer und eigene Events. Anpassbare Regeln, die Hardcore-Spannung mit TBC-Bedürfnissen mixen.',
-                bullet1: 'Gildenmeister kontrolliert <strong class="highlight-orange">Strafen</strong>, Handel und Wertung',
-                bullet2: 'Interaktiver Fokus: Strafen reichen vom Ausrüstungsverlust bis zum Punkteabzug durch Events',
-                bullet3: 'Streamer-Tools: Verdiene Gildenbank-Freischaltungen und GM-Lootboxen'
+                desc: '<strong>Deine Gilde, Deine Regeln.</strong> Erstelle dynamische Events bei denen Tode Konsequenzen haben, aber nicht das sofortige Ende der Reise.<br><br>Für Streamer und eigene Events. Anpassbare Regeln, die Hardcore-Spannung mit TBC-Bedürfnissen mixen.',
+                bullet1: 'Gildenmeister entscheidet: <strong class="highlight-orange">Mehrere Leben</strong> bevor Permadeath greift',
+                bullet2: 'Strafen statt Löschung: <strong class="highlight-red">Ausrüstungsverlust</strong> oder heftige Punktabzüge',
+                bullet3: 'Fortschritt sichern: <strong class="highlight-green">Checkpoints</strong> für Zonen-Abschlüsse'
             },
             nullcore: {
                 name: 'Nullcore-Liga',
