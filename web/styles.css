@@ -2859,6 +2859,231 @@ body {
   }
 }
 
+/* --- Roadmap / Project Schedule --- */
+.roadmap-schedule-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.roadmap-label-small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--portal-purple);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.roadmap-title-large {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.roadmap-title-large .icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(168, 85, 247, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.roadmap-progress-box {
+  max-width: 850px;
+  margin: 0 auto 60px;
+  background: rgba(10, 8, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 30px;
+  position: relative;
+}
+
+.roadmap-progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.roadmap-progress-info {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.roadmap-progress-info .github-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-muted);
+}
+
+.roadmap-progress-info h4 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.roadmap-progress-percentage {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.roadmap-progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 100px;
+  position: relative;
+  margin: 25px 0;
+}
+
+.roadmap-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--portal-purple), #fff);
+  border-radius: 100px;
+  box-shadow: 0 0 15px var(--portal-purple-dim);
+  transition: width 1s ease;
+}
+
+.roadmap-progress-marker {
+  position: absolute;
+  top: -25px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.roadmap-progress-marker span {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.roadmap-progress-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.roadmap-progress-stats a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.roadmap-progress-stats a:hover {
+  color: var(--portal-purple);
+}
+
+.roadmap-horizontal-clean {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  padding: 40px 0;
+}
+
+.roadmap-horizontal-clean::before {
+  content: '';
+  position: absolute;
+  top: 72px;
+  left: 50px;
+  right: 50px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 0;
+}
+
+.roadmap-item-clean {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.roadmap-item-clean .ach-timestamp {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.roadmap-item-clean .ach-icon-circle {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  background: var(--bg-void);
+  border: 2px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.roadmap-item-clean:nth-child(2) .ach-icon-circle {
+  border-color: var(--portal-purple);
+}
+
+.roadmap-item-clean:nth-child(3) .ach-icon-circle {
+  border-color: var(--gold-loot);
+}
+
+.roadmap-item-clean:nth-child(4) .ach-icon-circle {
+  border-color: var(--portal-purple);
+}
+
+.roadmap-item-clean:nth-child(5) .ach-icon-circle {
+  border-color: var(--teal-arcane);
+}
+
+.roadmap-item-clean:nth-child(6) .ach-icon-circle {
+  border-color: var(--gold-loot);
+}
+
+.roadmap-item-clean .ach-headline {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  display: block;
+  line-height: 1.4;
+}
+
+.roadmap-item-clean:hover .ach-icon-circle {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px currentColor;
+}
+
+.roadmap-item-clean:hover .ach-headline {
+  color: #fff;
+}
+
 /* Ideas footer divider */
 .ideas-footer-divider {
   position: relative;
