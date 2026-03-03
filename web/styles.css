@@ -172,31 +172,84 @@ body {
   transition: background var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
+.nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  /* Prevent spreading too far on ultrawide */
+  margin: 0 auto;
+}
+
+.nav-logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #fff, var(--portal-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  padding: 8px 0;
+}
+
 .nav-lang-toggle {
   display: flex;
-  gap: 8px;
-  margin-left: 20px;
+  gap: 6px;
+  align-items: center;
+  margin-left: 24px;
 }
 
 .btn-lang {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(155, 89, 240, 0.2);
-  color: var(--text-secondary);
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.7rem;
-  font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  width: 32px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 800;
   cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  transition: all 0.2s;
 }
 
-.btn-lang:hover,
 .btn-lang.active {
-  background: var(--portal-purple-dim);
+  background: var(--portal-purple);
   border-color: var(--portal-purple);
   color: white;
-  box-shadow: 0 0 10px rgba(155, 89, 240, 0.3);
+  box-shadow: 0 0 10px var(--portal-purple-dim);
 }
 
 /* --- Hero Feature Links --- */
