@@ -137,22 +137,21 @@
           <div class="mode-icon">⚖️</div>
           <h3 class="mode-name" data-i18n="modes.softcore.title">Hybrid Hardcore</h3>
           <p class="mode-tagline" data-i18n="modes.softcore.desc">
-            <strong>Your Guild, Your Rules.</strong> Enable dynamic events where deaths mean punishment, not the
-            immediate end of the journey.<br><br>Built for streamers and custom events. Deeply customizable rules mixing
-            hardcore tension with TBC needs.
+            The ultimate TBC compromise. Base ruleset with special <strong
+              class="highlight-purple">Instance-Lives</strong> system for raiding and custom events.
           </p>
           <div class="mode-details" style="font-size: 0.8rem;">
-            <div class="mode-detail"><span class="mode-detail-icon">⚙️</span><span
-                data-i18n="modes.softcore.bullet1">Guild Master rules: <strong class="highlight-orange">Multiple
-                  lives</strong> before reaching permadeath</span>
+            <div class="mode-detail">
+              <span class="mode-detail-icon">💖</span>
+              <span><strong>3 Lives per Instance</strong>: Revive within raids up to 3 times per lockout.</span>
             </div>
-            <div class="mode-detail"><span class="mode-detail-icon">⚔️</span><span
-                data-i18n="modes.softcore.bullet2">Penalties over deletion: <strong class="highlight-red">Gear
-                  deletion</strong> or massive score drops</span>
+            <div class="mode-detail">
+              <span class="mode-detail-icon">⚰️</span>
+              <span><strong>Penalty on 4th Death</strong>: Character voided or heavy gear/score wipes.</span>
             </div>
-            <div class="mode-detail"><span class="mode-detail-icon">🎁</span><span
-                data-i18n="modes.softcore.bullet3">Save your progress: <strong
-                  class="highlight-green">Checkpoints</strong> upon completing specific zones</span>
+            <div class="mode-detail">
+              <span class="mode-detail-icon">�</span>
+              <span>Ideal for streamers and large-scale community events.</span>
             </div>
           </div>
           <div class="mode-severity">
@@ -709,56 +708,78 @@
         </div>
       </div>
 
-      <!-- Row 2: Viewer Vote + Alerts -->
-      <div class="mockup-row">
-        <div class="mockup-panel reveal">
-          <div class="mockup-label">Viewer Penalty Vote (Twitch)</div>
-          <div class="vote-mockup">
-            <div class="vote-event">💀 PUPI DIED — Killed by Fel Reaver</div>
-            <div class="vote-q">Chat decides the penalty!</div>
-            <div class="vote-opts">
-              <div class="vopt" style="--pct:42%">
-                <div class="vopt-fill"></div><span class="vopt-txt">⚔️ Full gear wipe</span><span
-                  class="vopt-pct">42%</span>
-              </div>
-              <div class="vopt winner" style="--pct:35%">
-                <div class="vopt-fill"></div><span class="vopt-txt">📉 Score penalty (−300)</span><span
-                  class="vopt-pct">35%</span>
-              </div>
-              <div class="vopt" style="--pct:23%">
-                <div class="vopt-fill"></div><span class="vopt-txt">🔒 Gear lock 1hr</span><span
-                  class="vopt-pct">23%</span>
-              </div>
-            </div>
-            <div class="vote-foot"><span>1,247 votes</span><span class="vote-timer">⏱ 28s</span></div>
+    </div>
+
+    <!-- Row 2: Hybrid Raid Feature (New) -->
+    <div class="mockup-row" style="margin-top: 32px;">
+      <div class="mockup-panel reveal" style="grid-column: 1 / -1;">
+        <div class="mockup-label">Hybrid Hardcore — Raid Instance Life Counter</div>
+        <div class="obs-scene" style="height: auto;">
+          <img src="assets/hybrid_raid_overlay.png" alt="Hybrid Raid Overlay" class="obs-bg-img"
+            style="aspect-ratio: 16/9; object-fit: cover; border-radius: 12px;">
+          <div
+            style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.8); padding: 12px 20px; border-radius: 12px; border: 1px solid var(--portal-purple); backdrop-filter: blur(10px);">
+            <h4 style="color: var(--portal-purple); margin-bottom: 4px; font-size: 0.9rem;">Hybrid Mechanic: <span
+                class="highlight-green">3 Lives</span></h4>
+            <p style="font-size: 0.75rem; color: var(--text-secondary); max-width: 300px;">
+              Players in <strong class="highlight-purple">Hybrid Mode</strong> receive 3 lives per raid instance. Revive
+              and continue the fight — permadeath only triggers if the counter hits zero.
+            </p>
           </div>
         </div>
-        <div class="mockup-panel reveal">
-          <div class="mockup-label">Stream Event Alerts</div>
-          <div class="alert-mockup">
-            <div class="salert death">
-              <div class="salert-icon">💀</div>
-              <div class="salert-body"><strong>CHARACTER VOIDED</strong><br>Zuzu (Priest) — Fel Reaver,
-                Hellfire<br><span class="salert-pts neg">−300 pts</span></div>
+      </div>
+    </div>
+
+    <!-- Row 3: Viewer Vote + Alerts -->
+    <div class="mockup-row">
+      <div class="mockup-panel reveal">
+        <div class="mockup-label">Viewer Penalty Vote (Twitch)</div>
+        <div class="vote-mockup">
+          <div class="vote-event">💀 PUPI DIED — Killed by Fel Reaver</div>
+          <div class="vote-q">Chat decides the penalty!</div>
+          <div class="vote-opts">
+            <div class="vopt" style="--pct:42%">
+              <div class="vopt-fill"></div><span class="vopt-txt">⚔️ Full gear wipe</span><span
+                class="vopt-pct">42%</span>
             </div>
-            <div class="salert milestone">
-              <div class="salert-icon">🏆</div>
-              <div class="salert-body"><strong>MILESTONE</strong><br>Pupi hit Level 68 — Nagrand<br><span
-                  class="salert-pts pos">+100 pts · Rank #3</span></div>
+            <div class="vopt winner" style="--pct:35%">
+              <div class="vopt-fill"></div><span class="vopt-txt">📉 Score penalty (−300)</span><span
+                class="vopt-pct">35%</span>
             </div>
-            <div class="salert gb">
-              <div class="salert-icon">⚔️</div>
-              <div class="salert-body"><strong>GEAR BATTLE WON</strong><br>Pupi vs Thokk — Lionheart Blade<br><span
-                  class="salert-pts pos">+75 pts · "Duelist"</span></div>
+            <div class="vopt" style="--pct:23%">
+              <div class="vopt-fill"></div><span class="vopt-txt">🔒 Gear lock 1hr</span><span
+                class="vopt-pct">23%</span>
             </div>
-            <div class="salert viewer">
-              <div class="salert-icon">🎮</div>
-              <div class="salert-body"><strong>VIEWER CHALLENGE</strong><br>xXhunterXx spent 5k pts — Zone Lock: Nagrand
-              </div>
+          </div>
+          <div class="vote-foot"><span>1,247 votes</span><span class="vote-timer">⏱ 28s</span></div>
+        </div>
+      </div>
+      <div class="mockup-panel reveal">
+        <div class="mockup-label">Stream Event Alerts</div>
+        <div class="alert-mockup">
+          <div class="salert death">
+            <div class="salert-icon">💀</div>
+            <div class="salert-body"><strong>CHARACTER VOIDED</strong><br>Zuzu (Priest) — Fel Reaver,
+              Hellfire<br><span class="salert-pts neg">−300 pts</span></div>
+          </div>
+          <div class="salert milestone">
+            <div class="salert-icon">🏆</div>
+            <div class="salert-body"><strong>MILESTONE</strong><br>Pupi hit Level 68 — Nagrand<br><span
+                class="salert-pts pos">+100 pts · Rank #3</span></div>
+          </div>
+          <div class="salert gb">
+            <div class="salert-icon">⚔️</div>
+            <div class="salert-body"><strong>GEAR BATTLE WON</strong><br>Pupi vs Thokk — Lionheart Blade<br><span
+                class="salert-pts pos">+75 pts · "Duelist"</span></div>
+          </div>
+          <div class="salert viewer">
+            <div class="salert-icon">🎮</div>
+            <div class="salert-body"><strong>VIEWER CHALLENGE</strong><br>xXhunterXx spent 5k pts — Zone Lock: Nagrand
             </div>
           </div>
         </div>
       </div>
+    </div>
 
     </div>
     </div>
