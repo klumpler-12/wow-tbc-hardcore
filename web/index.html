@@ -246,52 +246,50 @@
           Turn every death, duel, and milestone into content. Here's what addon data looks like in action.
         </p>
       </div>
+
+      <!-- Row 1: OBS Overlay on Game + Enhanced Profile -->
       <div class="mockup-row">
+
+        <!-- OBS Overlay on Game Screenshot -->
         <div class="mockup-panel reveal">
-          <div class="mockup-label">OBS Stream Overlay</div>
-          <div class="obs-mockup">
-            <div class="obs-header"><span class="obs-mode-badge">HC PLUS</span><span class="obs-live">● LIVE</span>
-            </div>
-            <div class="obs-player">
-              <span class="obs-avatar">⚔️</span>
-              <div class="obs-player-info">
-                <div class="obs-name">Pupi <span class="obs-class-tag paladin">Ret Paladin</span></div>
-                <div class="obs-level">Level 68 · Nagrand</div>
-              </div>
-              <div class="obs-score-box">
-                <div class="obs-score-label">Score</div>
-                <div class="obs-score-val">3,475</div>
-              </div>
-            </div>
-            <div class="obs-bars">
-              <div class="obs-bar-row"><span class="obs-bar-label">HP</span>
-                <div class="obs-bar">
-                  <div class="obs-bar-fill hp" style="width:72%"></div>
-                </div><span class="obs-bar-num">5,842/8,114</span>
-              </div>
-              <div class="obs-bar-row"><span class="obs-bar-label">MP</span>
-                <div class="obs-bar">
-                  <div class="obs-bar-fill mp" style="width:45%"></div>
-                </div><span class="obs-bar-num">2,180/4,840</span>
+          <div class="mockup-label">OBS Stream Overlay — In-Game Preview</div>
+          <div class="obs-scene">
+            <img src="assets/stream_bg.png" alt="WoW TBC Gameplay" class="obs-bg-img">
+            <!-- Overlay HUD layered on top -->
+            <div class="obs-hud-topleft">
+              <div class="obs-hud-badge">HC PLUS</div>
+              <div class="obs-hud-name">Pupi <span class="obs-hud-class">Ret Paladin</span></div>
+              <div class="obs-hud-bars">
+                <div class="obs-hud-bar">
+                  <div class="obs-hud-fill hp" style="width:72%"></div>
+                </div>
+                <div class="obs-hud-bar">
+                  <div class="obs-hud-fill mp" style="width:45%"></div>
+                </div>
               </div>
             </div>
-            <div class="obs-stats">
-              <div class="obs-stat"><span>💀</span> 0 Deaths</div>
-              <div class="obs-stat"><span>⚔️</span> 1W/0L</div>
-              <div class="obs-stat"><span>🏆</span> Rank #3</div>
+            <div class="obs-hud-topright">
+              <div class="obs-hud-score">3,475</div>
+              <div class="obs-hud-rank">Rank #3</div>
+              <div class="obs-hud-deaths">💀 0 Deaths</div>
             </div>
-            <div class="obs-feed">
-              <div class="obs-feed-item green">🏅 +100 pts — Reached Nagrand</div>
-              <div class="obs-feed-item">⚔️ Gear Battle won vs Thokk</div>
-              <div class="obs-feed-item dim">📜 +15 pts — Ring of Blood</div>
+            <div class="obs-hud-bottom">
+              <div class="obs-hud-feed">
+                <div class="obs-hud-feed-item green">🏅 +100 pts — Reached Nagrand</div>
+                <div class="obs-hud-feed-item">⚔️ Gear Battle won vs Thokk</div>
+                <div class="obs-hud-feed-item dim">📜 +15 pts — Ring of Blood</div>
+              </div>
+              <div class="obs-hud-gb">⚔️ 1W / 0L · <span class="gold-text">Title: Duelist</span></div>
             </div>
           </div>
         </div>
+
+        <!-- Enhanced Profile with Portrait + Gear + Death Map -->
         <div class="mockup-panel reveal">
           <div class="mockup-label">Public Streamer Profile</div>
           <div class="profile-mockup">
             <div class="prof-head">
-              <div class="prof-avatar">⚔️</div>
+              <img src="assets/paladin_portrait.png" alt="Pupi Portrait" class="prof-portrait">
               <div class="prof-info">
                 <div class="prof-name">Pupi</div>
                 <div class="prof-class">Retribution Paladin · HC Plus</div>
@@ -305,6 +303,24 @@
               <div class="pstat"><span class="pstat-num">3</span><span class="pstat-lbl">Chars</span></div>
               <div class="pstat"><span class="pstat-num">1/0</span><span class="pstat-lbl">GB W/L</span></div>
             </div>
+            <!-- Gear Tracker -->
+            <div class="prof-section-label">Equipped Gear</div>
+            <div class="prof-gear">
+              <div class="gear-slot epic"><span class="gear-icon">⚔️</span><span class="gear-name">Lionheart
+                  Blade</span></div>
+              <div class="gear-slot rare"><span class="gear-icon">🛡️</span><span class="gear-name">Jade Defender</span>
+              </div>
+              <div class="gear-slot epic"><span class="gear-icon">👑</span><span class="gear-name">Justicar Crown</span>
+              </div>
+              <div class="gear-slot rare"><span class="gear-icon">🧤</span><span class="gear-name">Gauntlets of
+                  Light</span></div>
+              <div class="gear-slot uncommon"><span class="gear-icon">👢</span><span class="gear-name">Boots of
+                  Valor</span></div>
+              <div class="gear-slot epic"><span class="gear-icon">📿</span><span class="gear-name">Medallion of
+                  Karabor</span></div>
+            </div>
+            <!-- Characters with Death Info -->
+            <div class="prof-section-label">Characters</div>
             <div class="prof-chars">
               <div class="pchar active"><span class="cdot paladin"></span>Pupi <span class="clvl">68</span><span
                   class="cstatus live">Active</span></div>
@@ -313,13 +329,23 @@
               <div class="pchar dead"><span class="cdot priest"></span>Zuzu <span class="clvl">62</span><span
                   class="cstatus void">Voided</span></div>
             </div>
-            <div class="prof-plan">
-              <div class="pplan-lbl">Current Plan</div>
-              <div class="pplan-txt">"Pushing Pupi to 70 for Kara. HC Plus guild wanted. Stream: Tue/Thu 8pm."</div>
+            <!-- Last Death with Map -->
+            <div class="prof-section-label">Last Death — Zuzu</div>
+            <div class="prof-death">
+              <img src="assets/death_map.png" alt="Death location map" class="death-map-img">
+              <div class="death-info">
+                <div class="death-cause">💀 Killed by <strong>Fel Reaver</strong></div>
+                <div class="death-where">📍 Hellfire Peninsula (51.4, 48.2)</div>
+                <div class="death-when">🕐 2 days ago · Level 62</div>
+                <a href="#" class="death-clip-link">🎬 Watch Deathclip →</a>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
+
+      <!-- Row 2: Viewer Vote + Alerts -->
       <div class="mockup-row">
         <div class="mockup-panel reveal">
           <div class="mockup-label">Viewer Penalty Vote (Twitch)</div>
@@ -373,9 +399,6 @@
           <strong>Blizzard addon policy</strong> and <strong>Twitch Extension guidelines</strong>.</span></div>
     </div>
   </section>
-
-
-
   <!-- ═══ Ideas Lab Divider ═══ -->
   <div class="ideas-divider"></div>
 
