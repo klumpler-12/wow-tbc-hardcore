@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TBC Hardcore — Multi-Mode Hardcore for The Burning Crusade</title>
-  <meta name="description" content="A configurable hardcore addon for WoW TBC. Choose your challenge: Hardcore, Softcore, or Nullcore. Community-driven rules for OnlyFangs 3 and beyond.">
+  <meta name="description"
+    content="A configurable hardcore addon for WoW TBC. Choose your challenge: Hardcore, Softcore, or Nullcore. Community-driven rules for OnlyFangs 3 and beyond.">
   <meta property="og:title" content="TBC Hardcore — Multi-Mode Hardcore for The Burning Crusade">
-  <meta property="og:description" content="Death tracking, scoring, guild management, and community voting for WoW TBC.">
+  <meta property="og:description"
+    content="Death tracking, scoring, guild management, and community voting for WoW TBC.">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
   <!-- ═══ Navigation ═══ -->
@@ -48,7 +52,7 @@
         <span class="line-2">For The Burning Crusade</span>
       </h1>
       <p class="hero-subtitle">
-        TBC was never designed for hardcore. We're changing that. Choose your challenge mode, 
+        TBC was never designed for hardcore. We're changing that. Choose your challenge mode,
         shape the rules with the community, and compete on the leaderboard.
       </p>
       <div class="hero-actions">
@@ -65,23 +69,25 @@
     <div class="container">
       <div class="modes-header reveal">
         <div class="section-label">Choose Your Challenge</div>
-        <h2 class="section-title">Three Ways to Die</h2>
+        <h2 class="section-title">Four Ways to Play</h2>
         <p class="section-desc">
-          Not everyone wants permadeath. Pick the mode that fits your playstyle — from 
-          absolute punishment to friendly competition.
+          From classic permadeath to competitive leagues — pick the mode that fits
+          your playstyle. Each brings unique mechanics to TBC.
         </p>
       </div>
       <div class="modes-grid">
 
-        <!-- Hardcore -->
+        <!-- Hardcore Classic -->
         <div class="mode-card hardcore reveal">
           <div class="mode-icon">💀</div>
-          <h3 class="mode-name">Hardcore</h3>
-          <p class="mode-tagline">One life. No second chances. Your character is permanently voided on death.</p>
+          <h3 class="mode-name">Hardcore Classic</h3>
+          <p class="mode-tagline">The original ruleset, just like Classic HC. One life — death means your character is
+            permanently done.</p>
           <div class="mode-details">
             <div class="mode-detail">
               <span class="mode-detail-icon">⚰️</span>
-              <span>Character marked as <strong class="highlight-red">DEAD</strong> forever — banned from guild, tracked on the death board</span>
+              <span>Character marked <strong class="highlight-red">DEAD</strong> — guild banned, tracked on death board,
+                voided forever</span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">🔒</span>
@@ -90,6 +96,10 @@
             <div class="mode-detail">
               <span class="mode-detail-icon">🗡️</span>
               <span>All gear and inventory destroyed on death</span>
+            </div>
+            <div class="mode-detail">
+              <span class="mode-detail-icon">🚫</span>
+              <span>No boosts, no shortcuts — level 1 to 70 or die trying</span>
             </div>
           </div>
           <div class="mode-severity">
@@ -102,11 +112,49 @@
           </div>
         </div>
 
+        <!-- Hardcore Plus -->
+        <div class="mode-card hcplus reveal">
+          <div class="mode-icon">⚡</div>
+          <h3 class="mode-name">Hardcore Plus</h3>
+          <p class="mode-tagline">Classic HC rules with new twists: boost unlocks after your first 70, and the Gear
+            Battle duel system.</p>
+          <div class="mode-details">
+            <div class="mode-detail">
+              <span class="mode-detail-icon">⚰️</span>
+              <span>Death = <strong class="highlight-red">permanent void</strong>, same as Classic</span>
+            </div>
+            <div class="mode-detail">
+              <span class="mode-detail-icon">🔓</span>
+              <span>Reach 70 once → unlock <strong class="highlight-purple">58 boost</strong> for future
+                characters</span>
+            </div>
+            <div class="mode-detail">
+              <span class="mode-detail-icon">⚔️</span>
+              <span><strong class="highlight-gold">Gear Battle:</strong> Challenge another player — each picks one item
+                to wager. Winner gets score + title, loser's item is <strong
+                  class="highlight-red">deleted</strong></span>
+            </div>
+            <div class="mode-detail">
+              <span class="mode-detail-icon">🏅</span>
+              <span>Gear Battle wins earn exclusive titles and leaderboard points</span>
+            </div>
+          </div>
+          <div class="mode-severity">
+            <span class="mode-severity-label">Severity</span>
+            <span class="severity-dot active red"></span>
+            <span class="severity-dot active red"></span>
+            <span class="severity-dot active red"></span>
+            <span class="severity-dot active red"></span>
+            <span class="severity-dot"></span>
+          </div>
+        </div>
+
         <!-- Softcore -->
         <div class="mode-card softcore reveal">
           <div class="mode-icon">🔥</div>
           <h3 class="mode-name">Softcore</h3>
-          <p class="mode-tagline">You survive, but barely. Death strips away everything you've earned.</p>
+          <p class="mode-tagline">You survive, but barely. Death strips away everything you've earned — rebuild from the
+            ashes.</p>
           <div class="mode-details">
             <div class="mode-detail">
               <span class="mode-detail-icon">💔</span>
@@ -114,7 +162,7 @@
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">📦</span>
-              <span>Bank items and alts unaffected — rebuild from what you've stashed</span>
+              <span>Bank items and alts unaffected — rebuild from stash</span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">🤝</span>
@@ -131,23 +179,29 @@
           </div>
         </div>
 
-        <!-- Nullcore -->
+        <!-- Nullcore (Competitive League) -->
         <div class="mode-card nullcore reveal">
           <div class="mode-icon">🏆</div>
-          <h3 class="mode-name">Nullcore</h3>
-          <p class="mode-tagline">No punishment. Pure competition. Deaths cost points, not progress.</p>
+          <h3 class="mode-name">Nullcore League</h3>
+          <p class="mode-tagline">The competitive format. No permadeath — pure score-based racing where every action
+            earns or costs points.</p>
           <div class="mode-details">
             <div class="mode-detail">
-              <span class="mode-detail-icon">📉</span>
-              <span>Death deducts points from your <strong class="highlight-green">leaderboard score</strong></span>
+              <span class="mode-detail-icon">📊</span>
+              <span>Deaths <strong class="highlight-red">deduct points</strong> — quests, dungeons, achievements <strong
+                  class="highlight-green">earn points</strong></span>
             </div>
             <div class="mode-detail">
-              <span class="mode-detail-icon">🎯</span>
-              <span>Quests, dungeons, and achievements earn points</span>
+              <span class="mode-detail-icon">🏁</span>
+              <span>Season-based competition with time-limited leaderboards</span>
+            </div>
+            <div class="mode-detail">
+              <span class="mode-detail-icon">🎖️</span>
+              <span>Tier rewards: Bronze → Silver → Gold → <strong class="highlight-gold">Gladiator</strong></span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">🌍</span>
-              <span>No restrictions — play normally, compete on the board</span>
+              <span>No trade restrictions — play normally, compete on merit</span>
             </div>
           </div>
           <div class="mode-severity">
@@ -172,7 +226,7 @@
         <div class="section-label">What's Under The Hood</div>
         <h2 class="section-title">Built for Outland</h2>
         <p class="section-desc">
-          Everything you need for organized hardcore TBC, running entirely client-side 
+          Everything you need for organized hardcore TBC, running entirely client-side
           via the WoW Addon API.
         </p>
       </div>
@@ -180,32 +234,38 @@
         <div class="feature-card reveal">
           <span class="feature-icon">📡</span>
           <h3 class="feature-name">Death Monitoring</h3>
-          <p class="feature-desc">Real-time combat log analysis detects deaths instantly — recording cause, zone, level, killer, and timestamp.</p>
+          <p class="feature-desc">Real-time combat log analysis detects deaths instantly — recording cause, zone, level,
+            killer, and timestamp.</p>
         </div>
         <div class="feature-card reveal">
           <span class="feature-icon">⚖️</span>
           <h3 class="feature-name">Penalty Engine</h3>
-          <p class="feature-desc">Configurable penalty tiers from character voiding to gear deletion to score deductions. Your guild, your rules.</p>
+          <p class="feature-desc">Configurable penalty tiers from character voiding to gear deletion to score
+            deductions. Your guild, your rules.</p>
         </div>
         <div class="feature-card reveal">
           <span class="feature-icon">🏅</span>
           <h3 class="feature-name">Scoring System</h3>
-          <p class="feature-desc">Points for quests, dungeons, achievements, and milestones. Deaths subtract. Compete on the leaderboard.</p>
+          <p class="feature-desc">Points for quests, dungeons, achievements, and milestones. Deaths subtract. Compete on
+            the leaderboard.</p>
         </div>
         <div class="feature-card reveal">
           <span class="feature-icon">👥</span>
           <h3 class="feature-name">Guild Integration</h3>
-          <p class="feature-desc">Auto-kick on HC death, death announcements, guild-wide sync, and a memorial archive for the fallen.</p>
+          <p class="feature-desc">Auto-kick on HC death, death announcements, guild-wide sync, and a memorial archive
+            for the fallen.</p>
         </div>
         <div class="feature-card reveal">
           <span class="feature-icon">🔐</span>
           <h3 class="feature-name">SSF Enforcement</h3>
-          <p class="feature-desc">Optional mail lock, trade restrictions, and AH bans. Enforced through addon verification and guild rules.</p>
+          <p class="feature-desc">Optional mail lock, trade restrictions, and AH bans. Enforced through addon
+            verification and guild rules.</p>
         </div>
         <div class="feature-card reveal">
           <span class="feature-icon">📊</span>
           <h3 class="feature-name">Live Leaderboards</h3>
-          <p class="feature-desc">Real-time scores synced via addon messages across guild members. See who's leading the charge into Outland.</p>
+          <p class="feature-desc">Real-time scores synced via addon messages across guild members. See who's leading the
+            charge into Outland.</p>
         </div>
       </div>
     </div>
@@ -268,7 +328,7 @@
         <div class="section-label">Shape The Rules</div>
         <h2 class="section-title">Community Vote</h2>
         <p class="section-desc">
-          This addon is built by the community, for the community. 
+          This addon is built by the community, for the community.
           Cast your vote on the rules that matter most.
         </p>
       </div>
@@ -365,13 +425,15 @@
             <div class="leaderboard-row gold">
               <span class="lb-rank">1</span>
               <span class="lb-class-icon">🧙</span>
-              <div class="lb-name">Shadowpriest<br><span class="lb-details">Level 70 · Shadow Priest · 0 Deaths</span></div>
+              <div class="lb-name">Shadowpriest<br><span class="lb-details">Level 70 · Shadow Priest · 0 Deaths</span>
+              </div>
               <span class="lb-score">4,250</span>
             </div>
             <div class="leaderboard-row silver">
               <span class="lb-rank">2</span>
               <span class="lb-class-icon">⚔️</span>
-              <div class="lb-name">Thundercleave<br><span class="lb-details">Level 68 · Arms Warrior · 1 Death</span></div>
+              <div class="lb-name">Thundercleave<br><span class="lb-details">Level 68 · Arms Warrior · 1 Death</span>
+              </div>
               <span class="lb-score">3,820</span>
             </div>
             <div class="leaderboard-row bronze">
@@ -383,13 +445,15 @@
             <div class="leaderboard-row">
               <span class="lb-rank" style="color: var(--text-muted)">4</span>
               <span class="lb-class-icon">🌿</span>
-              <div class="lb-name">Lifebloomer<br><span class="lb-details">Level 66 · Resto Druid · 2 Deaths</span></div>
+              <div class="lb-name">Lifebloomer<br><span class="lb-details">Level 66 · Resto Druid · 2 Deaths</span>
+              </div>
               <span class="lb-score">2,780</span>
             </div>
             <div class="leaderboard-row">
               <span class="lb-rank" style="color: var(--text-muted)">5</span>
               <span class="lb-class-icon">🔮</span>
-              <div class="lb-name">Arcaneblast<br><span class="lb-details">Level 65 · Arcane Mage · 3 Deaths</span></div>
+              <div class="lb-name">Arcaneblast<br><span class="lb-details">Level 65 · Arcane Mage · 3 Deaths</span>
+              </div>
               <span class="lb-score">2,150</span>
             </div>
           </div>
@@ -403,7 +467,7 @@
     <div class="container">
       <div class="footer-brand">⚔️ TBC Hardcore</div>
       <p class="footer-desc">
-        An open-source addon project making hardcore TBC feasible. 
+        An open-source addon project making hardcore TBC feasible.
         Built for OnlyFangs 3 and the wider WoW community.
       </p>
       <ul class="footer-links">
@@ -418,4 +482,5 @@
 
   <script src="app.js"></script>
 </body>
+
 </html>
