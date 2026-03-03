@@ -505,7 +505,7 @@ function initChaosWheel() {
     { label: '⏱️ Speed Run', color: '#00d4aa' },
     { label: '🔇 No Healing', color: '#e67e22' },
     { label: '👁️ Viewer Dare', color: '#3498db' },
-    { label: '💀 Boss Rush', color: '#c0392b' },
+    { label: '🏃‍♂️ Zone Rush', color: '#c0392b' },
     { label: '🎲 Wild Card', color: '#f1c40f' },
   ];
 
@@ -579,10 +579,25 @@ function initChaosWheel() {
 
       spinning = false;
       btn.disabled = false;
+
+      if (landed.label.includes('Zone Rush')) {
+        setTimeout(() => {
+          const modal = document.getElementById('zoneRushModal');
+          if (modal) modal.classList.add('active');
+        }, 800);
+      }
+
     }, 5200);
   }
 
   btn.addEventListener('click', spin);
+
+  const closeBtn = document.getElementById('zrmCloseBtn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      document.getElementById('zoneRushModal').classList.remove('active');
+    });
+  }
 
   // Auto-spin on scroll into view
   const observer = new IntersectionObserver((entries) => {
@@ -647,12 +662,12 @@ function initDiscordFeed() {
     {
       avatar: '🤖', name: 'TBC-HC Bot', bot: true,
       text: '💀 **Zuzu** (Shadow Priest, Lvl 62) has been **VOIDED**',
-      embed: { text: 'Killed by Fel Reaver in Hellfire Peninsula\n**Score impact:** −300 pts', cls: '' }
+      embed: { text: 'Killed by Fel Reaver in Hellfire Peninsula\n`[HCP]` `[Guild: Destiny]` `[1 Death Used]`\n**Score impact:** −300 pts', cls: '' }
     },
     {
       avatar: '🤖', name: 'TBC-HC Bot', bot: true,
       text: '🏆 **Pupi** reached **Level 70** — first in guild!',
-      embed: { text: 'HC Plus mode · 8d 7h playtime · 0 deaths\n**Score:** +500 pts · **Rank:** #3', cls: 'green' }
+      embed: { text: '`[HCP]` `[Guild: OnlyFangs]` `[SSF]`\n8d 7h playtime · 0 deaths\n**Score:** +500 pts · **Rank:** #3', cls: 'green' }
     },
     {
       avatar: '🎮', name: 'xXhunterXx', bot: false,
@@ -661,7 +676,7 @@ function initDiscordFeed() {
     {
       avatar: '🤖', name: 'TBC-HC Bot', bot: true,
       text: '⚔️ **Gear Battle** — Pupi vs Thokk',
-      embed: { text: 'Item wagered: Nightblade (Rare)\n**Winner:** Pupi · +75 pts · Title: "Duelist"', cls: 'gold' }
+      embed: { text: '`[HCP]` `[PvP: Gear Wager]`\nItem wagered: Nightblade (Rare)\n**Winner:** Pupi · +75 pts · Title: "Duelist"', cls: 'gold' }
     },
     {
       avatar: '🤖', name: 'TBC-HC Bot', bot: true,

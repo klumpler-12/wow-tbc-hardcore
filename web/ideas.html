@@ -325,6 +325,109 @@
                         </div>
                     </div>
 
+                    <!-- Market & Competitor Research -->
+                    <div class="idea-preview reveal" style="margin-top: 48px;" id="competitor-research">
+                        <h3 class="idea-preview-title">🔍 Market & Competitor Research</h3>
+                        <p class="idea-preview-desc">Analysis of existing WoW TBC Hardcore projects (updated since
+                            2025), feature parity, and legal considerations regarding Blizzard TOS and Twitch.</p>
+
+                        <div class="research-table-container"
+                            style="overflow-x: auto; margin-top: 24px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: 12px; padding: 16px;">
+                            <table
+                                style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
+                                <thead>
+                                    <tr style="border-bottom: 1px solid var(--glass-border); color: var(--text-muted);">
+                                        <th style="padding: 12px;">Competitor / Addon</th>
+                                        <th style="padding: 12px;">Core Focus</th>
+                                        <th style="padding: 12px;">What We Do Better</th>
+                                        <th style="padding: 12px;">What They Do Better</th>
+                                        <th style="padding: 12px;">Key Differentiator</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                        <td style="padding: 12px; color: var(--text-primary);"><strong>Hardcore (Defias
+                                                Pillager)</strong></td>
+                                        <td style="padding: 12px;">Classic Era Official HC</td>
+                                        <td style="padding: 12px;">We support TBC mechanics, Guild Master custom rules,
+                                            and softcore variants.</td>
+                                        <td style="padding: 12px;">Official Blizzard server stability, massive existing
+                                            player base.</td>
+                                        <td style="padding: 12px;">TBC Era & Customization</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                        <td style="padding: 12px; color: var(--text-primary);"><strong>Hardcore Addon
+                                                (Original)</strong></td>
+                                        <td style="padding: 12px;">Community SSF tracking</td>
+                                        <td style="padding: 12px;">Integrated Twitch interaction, live scoring API,
+                                            automated Discord webhooks.</td>
+                                        <td style="padding: 12px;">Established brand and highly refined appeal rules.
+                                        </td>
+                                        <td style="padding: 12px;">Streamer Integration Tools</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                        <td style="padding: 12px; color: var(--text-primary);"><strong>Turtle WoW
+                                                HC</strong></td>
+                                        <td style="padding: 12px;">Custom Vanilla+ HC</td>
+                                        <td style="padding: 12px;">Strictly TBC focused with modern overlay features.
+                                        </td>
+                                        <td style="padding: 12px;">Custom content (new quests, zones) directly built
+                                            into the client.</td>
+                                        <td style="padding: 12px;">Client fidelity (No private server required)</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 12px; color: var(--text-primary);"><strong>TBC 58 Boost
+                                                Servers</strong></td>
+                                        <td style="padding: 12px;">Fast progression TBC</td>
+                                        <td style="padding: 12px;">Permadeath gating to earn boosts, ensuring high
+                                            difficulty curve.</td>
+                                        <td style="padding: 12px;">Instant gratification for raid-loggers.</td>
+                                        <td style="padding: 12px;">Earning the boost via 1-70 HC</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div
+                            style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+                            <div
+                                style="background: var(--bg-card); padding: 24px; border-radius: 12px; border: 1px solid var(--blood-red);">
+                                <h4
+                                    style="color: var(--blood-red); margin-bottom: 12px; font-family: var(--font-display);">
+                                    ⚖️ Legal & TOS Considerations</h4>
+                                <ul class="idea-bullets" style="font-size: 0.85rem; color: var(--text-secondary);">
+                                    <li style="margin-bottom: 8px;"><strong>Blizzard Addon Policy:</strong> Addons
+                                        cannot be placed behind a paywall. The base HC tracking addon must be 100% free.
+                                        Monetization must come through external services (Twitch Extensions, website
+                                        premium features).</li>
+                                    <li style="margin-bottom: 8px;"><strong>Twitch API Integration:</strong> Triggering
+                                        in-game events via Twitch Bits is technically viable but falls into a gray area
+                                        if it directly alters the WoW game client state. We circumvent this by having
+                                        the addon read a local file or pull from an API, acting as an overlay prompt
+                                        rather than an automated macro execution.</li>
+                                    <li><strong>Server Hosting:</strong> If hosted as a Private Server, it blatantly
+                                        violates Blizzard TOS. The addon-only approach ensures players use official
+                                        servers, mitigating legal takedown risks.</li>
+                                </ul>
+                            </div>
+                            <div
+                                style="background: var(--bg-card); padding: 24px; border-radius: 12px; border: 1px solid var(--portal-purple);">
+                                <h4
+                                    style="color: var(--portal-purple); margin-bottom: 12px; font-family: var(--font-display);">
+                                    📈 Strategic Opportunities</h4>
+                                <ul class="idea-bullets" style="font-size: 0.85rem; color: var(--text-secondary);">
+                                    <li style="margin-bottom: 8px;"><strong>Nullcore Scoring:</strong> No existing addon
+                                        dynamically tracks speed-running, under-gearing, and "first clear" bonuses in
+                                        TBC. This is our massive blue-ocean feature.</li>
+                                    <li style="margin-bottom: 8px;"><strong>Super Guilds:</strong> Large streamer
+                                        communities want to compete. By offering built-in "Guild vs Guild" modules, we
+                                        capture the esports/tournament market that manual tracking currently struggles
+                                        to support.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </div>
