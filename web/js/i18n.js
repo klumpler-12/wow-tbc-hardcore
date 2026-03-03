@@ -106,6 +106,10 @@ const translations = {
                 title: 'Explain WoW HC',
                 desc: 'A dedicated page for new viewers explaining what World of Warcraft and Hardcore mode are all about.'
             }
+        },
+        milestoneModal: {
+            btn: "Close Plan",
+            tech: "Tech Stack & Strategy:"
         }
     },
     de: {
@@ -213,8 +217,12 @@ const translations = {
             },
             intro: {
                 title: 'Erkläre WoW HC',
-                desc: 'Eine spezielle Seite für neue Zuschauer, die erklärt, worum es bei World of Warcraft und dem Hardcore-Modus geht.'
+                desc: 'Eine Seite für neue Zuschauer, die erklärt, worum es bei World of Warcraft und Hardcore geht.'
             }
+        },
+        milestoneModal: {
+            btn: "Plan Schließen",
+            tech: "Tech-Stack & Strategie:"
         }
     }
 };

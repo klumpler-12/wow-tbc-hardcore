@@ -705,24 +705,50 @@
             <div class="ach-text">
               <strong class="ach-headline">First Test Version Released</strong>
               <div class="ach-detail">Closed beta for Guild Masters and streamers to test the overlay and
-                death-detection stability.</div>
-            </div>
-          </div>
-        </div>
+              </div>
 
-        <div class="ach-entry unlock" style="border-color: var(--highlight-gold);">
-          <div class="ach-timestamp" style="color: var(--highlight-gold);">August 2026</div>
-          <div class="ach-content"
-            style="background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.2);">
-            <span class="ach-icon">🚀</span>
-            <div class="ach-text">
-              <strong class="ach-headline" style="color: var(--highlight-gold);">First Full Version Released</strong>
-              <div class="ach-detail">Public launch of TBC Hardcore (Version 1.0).</div>
+              <div class="ach-entry unlock" style="border-color: var(--highlight-gold);">
+                <div class="ach-timestamp" style="color: var(--highlight-gold);">August 2026</div>
+                <div class="ach-content"
+                  style="background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.2);">
+                  <span class="ach-icon">🚀</span>
+                  <div class="ach-text">
+                    <strong class="ach-headline" style="color: var(--highlight-gold);">First Full Version
+                      Released</strong>
+                    <div class="ach-detail">Public launch of TBC Hardcore (Version 1.0).</div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <!-- Milestone Details Modal -->
+            <div id="milestoneModal" class="modal">
+              <div class="modal-content" style="max-width: 700px; text-align: left; position: relative;">
+                <button class="modal-close" onclick="window.closeMilestoneModal()"
+                  style="position: absolute; right: 20px; top: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">&times;</button>
+
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                  <span id="msModalIcon" style="font-size: 2rem;">📌</span>
+                  <h2 id="msModalTitle"
+                    style="color: var(--highlight-gold); margin: 0; font-family: var(--font-display);">Phase Title</h2>
+                </div>
+                <p id="msModalDesc"
+                  style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.5;">Phase
+                  Description</p>
+
+                <h4 style="font-family: var(--font-display); color: var(--text-primary); margin-bottom: 12px;">
+                  Implementation Checklist</h4>
+                <div id="msModalChecklist"
+                  style="background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: 8px; padding: 20px;">
+                  <!-- JS fills this via projectPhases -->
+                </div>
+
+                <button class="btn btn-primary" onclick="window.closeMilestoneModal()"
+                  style="margin-top: 24px; width: 100%;" data-i18n="milestoneModal.btn">Close Plan</button>
+              </div>
+            </div>
+
           </div>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- ═══ Streamer & Viewer Showcase ═══ -->

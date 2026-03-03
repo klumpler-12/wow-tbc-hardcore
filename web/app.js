@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGearBattle();
   initRulesetTags();
   initGithubProgress();
+  initMilestoneModals();
 });
 
 /* ─── Onboarding Flow ─── */
@@ -965,4 +966,147 @@ function initGithubProgress() {
       console.error('Failed to fetch github milestones:', err);
       statsText.innerText = "Failed to load project progress from GitHub.";
     });
+}
+
+/* ─── Project Plan / Milestone Modals ─── */
+const projectPhases = {
+  1: {
+    icon: "🛠️",
+    title: { en: "Phase 1: Foundation & UI Mockups", de: "Phase 1: Fundament & UI" },
+    desc: {
+      en: "Setting up the initial project identity, web presence, and core documentation.",
+      de: "Einrichtung der initialen Projektidentität, Webpräsenz und Kerndokumentation."
+    },
+    tasks: [
+      { en: "Initial Repository Setup & Git Configuration", de: "Initiale Repository-Einrichtung & Git-Konfiguration", done: true },
+      { en: "UI Design: Dark Mode, Glassmorphism & TBC aesthetics", de: "UI-Design: Dark Mode, Glassmorphismus & TBC-Ästhetik", done: true },
+      { en: "HTML Structure: Landing Page, Ideas Lab, Streamer Tools", de: "HTML-Struktur: Startseite, Ideen-Labor, Streamer-Tools", done: true },
+      { en: "Core Documentation: Competitor & Legal Research", de: "Kerndokumentation: Marktanalyse & Rechtliches", done: true },
+      { en: "Dynamic GitHub Milestone tracking integration", de: "Dynamische GitHub-Meilenstein-Tracker-Integration", done: true }
+    ],
+    tech: "HTML5, CSS Variables, Vanilla JS, GitHub API"
+  },
+  2: {
+    icon: "🗳️", // Wait, timeline uses 🗳️ for Phase 2 Community Voting. Let's adjust to match PROJECT_PLAN.
+    title: { en: "Phase 2: Addon Architecture", de: "Phase 2: Addon-Architektur" },
+    desc: {
+      en: "Building the core LUA addon logic to track player state, deaths, and rules.",
+      de: "Entwicklung der zentralen LUA-Addon-Logik zur Verfolgung von Spielerstatus, Toden und Regeln."
+    },
+    tasks: [
+      { en: "Initialize standard WoW Addon structure (.toc, .lua)", de: "Standard-WoW-Addon-Struktur initialisieren (.toc, .lua)", done: false },
+      { en: "Event listeners: PLAYER_DEAD, UNIT_INVENTORY_CHANGED", de: "Event-Listener: PLAYER_DEAD, UNIT_INVENTORY_CHANGED", done: false },
+      { en: "Guild Communication channel for ruleset syncing", de: "Gilden-Kommunikationskanal zur Synchronisierung von Regelwerken", done: false },
+      { en: "State Machine: Death processing vs Spirit Healer vs PvP", de: "Zustandsmaschine: Todesverarbeitung vs. Geistheiler vs. PvP", done: false },
+      { en: "Implementation: Use Ace3 framework for config management", de: "Implementierung: Ace3-Framework für Konfigurationsverwaltung", done: false }
+    ],
+    tech: "LUA, Ace3, WoW TBC API 2.4.3"
+  },
+  3: {
+    icon: "📊",
+    title: { en: "Phase 3: Web-App Backend", de: "Phase 3: Web-App Backend" },
+    desc: {
+      en: "Developing the central server and connecting the addon to enforce logic.",
+      de: "Entwicklung des zentralen Servers und Anbindung des Addons zur Durchsetzung der Logik."
+    },
+    tasks: [
+      { en: "Setup Node.js Express server to receive data", de: "Node.js Express-Server zum Empfang von Daten einrichten", done: false },
+      { en: "Database Schema Design: Players, Guilds, Deaths", de: "Datenbankschema-Design: Spieler, Gilden, Tode", done: false },
+      { en: "API Endpoints: /api/deaths, /api/leaderboard", de: "API-Endpunkte: /api/deaths, /api/leaderboard", done: false },
+      { en: "Real-time Websocket connection for Live Guild feeds", de: "Echtzeit-Websocket-Verbindung für Live-Gilden-Feeds", done: false }
+    ],
+    tech: "Node.js, Express, MongoDB, Websockets"
+  },
+  4: {
+    icon: "🧪",
+    title: { en: "Phase 4: Streamer Tools & Mechanics", de: "Phase 4: Streamer-Tools & Mechaniken" },
+    desc: {
+      en: "Building the spectator integrations and interactive Twitch tools.",
+      de: "Entwicklung der Zuschauer-Integrationen und interaktiven Twitch-Tools."
+    },
+    tasks: [
+      { en: "Build basic Twitch Extension frontend", de: "Grundlegendes Twitch-Extension-Frontend entwickeln", done: false },
+      { en: "Connect Twitch Extension EBS to Node API", de: "Twitch-Extension EBS mit Node-API verbinden", done: false },
+      { en: "Viewer Penalty Wheel logic via Websockets", de: "Zuschauer-Strafenrad-Logik über Websockets", done: false },
+      { en: "Addon listener for 'Trigger Penalty' from companion app", de: "Addon-Listener für 'Strafe auslösen' aus der Companion-App", done: false }
+    ],
+    tech: "Twitch API, Electron (Companion App), LUA Hooks"
+  },
+  5: {
+    icon: "🚀",
+    title: { en: "Phase 5: First Full Version Released", de: "Phase 5: Erster vollständiger Release" },
+    desc: {
+      en: "Public launch of TBC Hardcore Version 1.0.",
+      de: "Öffentlicher Start von TBC Hardcore Version 1.0."
+    },
+    tasks: [
+      { en: "Deploy backend to production architecture (Pi/Docker)", de: "Backend in Produktionsarchitektur deployen (Pi/Docker)", done: false },
+      { en: "Host Web Frontend on public domain", de: "Web-Frontend auf öffentlicher Domain hosten", done: false },
+      { en: "Upload WoW Addon to Curseforge / Github Releases", de: "WoW Addon bei Curseforge / Github Releases hochladen", done: false },
+      { en: "Final security review of Item Recovery exploits", de: "Abschließende Sicherheitsüberprüfung von Item-Recovery-Exploits", done: false }
+    ],
+    tech: "Docker, Nginx, Linux, CurseForge Developer API"
+  }
+};
+
+function initMilestoneModals() {
+  const milestones = document.querySelectorAll('.ach-entry');
+  const modal = document.getElementById('milestoneModal');
+  const title = document.getElementById('msModalTitle');
+  const desc = document.getElementById('msModalDesc');
+  const iconSpan = document.getElementById('msModalIcon');
+  const checklist = document.getElementById('msModalChecklist');
+
+  if (!modal) return;
+
+  window.closeMilestoneModal = () => {
+    modal.classList.remove('active');
+  };
+
+  // Close on outside click
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      window.closeMilestoneModal();
+    }
+  });
+
+  milestones.forEach((el, index) => {
+    el.style.cursor = 'pointer';
+
+    // Add visual hover effect inline
+    el.addEventListener('mouseenter', () => { el.style.transform = 'translateY(-2px) translateX(2px)'; el.style.boxShadow = '0 5px 15px rgba(0,0,0,0.5)'; });
+    el.addEventListener('mouseleave', () => { el.style.transform = ''; el.style.boxShadow = ''; });
+
+    el.addEventListener('click', () => {
+      const phaseData = projectPhases[index + 1];
+      if (!phaseData) return;
+
+      const lang = localStorage.getItem('hc_lang') || 'en';
+
+      iconSpan.innerText = phaseData.icon;
+      title.innerText = phaseData.title[lang] || phaseData.title['en'];
+      desc.innerText = phaseData.desc[lang] || phaseData.desc['en'];
+
+      let listHTML = '<ul style="list-style: none; padding: 0; margin: 0;">';
+      phaseData.tasks.forEach(task => {
+        const icon = task.done ? '<span style="color: var(--highlight-green); font-weight: bold; font-size: 1.1rem;">✓</span>' : '<span style="color: var(--text-muted); font-weight: bold; font-size: 1.1rem;">○</span>';
+        const color = task.done ? 'var(--text-primary)' : 'var(--text-muted)';
+        const text = task[lang] || task['en'];
+
+        listHTML += `<li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 12px; color: ${color};"><div style="flex-shrink: 0; transform: translateY(2px);">${icon}</div><div style="line-height: 1.5;">${text}</div></li>`;
+      });
+      listHTML += '</ul>';
+
+      // Get translation for the "Tech Stack & Strategy:"
+      let techLabel = "Tech Stack & Strategy:";
+      if (window.translations && window.translations[lang] && window.translations[lang].milestoneModal) {
+        techLabel = window.translations[lang].milestoneModal.tech;
+      }
+
+      listHTML += `<div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: var(--highlight-purple);"><strong>${techLabel}</strong><br><span style="color: var(--text-muted);">${phaseData.tech}</span></div>`;
+
+      checklist.innerHTML = listHTML;
+      modal.classList.add('active');
+    });
+  });
 }
