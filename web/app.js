@@ -15,67 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initChaosWheel();
   initAchievementFeed();
   initDiscordFeed();
-  initOnboarding();
   initGearBattle();
   initRulesetTags();
   initGithubProgress();
   initMilestoneModals();
 });
 
-/* ─── Onboarding Flow ─── */
-function initOnboarding() {
-  const modal = document.getElementById('onboardingModal');
-  if (!modal) return;
 
-  // Check if user already completed onboarding
-  if (localStorage.getItem('tbchc_onboarded')) {
-    modal.style.display = 'none';
-    return;
-  }
-
-  // Show modal
-  modal.style.display = 'flex';
-
-  window.setLang = function (lang) {
-    // Basic lang implementation
-    if (window.i18n && window.i18n.setLanguage) {
-      window.i18n.setLanguage(lang);
-    }
-    document.querySelectorAll('.lang-selection button').forEach(b => {
-      b.classList.remove('btn-primary');
-      b.classList.add('btn-ghost');
-      b.style.borderColor = 'rgba(255,255,255,0.2)';
-    });
-    const clicked = event.target;
-    clicked.classList.remove('btn-ghost');
-    clicked.classList.add('btn-primary');
-    clicked.style.borderColor = 'transparent';
-  };
-
-  const roleBtns = modal.querySelectorAll('.role-btn');
-  roleBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const role = e.currentTarget.dataset.role;
-      localStorage.setItem('tbchc_onboarded', 'true');
-      localStorage.setItem('tbchc_role', role);
-      modal.style.display = 'none';
-
-      if (role === 'viewer') {
-        window.location.href = 'intro.html';
-      } else if (role === 'streamer') {
-        const strSection = document.getElementById('streamer');
-        if (strSection) {
-          strSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        const modesSection = document.getElementById('modes');
-        if (modesSection) {
-          modesSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    });
-  });
-}
 
 /* ─── Navigation ─── */
 function initNav() {

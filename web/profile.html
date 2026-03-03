@@ -689,17 +689,23 @@
 
 <body>
     <!-- Nav -->
-    <nav class="nav">
-        <div class="nav-inner">
+    <nav class="nav" id="nav">
+        <div class="container">
             <a href="index.html" class="nav-logo">
-                <span class="nav-logo-icon">⚔️</span>
-                <span class="nav-logo-text">TBC Hardcore</span>
+                <span class="nav-logo-text">TBC HARDCORE PLUS</span>
             </a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="index.html#streamer">Streamer Tools</a>
-                <a href="index.html#ideas">Ideas Lab</a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" data-i18n="nav.home">Home</a>
+                <a href="ideas.html" data-i18n="nav.ideas">Ideas Lab</a>
+                <a href="profile.html" class="active" data-i18n="nav.profile">Profile</a>
             </div>
+            <div class="nav-lang-toggle">
+                <button id="lang-en" class="btn-lang" title="English">EN</button>
+                <button id="lang-de" class="btn-lang" title="Deutsch">DE</button>
+            </div>
+            <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
