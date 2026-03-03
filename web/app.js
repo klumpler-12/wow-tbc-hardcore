@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initPolls();
   animateCounters();
+  initIdeasFilter();
 });
 
 /* ─── Navigation ─── */
@@ -75,7 +76,7 @@ function initParticles() {
 /* ─── Scroll Reveal ─── */
 function initScrollReveal() {
   const reveals = document.querySelectorAll('.reveal');
-  
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -254,7 +255,7 @@ function initPolls() {
 function generateCommunityData() {
   const data = {};
   POLLS_DATA.forEach(poll => {
-    data[poll.id] = poll.options.map(() => 
+    data[poll.id] = poll.options.map(() =>
       Math.floor(80 + Math.random() * 400)
     );
   });
@@ -295,4 +296,42 @@ function animateNumber(el, target) {
   }
 
   requestAnimationFrame(update);
+}
+
+/* ─── Ideas Lab Category Filter ─── */
+function initIdeasFilter() {
+  const container = document.getElementById('ideaCategories');
+  const grid = document.getElementById('ideasGrid');
+  if (!container || !grid) return;
+
+  container.addEventListener('click', (e) => {
+    const btn = e.target.closest('.idea-cat-btn');
+    if (!btn) return;
+
+    // Update active button
+    container.querySelectorAll('.idea-cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const cat = btn.dataset.cat;
+    const cards = grid.querySelectorAll('.idea-card');
+
+    cards.forEach(card => {
+      if (cat === 'all' || card.dataset.category === cat) {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(12px)';
+        card.style.display = '';
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            card.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          });
+        });
+      } else {
+        card.style.transition = 'opacity 0.2s ease';
+        card.style.opacity = '0';
+        setTimeout(() => { card.style.display = 'none'; }, 200);
+      }
+    });
+  });
 }

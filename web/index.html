@@ -29,6 +29,7 @@
         <li><a href="#flow">How It Works</a></li>
         <li><a href="#voting">Community Vote</a></li>
         <li><a href="#scoring">Scoring</a></li>
+        <li><a href="#ideas" style="color: var(--ember-orange);">Ideas Lab</a></li>
       </ul>
       <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -461,6 +462,206 @@
       </div>
     </div>
   </section>
+
+  <!-- ═══ Ideas Lab Divider ═══ -->
+  <div class="ideas-divider"></div>
+
+  <!-- ═══ Ideas Lab ═══ -->
+  <section class="ideas" id="ideas">
+    <div class="container">
+      <div class="ideas-header reveal">
+        <div class="section-label">Work In Progress</div>
+        <h2 class="section-title">Ideas Lab</h2>
+        <p class="section-desc">
+          Raw concepts and brainstorms being explored. These aren't final features — they're possibilities being shaped.
+        </p>
+      </div>
+
+      <div class="ideas-notice-wrap reveal">
+        <div class="ideas-notice">
+          🧪 This section is separate from the core concept — it's a living brainstorm board
+        </div>
+      </div>
+
+      <div class="ideas-categories reveal" id="ideaCategories">
+        <button class="idea-cat-btn active" data-cat="all">All Ideas</button>
+        <button class="idea-cat-btn" data-cat="mechanic">Mechanics</button>
+        <button class="idea-cat-btn" data-cat="feature">Features</button>
+        <button class="idea-cat-btn" data-cat="security">Anti-Cheat</button>
+        <button class="idea-cat-btn" data-cat="integration">Integrations</button>
+        <button class="idea-cat-btn" data-cat="business">Business</button>
+        <button class="idea-cat-btn" data-cat="social">Social</button>
+      </div>
+
+      <div class="ideas-grid" id="ideasGrid">
+
+        <!-- PvP Integration -->
+        <div class="idea-card reveal" data-category="mechanic">
+          <div class="idea-card-top">
+            <span class="idea-tag mechanic">Mechanic</span>
+            <span class="idea-status">Brainstorm</span>
+          </div>
+          <h3 class="idea-title">PvP Death Penalties</h3>
+          <p class="idea-desc">PvP deaths should have unique penalties — not just ban or delete. Make PvP engaging
+            within HC rules.</p>
+          <ul class="idea-bullets">
+            <li>Score deductions scaled by opponent's level</li>
+            <li>Temporary gear lock (can't upgrade for X minutes)</li>
+            <li>Bounty system — killing high-score players earns bounty</li>
+            <li>Separate PvP ELO leaderboard</li>
+            <li>Flagged zones with unique PvP death rules</li>
+          </ul>
+        </div>
+
+        <!-- Item Unlocks -->
+        <div class="idea-card reveal" data-category="mechanic">
+          <div class="idea-card-top">
+            <span class="idea-tag mechanic">Mechanic</span>
+            <span class="idea-status">Concept</span>
+          </div>
+          <h3 class="idea-title">Score-Based Item Unlocks</h3>
+          <p class="idea-desc">Reaching scoring milestones unlocks access to higher gear tiers, adding a progression
+            layer within HC.</p>
+          <ul class="idea-bullets">
+            <li>"Must earn X points before equipping Epic items"</li>
+            <li>Addon monitors equip events and enforces restrictions</li>
+            <li>Creates natural gating without arbitrary locks</li>
+          </ul>
+        </div>
+
+        <!-- Gear Battle Refinement -->
+        <div class="idea-card reveal" data-category="mechanic">
+          <div class="idea-card-top">
+            <span class="idea-tag mechanic">Mechanic</span>
+            <span class="idea-status">Concept</span>
+          </div>
+          <h3 class="idea-title">Gear Battle Duels</h3>
+          <p class="idea-desc">Optional toggle in HC Plus — challenge another player, each wagers an item. Winner earns
+            score + title.</p>
+          <ul class="idea-bullets">
+            <li>Custom UI for selecting wagered item</li>
+            <li>Both players confirm before duel starts</li>
+            <li>Loser's item auto-deleted by addon</li>
+            <li>Exclusive titles for win streaks</li>
+          </ul>
+        </div>
+
+        <!-- Anti-Cheat -->
+        <div class="idea-card reveal" data-category="security">
+          <div class="idea-card-top">
+            <span class="idea-tag security">Anti-Cheat</span>
+            <span class="idea-status">Researched</span>
+          </div>
+          <h3 class="idea-title">Backend Verification Layer</h3>
+          <p class="idea-desc">Blizzard's Item Restoration lets players recover deleted items every 24h — a cheating
+            vector. Companion app solves this.</p>
+          <ul class="idea-bullets">
+            <li>Companion app reads SavedVariables, posts to backend</li>
+            <li>Inventory hash snapshots detect restored items</li>
+            <li>Two-step verification: app must run before WoW launch</li>
+            <li>Optional — only for tournaments needing integrity</li>
+          </ul>
+        </div>
+
+        <!-- Discord Integration -->
+        <div class="idea-card reveal" data-category="integration">
+          <div class="idea-card-top">
+            <span class="idea-tag integration">Integration</span>
+            <span class="idea-status">Planned</span>
+          </div>
+          <h3 class="idea-title">Discord Bot Integration</h3>
+          <p class="idea-desc">A bot that bridges the addon with Discord for real-time event management and
+            notifications.</p>
+          <ul class="idea-bullets">
+            <li>Death notifications posted to guild channel</li>
+            <li>Leaderboard updates on schedule</li>
+            <li>Slash commands for player stats lookup</li>
+            <li>Event scheduling and tournament management</li>
+          </ul>
+        </div>
+
+        <!-- Desktop / Browser Setup -->
+        <div class="idea-card reveal" data-category="feature">
+          <div class="idea-card-top">
+            <span class="idea-tag feature">Feature</span>
+            <span class="idea-status">Concept</span>
+          </div>
+          <h3 class="idea-title">Desktop / Browser Setup</h3>
+          <p class="idea-desc">Configure everything from a web dashboard — no need to be in-game to manage addon
+            settings.</p>
+          <ul class="idea-bullets">
+            <li>Web UI for modes, rules, guild settings</li>
+            <li>REST API for addon ↔ backend ↔ Discord</li>
+            <li>Leaderboard viewer accessible from browser</li>
+            <li>Settings sync via companion app → SavedVariables</li>
+          </ul>
+        </div>
+
+        <!-- Mixed Groups -->
+        <div class="idea-card reveal" data-category="social">
+          <div class="idea-card-top">
+            <span class="idea-tag social">Social</span>
+            <span class="idea-status">Brainstorm</span>
+          </div>
+          <h3 class="idea-title">Mixed Group Play</h3>
+          <p class="idea-desc">Can HC and non-HC players group together? Needs careful registration and verification
+            layers.</p>
+          <ul class="idea-bullets">
+            <li>Characters must be pre-registered before receiving mail/items</li>
+            <li>Guild/player-level setting for mixed group rules</li>
+            <li>Multi-layer verification (server + Blizzard + addon)</li>
+            <li>Prevents non-HC players from feeding items to HC players</li>
+          </ul>
+        </div>
+
+        <!-- Monetization -->
+        <div class="idea-card reveal" data-category="business">
+          <div class="idea-card-top">
+            <span class="idea-tag business">Business</span>
+            <span class="idea-status">Brainstorm</span>
+          </div>
+          <h3 class="idea-title">Monetization Concepts</h3>
+          <p class="idea-desc">Sustainable revenue without paywalling core HC functionality.</p>
+          <ul class="idea-bullets">
+            <li>Unlock fee for custom modes (not HC Classic/Plus)</li>
+            <li>Premium streamer tools: overlays, viewer controls</li>
+            <li>Advanced stats dashboard and data exports</li>
+            <li>Must verify legality with Blizzard addon policy</li>
+          </ul>
+        </div>
+
+        <!-- Streamer & Viewer Integration -->
+        <div class="idea-card reveal" data-category="feature">
+          <div class="idea-card-top">
+            <span class="idea-tag feature">Feature</span>
+            <span class="idea-status">Fleshing Out</span>
+          </div>
+          <h3 class="idea-title">Streamer & Viewer Integration</h3>
+          <p class="idea-desc">Turn hardcore into a spectator sport. OBS overlays, viewer-controlled penalties, and
+            public profiles with streamer links.</p>
+          <ul class="idea-bullets">
+            <li><strong>OBS Overlay API</strong> — companion app exposes local WebSocket for OBS Browser Source (live
+              HP, score, death count, gear)</li>
+            <li><strong>Viewer Penalty Votes</strong> — Twitch chat/polls let viewers vote on penalty severity; result
+              pushed to addon via companion app → SavedVariables</li>
+            <li><strong>Player Profiles</strong> — public web profiles showing stats, streamer link, plans, current
+              mode, death history (opt-in)</li>
+            <li><strong>Stream Alerts</strong> — auto-triggers for OBS scene changes on death, Gear Battle, or milestone
+              (sound + visual)</li>
+            <li><strong>Viewer Challenges</strong> — let viewers spend channel points to trigger in-game Gear Battle
+              challenges or bounty requests</li>
+            <li><strong>Account-Wide Stats Page</strong> — aggregated view of all characters, deaths, scores, titles
+              across the account</li>
+            <li><strong>Legal check needed</strong> — verify Twitch Extension + Blizzard addon policy compatibility for
+              viewer → game interaction</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="ideas-footer-divider"></div>
 
   <!-- ═══ Footer ═══ -->
   <footer class="footer">
