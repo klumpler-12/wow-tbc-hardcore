@@ -774,6 +774,7 @@
                         <div class="tray-grid" id="trayGrid">
                             <div class="tray-item active" data-mod="mod-gear">⚔️ Equipped Gear</div>
                             <div class="tray-item active" data-mod="mod-chars">👥 Characters</div>
+                            <div class="tray-item active" data-mod="mod-boosts">⚡ Boost Dashboard</div>
                             <div class="tray-item active" data-mod="mod-deathlog">💀 Death Log</div>
                             <div class="tray-item active" data-mod="mod-achieves">🏆 Achievements</div>
                             <div class="tray-item active" data-mod="mod-raid">🏰 Raid Achievements</div>
@@ -783,6 +784,86 @@
                     </div>
 
                     <div id="moduleContainer" style="display: flex; flex-direction: column; gap: 20px;">
+
+                        <!-- Hardcore Plus Boost Dashboard -->
+                        <div class="pc-section" id="mod-boosts" draggable="false">
+                            <button class="mod-hide-btn" title="Hide Module">×</button>
+                            <div class="pc-title"><span>⚡</span> Hardcore Plus: Boost Dashboard</div>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+                                One Level 58 boost is earned every time a character reaches Level 70 in Hardcore Plus
+                                mode.
+                            </p>
+                            <div class="boost-grid">
+                                <!-- Paladin Unlocked (Current Class) -->
+                                <div class="boost-card paladin unlocked">
+                                    <div class="boost-header">
+                                        <div class="boost-icon-wrap">🛡️</div>
+                                        <div class="boost-info">
+                                            <div class="boost-class">Paladin</div>
+                                            <div class="boost-status">Unlocked</div>
+                                        </div>
+                                    </div>
+                                    <div class="boost-body">
+                                        <div class="boost-usage">
+                                            <span class="boost-usage-label">Boosts Used</span>
+                                            <span class="boost-usage-count">1 / 2</span>
+                                        </div>
+                                        <div class="boost-progress-bg">
+                                            <div class="boost-progress-fill" style="width: 50%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="boost-footer">
+                                        <span>🕒 Unlocked: Mar 01, 2026</span>
+                                    </div>
+                                </div>
+
+                                <!-- Warrior Unlocked -->
+                                <div class="boost-card warrior unlocked">
+                                    <div class="boost-header">
+                                        <div class="boost-icon-wrap">⚔️</div>
+                                        <div class="boost-info">
+                                            <div class="boost-class">Warrior</div>
+                                            <div class="boost-status">Unlocked</div>
+                                        </div>
+                                    </div>
+                                    <div class="boost-body">
+                                        <div class="boost-usage">
+                                            <span class="boost-usage-label">Boosts Used</span>
+                                            <span class="boost-usage-count">0 / 1</span>
+                                        </div>
+                                        <div class="boost-progress-bg">
+                                            <div class="boost-progress-fill" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="boost-footer">
+                                        <span>🕒 Unlocked: Feb 20, 2026</span>
+                                    </div>
+                                </div>
+
+                                <!-- Mage Locked -->
+                                <div class="boost-card mage locked">
+                                    <div class="boost-header">
+                                        <div class="boost-icon-wrap">🔮</div>
+                                        <div class="boost-info">
+                                            <div class="boost-class">Mage</div>
+                                            <div class="boost-status">Locked</div>
+                                        </div>
+                                    </div>
+                                    <div class="boost-body">
+                                        <div class="boost-usage">
+                                            <span class="boost-usage-label">Boosts Used</span>
+                                            <span class="boost-usage-count">0 / 0</span>
+                                        </div>
+                                        <div class="boost-progress-bg">
+                                            <div class="boost-progress-fill" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="boost-footer">
+                                        <span>Reach Lvl 70 as Mage to unlock</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- Equipped Gear with Wowhead Icons -->
                         <div class="pc-section" id="mod-gear" draggable="false">

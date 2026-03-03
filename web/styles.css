@@ -5,7 +5,169 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* ═══ Refined Hybrid Showcase ═══ */
+/* ═══ Hardcore Plus Boost Dashboard ═══ */
+.boost-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.boost-card {
+  background: rgba(19, 16, 42, 0.4);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.boost-card.unlocked {
+  border-color: var(--gold-loot);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+}
+
+.boost-card.locked {
+  opacity: 0.5;
+  filter: grayscale(0.8);
+}
+
+.boost-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.boost-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--bg-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.unlocked .boost-icon-wrap {
+  border-color: var(--gold-loot);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.boost-info {
+  flex: 1;
+}
+
+.boost-class {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.boost-status {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.unlocked .boost-status {
+  color: var(--gold-loot);
+}
+
+.locked .boost-status {
+  color: var(--text-muted);
+}
+
+.boost-body {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 12px;
+}
+
+.boost-usage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.boost-usage-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.boost-usage-count {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.boost-progress-bg {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.boost-progress-fill {
+  height: 100%;
+  background: var(--gold-loot);
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--gold-loot);
+}
+
+.boost-footer {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Class Specific Accents */
+.boost-card.warrior.unlocked {
+  border-left: 3px solid #C79C6E;
+}
+
+.boost-card.paladin.unlocked {
+  border-left: 3px solid #F58CBA;
+}
+
+.boost-card.hunter.unlocked {
+  border-left: 3px solid #ABD473;
+}
+
+.boost-card.rogue.unlocked {
+  border-left: 3px solid #FFF569;
+}
+
+.boost-card.priest.unlocked {
+  border-left: 3px solid #FFFFFF;
+}
+
+.boost-card.shaman.unlocked {
+  border-left: 3px solid #0070DE;
+}
+
+.boost-card.mage.unlocked {
+  border-left: 3px solid #69CCF0;
+}
+
+.boost-card.warlock.unlocked {
+  border-left: 3px solid #9482C9;
+}
+
+.boost-card.druid.unlocked {
+  border-left: 3px solid #FF7D0A;
+}
+
 .hybrid-showcase-container {
   grid-column: 1 / -1;
   display: flex;
