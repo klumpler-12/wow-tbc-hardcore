@@ -119,13 +119,13 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="nav">
+    <nav class="nav" id="nav">
         <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
             <a href="index.html" class="nav-logo">
                 <div class="nav-logo-icon">⚔️</div>
                 <span class="nav-logo-text">TBC Hardcore</span>
             </a>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="index.html" data-i18n="nav.home">Home</a>
                 <a href="index.html#modes" data-i18n="nav.modes">Modes</a>
                 <a href="ideas.html" data-i18n="nav.ideas">Ideas Lab</a>
@@ -136,6 +136,9 @@
                 <button id="lang-de" class="btn btn-ghost"
                     style="padding: 4px 8px; min-width: auto; font-size: 0.8rem;">DE</button>
             </div>
+            <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
@@ -316,6 +319,7 @@
             }
         });
     </script>
+    <script src="app.js"></script>
 </body>
 
 </html>

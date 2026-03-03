@@ -13,19 +13,21 @@
 </head>
 
 <body>
-    <nav class="nav">
-        <div class="nav-inner">
+    <nav class="nav" id="nav">
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
             <a href="index.html" class="nav-logo">
-                <span class="nav-logo-icon">⚔️</span>
+                <div class="nav-logo-icon">⚔️</div>
                 <span class="nav-logo-text">TBC Hardcore</span>
             </a>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="index.html">Home</a>
                 <a href="index.html#modes">Modes</a>
                 <a href="index.html#streamer">Streamer Tools</a>
                 <a href="ideas.html" class="active">Ideas Lab</a>
-                <a href="compare.html">Compare</a>
             </div>
+            <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
@@ -64,6 +66,21 @@
                     </div>
 
                     <div class="ideas-grid" id="ideasGrid">
+
+                        <!-- Legal Notice -->
+                        <div class="idea-card reveal" data-category="business">
+                            <div class="idea-card-top"><span class="idea-tag business">Business</span><span
+                                    class="idea-status">Warning</span></div>
+                            <h3 class="idea-title">TOS Legal Review</h3>
+                            <p class="idea-desc">Viewer → game interactions require legal review against
+                                <strong>Blizzard addon policy</strong> and <strong>Twitch Extension guidelines</strong>.
+                            </p>
+                            <ul class="idea-bullets">
+                                <li>Ensure no "pay-to-win" or direct game advantages are sold</li>
+                                <li>Verify Twitch Bits API conforms to Blizzard rules</li>
+                                <li>Consult legal counsel before launching monetization</li>
+                            </ul>
+                        </div>
 
                         <!-- PvP Integration -->
                         <div class="idea-card reveal" data-category="mechanic">

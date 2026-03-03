@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   animateCounters();
   initIdeasFilter();
   initPenaltySpin();
+  initDeathTicker();
+  initChaosWheel();
+  initAchievementFeed();
+  initDiscordFeed();
 });
 
 /* ─── Navigation ─── */
@@ -18,39 +22,43 @@ function initNav() {
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navLinks');
 
-  // Scroll effect
-  let lastScroll = 0;
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    nav.classList.toggle('scrolled', y > 60);
-    lastScroll = y;
-  }, { passive: true });
+  if (nav) {
+    // Scroll effect
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      nav.classList.toggle('scrolled', y > 60);
+      lastScroll = y;
+    }, { passive: true });
+  }
 
-  // Mobile toggle
-  toggle.addEventListener('click', () => {
-    links.classList.toggle('open');
-    const spans = toggle.querySelectorAll('span');
-    if (links.classList.contains('open')) {
-      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-      spans[1].style.opacity = '0';
-      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-    } else {
-      spans[0].style.transform = '';
-      spans[1].style.opacity = '';
-      spans[2].style.transform = '';
-    }
-  });
-
-  // Close menu on link click
-  links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      links.classList.remove('open');
+  if (toggle && links) {
+    // Mobile toggle
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
       const spans = toggle.querySelectorAll('span');
-      spans[0].style.transform = '';
-      spans[1].style.opacity = '';
-      spans[2].style.transform = '';
+      if (links.classList.contains('open')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+      }
     });
-  });
+
+    // Close menu on link click
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        const spans = toggle.querySelectorAll('span');
+        spans[0].style.transform = '';
+        spans[1].style.opacity = '';
+        spans[2].style.transform = '';
+      });
+    });
+  }
 }
 
 /* ─── Hero Particles ─── */
@@ -225,6 +233,8 @@ function initPolls() {
 
     // Update community data
     const community = JSON.parse(localStorage.getItem('tbchc_community'));
+    if (!community || !community[pollId]) return;
+
     community[pollId][index]++;
     localStorage.setItem('tbchc_community', JSON.stringify(community));
 
@@ -278,7 +288,23 @@ function updateVotingStats() {
 
 /* ─── Counter Animation ─── */
 function animateCounters() {
-  // Initial update happens after polls init
+  const counterSection = document.getElementById('featuresCounter');
+  if (!counterSection) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const nums = entry.target.querySelectorAll('.strip-num');
+        nums.forEach(num => {
+          const target = parseInt(num.getAttribute('data-target'));
+          animateNumber(num, target);
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(counterSection);
 }
 
 function animateNumber(el, target) {
@@ -432,4 +458,271 @@ function initPenaltySpin() {
     }
   }, { threshold: 0.5 });
   observer.observe(reel.parentElement);
+}
+
+/* ─── Death Ticker ─── */
+function initDeathTicker() {
+  const track = document.getElementById('tickerTrack');
+  if (!track) return;
+
+  const DEATHS = [
+    { name: 'Zuzu (Priest)', cause: 'Fel Reaver — Hellfire Peninsula', pts: '−300' },
+    { name: 'Hexmaw (Warlock)', cause: 'Disconnected in Slave Pens', pts: '−450' },
+    { name: 'Thokk (Warrior)', cause: 'Feared into extra pack — Shadow Labs', pts: '−280' },
+    { name: 'Lightbane (Paladin)', cause: 'Pat aggro — Shattered Halls', pts: '−520' },
+    { name: 'Frostleaf (Mage)', cause: 'Resisted Frost Nova — Nagrand', pts: '−180' },
+    { name: 'Grimjaw (Rogue)', cause: 'Stealth broken by AoE — Mechanar', pts: '−340' },
+    { name: 'Moonwhisper (Druid)', cause: 'OOM in bear form — Mana Tombs', pts: '−260' },
+    { name: 'Darkshot (Hunter)', cause: 'Pet pulled boss — Karazhan', pts: '−600' },
+    { name: 'Soulrender (Warlock)', cause: 'Hellfire self-kill at 2% HP', pts: '−150' },
+    { name: 'Ironvow (Warrior)', cause: 'Charge into void zone — Gruul', pts: '−550' },
+  ];
+
+  const html = DEATHS.map(d => `
+    <div class="ticker-item">
+      <span class="skull">💀</span>
+      <span>${d.name}</span>
+      <span style="color:var(--text-muted)">— ${d.cause}</span>
+      <span class="pts">${d.pts} pts</span>
+    </div>
+  `).join('');
+
+  // Double it for seamless loop
+  track.innerHTML = html + html;
+}
+
+/* ─── Chaos Wheel ─── */
+function initChaosWheel() {
+  const wheel = document.getElementById('chaosWheel');
+  const btn = document.getElementById('chaosSpinBtn');
+  const result = document.getElementById('chaosResult');
+  if (!wheel || !btn || !result) return;
+
+  const SEGMENTS = [
+    { label: '🗺️ Zone Lock', color: '#e74c3c' },
+    { label: '🗡️ Melee Only', color: '#9b59f0' },
+    { label: '🚫 No Potions', color: '#ff6b2b' },
+    { label: '⏱️ Speed Run', color: '#00d4aa' },
+    { label: '🔇 No Healing', color: '#e67e22' },
+    { label: '👁️ Viewer Dare', color: '#3498db' },
+    { label: '💀 Boss Rush', color: '#c0392b' },
+    { label: '🎲 Wild Card', color: '#f1c40f' },
+  ];
+
+  const segAngle = 360 / SEGMENTS.length;
+
+  // Build conic-gradient
+  let gradient = 'conic-gradient(';
+  SEGMENTS.forEach((seg, i) => {
+    const start = i * segAngle;
+    const end = (i + 1) * segAngle;
+    gradient += `${seg.color} ${start}deg ${end}deg`;
+    if (i < SEGMENTS.length - 1) gradient += ', ';
+  });
+  gradient += ')';
+  wheel.style.background = gradient;
+
+  // Add text labels as absolutely-positioned spans
+  SEGMENTS.forEach((seg, i) => {
+    const lbl = document.createElement('div');
+    lbl.style.cssText = `
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 22px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: white;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+      pointer-events: none;
+      transform: rotate(${i * segAngle + segAngle / 2}deg);
+    `;
+    lbl.textContent = seg.label;
+    wheel.appendChild(lbl);
+  });
+
+  let currentRotation = 0;
+  let spinning = false;
+
+  function spin() {
+    if (spinning) return;
+    spinning = true;
+    btn.disabled = true;
+    result.classList.remove('landed');
+    result.textContent = 'Spinning...';
+
+    // 3-7 full rotations + random offset
+    const extraRotations = (3 + Math.floor(Math.random() * 5)) * 360;
+    const randomAngle = Math.random() * 360;
+    const totalRotation = currentRotation + extraRotations + randomAngle;
+
+    wheel.style.transition = 'transform 5s cubic-bezier(0.17, 0.67, 0.12, 0.99)';
+    wheel.style.transform = `rotate(${totalRotation}deg)`;
+    currentRotation = totalRotation;
+
+    setTimeout(() => {
+      // Which segment is at the top (pointer)?
+      const normalised = ((totalRotation % 360) + 360) % 360;
+      // Pointer is at top (0°), wheel rotates clockwise
+      // segment at pointer = (360 - normalised) mapped to index
+      const pointerAngle = (360 - normalised + 360) % 360;
+      const segIndex = Math.floor(pointerAngle / segAngle) % SEGMENTS.length;
+      const landed = SEGMENTS[segIndex];
+
+      result.textContent = landed.label + ' — ACTIVATED!';
+      result.classList.add('landed');
+
+      spinning = false;
+      btn.disabled = false;
+    }, 5200);
+  }
+
+  btn.addEventListener('click', spin);
+
+  // Auto-spin on scroll into view
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      spin();
+      observer.disconnect();
+    }
+  }, { threshold: 0.4 });
+  observer.observe(wheel);
+}
+
+/* ─── Live Achievement Feed ─── */
+function initAchievementFeed() {
+  const feed = document.getElementById('achieveFeed');
+  if (!feed) return;
+
+  const EVENTS = [
+    { type: 'milestone', icon: '⚔️', title: 'Unlocked Outland', desc: 'Pupi reached level 58 in 3d 14h · 0 deaths · HC Plus', score: '+100', scoreClass: 'pos', time: '14:32' },
+    { type: 'unlock', icon: '🏆', title: 'Reached Level 70', desc: 'Pupi — first char to 70 · 8d 7h total · 0 deaths', score: '+500', scoreClass: 'pos', time: '22:15' },
+    { type: 'pvp', icon: '⚔️', title: 'Gear Battle Won', desc: 'Pupi defeated Thokk — won Nightblade', score: '+75', scoreClass: 'pos', time: '23:41' },
+    { type: 'death', icon: '💀', title: 'Character Voided — Zuzu', desc: 'Killed by Fel Reaver · Hellfire Peninsula lvl 62', score: '−300', scoreClass: 'neg', time: '03:12' },
+    { type: 'milestone', icon: '🏰', title: 'Cleared Karazhan', desc: 'Pupi — full clear, 0 wipes, HC Plus guild run', score: '+800', scoreClass: 'pos', time: '01:05' },
+    { type: 'unlock', icon: '🔓', title: 'Score Unlock: Epic Gear', desc: 'Pupi crossed 3,000 pts — Epic items now equippable', score: '+0', scoreClass: 'pos', time: '01:06' },
+  ];
+
+  EVENTS.forEach(ev => {
+    const entry = document.createElement('div');
+    entry.className = `af-entry ${ev.type}`;
+    entry.innerHTML = `
+      <div class="af-time">Today — ${ev.time}</div>
+      <div class="af-body">
+        <div class="af-icon">${ev.icon}</div>
+        <div class="af-text">
+          <strong>${ev.title}</strong>
+          <span>${ev.desc}</span>
+        </div>
+        <div class="af-score ${ev.scoreClass}">${ev.score}</div>
+      </div>
+    `;
+    feed.appendChild(entry);
+  });
+
+  // Staggered reveal
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      const items = feed.querySelectorAll('.af-entry');
+      items.forEach((item, i) => {
+        setTimeout(() => item.classList.add('visible'), i * 300);
+      });
+      observer.disconnect();
+    }
+  }, { threshold: 0.2 });
+  observer.observe(feed);
+}
+
+/* ─── Discord Feed ─── */
+function initDiscordFeed() {
+  const container = document.getElementById('discordMessages');
+  if (!container) return;
+
+  const MESSAGES = [
+    {
+      avatar: '🤖', name: 'TBC-HC Bot', bot: true,
+      text: '💀 **Zuzu** (Shadow Priest, Lvl 62) has been **VOIDED**',
+      embed: { text: 'Killed by Fel Reaver in Hellfire Peninsula\n**Score impact:** −300 pts', cls: '' }
+    },
+    {
+      avatar: '🤖', name: 'TBC-HC Bot', bot: true,
+      text: '🏆 **Pupi** reached **Level 70** — first in guild!',
+      embed: { text: 'HC Plus mode · 8d 7h playtime · 0 deaths\n**Score:** +500 pts · **Rank:** #3', cls: 'green' }
+    },
+    {
+      avatar: '🎮', name: 'xXhunterXx', bot: false,
+      text: 'GG Pupi! That was insane, no deaths the entire run 🔥'
+    },
+    {
+      avatar: '🤖', name: 'TBC-HC Bot', bot: true,
+      text: '⚔️ **Gear Battle** — Pupi vs Thokk',
+      embed: { text: 'Item wagered: Nightblade (Rare)\n**Winner:** Pupi · +75 pts · Title: "Duelist"', cls: 'gold' }
+    },
+    {
+      avatar: '🤖', name: 'TBC-HC Bot', bot: true,
+      text: '📊 **Leaderboard Update** — Season 1, Week 4',
+      embed: { text: '1. Ziqø — 4,890 pts\n2. Xaryu — 4,120 pts\n3. Pupi — 3,475 pts', cls: 'purple' }
+    },
+  ];
+
+  let idx = 0;
+  let started = false;
+
+  function addMessage() {
+    if (idx >= MESSAGES.length) {
+      // Reset after delay
+      setTimeout(() => {
+        container.innerHTML = '';
+        idx = 0;
+        addMessage();
+      }, 5000);
+      return;
+    }
+
+    const msg = MESSAGES[idx];
+    const el = document.createElement('div');
+    el.className = 'dc-msg';
+
+    let embedHTML = '';
+    if (msg.embed) {
+      embedHTML = `<div class="dc-embed ${msg.embed.cls}">${msg.embed.text.replace(/\n/g, '<br>')}</div>`;
+    }
+
+    el.innerHTML = `
+      <div class="dc-avatar ${msg.bot ? 'bot' : ''}">${msg.avatar}</div>
+      <div class="dc-content">
+        <div class="dc-name">
+          ${msg.name}
+          ${msg.bot ? '<span class="bot-tag">BOT</span>' : ''}
+          <span class="dc-time">Today at ${String(10 + idx).padStart(2, '0')}:${String(Math.floor(Math.random() * 59)).padStart(2, '0')}</span>
+        </div>
+        <div class="dc-text">${msg.text}</div>
+        ${embedHTML}
+      </div>
+    `;
+
+    container.appendChild(el);
+    // Trigger animation
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => el.classList.add('visible'));
+    });
+
+    idx++;
+    setTimeout(addMessage, 2200);
+  }
+
+  // Start on scroll
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !started) {
+      started = true;
+      addMessage();
+      observer.disconnect();
+    }
+  }, { threshold: 0.3 });
+  observer.observe(container);
 }
