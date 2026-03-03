@@ -12,9 +12,67 @@ document.addEventListener('DOMContentLoaded', () => {
   initPenaltySpin();
   initDeathTicker();
   initChaosWheel();
+  initChaosWheel();
   initAchievementFeed();
   initDiscordFeed();
+  initOnboarding();
+  initGearBattle();
 });
+
+/* ─── Onboarding Flow ─── */
+function initOnboarding() {
+  const modal = document.getElementById('onboardingModal');
+  if (!modal) return;
+
+  // Check if user already completed onboarding
+  if (localStorage.getItem('tbchc_onboarded')) {
+    modal.style.display = 'none';
+    return;
+  }
+
+  // Show modal
+  modal.style.display = 'flex';
+
+  window.setLang = function (lang) {
+    // Basic lang implementation
+    if (window.i18n && window.i18n.setLanguage) {
+      window.i18n.setLanguage(lang);
+    }
+    document.querySelectorAll('.lang-selection button').forEach(b => {
+      b.classList.remove('btn-primary');
+      b.classList.add('btn-ghost');
+      b.style.borderColor = 'rgba(255,255,255,0.2)';
+    });
+    const clicked = event.target;
+    clicked.classList.remove('btn-ghost');
+    clicked.classList.add('btn-primary');
+    clicked.style.borderColor = 'transparent';
+  };
+
+  const roleBtns = modal.querySelectorAll('.role-btn');
+  roleBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const role = e.currentTarget.dataset.role;
+      localStorage.setItem('tbchc_onboarded', 'true');
+      localStorage.setItem('tbchc_role', role);
+      modal.style.display = 'none';
+
+      if (role === 'viewer') {
+        window.location.href = 'intro.html';
+      } else if (role === 'streamer') {
+        const strSection = document.getElementById('streamer');
+        if (strSection) {
+          strSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        const modesSection = document.getElementById('modes');
+        if (modesSection) {
+          modesSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+}
 
 /* ─── Navigation ─── */
 function initNav() {
@@ -607,6 +665,72 @@ function initChaosWheel() {
     }
   }, { threshold: 0.4 });
   observer.observe(wheel);
+}
+
+/* ─── Gear Battle Animation ─── */
+function initGearBattle() {
+  const container = document.getElementById('duelContainer');
+  const hp1 = document.getElementById('duelHp1');
+  const hp2 = document.getElementById('duelHp2');
+  const p1 = document.getElementById('duelP1');
+  const p2 = document.getElementById('duelP2');
+  const statusEl = document.getElementById('duelStatusText');
+
+  if (!container || !hp1 || !hp2) return;
+
+  let hp1Val = 100;
+  let hp2Val = 100;
+  let battleActive = false;
+
+  function runBattle() {
+    if (hp1Val <= 0 || hp2Val <= 0) return;
+
+    // Random damage ticks
+    const dmg1 = Math.random() * 15;
+    const dmg2 = Math.random() * 20; // P2 takes slightly more on avg for demo
+
+    hp1Val = Math.max(0, hp1Val - dmg1);
+    hp2Val = Math.max(0, hp2Val - dmg2);
+
+    hp1.style.width = hp1Val + '%';
+    hp2.style.width = hp2Val + '%';
+
+    // Color shifts on low HP
+    if (hp1Val < 30) hp1.style.background = 'var(--blood-red)';
+    else if (hp1Val < 60) hp1.style.background = 'var(--ember-orange)';
+
+    if (hp2Val < 30) hp2.style.background = 'var(--blood-red)';
+    else if (hp2Val < 60) hp2.style.background = 'var(--ember-orange)';
+
+    if (hp1Val === 0 || hp2Val === 0) {
+      statusEl.classList.remove('blinking');
+
+      if (hp2Val === 0) {
+        p2.style.opacity = '0.3';
+        p2.style.filter = 'grayscale(100%)';
+        p1.classList.add('winner-pulse');
+        statusEl.innerHTML = `<span style="color:var(--highlight-green)">ZUZU WINS!</span><br><span style="color:var(--blood-red)">Thokk loses Nightblade (-300 Score)</span>`;
+      } else {
+        p1.style.opacity = '0.3';
+        p1.style.filter = 'grayscale(100%)';
+        p2.classList.add('winner-pulse');
+        statusEl.innerHTML = `<span style="color:var(--highlight-green)">THOKK WINS!</span><br><span style="color:var(--blood-red)">Zuzu loses Destiny (-300 Score)</span>`;
+      }
+      return;
+    }
+
+    setTimeout(runBattle, 500 + Math.random() * 800);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !battleActive) {
+      battleActive = true;
+      setTimeout(runBattle, 1000);
+      observer.disconnect();
+    }
+  }, { threshold: 0.5 });
+
+  observer.observe(container);
 }
 
 /* ─── Live Achievement Feed ─── */

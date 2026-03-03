@@ -92,21 +92,29 @@
       <div class="modes-grid primary-modes">
         <!-- ██ Hardcore Plus — Featured ██ -->
         <div class="mode-card hcplus featured reveal">
-          <div class="hcplus-featured-badge">⭐ Recommended</div>
+          <div class="hcplus-featured-badge" data-i18n="modes.hcplus.badge">⭐ Recommended</div>
           <div class="mode-icon">⚡</div>
-          <h3 class="mode-name">Hardcore Plus</h3>
-          <p class="mode-tagline">Like Retro, but adapted for TBC. Strict rules with critical adjustments to make
-            Outland progression feasible.</p>
+          <h3 class="mode-name" data-i18n="modes.hcplus.title">Hardcore Plus</h3>
+          <p class="mode-tagline" data-i18n="modes.hcplus.desc">
+            <strong>The Ultimate TBC Challenge.</strong> Stand out as a verified elite player by conquering Outland with
+            the highest stakes.
+            <br><br>Like Retro, but adapted for TBC. Strict rules with critical adjustments to make Outland progression
+            feasible.
+          </p>
           <div class="mode-details">
-            <div class="mode-detail"><span class="mode-detail-icon">⚰️</span><span><strong
-                  class="highlight-red">Forgiving Permadeath</strong> — 1 death allowed before deletion</span></div>
-            <div class="mode-detail"><span class="mode-detail-icon">🔓</span><span><strong
-                  class="highlight-purple">Checkpoint boost</strong>: reach 70 once → unlock <strong>58 boost</strong>
+            <div class="mode-detail"><span class="mode-detail-icon">⚰️</span><span
+                data-i18n="modes.hcplus.bullet1"><strong class="highlight-red">Forgiving Permadeath</strong> — 1 death
+                allowed before deletion</span></div>
+            <div class="mode-detail"><span class="mode-detail-icon">🔓</span><span
+                data-i18n="modes.hcplus.bullet2"><strong class="highlight-purple">Checkpoint boost</strong>: reach 70
+                once → unlock <strong>58 boost</strong>
                 for alts</span></div>
-            <div class="mode-detail"><span class="mode-detail-icon">📊</span><span>Account-wide <strong
-                  class="highlight-green">scoring</strong> — quests, dungeons, achievements</span></div>
-            <div class="mode-detail"><span class="mode-detail-icon">🏷️</span><span>Auto-generated <strong
-                  class="highlight-purple">tags</strong> expose your rules at a glance</span></div>
+            <div class="mode-detail"><span class="mode-detail-icon">📊</span><span
+                data-i18n="modes.hcplus.bullet3">Account-wide <strong class="highlight-green">scoring</strong> — quests,
+                dungeons, achievements</span></div>
+            <div class="mode-detail"><span class="mode-detail-icon">🏷️</span><span
+                data-i18n="modes.hcplus.bullet4">Auto-generated <strong class="highlight-purple">tags</strong> expose
+                your rules at a glance</span></div>
           </div>
           <div class="hcplus-tags-preview">
             <span class="tag tag-mode">HCP</span>
@@ -126,18 +134,24 @@
         <!-- ██ Hybrid Hardcore ██ -->
         <div class="mode-card softcore reveal">
           <div class="mode-icon">⚖️</div>
-          <h3 class="mode-name">Hybrid Hardcore</h3>
-          <p class="mode-tagline">Built for streamers and custom events. Deeply customizable rules mixing hardcore
-            tension with TBC needs.
+          <h3 class="mode-name" data-i18n="modes.softcore.title">Hybrid Hardcore</h3>
+          <p class="mode-tagline" data-i18n="modes.softcore.desc">
+            <strong>Your Guild, Your Rules.</strong> Enable dynamic, viewer-driven events where deaths mean punishment,
+            not the end of the journey.
+            <br><br>Built for streamers and custom events. Deeply customizable rules mixing hardcore tension with TBC
+            needs.
           </p>
           <div class="mode-details" style="margin-bottom: auto;">
-            <div class="mode-detail"><span class="mode-detail-icon">⚙️</span><span><strong
-                  class="highlight-orange">Custom Rules</strong> — Guild Master controls deaths, trading, and
+            <div class="mode-detail"><span class="mode-detail-icon">⚙️</span><span
+                data-i18n="modes.softcore.bullet1"><strong class="highlight-orange">Custom Rules</strong> — Guild Master
+                controls deaths, trading, and
                 scoring</span></div>
-            <div class="mode-detail"><span class="mode-detail-icon">⚔️</span><span>Interactive focus: Penalties scale
+            <div class="mode-detail"><span class="mode-detail-icon">⚔️</span><span
+                data-i18n="modes.softcore.bullet2">Interactive focus: Penalties scale
                 from gear wipes to score drops based on events</span>
             </div>
-            <div class="mode-detail"><span class="mode-detail-icon">🎁</span><span>Streamer tools: Earn Guild Bank
+            <div class="mode-detail"><span class="mode-detail-icon">🎁</span><span
+                data-i18n="modes.softcore.bullet3">Streamer tools: Earn Guild Bank
                 unlocks and GM-rewarded lootboxes</span>
             </div>
           </div>
@@ -176,253 +190,249 @@
           <h3>⚙️ Guild Master Ruleset Customization</h3>
           <p>Tweak the exact difficulty and rules for your guild/event right from the addon UI.</p>
         </div>
-        <div class="gmc-dashboard" id="gmDashboard">
-          <div class="gmc-sidebar">
-            <div class="gmc-nav active" data-tab="ruleset">Ruleset Profile</div>
-            <div class="gmc-nav" data-tab="classes">Class Restrictions</div>
-            <div class="gmc-nav" data-tab="buffs">World Buffs</div>
-            <div class="gmc-nav" data-tab="penalties">Death Penalties</div>
-            <div class="gmc-nav" data-tab="rewards">Score Unlocks</div>
+        <div style="display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
+          <!-- Left side: GM Dashboard -->
+          <div class="gmc-dashboard" id="gmDashboard" style="flex: 1; min-width: 350px;">
+            <div class="gmc-sidebar">
+              <div class="gmc-nav active" data-tab="ruleset">Ruleset Profile</div>
+              <div class="gmc-nav" data-tab="classes">Class Restrictions</div>
+              <div class="gmc-nav" data-tab="buffs">World Buffs</div>
+              <div class="gmc-nav" data-tab="penalties">Death Penalties</div>
+              <div class="gmc-nav" data-tab="rewards">Score Unlocks</div>
+            </div>
+            <div class="gmc-content">
+              <!-- Tab: Ruleset -->
+              <div class="gmc-tab-pane active" id="tab-ruleset">
+                <div class="gmc-setting-row">
+                  <div class="gmc-setting-info">
+                    <strong>Trading Allowed</strong>
+                    <span>Can guild members trade with each other?</span>
+                  </div>
+                  <div class="gmc-toggle active"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                    ON</div>
+                </div>
+                <div class="gmc-setting-row">
+                  <div class="gmc-setting-info">
+                    <strong>Auction House Lock</strong>
+                    <span>Are players blocked from using the AH?</span>
+                  </div>
+                  <div class="gmc-toggle active"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                    ON</div>
+                </div>
+                <div class="gmc-setting-row">
+                  <div class="gmc-setting-info">
+                    <strong>Mailbox Restrictions</strong>
+                    <span>Disable sending/receiving mail to non-guildies.</span>
+                  </div>
+                  <div class="gmc-toggle"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                    OFF</div>
+                </div>
+              </div>
+
+              <!-- Tab: Classes -->
+              <div class="gmc-tab-pane" id="tab-classes" style="display:none;">
+                <div class="gmc-setting-row">
+                  <div class="gmc-setting-info">
+                    <strong>Class Limits</strong>
+                    <span>Max number of same class per 40m Raid.</span>
+                  </div>
+                  <select class="gmc-select">
+                    <option>Unlimited</option>
+                    <option selected>Max 5</option>
+                    <option>Max 3</option>
+                  </select>
+                </div>
+                <div class="gmc-setting-row">
+                  <div class="gmc-setting-info">
+                    <strong>Paladin Bubble-Hearth</strong>
+                    <span>Is Divine Shield + Hearthstone allowed?</span>
+                  </div>
+                  <div class="gmc-toggle"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                    OFF</div>
+                </div>
+              </div>
+
+              <!-- Tab: Buffs -->
+              <div class="gmc-tab-pane" id="tab-buffs" style="display:none;">
+                <div class="gmc-setting-row">
+                  <div class="gmc-setting-info">
+                    <strong>Chronoboon Dispenser</strong>
+                    <span>Allow storing world buffs?</span>
+                  </div>
+                  <div class="gmc-toggle active"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                    ON</div>
+                </div>
+                <div class="gmc-setting-row">
+                  <div class="gmc-setting-info">
+                    <strong>World Buff Purge on Boss Pull</strong>
+                    <span>Automatically remove WBs when engaging raid bosses.</span>
+                  </div>
+                  <div class="gmc-toggle"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                    OFF</div>
+                </div>
+              </div>
+
+              <!-- Tab: Penalties -->
+              <div class="gmc-tab-pane" id="tab-penalties" style="display:none;">
+                <div class="gmc-setting-row">
+                  <div class="gmc-setting-info">
+                    <strong>Death Penalty Mode</strong>
+                    <span>What happens when a player dies in PvE/PvP?</span>
+                  </div>
+                  <select class="gmc-select">
+                    <option>Full Character Wipe (Delete)</option>
+                    <option>Respawn Sickness (24h)</option>
+                    <option selected>Score Deduction & Item Drop</option>
+                    <option>Bounty Placed on Killer</option>
+                  </select>
+                </div>
+                <div class="gmc-setting-row">
+                  <div class="gmc-setting-info">
+                    <strong>Gear Drop on Death</strong>
+                    <span>Player drops an equipped item upon dying.</span>
+                  </div>
+                  <div class="gmc-toggle active"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                    ON</div>
+                </div>
+                <div class="gmc-setting-row">
+                  <div class="gmc-setting-info">
+                    <strong>Viewer Execution (Streamers)</strong>
+                    <span>Allow Twitch chat to spin the penalty wheel.</span>
+                  </div>
+                  <div class="gmc-toggle active"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                    ON</div>
+                </div>
+              </div>
+
+              <!-- Tab: Score Unlocks -->
+              <div class="gmc-tab-pane" id="tab-rewards" style="display:none;">
+                <div class="gmc-setting-row">
+                  <div class="gmc-setting-info">
+                    <strong>Cosmetic Titles via Score</strong>
+                    <span>Unlock Titles at score milestones (e.g., 2000 pts).</span>
+                  </div>
+                  <div class="gmc-toggle active"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                    ON</div>
+                </div>
+                <div class="gmc-setting-row">
+                  <div class="gmc-setting-info">
+                    <strong>Mount Unlocks</strong>
+                    <span>Use guild score to unlock specific mounts.</span>
+                  </div>
+                  <div class="gmc-toggle active"
+                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
+                    ON</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="gmc-content">
-            <!-- Tab: Ruleset -->
-            <div class="gmc-tab-pane active" id="tab-ruleset">
-              <div class="gmc-setting-row">
-                <div class="gmc-setting-info">
-                  <strong>Trading Allowed</strong>
-                  <span>Can guild members trade with each other?</span>
-                </div>
-                <div class="gmc-toggle active"
-                  onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                  ON</div>
-              </div>
-              <div class="gmc-setting-row">
-                <div class="gmc-setting-info">
-                  <strong>Auction House Lock</strong>
-                  <span>Are players blocked from using the AH?</span>
-                </div>
-                <div class="gmc-toggle active"
-                  onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                  ON</div>
-              </div>
-              <div class="gmc-setting-row">
-                <div class="gmc-setting-info">
-                  <strong>Mailbox Restrictions</strong>
-                  <span>Disable sending/receiving mail to non-guildies.</span>
-                </div>
-                <div class="gmc-toggle"
-                  onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                  OFF</div>
-              </div>
-            </div>
 
-            <!-- Tab: Classes -->
-            <div class="gmc-tab-pane" id="tab-classes" style="display:none;">
-              <div class="gmc-setting-row">
-                <div class="gmc-setting-info">
-                  <strong>Class Limits</strong>
-                  <span>Max number of same class per 40m Raid.</span>
-                </div>
-                <select class="gmc-select">
-                  <option>Unlimited</option>
-                  <option selected>Max 5</option>
-                  <option>Max 3</option>
-                </select>
-              </div>
-              <div class="gmc-setting-row">
-                <div class="gmc-setting-info">
-                  <strong>Paladin Bubble-Hearth</strong>
-                  <span>Is Divine Shield + Hearthstone allowed?</span>
-                </div>
-                <div class="gmc-toggle"
-                  onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                  OFF</div>
-              </div>
-            </div>
-
-            <!-- Tab: Buffs -->
-            <div class="gmc-tab-pane" id="tab-buffs" style="display:none;">
-              <div class="gmc-setting-row">
-                <div class="gmc-setting-info">
-                  <strong>Chronoboon Dispenser</strong>
-                  <span>Allow storing world buffs?</span>
-                </div>
-                <div class="gmc-toggle active"
-                  onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                  ON</div>
-              </div>
-              <div class="gmc-setting-row">
-                <div class="gmc-setting-info">
-                  <strong>World Buff Purge on Boss Pull</strong>
-                  <span>Automatically remove WBs when engaging raid bosses.</span>
-                </div>
-                <div class="gmc-toggle"
-                  onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                  OFF</div>
-              </div>
-            </div>
-
-            <!-- Tab: Penalties -->
-            <div class="gmc-tab-pane" id="tab-penalties" style="display:none;">
-              <div class="gmc-setting-row">
-                <div class="gmc-setting-info">
-                  <strong>Death Penalty Mode</strong>
-                  <span>What happens when a player dies in PvE/PvP?</span>
-                </div>
-                <select class="gmc-select">
-                  <option>Full Character Wipe (Delete)</option>
-                  <option>Respawn Sickness (24h)</option>
-                  <option selected>Score Deduction & Item Drop</option>
-                  <option>Bounty Placed on Killer</option>
-                </select>
-              </div>
-              <div class="gmc-setting-row">
-                <div class="gmc-setting-info">
-                  <strong>Gear Drop on Death</strong>
-                  <span>Player drops an equipped item upon dying.</span>
-                </div>
-                <div class="gmc-toggle active"
-                  onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                  ON</div>
-              </div>
-              <div class="gmc-setting-row">
-                <div class="gmc-setting-info">
-                  <strong>Viewer Execution (Streamers)</strong>
-                  <span>Allow Twitch chat to spin the penalty wheel.</span>
-                </div>
-                <div class="gmc-toggle active"
-                  onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                  ON</div>
-              </div>
-            </div>
-
-            <!-- Tab: Score Unlocks -->
-            <div class="gmc-tab-pane" id="tab-rewards" style="display:none;">
-              <div class="gmc-setting-row">
-                <div class="gmc-setting-info">
-                  <strong>Cosmetic Titles via Score</strong>
-                  <span>Unlock Titles at score milestones (e.g., 2000 pts).</span>
-                </div>
-                <div class="gmc-toggle active"
-                  onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                  ON</div>
-              </div>
-              <div class="gmc-setting-row">
-                <div class="gmc-setting-info">
-                  <strong>Mount Unlocks</strong>
-                  <span>Use guild score to unlock specific mounts.</span>
-                </div>
-                <div class="gmc-toggle active"
-                  onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                  ON</div>
-              </div>
+          <!-- Right side: Auto-Generated Ruleset Tags -->
+          <div class="gmc-tags-panel"
+            style="flex: 0 0 320px; background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 12px; padding: 24px;">
+            <h4
+              style="color: var(--text-primary); font-family: var(--font-display); margin-bottom: 16px; font-size: 1.1rem;">
+              Generated Ruleset Tags</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">These tags are automatically
+              generated from your settings and visible to everyone inspecting your guild.</p>
+            <div class="hcplus-tags-preview" style="gap: 12px;">
+              <span class="tag tag-mode">Hybrid</span>
+              <span class="tag tag-rule"
+                style="background: rgba(46, 204, 113, 0.1); color: var(--highlight-green);">Trading: ON</span>
+              <span class="tag tag-rule" style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">AH:
+                Locked</span>
+              <span class="tag tag-rule">Max 5 per Class</span>
+              <span class="tag tag-rule" style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">Drop Item
+                on Death</span>
             </div>
           </div>
         </div>
-      </div>
 
-      <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const navs = document.querySelectorAll('.gmc-nav');
-          const panes = document.querySelectorAll('.gmc-tab-pane');
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const navs = document.querySelectorAll('.gmc-nav');
+            const panes = document.querySelectorAll('.gmc-tab-pane');
 
-          navs.forEach(nav => {
-            nav.addEventListener('click', () => {
-              navs.forEach(n => n.classList.remove('active'));
-              panes.forEach(p => p.style.display = 'none');
-              nav.classList.add('active');
-              const tabId = nav.getAttribute('data-tab');
-              const pane = document.getElementById('tab-' + tabId);
-              if (pane) {
-                pane.style.display = 'block';
-                pane.style.opacity = '0';
-                pane.style.transform = 'translateY(10px)';
-                setTimeout(() => {
-                  pane.style.transition = 'all 0.3s ease';
-                  pane.style.opacity = '1';
-                  pane.style.transform = 'translateY(0)';
-                }, 10);
-              }
+            navs.forEach(nav => {
+              nav.addEventListener('click', () => {
+                navs.forEach(n => n.classList.remove('active'));
+                panes.forEach(p => p.style.display = 'none');
+                nav.classList.add('active');
+                const tabId = nav.getAttribute('data-tab');
+                const pane = document.getElementById('tab-' + tabId);
+                if (pane) {
+                  pane.style.display = 'block';
+                  pane.style.opacity = '0';
+                  pane.style.transform = 'translateY(10px)';
+                  setTimeout(() => {
+                    pane.style.transition = 'all 0.3s ease';
+                    pane.style.opacity = '1';
+                    pane.style.transform = 'translateY(0)';
+                  }, 10);
+                }
+              });
             });
           });
-        });
-      </script>
+        </script>
 
-      <!-- Secondary Modes Grid (HC Classic, Nullcore) -->
-      <div class="secondary-modes-header reveal">
-        <h3
-          style="text-align:center; font-family:var(--font-display); color:var(--text-secondary); margin-bottom:24px;">
-          Other Ways to Play</h3>
-      </div>
-      <div class="modes-grid secondary-modes">
-        <!-- ██ Retro Mode (HC Classic) ██ -->
-        <div class="mode-card hardcore small reveal">
-          <div class="mode-icon">💀</div>
-          <h3 class="mode-name">Retro Mode (Classic)</h3>
-          <p class="mode-tagline">The original ruleset. One life, full SSF. Death is absolute.</p>
-          <div class="mode-details" style="font-size: 0.8rem;">
-            <div class="mode-detail"><span class="mode-detail-icon">⚰️</span><span>Character voided forever on
-                death</span></div>
-            <div class="mode-detail"><span class="mode-detail-icon">🔒</span><span>Full SSF — no mail, AH, or
-                trading</span></div>
+        <!-- Secondary Modes Grid (HC Classic, Nullcore) -->
+        <div class="secondary-modes-header reveal">
+          <h3
+            style="text-align:center; font-family:var(--font-display); color:var(--text-secondary); margin-bottom:24px;">
+            Other Ways to Play</h3>
+        </div>
+        <div class="modes-grid secondary-modes">
+          <!-- ██ Retro Mode (HC Classic) ██ -->
+          <div class="mode-card hardcore small reveal">
+            <div class="mode-icon">💀</div>
+            <h3 class="mode-name">Retro Mode (Classic)</h3>
+            <p class="mode-tagline">The original ruleset. One life, full SSF. Death is absolute.</p>
+            <div class="mode-details" style="font-size: 0.8rem;">
+              <div class="mode-detail"><span class="mode-detail-icon">⚰️</span><span>Character voided forever on
+                  death</span></div>
+              <div class="mode-detail"><span class="mode-detail-icon">🔒</span><span>Full SSF — no mail, AH, or
+                  trading</span></div>
+            </div>
+            <div class="mode-severity">
+              <span class="mode-severity-label">Severity</span>
+              <span class="severity-dot active red"></span><span class="severity-dot active red"></span><span
+                class="severity-dot active red"></span><span class="severity-dot active red"></span><span
+                class="severity-dot active red"></span>
+            </div>
           </div>
-          <div class="mode-severity">
-            <span class="mode-severity-label">Severity</span>
-            <span class="severity-dot active red"></span><span class="severity-dot active red"></span><span
-              class="severity-dot active red"></span><span class="severity-dot active red"></span><span
-              class="severity-dot active red"></span>
+
+          <!-- ██ Nullcore ██ -->
+          <div class="mode-card nullcore small reveal">
+            <div class="mode-icon">🏆</div>
+            <h3 class="mode-name">Nullcore League</h3>
+            <p class="mode-tagline">No permadeath. Pure score-based competitive seasons.</p>
+            <div class="mode-details" style="font-size: 0.8rem;">
+              <div class="mode-detail"><span class="mode-detail-icon">📊</span><span>Deaths deduct points, quests
+                  earn</span></div>
+              <div class="mode-detail"><span class="mode-detail-icon">🎲</span><span><strong
+                    class="highlight-orange">Risk
+                    Multipliers</strong>: Bonus points for under-gearing, under-leveling, and speed-clears. Repeating
+                  dungeons gives diminishing returns.</span></div>
+              <div class="mode-detail"><span class="mode-detail-icon">🌍</span><span>No trade restrictions — play
+                  normally</span></div>
+            </div>
+            <div class="mode-severity">
+              <span class="mode-severity-label">Severity</span>
+              <span class="severity-dot active teal"></span><span class="severity-dot"></span><span
+                class="severity-dot"></span><span class="severity-dot"></span><span class="severity-dot"></span>
+            </div>
           </div>
         </div>
 
-        <!-- ██ Nullcore ██ -->
-        <div class="mode-card nullcore small reveal">
-          <div class="mode-icon">🏆</div>
-          <h3 class="mode-name">Nullcore League</h3>
-          <p class="mode-tagline">No permadeath. Pure score-based competitive seasons.</p>
-          <div class="mode-details" style="font-size: 0.8rem;">
-            <div class="mode-detail"><span class="mode-detail-icon">📊</span><span>Deaths deduct points, quests
-                earn</span></div>
-            <div class="mode-detail"><span class="mode-detail-icon">🎲</span><span><strong class="highlight-orange">Risk
-                  Multipliers</strong>: Bonus points for under-gearing, under-leveling, and speed-clears. Repeating
-                dungeons gives diminishing returns.</span></div>
-            <div class="mode-detail"><span class="mode-detail-icon">🌍</span><span>No trade restrictions — play
-                normally</span></div>
-          </div>
-          <div class="mode-severity">
-            <span class="mode-severity-label">Severity</span>
-            <span class="severity-dot active teal"></span><span class="severity-dot"></span><span
-              class="severity-dot"></span><span class="severity-dot"></span><span class="severity-dot"></span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══ Features Strip ═══ -->
-  <section class="features-strip" id="features">
-    <div class="container">
-      <div class="strip-row reveal" id="featuresCounter">
-        <div class="strip-item"><span class="strip-num" data-target="15420">0</span> <span data-i18n="strip.f1"
-            style="display:block; font-size: 0.8rem; margin-top: 4px; color: var(--text-muted)">Deaths Tracked</span>
-        </div>
-        <div class="strip-item"><span class="strip-num" data-target="892">0</span> <span data-i18n="strip.f2"
-            style="display:block; font-size: 0.8rem; margin-top: 4px; color: var(--text-muted)">Penalties
-            Executed</span></div>
-        <div class="strip-item"><span class="strip-num" data-target="325">0</span> <span data-i18n="strip.f3"
-            style="display:block; font-size: 0.8rem; margin-top: 4px; color: var(--text-muted)">Active Guilds</span>
-        </div>
-        <div class="strip-item"><span class="strip-num" data-target="98">0</span> <span data-i18n="strip.f4"
-            style="display:block; font-size: 0.8rem; margin-top: 4px; color: var(--text-muted)">% SSF Integrity</span>
-        </div>
-        <div class="strip-item"><span class="strip-num" data-target="45">0</span> <span data-i18n="strip.f5"
-            style="display:block; font-size: 0.8rem; margin-top: 4px; color: var(--text-muted)">Max Level Hit</span>
-        </div>
-        <div class="strip-item"><span class="strip-num" data-target="12450">0</span> <span data-i18n="strip.f6"
-            style="display:block; font-size: 0.8rem; margin-top: 4px; color: var(--text-muted)">Total Score</span></div>
-      </div>
-      <div class="strip-link reveal">
-        <a href="details.html" class="btn btn-ghost" data-i18n="strip.link">Explore Features, Scoring & Pipeline →</a>
       </div>
   </section>
 
@@ -555,8 +565,9 @@
         </div>
         <div class="tracker-body">
           <div style="display: block;">
-            <p style="font-size: 0.85rem; margin-bottom: 8px; color: var(--text-primary);">TBC content is vast. The
-              mindset remains: <strong class="highlight-red">You fail, you die. You get a punish.</strong></p>
+            <p style="font-size: 0.85rem; margin-bottom: 8px; color: var(--text-primary);">TBC content is vast. <strong
+                class="highlight-green">Play everything with massive incentives</strong>, but remember: <strong
+                class="highlight-red">nothing is without consequences upon failing.</strong></p>
             <ul style="font-size: 0.8rem; color: var(--text-muted); padding-left: 16px; margin: 0;">
               <li style="margin-bottom: 6px;"><strong class="highlight-purple">PvE Focus (All Modes):</strong> Adjust
                 rules to make high-end raids possible, translating permadeath into gear drops or heavy score loss.</li>
@@ -568,7 +579,7 @@
       </div>
 
       <!-- Gear Battle Duels -->
-      <div class="tracker-card">
+      <div class="tracker-card" id="duelContainer">
         <div class="tracker-header">
           <span class="tracker-icon">⚔️</span>
           <div>
@@ -576,14 +587,31 @@
             <p style="font-size: 0.8rem; color: var(--text-muted);">Dual to the death for the opponent's item</p>
           </div>
         </div>
-        <div class="tracker-body">
-          <div class="duel-row">
-            <div class="duel-player">Zuzu<br><span>Destiny</span></div>
-            <div class="duel-vs">VS</div>
-            <div class="duel-player">Thokk<br><span>Nightblade</span></div>
+        <div class="tracker-body duel-anim-body">
+          <div class="duel-row" style="margin-bottom: 8px;">
+            <div class="duel-player" id="duelP1">Zuzu<br><span>Destiny</span></div>
+            <div class="duel-vs" id="duelVS">VS</div>
+            <div class="duel-player" id="duelP2">Thokk<br><span>Nightblade</span></div>
           </div>
-          <div class="duel-status blinking"
-            style="text-align: center; font-size: 0.75rem; color: var(--ember-orange); margin-top: 12px; font-weight: bold;">
+
+          <!-- Health Bars added for animation -->
+          <div class="duel-healthbars"
+            style="display: flex; justify-content: space-between; gap: 16px; margin-bottom: 12px;">
+            <div
+              style="flex: 1; background: rgba(0,0,0,0.5); height: 8px; border-radius: 4px; overflow: hidden; transform: scaleX(-1);">
+              <div id="duelHp1"
+                style="width: 100%; height: 100%; background: var(--highlight-green); transition: width 0.3s ease;">
+              </div>
+            </div>
+            <div style="flex: 1; background: rgba(0,0,0,0.5); height: 8px; border-radius: 4px; overflow: hidden;">
+              <div id="duelHp2"
+                style="width: 100%; height: 100%; background: var(--highlight-green); transition: width 0.3s ease;">
+              </div>
+            </div>
+          </div>
+
+          <div class="duel-status blinking" id="duelStatusText"
+            style="text-align: center; font-size: 0.75rem; color: var(--ember-orange); font-weight: bold; min-height: 14px;">
             MATCH IN PROGRESS...
           </div>
         </div>
@@ -744,13 +772,15 @@
         <h2 class="section-title">Live Penalty Execution</h2>
         <p class="section-desc">When chat votes for a punishment, it happens instantly in-game.</p>
       </div>
-      <div class="mockup-row reveal" style="justify-content: center;">
-        <div class="mockup-panel" style="max-width: 600px; width: 100%; border-color: var(--blood-red);">
-          <div class="mockup-label" style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">Penalty
+      <div class="mockup-row reveal" style="justify-content: center; display: flex;">
+        <div class="mockup-panel"
+          style="max-width: 600px; width: 100%; border-color: var(--blood-red); margin: 0 auto;">
+          <div class="mockup-label"
+            style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red); text-align: center;">Penalty
             Processing — Gear Wipe</div>
-          <div class="penalty-execute">
-            <div class="pe-header" id="peHeader">Rolling for penalty item...</div>
-            <div class="pe-slot-machine">
+          <div class="penalty-execute" style="margin: 0 auto;">
+            <div class="pe-header" id="peHeader" style="text-align: center;">Rolling for penalty item...</div>
+            <div class="pe-slot-machine" style="margin: 0 auto;">
               <div class="pe-window">
                 <div class="pe-reel" id="penaltyReel">
                   <!-- JS populates items -->
@@ -758,7 +788,7 @@
                 <div class="pe-selector-box"></div>
               </div>
             </div>
-            <div class="pe-status" id="penaltyStatus">Spinning...</div>
+            <div class="pe-status" id="penaltyStatus" style="text-align: center;">Spinning...</div>
           </div>
         </div>
       </div>
@@ -818,14 +848,15 @@
     </div>
   </section>
 
-  <!-- ═══ Live Achievement Feed ═══ -->
-  <section class="animated-showcase" id="achieveSection">
+  <!-- ═══ Live Guild Feed ═══ -->
+  <section class="animated-showcase" id="feedSection">
     <div class="container">
       <div class="reveal" style="text-align:center;">
-        <div class="section-label">Achievement Mode</div>
-        <h2 class="section-title">Live Achievement Feed</h2>
-        <p class="section-desc">Track milestones, deaths, unlocks, and PvP events in real time across the entire
-          community.</p>
+        <div class="section-label">Real-time Activity</div>
+        <h2 class="section-title">Live Guild Feed</h2>
+        <p class="section-desc">Global stream of deaths, penalties, achievements, and GM-triggered events.</p> in real
+        time across the entire
+        community.</p>
       </div>
       <div class="achievement-feed reveal" id="achieveFeed">
         <!-- JS populates entries with staggered animation -->
@@ -946,6 +977,54 @@
       <p class="footer-copy">© 2026 TBC Hardcore Project · Not affiliated with Blizzard Entertainment</p>
     </div>
   </footer>
+
+  <!-- ═══ Onboarding Modal ═══ -->
+  <div id="onboardingModal" class="onboarding-overlay"
+    style="display: none; position: fixed; inset: 0; background: rgba(10, 10, 12, 0.95); z-index: 9999; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+    <div class="onboarding-card"
+      style="background: var(--bg-card); max-width: 600px; width: 100%; border-radius: 12px; border: 1px solid var(--highlight-orange); padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+      <h2 style="font-family: var(--font-display); color: var(--text-primary); margin-bottom: 16px; font-size: 2rem;">
+        Welcome to TBC Hardcore</h2>
+      <p id="onboardingDesc" style="color: var(--text-secondary); margin-bottom: 32px; line-height: 1.6;">Before you
+        explore, let's tailor your experience. Select your preferred language and tell us what brings you here.</p>
+
+      <div class="lang-selection" style="display: flex; justify-content: center; gap: 16px; margin-bottom: 40px;">
+        <button class="btn btn-primary" onclick="window.setLang('en')" style="min-width: 120px;">🇬🇧 English</button>
+        <button class="btn btn-ghost" onclick="window.setLang('de')"
+          style="min-width: 120px; border-color: rgba(255,255,255,0.2);">🇩🇪 Deutsch</button>
+      </div>
+
+      <div class="role-selection"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px;">
+        <button class="role-btn" data-role="viewer"
+          style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; color: var(--text-primary);">
+          <div style="font-size: 2rem; margin-bottom: 8px;">👀</div>
+          <strong style="display:block; margin-bottom: 4px;">New / Viewer</strong>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Explain it to me</span>
+        </button>
+        <button class="role-btn" data-role="gamer"
+          style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; color: var(--text-primary);">
+          <div style="font-size: 2rem; margin-bottom: 8px;">⚔️</div>
+          <strong style="display:block; margin-bottom: 4px;">Player</strong>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Show me the rules</span>
+        </button>
+        <button class="role-btn" data-role="streamer"
+          style="background: rgba(255,255,255,0.05); border: 1px solid var(--highlight-purple); padding: 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; color: var(--text-primary);">
+          <div style="font-size: 2rem; margin-bottom: 8px;">🎥</div>
+          <strong style="display:block; margin-bottom: 4px;">Streamer</strong>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Show me integrations</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .role-btn:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+      border-color: var(--highlight-orange) !important;
+      transform: translateY(-2px);
+    }
+  </style>
 
   <script src="js/i18n.js"></script>
   <script src="app.js"></script>

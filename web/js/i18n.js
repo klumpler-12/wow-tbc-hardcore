@@ -29,20 +29,20 @@ const translations = {
                 p4: 'Closest to official Classic HC rules, adapted for TBC'
             },
             plus: {
-                name: 'Hardcore Plus',
-                tagline: 'Like Retro, but adapted for TBC. Strict rules with critical adjustments to make Outland feasible.',
-                p1: '<strong class="highlight-red">Forgiving Permadeath</strong> — 1 death allowed before character deletion',
-                p2: '<strong class="highlight-purple">Checkpoint boost</strong>: reach level 70 once → unlock <strong>58 boost</strong> for future characters',
-                p3: 'Account-wide <strong class="highlight-green">scoring</strong> — earn points for quests, milestones, achievements',
-                p4: 'Leaderboards and seasonal rankings with titles'
+                badge: '⭐ Recommended',
+                title: 'Hardcore Plus',
+                desc: '<strong>The Ultimate TBC Challenge.</strong> Stand out as a verified elite player by conquering Outland with the highest stakes.<br><br>Like Retro, but adapted for TBC. Strict rules with critical adjustments to make Outland progression feasible.',
+                bullet1: '<strong class="highlight-red">Forgiving Permadeath</strong> — 1 death allowed before deletion',
+                bullet2: '<strong class="highlight-purple">Checkpoint boost</strong>: reach 70 once → unlock <strong>58 boost</strong> for alts',
+                bullet3: 'Account-wide <strong class="highlight-green">scoring</strong> — quests, dungeons, achievements',
+                bullet4: 'Auto-generated <strong class="highlight-purple">tags</strong> expose your rules at a glance'
             },
             softcore: {
-                name: 'Hybrid Hardcore',
-                tagline: 'Built for streamers and custom events. Deeply customizable rules mixing hardcore tension with TBC needs.',
-                p1: 'Guild Master fully controls <strong class="highlight-orange">custom penalties</strong> — from gear wipe to score drops',
-                p2: 'Interactive focus — stream viewers can trigger events and penalties',
-                p3: 'Guild trading allowed — partial SSF with trusted allies',
-                p4: 'No mandatory character deletion — penalties are severe but adjustable'
+                title: 'Hybrid Hardcore',
+                desc: '<strong>Your Guild, Your Rules.</strong> Enable dynamic, viewer-driven events where deaths mean punishment, not the end of the journey.<br><br>Built for streamers and custom events. Deeply customizable rules mixing hardcore tension with TBC needs.',
+                bullet1: '<strong class="highlight-orange">Custom Rules</strong> — Guild Master controls deaths, trading, and scoring',
+                bullet2: 'Interactive focus: Penalties scale from gear wipes to score drops based on events',
+                bullet3: 'Streamer tools: Earn Guild Bank unlocks and GM-rewarded lootboxes'
             },
             nullcore: {
                 name: 'Nullcore League',
@@ -138,20 +138,20 @@ const translations = {
                 p4: 'Nah an den offiziellen Classic HC-Regeln, angepasst für TBC'
             },
             plus: {
-                name: 'Hardcore Plus',
-                tagline: 'Wie Retro, aber optimiert für TBC. Strikte Regeln mit nötigen Anpassungen für die Scherbenwelt.',
-                p1: '<strong class="highlight-red">Verzeihender Permadeath</strong> — 1 Tod erlaubt, bevor der Charakter gelöscht wird',
-                p2: '<strong class="highlight-purple">Checkpoint-Boost</strong>: Einmal Stufe 70 erreichen → schaltet <strong>Stufe-58-Boost</strong> für zukünftige Charaktere frei',
-                p3: 'Accountweite <strong class="highlight-green">Wertung</strong> — verdiene Punkte für Quests, Meilensteine, Erfolge',
-                p4: 'Bestenlisten und saisonale Rankings mit Titeln'
+                badge: '⭐ Empfohlen',
+                title: 'Hardcore Plus',
+                desc: '<strong>Die Ultimative TBC Herausforderung.</strong> Beweise dich als elitärer Spieler, indem du die Schwerbenwelt unter den härtesten Bedingungen meisterst.<br><br>Wie Retro, aber optimiert für TBC. Strikte Regeln mit nötigen Anpassungen für die Scherbenwelt.',
+                bullet1: '<strong class="highlight-red">Verzeihender Permadeath</strong> — 1 Tod erlaubt, bevor der Charakter gelöscht wird',
+                bullet2: '<strong class="highlight-purple">Checkpoint-Boost</strong>: Einmal Stufe 70 erreichen → schaltet <strong>Stufe-58-Boost</strong> für Alts frei',
+                bullet3: 'Accountweite <strong class="highlight-green">Wertung</strong> — Quests, Dungeons, Erfolge',
+                bullet4: 'Automatische <strong class="highlight-purple">Tags</strong> zeigen deine Regeln sofort an'
             },
             softcore: {
-                name: 'Hybrid Hardcore',
-                tagline: 'Für Streamer und eigene Events. Anpassbare Regeln, die Hardcore-Spannung mit TBC-Bedürfnissen mixen.',
-                p1: 'Gildenmeister kontrolliert <strong class="highlight-orange">Strafen</strong> — von Ausrüstungsverlust bis Punkteabzug',
-                p2: 'Interaktiver Fokus — Stream-Zuschauer können Events auslösen',
-                p3: 'Gildenhandel erlaubt — partielles SSF mit vertrauten Verbündeten',
-                p4: 'Keine zwingende Charakterlöschung — Strafen sind hart, aber anpassbar'
+                title: 'Hybrid Hardcore',
+                desc: '<strong>Deine Gilde, Deine Regeln.</strong> Aktiviere dynamische, zuschauergesteuerte Events, bei denen Tode Strafe bedeuten, aber nicht das Ende der Reise.<br><br>Für Streamer und eigene Events. Anpassbare Regeln, die Hardcore-Spannung mit TBC-Bedürfnissen mixen.',
+                bullet1: 'Gildenmeister kontrolliert <strong class="highlight-orange">Strafen</strong>, Handel und Wertung',
+                bullet2: 'Interaktiver Fokus: Strafen reichen vom Ausrüstungsverlust bis zum Punkteabzug durch Events',
+                bullet3: 'Streamer-Tools: Verdiene Gildenbank-Freischaltungen und GM-Lootboxen'
             },
             nullcore: {
                 name: 'Nullcore-Liga',
