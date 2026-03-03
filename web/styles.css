@@ -207,8 +207,115 @@
   }
 }
 
-.mode-card-link:hover .mode-card {
-  transform: translateY(-5px);
+/* ═══ Hybrid Leveling: Gear Score Limiter ═══ */
+.gs-limiter-widget {
+  background: rgba(10, 5, 20, 0.6);
+  border: 1px solid var(--portal-purple-dim);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+
+.gs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gs-title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--portal-purple);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.gs-value {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.gs-bar-container {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gs-bar-fill {
+  height: 100%;
+  width: 85%;
+  /* Mockup value */
+  background: linear-gradient(90deg, var(--fel-green) 0%, var(--ember-orange) 80%, var(--blood-red) 100%);
+  box-shadow: 0 0 15px rgba(173, 212, 115, 0.4);
+  border-radius: 4px;
+  transition: width 1s ease-in-out;
+}
+
+.gs-cap-marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--blood-red);
+  left: 90%;
+  box-shadow: 0 0 10px var(--blood-red);
+  z-index: 2;
+}
+
+.gs-cap-label {
+  position: absolute;
+  top: -15px;
+  left: 90%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  color: var(--blood-red);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.gs-warning {
+  font-size: 0.65rem;
+  color: var(--ember-orange);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  animation: flicker 2s infinite;
+}
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.gs-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 10px;
+}
+
+.gs-meta-item strong {
+  color: var(--text-secondary);
 }
 
 .hybrid-showcase-container {
