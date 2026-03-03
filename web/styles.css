@@ -1223,6 +1223,27 @@ body {
   color: var(--gold-loot);
 }
 
+.leaderboard-row.gold .death-clip-link:hover {
+  color: var(--gold-loot);
+}
+
+/* Deathclip Video */
+.deathclip-wrap {
+  margin-top: 4px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.deathclip-video {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  max-height: 200px;
+  object-fit: cover;
+  background: #000;
+}
+
 .leaderboard-row.silver .lb-rank {
   color: #c0c0c0;
 }
