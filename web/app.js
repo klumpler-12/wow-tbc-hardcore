@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initOnboarding();
   initGearBattle();
   initRulesetTags();
+  initGithubProgress();
 });
 
 /* ─── Onboarding Flow ─── */
@@ -908,4 +909,60 @@ function initRulesetTags() {
 
     container.innerHTML = html;
   };
+}
+
+/* ─── GitHub Milestone Progress ─── */
+function initGithubProgress() {
+  const progressText = document.getElementById('githubProgressText');
+  const progressBar = document.getElementById('githubProgressBar');
+  const statsText = document.getElementById('githubMilestoneStats');
+
+  if (!progressText || !progressBar || !statsText) return;
+
+  // Use the public GitHub repo
+  fetch('https://api.github.com/repos/klumpler-12/wow-tbc-hardcore/milestones?state=all')
+    .then(res => res.json())
+    .then(milestones => {
+      if (!Array.isArray(milestones) || milestones.length === 0) {
+        statsText.innerText = "No milestones tracked yet.";
+        progressText.innerText = "0%";
+        return;
+      }
+
+      let totalIssues = 0;
+      let closedIssues = 0;
+      let closedMilestones = 0;
+
+      milestones.forEach(m => {
+        totalIssues += (m.open_issues + m.closed_issues);
+        closedIssues += m.closed_issues;
+        if (m.state === 'closed') closedMilestones++;
+      });
+
+      // We can combine issue completion and milestone completion for a smooth percentage
+      // If no issues exist, just base it on closed milestones vs total milestones.
+      let percentage = 0;
+      if (totalIssues > 0) {
+        // We weight issues heavily, but add milestone completion scaling too if desired
+        percentage = Math.round((closedIssues / totalIssues) * 100);
+      } else {
+        percentage = Math.round((closedMilestones / milestones.length) * 100);
+      }
+
+      // Failsafe bounds
+      percentage = Math.max(0, Math.min(100, percentage));
+
+      // Animate in
+      setTimeout(() => {
+        progressText.innerText = percentage + '%';
+        progressBar.style.width = percentage + '%';
+      }, 500);
+
+      const infoLabel = totalIssues > 0 ? `${totalIssues} tracking` : `Milestones`;
+      statsText.innerHTML = `Tracking ${milestones.length} Milestones <span style="margin: 0 6px; opacity: 0.5;">|</span> ${closedMilestones} Completed <span style="margin: 0 6px; opacity: 0.5;">|</span> ${infoLabel} Tasks`;
+    })
+    .catch(err => {
+      console.error('Failed to fetch github milestones:', err);
+      statsText.innerText = "Failed to load project progress from GitHub.";
+    });
 }
