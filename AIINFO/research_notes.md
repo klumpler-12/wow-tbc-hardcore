@@ -134,3 +134,6 @@
 - **Setup:** Docker container on Pi, connect via WoW 2.4.3 client
 - **Purpose:** Safe testing without risking real account/character
 - **Status:** Not yet set up — planned for Phase 6
+
+## External Resources
+- **Podcast:** "Punching Down episode 32 podcast discussion about tbc hc" (Valuable context regarding community sentiment and TBC HC rulesets)

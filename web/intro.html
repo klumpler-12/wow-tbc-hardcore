@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is WoW Hardcore? — TBC Hardcore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .explain-hero {
+            padding: 120px 0 60px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(30, 15, 40, 0.8) 0%, rgba(10, 5, 15, 1) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .explain-section {
+            padding: 80px 0;
+        }
+
+        .explain-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .explain-grid.reverse {
+            direction: rtl;
+        }
+
+        .explain-grid.reverse>* {
+            direction: ltr;
+        }
+
+        .explain-img-box {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .explain-img-box img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .explain-img-box:hover img {
+            transform: scale(1.05);
+        }
+
+        .explain-text h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--text-bright);
+            margin-bottom: 24px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .explain-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .stat-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card-val {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--ember-orange);
+            margin-bottom: 8px;
+        }
+
+        .stat-card-lbl {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 900px) {
+            .explain-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .explain-grid.reverse {
+                direction: ltr;
+            }
+
+            .stat-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">⚔️</div>
+                <span class="nav-logo-text">TBC Hardcore</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" data-i18n="nav.home">Home</a>
+                <a href="index.html#modes" data-i18n="nav.modes">Modes</a>
+                <a href="ideas.html" data-i18n="nav.ideas">Ideas Lab</a>
+            </div>
+            <div class="nav-lang-toggle" style="margin-left: 1rem;">
+                <button id="lang-en" class="btn btn-ghost"
+                    style="padding: 4px 8px; min-width: auto; font-size: 0.8rem;">EN</button>
+                <button id="lang-de" class="btn btn-ghost"
+                    style="padding: 4px 8px; min-width: auto; font-size: 0.8rem;">DE</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="explain-hero">
+        <div class="container">
+            <div class="section-label" data-i18n="intro.label">Viewer Guide</div>
+            <h1 class="hero-title" style="font-size: 3.5rem; margin-bottom: 20px;" data-i18n="intro.title">Explain WoW
+                Hardcore</h1>
+            <p class="hero-subtitle" style="max-width: 800px; margin: 0 auto;" data-i18n="intro.subtitle">
+                New to World of Warcraft? Here is everything you need to know about the game, the Hardcore challenge,
+                and what makes this event special.
+            </p>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <section class="explain-section">
+        <div class="container">
+
+            <!-- Section 1: What is WoW -->
+            <div class="explain-grid reveal">
+                <div class="explain-text">
+                    <h2 data-i18n="intro.s1.title">What is World of Warcraft?</h2>
+                    <p data-i18n="intro.s1.p1">
+                        Released in 2004, World of Warcraft (WoW) is a massively multiplayer online role-playing game
+                        (MMORPG). Players create characters, explore a vast continent (Azeroth), fight monsters,
+                        complete quests, and team up with others to conquer massive dungeons.
+                    </p>
+                    <p data-i18n="intro.s1.p2">
+                        <strong>The Burning Crusade (TBC)</strong> was the game's first expansion in 2007. It increased
+                        the maximum level from 60 to 70 and introduced a hostile, broken world called Outland. It is
+                        known for its brutal difficulty and unforgiving mechanics.
+                    </p>
+
+                    <div class="stat-cards">
+                        <div class="stat-card">
+                            <div class="stat-card-val">70</div>
+                            <div class="stat-card-lbl" data-i18n="intro.s1.stat1">Max Level</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-val">2</div>
+                            <div class="stat-card-lbl" data-i18n="intro.s1.stat2">Factions</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-val">~200h</div>
+                            <div class="stat-card-lbl" data-i18n="intro.s1.stat3">to Mac Level</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="explain-img-box">
+                    <img src="assets/twitch_stream.png" alt="World of Warcraft Gameplay"
+                        style="filter: brightness(0.8);">
+                </div>
+            </div>
+
+            <!-- Section 2: What is Hardcore -->
+            <div class="explain-grid reverse reveal">
+                <div class="explain-text">
+                    <h2 data-i18n="intro.s2.title">What is Hardcore Mode?</h2>
+                    <p data-i18n="intro.s2.p1">
+                        In standard WoW, when you die, you resurrect at a graveyard and run back to your body. There is
+                        a small durability penalty to your armor, but you lose no progress.
+                    </p>
+                    <p data-i18n="intro.s2.p2">
+                        <strong class="highlight-red">Hardcore changes the fundamental rule: Death is
+                            permanent.</strong>
+                    </p>
+                    <p data-i18n="intro.s2.p3">
+                        If you die, your character is gone forever. All the hundreds of hours spent leveling, all your
+                        gold, and all your epic weapons are deleted. This makes every battle, every cave, and every
+                        decision incredibly tense. You cannot use the Auction House to buy gear from others, you cannot
+                        receive mail, and you cannot have high-level players help you.
+                    </p>
+                </div>
+                <div class="explain-img-box">
+                    <div
+                        style="background: var(--bg-card); padding: 40px; text-align: center; border: 1px solid rgba(255,0,0,0.3);">
+                        <div style="font-size: 5rem; margin-bottom: 20px;">💀</div>
+                        <h3 style="font-family: 'Cinzel'; color: var(--warning); font-size: 2rem;">DEATH IS FINAL</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: TBC Hardcore Addon -->
+            <div class="explain-grid reveal">
+                <div class="explain-text">
+                    <h2 data-i18n="intro.s3.title">Why this Addon?</h2>
+                    <p data-i18n="intro.s3.p1">
+                        "The Burning Crusade" was never balanced for Hardcore. Unavoidable mechanics and aggressive
+                        enemies make it nearly impossible.
+                    </p>
+                    <p data-i18n="intro.s3.p2">
+                        The <strong>TBC Hardcore Addon</strong> tracks the rules, broadcasts deaths to viewers, and most
+                        importantly, introduces flexible modes. Instead of pure character deletion, players can play
+                        "Hardcore Plus" (account scoring) or "Softcore" (lose all gear on death, but survive). This
+                        makes TBC watchable, competitive, and fair.
+                    </p>
+                </div>
+                <div class="explain-img-box"
+                    style="background: var(--bg-surface); display: flex; align-items: center; justify-content: center; height: 100%;">
+                    <div class="features-strip" style="background: transparent; border: none; width: 100%;">
+                        <div class="strip-item" style="color: white;"><span>🏅</span> <span data-i18n="strip.f3">Scoring
+                                System</span></div>
+                        <div class="strip-item" style="color: white; margin-top: 20px;"><span>⚖️</span> <span
+                                data-i18n="strip.f2">Penalty Engine</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand">⚔️ TBC Hardcore</div>
+            <p class="footer-copy">© 2026 TBC Hardcore Project · Not affiliated with Blizzard Entertainment</p>
+        </div>
+    </footer>
+
+    <script src="js/i18n.js"></script>
+    <script>
+        // Add translations specifically for this page to the existing global object
+        Object.assign(translations.en, {
+            nav: { home: 'Home', modes: 'Modes', ideas: 'Ideas Lab' },
+            intro: {
+                label: 'Viewer Guide',
+                title: 'Explain WoW Hardcore',
+                subtitle: 'New to World of Warcraft? Here is everything you need to know about the game, the Hardcore challenge, and what makes this event special.',
+                s1: {
+                    title: 'What is World of Warcraft?',
+                    p1: 'Released in 2004, World of Warcraft (WoW) is a massively multiplayer online role-playing game (MMORPG). Players create characters, explore a vast continent (Azeroth), fight monsters, complete quests, and team up with others to conquer massive dungeons.',
+                    p2: '<strong>The Burning Crusade (TBC)</strong> was the game\'s first expansion in 2007. It increased the maximum level from 60 to 70 and introduced a hostile, broken world called Outland. It is known for its brutal difficulty and unforgiving mechanics.',
+                    stat1: 'Max Level',
+                    stat2: 'Factions',
+                    stat3: 'to Max Level'
+                },
+                s2: {
+                    title: 'What is Hardcore Mode?',
+                    p1: 'In standard WoW, when you die, you resurrect at a graveyard and run back to your body. There is a small durability penalty to your armor, but you lose no progress.',
+                    p2: '<strong class="highlight-red">Hardcore changes the fundamental rule: Death is permanent.</strong>',
+                    p3: 'If you die, your character is gone forever. All the hundreds of hours spent leveling, all your gold, and all your epic weapons are deleted. This makes every battle, every cave, and every decision incredibly tense. You cannot use the Auction House to buy gear from others, you cannot receive mail, and you cannot have high-level players help you.'
+                },
+                s3: {
+                    title: 'Why this Addon?',
+                    p1: '"The Burning Crusade" was never balanced for Hardcore. Unavoidable mechanics and aggressive enemies make it nearly impossible.',
+                    p2: 'The <strong>TBC Hardcore Addon</strong> tracks the rules, broadcasts deaths to viewers, and most importantly, introduces flexible modes. Instead of pure character deletion, players can play "Hardcore Plus" (account scoring) or "Softcore" (lose all gear on death, but survive). This makes TBC watchable, competitive, and fair.'
+                }
+            }
+        });
+
+        Object.assign(translations.de, {
+            nav: { home: 'Startseite', modes: 'Modi', ideas: 'Ideen-Labor' },
+            intro: {
+                label: 'Zuschauer-Guide',
+                title: 'Erkläre WoW Hardcore',
+                subtitle: 'Neu bei World of Warcraft? Hier ist alles, was du über das Spiel, die Hardcore-Herausforderung und das Besondere an diesem Event wissen musst.',
+                s1: {
+                    title: 'Was ist World of Warcraft?',
+                    p1: 'World of Warcraft (WoW) erschien 2004 und ist ein riesiges Online-Rollenspiel (MMORPG). Spieler erstellen Charaktere, erkunden einen riesigen Kontinent (Azeroth), bekämpfen Monster, lösen Quests und schließen sich zusammen, um riesige Dungeons zu erobern.',
+                    p2: '<strong>The Burning Crusade (TBC)</strong> war die erste Erweiterung des Spiels aus dem Jahr 2007. Sie erhöhte das Maximallevel von 60 auf 70 und führte eine feindselige, zerbrochene Welt namens Scherbenwelt (Outland) ein. Sie ist bekannt für ihre brutale Schwierigkeit und unerbittlichen Mechaniken.',
+                    stat1: 'Max Level',
+                    stat2: 'Fraktionen',
+                    stat3: 'bis Max Level'
+                },
+                s2: {
+                    title: 'Was ist der Hardcore-Modus?',
+                    p1: 'Im normalen WoW belebst du dich nach dem Tod an einem Friedhof wieder und läufst zu deiner Leiche zurück. Es gibt eine kleine Haltbarkeitsstrafe für deine Rüstung, aber du verlierst keinen Fortschritt.',
+                    p2: '<strong class="highlight-red">Hardcore ändert die Grundregel: Der Tod ist endgültig.</strong>',
+                    p3: 'Wenn du stirbst, ist dein Charakter für immer weg. Alle hunderte von Stunden fürs Leveln, all dein Gold und all deine epischen Waffen werden gelöscht. Das macht jeden Kampf, jede Höhle und jede Entscheidung unglaublich spannend. Du kannst das Auktionshaus nicht nutzen, keine Post empfangen und dir nicht von hochstufigen Spielern helfen lassen.'
+                },
+                s3: {
+                    title: 'Warum dieses Addon?',
+                    p1: '"The Burning Crusade" war nie für Hardcore ausbalanciert. Unvermeidbare Mechaniken und aggressive Feinde machen es fast unmöglich.',
+                    p2: 'Das <strong>TBC Hardcore Addon</strong> überwacht die Regeln, überträgt Tode an Zuschauer und führt vor allem flexible Modi ein. Anstatt reiner Charakterlöschung können die Leute "Hardcore Plus" (Account-Wertung) oder "Softcore" (kompletter Ausrüstungsverlust beim Tod, aber Überleben) spielen. Das macht TBC anschaubar, wettbewerbsfähig und fair.'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

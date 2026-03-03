@@ -24,11 +24,17 @@
         <span class="nav-logo-text">TBC Hardcore</span>
       </a>
       <div class="nav-links" id="navLinks">
-        <a href="#modes">Modes</a>
-        <a href="#streamer">Streamer Tools</a>
-        <a href="ideas.html">Ideas Lab</a>
-        <a href="profile.html">Profile</a>
-        <a href="details.html">Details</a>
+        <a href="#modes" data-i18n="nav.modes">Modes</a>
+        <a href="#streamer" data-i18n="nav.streamer">Streamer Tools</a>
+        <a href="ideas.html" data-i18n="nav.ideas">Ideas Lab</a>
+        <a href="profile.html" data-i18n="nav.profile">Profile</a>
+        <a href="intro.html" class="highlight-purple" data-i18n="nav.explain">Explain WoW HC</a>
+      </div>
+      <div class="nav-lang-toggle" style="margin-left: 1rem;">
+        <button id="lang-en" class="btn btn-ghost"
+          style="padding: 4px 8px; min-width: auto; font-size: 0.8rem;">EN</button>
+        <button id="lang-de" class="btn btn-ghost"
+          style="padding: 4px 8px; min-width: auto; font-size: 0.8rem;">DE</button>
       </div>
       <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -43,22 +49,22 @@
     </div>
     <div class="hero-particles" id="heroParticles"></div>
     <div class="hero-content">
-      <div class="hero-badge">
+      <div class="hero-badge" data-i18n="hero.badge">
         <span class="pulse"></span>
         Built for OnlyFangs 3
       </div>
       <h1 class="hero-title">
-        <span class="line-1">Hardcore Reimagined</span>
-        <span class="line-2">For The Burning Crusade</span>
+        <span class="line-1" data-i18n="hero.title1">Hardcore Reimagined</span>
+        <span class="line-2" data-i18n="hero.title2">For The Burning Crusade</span>
       </h1>
-      <p class="hero-subtitle">
+      <p class="hero-subtitle" data-i18n="hero.subtitle">
         TBC was never designed for hardcore. We're changing that. Choose your challenge mode,
         shape the rules with the community, and compete on the leaderboard.
       </p>
       <div class="hero-actions">
-        <a href="#modes" class="btn btn-primary">Explore Modes</a>
-        <a href="#voting" class="btn btn-vote">Cast Your Vote</a>
-        <a href="#scoring" class="btn btn-ghost">View Scoring</a>
+        <a href="#modes" class="btn btn-primary" data-i18n="hero.btnModes">Explore Modes</a>
+        <a href="#voting" class="btn btn-vote" data-i18n="hero.btnVote">Cast Your Vote</a>
+        <a href="#scoring" class="btn btn-ghost" data-i18n="hero.btnScore">View Scoring</a>
       </div>
     </div>
   </section>
@@ -68,9 +74,9 @@
     <div class="ambient-orb orb-purple" style="top: -200px; right: -100px;"></div>
     <div class="container">
       <div class="modes-header reveal">
-        <div class="section-label">Choose Your Challenge</div>
-        <h2 class="section-title">Four Ways to Play</h2>
-        <p class="section-desc">
+        <div class="section-label" data-i18n="modes.label">Choose Your Challenge</div>
+        <h2 class="section-title" data-i18n="modes.title">Four Ways to Play</h2>
+        <p class="section-desc" data-i18n="modes.desc">
           From classic permadeath to competitive leagues — pick the mode that fits
           your playstyle. Each brings unique mechanics to TBC.
         </p>
@@ -80,24 +86,27 @@
         <!-- Hardcore Classic -->
         <div class="mode-card hardcore reveal">
           <div class="mode-icon">💀</div>
-          <h3 class="mode-name">Hardcore Classic</h3>
-          <p class="mode-tagline">The original ruleset. One life, one character. Death is permanent and absolute.</p>
+          <h3 class="mode-name" data-i18n="modes.classic.name">Hardcore Classic</h3>
+          <p class="mode-tagline" data-i18n="modes.classic.tagline">The original ruleset. One life, one character. Death
+            is permanent and absolute.</p>
           <div class="mode-details">
             <div class="mode-detail">
               <span class="mode-detail-icon">⚰️</span>
-              <span><strong class="highlight-red">Permadeath</strong> — character is voided forever on any death</span>
+              <span data-i18n="modes.classic.p1"><strong class="highlight-red">Permadeath</strong> — character is voided
+                forever on any death</span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">🔒</span>
-              <span>Full SSF — no mail, no AH, no trading, no grouping outside dungeons</span>
+              <span data-i18n="modes.classic.p2">Full SSF — no mail, no AH, no trading, no grouping outside
+                dungeons</span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">🚫</span>
-              <span>No boosts, no shortcuts — level 1 to 70 every time</span>
+              <span data-i18n="modes.classic.p3">No boosts, no shortcuts — level 1 to 70 every time</span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">📜</span>
-              <span>Closest to official Classic HC rules, adapted for TBC</span>
+              <span data-i18n="modes.classic.p4">Closest to official Classic HC rules, adapted for TBC</span>
             </div>
           </div>
           <div class="mode-severity">
@@ -113,27 +122,31 @@
         <!-- Hardcore Plus -->
         <div class="mode-card hcplus reveal">
           <div class="mode-icon">⚡</div>
-          <h3 class="mode-name">Hardcore Plus</h3>
-          <p class="mode-tagline">Permadeath with progression. Hit checkpoints to unlock boosts for future characters.
+          <h3 class="mode-name" data-i18n="modes.plus.name">Hardcore Plus</h3>
+          <p class="mode-tagline" data-i18n="modes.plus.tagline">Permadeath with progression. Hit checkpoints to unlock
+            boosts for future characters.
           </p>
           <div class="mode-details">
             <div class="mode-detail">
               <span class="mode-detail-icon">⚰️</span>
-              <span><strong class="highlight-red">Permadeath</strong> — same finality as HC Classic</span>
+              <span data-i18n="modes.plus.p1"><strong class="highlight-red">Permadeath</strong> — same finality as HC
+                Classic</span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">🔓</span>
-              <span><strong class="highlight-purple">Checkpoint boost</strong>: reach level 70 once → unlock <strong>58
+              <span data-i18n="modes.plus.p2"><strong class="highlight-purple">Checkpoint boost</strong>: reach level 70
+                once → unlock <strong>58
                   boost</strong> for future characters</span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">📊</span>
-              <span>Account-wide <strong class="highlight-green">scoring</strong> — earn points for quests, milestones,
+              <span data-i18n="modes.plus.p3">Account-wide <strong class="highlight-green">scoring</strong> — earn
+                points for quests, milestones,
                 achievements</span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">🏅</span>
-              <span>Leaderboards and seasonal rankings with titles</span>
+              <span data-i18n="modes.plus.p4">Leaderboards and seasonal rankings with titles</span>
             </div>
           </div>
           <div class="mode-severity">
@@ -149,26 +162,28 @@
         <!-- Softcore -->
         <div class="mode-card softcore reveal">
           <div class="mode-icon">🔥</div>
-          <h3 class="mode-name">Softcore</h3>
-          <p class="mode-tagline">You survive death, but lose everything equipped. Rebuild from your bank and keep
+          <h3 class="mode-name" data-i18n="modes.softcore.name">Softcore</h3>
+          <p class="mode-tagline" data-i18n="modes.softcore.tagline">You survive death, but lose everything equipped.
+            Rebuild from your bank and keep
             going.</p>
           <div class="mode-details">
             <div class="mode-detail">
               <span class="mode-detail-icon">💔</span>
-              <span>All equipped gear, inventory, and gold <strong class="highlight-orange">destroyed</strong> on
+              <span data-i18n="modes.softcore.p1">All equipped gear, inventory, and gold <strong
+                  class="highlight-orange">destroyed</strong> on
                 death</span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">📦</span>
-              <span>Bank and alts are safe — rebuild from your stash</span>
+              <span data-i18n="modes.softcore.p2">Bank and alts are safe — rebuild from your stash</span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">🤝</span>
-              <span>Guild trading allowed — partial SSF with trusted allies</span>
+              <span data-i18n="modes.softcore.p3">Guild trading allowed — partial SSF with trusted allies</span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">🔄</span>
-              <span>No character deletion — death is costly but not final</span>
+              <span data-i18n="modes.softcore.p4">No character deletion — death is costly but not final</span>
             </div>
           </div>
           <div class="mode-severity">
@@ -184,26 +199,28 @@
         <!-- Nullcore (Competitive League) -->
         <div class="mode-card nullcore reveal">
           <div class="mode-icon">🏆</div>
-          <h3 class="mode-name">Nullcore League</h3>
-          <p class="mode-tagline">No permadeath. Pure score-based competition where every action earns or costs points.
+          <h3 class="mode-name" data-i18n="modes.nullcore.name">Nullcore League</h3>
+          <p class="mode-tagline" data-i18n="modes.nullcore.tagline">No permadeath. Pure score-based competition where
+            every action earns or costs points.
           </p>
           <div class="mode-details">
             <div class="mode-detail">
               <span class="mode-detail-icon">📊</span>
-              <span>Deaths <strong class="highlight-red">deduct points</strong> — quests, dungeons, achievements <strong
-                  class="highlight-green">earn points</strong></span>
+              <span data-i18n="modes.nullcore.p1">Deaths <strong class="highlight-red">deduct points</strong> — quests,
+                dungeons, achievements <strong class="highlight-green">earn points</strong></span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">🏁</span>
-              <span>Season-based competition with time-limited leaderboards</span>
+              <span data-i18n="modes.nullcore.p2">Season-based competition with time-limited leaderboards</span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">🎖️</span>
-              <span>Tier titles: Bronze → Silver → Gold → <strong class="highlight-gold">Gladiator</strong></span>
+              <span data-i18n="modes.nullcore.p3">Tier titles: Bronze → Silver → Gold → <strong
+                  class="highlight-gold">Gladiator</strong></span>
             </div>
             <div class="mode-detail">
               <span class="mode-detail-icon">🌍</span>
-              <span>No trade restrictions — play WoW normally, compete on merit</span>
+              <span data-i18n="modes.nullcore.p4">No trade restrictions — play WoW normally, compete on merit</span>
             </div>
           </div>
           <div class="mode-severity">
@@ -224,15 +241,15 @@
   <section class="features-strip" id="features">
     <div class="container">
       <div class="strip-row reveal">
-        <div class="strip-item"><span>📡</span> Death Monitoring</div>
-        <div class="strip-item"><span>⚖️</span> Penalty Engine</div>
-        <div class="strip-item"><span>🏅</span> Scoring System</div>
-        <div class="strip-item"><span>👥</span> Guild Sync</div>
-        <div class="strip-item"><span>🔐</span> SSF Enforcement</div>
-        <div class="strip-item"><span>📊</span> Leaderboards</div>
+        <div class="strip-item"><span>📡</span> <span data-i18n="strip.f1">Death Monitoring</span></div>
+        <div class="strip-item"><span>⚖️</span> <span data-i18n="strip.f2">Penalty Engine</span></div>
+        <div class="strip-item"><span>🏅</span> <span data-i18n="strip.f3">Scoring System</span></div>
+        <div class="strip-item"><span>👥</span> <span data-i18n="strip.f4">Guild Sync</span></div>
+        <div class="strip-item"><span>🔐</span> <span data-i18n="strip.f5">SSF Enforcement</span></div>
+        <div class="strip-item"><span>📊</span> <span data-i18n="strip.f6">Leaderboards</span></div>
       </div>
       <div class="strip-link reveal">
-        <a href="details.html" class="btn btn-ghost">Explore Features, Scoring & Pipeline →</a>
+        <a href="details.html" class="btn btn-ghost" data-i18n="strip.link">Explore Features, Scoring & Pipeline →</a>
       </div>
     </div>
   </section>
@@ -241,9 +258,9 @@
   <section class="streamer" id="streamer">
     <div class="container">
       <div class="streamer-header reveal">
-        <div class="section-label">Streamer & Viewer Integration</div>
-        <h2 class="section-title">Hardcore as a Spectator Sport</h2>
-        <p class="section-desc">
+        <div class="section-label" data-i18n="streamer.label">Streamer & Viewer Integration</div>
+        <h2 class="section-title" data-i18n="streamer.title">Hardcore as a Spectator Sport</h2>
+        <p class="section-desc" data-i18n="streamer.desc">
           Companion app bridges addon data to OBS overlays, Twitch chat, and public profiles.
         </p>
       </div>
@@ -384,17 +401,25 @@
   <!-- ═══ Explore More ═══ -->
   <section class="explore-more" id="explore">
     <div class="container">
-      <h2 class="section-title" style="text-align:center; margin-bottom:32px;">Explore More</h2>
+      <h2 class="section-title" style="text-align:center; margin-bottom:32px;" data-i18n="explore.title">Explore More
+      </h2>
       <div class="explore-grid">
         <a href="ideas.html" class="explore-card reveal">
           <div class="explore-icon">🧪</div>
-          <h3>Ideas Lab</h3>
-          <p>Brainstorms, raw concepts, and future possibilities being shaped.</p>
+          <h3 data-i18n="explore.ideas.title">Ideas Lab</h3>
+          <p data-i18n="explore.ideas.desc">Brainstorms, raw concepts, list of todos, monetization ideas, and future
+            possibilities being shaped.</p>
         </a>
         <a href="profile.html" class="explore-card reveal">
           <div class="explore-icon">👤</div>
-          <h3>Mock Profile</h3>
-          <p>Full streamer profile: armory, deathclips, achievements, death log.</p>
+          <h3 data-i18n="explore.profile.title">Mock Profile</h3>
+          <p data-i18n="explore.profile.desc">Full streamer profile: armory, deathclips, achievements, death log.</p>
+        </a>
+        <a href="intro.html" class="explore-card reveal">
+          <div class="explore-icon">📖</div>
+          <h3 data-i18n="explore.intro.title">Explain WoW HC</h3>
+          <p data-i18n="explore.intro.desc">A dedicated page for new viewers explaining what World of Warcraft and
+            Hardcore mode are all about.</p>
         </a>
         <a href="details.html" class="explore-card reveal">
           <div class="explore-icon">📋</div>
@@ -415,15 +440,17 @@
       </p>
       <ul class="footer-links">
         <li><a href="https://github.com/klumpler-12/wow-tbc-hardcore" target="_blank">GitHub</a></li>
-        <li><a href="#modes">Modes</a></li>
-        <li><a href="#streamer">Streamer Tools</a></li>
-        <li><a href="ideas.html">Ideas Lab</a></li>
-        <li><a href="profile.html">Profile</a></li>
+        <li><a href="#modes" data-i18n="nav.modes">Modes</a></li>
+        <li><a href="#streamer" data-i18n="nav.streamer">Streamer Tools</a></li>
+        <li><a href="ideas.html" data-i18n="nav.ideas">Ideas Lab</a></li>
+        <li><a href="profile.html" data-i18n="nav.profile">Profile</a></li>
+        <li><a href="intro.html" data-i18n="nav.explain">Explain WoW HC</a></li>
       </ul>
       <p class="footer-copy">© 2026 TBC Hardcore Project · Not affiliated with Blizzard Entertainment</p>
     </div>
   </footer>
 
+  <script src="js/i18n.js"></script>
   <script src="app.js"></script>
 </body>
 
