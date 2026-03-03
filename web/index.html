@@ -1252,10 +1252,92 @@
   </section>
 
 
-  <!-- ═══ Explore More ═══ -->
-  <section class="explore-more" id="explore">
+  <!-- ═══ Project Schedule / Roadmap ═══ -->
+  <section class="achievements-section section-padding roadmap-reveal-trigger" id="roadmap"
+    style="background: var(--bg-void); padding-top: 100px;">
     <div class="container">
-      <h2 class="section-title" style="text-align:center; margin-bottom:32px;" data-i18n="explore.title">Explore More
+
+      <div class="roadmap-schedule-header reveal">
+        <span class="roadmap-label-small">PROJECT SCHEDULE</span>
+        <h2 class="roadmap-title-large">
+          <div class="icon">📅</div>
+          DEVELOPMENT ROADMAP
+        </h2>
+      </div>
+
+      <!-- GitHub Progress Indicator -->
+      <div class="roadmap-progress-box reveal">
+        <div class="roadmap-progress-top">
+          <div class="roadmap-progress-info">
+            <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+            <h4 data-i18n="roadmap.progress.title">PROJECT COMPLETION STATUS</h4>
+          </div>
+          <span id="githubProgressText" class="roadmap-progress-percentage">0%</span>
+        </div>
+
+        <div class="roadmap-progress-bar-container">
+          <div id="roadmapTargetMarker" class="roadmap-progress-marker" style="left: 0%;">
+            <span>Expected Target</span>
+            <div style="font-size: 1.2rem; color: #fff; margin-top: -5px;">▼</div>
+          </div>
+          <div id="githubProgressBar" class="roadmap-progress-bar-fill" style="width: 0%;"></div>
+        </div>
+
+        <div class="roadmap-progress-stats">
+          <span id="githubMilestoneStats">Tracking 5 Milestones | 1 Completed | 5 tracking Tasks</span>
+          <a href="https://github.com/klumpler-12/wow-tbc-hardcore/milestones" target="_blank"
+            data-i18n="roadmap.github_link">View Checklists on GitHub →</a>
+        </div>
+      </div>
+
+      <p class="section-desc"
+        style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem; color: var(--text-secondary);">
+        We are building the future of WoW TBC Hardcore layer by layer. Click on any of the strategic phases below to
+        view our detailed implementation drafts, technical strategies, and the live status of our architectural design.
+      </p>
+
+      <!-- Horizontal Roadmap -->
+      <div class="roadmap-horizontal-clean reveal">
+        <a href="development.html#phase1" class="roadmap-item-clean">
+          <span class="ach-timestamp">Mar 2026</span>
+          <div class="ach-icon-circle">🛠️</div>
+          <strong class="ach-headline">Phase 1:<br>Foundation & UI</strong>
+        </a>
+
+        <a href="development.html#phase2" class="roadmap-item-clean">
+          <span class="ach-timestamp">Apr 2026</span>
+          <div class="ach-icon-circle">📦</div>
+          <strong class="ach-headline">Phase 2:<br>Addon Core</strong>
+        </a>
+
+        <a href="development.html#phase3" class="roadmap-item-clean">
+          <span class="ach-timestamp">May 2026</span>
+          <div class="ach-icon-circle">📊</div>
+          <strong class="ach-headline">Phase 3:<br>Web Backend</strong>
+        </a>
+
+        <a href="development.html#phase4" class="roadmap-item-clean">
+          <span class="ach-timestamp">Jun 2026</span>
+          <div class="ach-icon-circle">🧪</div>
+          <strong class="ach-headline">Phase 4:<br>Test Server</strong>
+        </a>
+
+        <a href="development.html#phase5" class="roadmap-item-clean">
+          <span class="ach-timestamp">Aug 2026</span>
+          <div class="ach-icon-circle">🚀</div>
+          <strong class="ach-headline">Phase 5:<br>Version 1.0</strong>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Explore More ═══ -->
+  <section class="explore-more" id="explore" style="padding-top: 80px;">
+    <div class="container">
+      <h2 class="section-title" style="text-align:center; margin-bottom:48px;" data-i18n="explore.title">Explore More
       </h2>
       <div class="explore-grid">
         <a href="ideas.html" class="explore-card reveal">
@@ -1275,135 +1357,27 @@
           <p data-i18n="explore.intro.desc">A dedicated page for new viewers explaining what World of Warcraft and
             Hardcore mode are all about.</p>
         </a>
-        <a href="details.html" class="explore-card reveal">
+        <a href="development.html" class="explore-card reveal">
           <div class="explore-icon">📋</div>
-          <h3>Features & Scoring</h3>
-          <p>Detailed breakdown of features, how it works, and scoring system.</p>
+          <h3 data-i18n="nav.dev">Development</h3>
+          <p>Detailed project milestones, technical strategy, and implementation plans.</p>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ═══ Footer ═══ -->
-  <!-- ═══ Project Roadmap Section (Relocated to bottom) ═══ -->
-  <section class="achievements-section section-padding roadmap-reveal-trigger" id="roadmap"
-    style="background: var(--bg-deep);">
-    <div class="container">
-      <h2 class="section-title" style="text-align: center; margin-bottom: 48px;">📅 Project Progress</h2>
-
-      <!-- GitHub Progress Indicator -->
-      <div class="roadmap-progress-container"
-        style="max-width: 800px; margin: 0 auto 40px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: 12px; padding: 24px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-          <div>
-            <h4
-              style="margin: 0; font-family: var(--font-display); color: var(--text-primary); font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color: var(--text-muted);">
-                <path
-                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-              </svg>
-              Global Development Status
-            </h4>
-            <span style="font-size: 0.85rem; color: var(--text-muted);">Syncing with GitHub Milestones & Implementation
-              Drafts</span>
-          </div>
-          <span id="githubProgressText"
-            style="color: var(--highlight-green); font-family: var(--font-display); font-weight: bold; font-size: 1.5rem; text-shadow: 0 0 10px rgba(46,204,113,0.3);">~%</span>
-        </div>
-        <div
-          style="width: 100%; height: 12px; background: rgba(255,255,255,0.05); border-radius: 6px; position: relative;">
-
-          <!-- Marker indicating current plan target -->
-          <div id="roadmapTargetMarker"
-            style="position: absolute; left: 0%; top: -20px; font-size: 0.75rem; color: var(--highlight-orange); font-weight: bold; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%); z-index: 5; transition: left 1.5s ease-in-out;">
-            <span>Expected Target</span>
-            <span style="font-size: 1rem;">▼</span>
-          </div>
-
-          <div id="githubProgressBar"
-            style="position: relative; z-index: 1; width: 0%; height: 100%; background: linear-gradient(90deg, var(--highlight-purple), var(--highlight-green)); transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 6px; box-shadow: 0 0 15px rgba(46,204,113,0.4);">
-          </div>
-        </div>
-        <div
-          style="display: flex; justify-content: space-between; margin-top: 16px; font-size: 0.85rem; color: var(--text-muted);">
-          <span id="githubMilestoneStats">Fetching repository progress...</span>
-          <a href="development.html"
-            style="color: var(--highlight-purple); text-decoration: none; font-weight: bold; transition: color 0.2s;">View
-            Detailed Development Plan →</a>
-        </div>
-      </div>
-
-      <!-- Horizontal Roadmap Layout (Cloned with links to dev page) -->
-      <div class="roadmap-horizontal"
-        style="display: flex; justify-content: space-between; position: relative; max-width: 1000px; margin: 0 auto 40px; padding: 20px 0; overflow-x: auto; gap: 16px;">
-        <div
-          style="position: absolute; top: 45px; left: 50px; right: 50px; height: 2px; background: rgba(255,255,255,0.1); z-index: 0;">
-        </div>
-
-        <a href="development.html#phase1" class="roadmap-item-link"
-          style="text-decoration: none; color: inherit; flex: 1; min-width: 160px; text-align: center; position: relative; z-index: 1;">
-          <div class="ach-timestamp" style="margin-bottom: 8px; font-size: 0.8rem;">Mar 2026</div>
-          <div class="ach-icon"
-            style="margin: 0 auto 16px; background: var(--bg-darker); border: 2px solid var(--highlight-purple); width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border-radius: 50%; box-shadow: 0 0 10px rgba(168,85,247,0.3);">
-            🛠️</div>
-          <strong class="ach-headline" style="display: block; font-size: 0.95rem; margin-bottom: 8px;">Phase 1:
-            Foundation</strong>
-        </a>
-
-        <a href="development.html#phase2" class="roadmap-item-link"
-          style="text-decoration: none; color: inherit; flex: 1; min-width: 160px; text-align: center; position: relative; z-index: 1;">
-          <div class="ach-timestamp" style="margin-bottom: 8px; font-size: 0.8rem;">Apr 2026</div>
-          <div class="ach-icon"
-            style="margin: 0 auto 16px; background: var(--bg-darker); border: 2px solid var(--highlight-green); width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border-radius: 50%;">
-            📦</div>
-          <strong class="ach-headline" style="display: block; font-size: 0.95rem; margin-bottom: 8px;">Phase 2:
-            Addon</strong>
-        </a>
-
-        <a href="development.html#phase3" class="roadmap-item-link"
-          style="text-decoration: none; color: inherit; flex: 1; min-width: 160px; text-align: center; position: relative; z-index: 1;">
-          <div class="ach-timestamp" style="margin-bottom: 8px; font-size: 0.8rem;">May 2026</div>
-          <div class="ach-icon"
-            style="margin: 0 auto 16px; background: var(--bg-darker); border: 2px solid var(--highlight-orange); width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border-radius: 50%;">
-            📊</div>
-          <strong class="ach-headline" style="display: block; font-size: 0.95rem; margin-bottom: 8px;">Phase 3:
-            Backend</strong>
-        </a>
-
-        <a href="development.html#phase4" class="roadmap-item-link"
-          style="text-decoration: none; color: inherit; flex: 1; min-width: 160px; text-align: center; position: relative; z-index: 1;">
-          <div class="ach-timestamp" style="margin-bottom: 8px; font-size: 0.8rem;">Jun 2026</div>
-          <div class="ach-icon"
-            style="margin: 0 auto 16px; background: var(--bg-darker); border: 2px solid var(--highlight-blue); width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border-radius: 50%;">
-            🧪</div>
-          <strong class="ach-headline" style="display: block; font-size: 0.95rem; margin-bottom: 8px;">Phase 4:
-            Streaming</strong>
-        </a>
-
-        <a href="development.html#phase5" class="roadmap-item-link"
-          style="text-decoration: none; color: inherit; flex: 1; min-width: 160px; text-align: center; position: relative; z-index: 1;">
-          <div class="ach-timestamp" style="margin-bottom: 8px; font-size: 0.8rem;">Aug 2026</div>
-          <div class="ach-icon"
-            style="margin: 0 auto 16px; background: var(--bg-darker); border: 2px solid var(--highlight-purple); width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border-radius: 50%;">
-            🚀</div>
-          <strong class="ach-headline" style="display: block; font-size: 0.95rem; margin-bottom: 8px;">Phase 5:
-            Release</strong>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <footer class="footer">
     <div class="container">
       <div class="footer-brand">⚔️ TBC Hardcore</div>
       <p class="footer-desc">
-        An open-source addon project making hardcore TBC feasible.
+        An open-source addon project making hardcore TBC feasible.<br>
         Built for OnlyFangs 3 and the wider WoW community.
       </p>
       <ul class="footer-links">
         <li><a href="https://github.com/klumpler-12/wow-tbc-hardcore" target="_blank">GitHub</a></li>
-        <li><a href="#modes" data-i18n="nav.modes">Modes</a></li>
-        <li><a href="#streamer" data-i18n="nav.streamer">Streamer Tools</a></li>
+        <li><a href="index.html#modes" data-i18n="nav.modes">Modes</a></li>
+        <li><a href="index.html#streamer" data-i18n="nav.streamer">Streamer Tools</a></li>
         <li><a href="ideas.html" data-i18n="nav.ideas">Ideas Lab</a></li>
         <li><a href="profile.html" data-i18n="nav.profile">Profile</a></li>
         <li><a href="intro.html" data-i18n="nav.explain">Explain WoW HC</a></li>
