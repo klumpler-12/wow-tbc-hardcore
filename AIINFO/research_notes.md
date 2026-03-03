@@ -34,47 +34,104 @@
 
 ### Our Competitive Edge
 1. **Multi-mode HC** (Classic/Plus/Softcore/Nullcore) — NO other addon does this
-2. **Gear Battle** duels — completely novel mechanic
+2. **Gear Battle** duels (optional) — completely novel mechanic
 3. **Scoring/leaderboard system** — no competitor has competitive scoring
 4. **Community voting on rules** — democratic rule-setting
 5. **Configurable penalties** — not one-size-fits-all
+6. **Backend verification layer** — two-step anti-cheat (planned)
+7. **Desktop/browser setup** — no in-game config needed (planned)
+8. **Discord integration** — event management + notifications (planned)
+
+## Anti-Cheat & Verification Research (2026-03-03)
+### The Gear Restoration Problem
+- **Blizzard's Item Restoration** allows players to recover destroyed/vendored items via web service (once every 24h per character)
+- This is a **direct cheating vector** — players penalized with gear deletion can just restore items
+- **Countermeasures:**
+  1. **Inventory Hash Snapshots:** Addon stores hashed inventory state at penalty time → periodically re-checks if "deleted" items reappear
+  2. **Cross-verification:** Guild members' addons verify each other's gear state
+  3. **Backend verification:** External companion app can log gear states with timestamps, making restoration detectable
+  4. **Social enforcement:** Public flagging + guild notification if suspiciously "restored" gear detected
+
+### Offline Verification (addon not running)
+- **SavedVariables persist** between sessions → addon can check last-known state on login
+- **Cannot track what happened while addon was off** — but can detect discrepancies (e.g., "dead" player has new gear)
+- **Backend companion app** can monitor SavedVariables file on disk even when WoW is closed
+- **Verification flow:** Backend reads SavedVariables → compares against known states → flags anomalies
+
+### Backend Communication Architecture
+- **WoW addons CANNOT make HTTP requests** — sandboxed environment, no network access
+- **Solution: Companion App Pattern:**
+  1. Addon writes data to SavedVariables (persisted to disk)
+  2. Companion app (runs on player's PC) watches SavedVariables file
+  3. Companion app sends data to backend API (REST)
+  4. Backend responds by writing data back to a file addon can read
+  5. On next login/reload, addon reads the response file
+- **Real-time:** NOT truly real-time, but near-real-time if companion polls frequently
+- **Alternative for tournaments:** Require companion app running before WoW launch, acts as gatekeeper
+
+### Two-Step Verification (Tournament Mode)
+1. Player launches companion app → app generates session token
+2. App writes token to addon's SavedVariables
+3. Player launches WoW → addon reads token and validates
+4. Addon starts transmitting gear/death/score data via SavedVariables
+5. Companion app reads and posts to backend
+6. Backend cross-references, detects anomalies, flags cheaters
+- **Optional layer** — only for tournaments or competitive events requiring integrity
 
 ## WoW Addon Development (Lua API)
 - **Language:** Lua 5.1 subset
-- **Key API Events for Death Tracking:**
+- **Key API Events:**
   - `COMBAT_LOG_EVENT_UNFILTERED` — all combat events
   - `PLAYER_DEAD` — player death event
   - `PLAYER_UNGHOST` — resurrection
   - `GUILD_ROSTER_UPDATE` — guild roster changes
-  - `DUEL_REQUESTED` / `DUEL_FINISHED` — duel events (for Gear Battle)
+  - `DUEL_REQUESTED` / `DUEL_FINISHED` — duel events (Gear Battle)
+  - `PLAYER_EQUIPMENT_CHANGED` — gear swap detection
+  - `BAG_UPDATE` — inventory changes
 - **Key Functions:**
-  - `UnitIsDead("player")` — check if player is dead
-  - `DeleteCursorItem()` — delete item on cursor (for gear deletion / Gear Battle)
+  - `UnitIsDead("player")` — check dead
+  - `DeleteCursorItem()` — delete item on cursor
   - `PickupInventoryItem(slot)` — pick up equipped item
-  - `GuildRemove(name)` / `GuildUninvite(name)` — remove from guild
-  - `SendAddonMessage(prefix, msg, type, target)` — addon-to-addon comms
+  - `GetInventoryItemLink(unit, slot)` — get item link for inventory snapshot
+  - `GetContainerItemLink(bag, slot)` — get bag item link
+  - `GuildRemove(name)` / `GuildUninvite(name)` — guild management
+  - `SendAddonMessage(prefix, msg, type, target)` — inter-addon comms
   - `C_ChatInfo.RegisterAddonMessagePrefix(prefix)` — register prefix
 - **Cannot Programmatically:**
-  - Delete a character (no API for this, Blizzard-only)
-  - Force char transfer
-  - Access other players' inventory directly
-- **Can Do:**
-  - Track deaths via combat log
-  - Delete player's own items (with user interaction / cursor)
-  - Track duel outcomes
-  - Send/receive messages between addon users
-  - Manage guild kicks
-  - Store data in SavedVariables
-  - Display custom UI frames
+  - Delete a character
+  - Make HTTP requests
+  - Access filesystem
+  - Force client actions without user interaction
 
-## Testing Environment (Future)
-- **Private TBC Server**: Use AzerothCore + TBC module or CMaNGOS-TBC for local testing
-- **Setup:** Docker container on Pi with TBC server, connect via WoW 2.4.3 client
-- **Purpose:** Test addon without risking real account/character
-- **Note:** For development/testing ONLY, never for public use
+## Brainstorm / Ideas
+### PvP Integration Ideas
+- PvP deaths ≠ PvE deaths — different penalty tiers
+- **Bounty system:** Killing a high-score player earns bounty points
+- **Honor-based penalties:** Lose honor points on death instead of gear
+- **Temporary gear lock:** PvP death locks gear upgrades for X minutes
+- **Arena-style rating:** Separate PvP leaderboard with ELO-like scoring
+- **Flagged zones:** Certain zones have different PvP death rules
 
-## Design Reference
-- Using unique Outland-inspired theme (NOT copying wowclassic.plus)
-- Deep void blacks (#08070d), portal purples (#9b59f0), fel-greens (#39ff14), ember-oranges (#ff6b2b)
-- Cinzel (display) + Inter (body) fonts
-- Glassmorphism cards, particle effects, scroll reveal animations
+### Item Unlock System
+- Score milestones unlock access to gear tiers
+- "You must earn X points before equipping Epic items"
+- Addon enforces by monitoring equip events and warning/unequipping
+- Creates progression within the HC experience
+
+### Desktop/Browser Setup
+- Web dashboard for configuration (modes, rules, guild settings)
+- Leaderboard viewer accessible from browser
+- No need to be in-game to manage addon settings
+- Settings sync via companion app → SavedVariables
+
+### Discord Integration
+- Bot sends death notifications to guild Discord
+- Leaderboard updates posted periodically
+- Event scheduling / tournament management
+- /commands for checking player stats
+
+## Testing Environment
+- **Private TBC Server**: AzerothCore + TBC module or CMaNGOS-TBC
+- **Setup:** Docker container on Pi, connect via WoW 2.4.3 client
+- **Purpose:** Safe testing without risking real account/character
+- **Status:** Not yet set up — planned for Phase 6
