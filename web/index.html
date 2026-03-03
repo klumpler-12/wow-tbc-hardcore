@@ -26,10 +26,10 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#modes">Modes</a></li>
         <li><a href="#features">Features</a></li>
-        <li><a href="#flow">How It Works</a></li>
-        <li><a href="#voting">Community Vote</a></li>
+        <li><a href="#streamer">Streamer Tools</a></li>
         <li><a href="#scoring">Scoring</a></li>
         <li><a href="#ideas" style="color: var(--ember-orange);">Ideas Lab</a></li>
+        <li><a href="voting.html">Community Vote</a></li>
       </ul>
       <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -321,36 +321,118 @@
     </div>
   </section>
 
-  <!-- ═══ Community Voting ═══ -->
-  <section class="voting" id="voting">
+  <!-- ═══ Streamer & Viewer Concepts ═══ -->
+  <section class="streamer" id="streamer">
     <div class="ambient-orb orb-orange" style="top: 100px; right: -200px;"></div>
     <div class="container">
-      <div class="voting-header reveal">
-        <div class="section-label">Shape The Rules</div>
-        <h2 class="section-title">Community Vote</h2>
+      <div class="streamer-header reveal">
+        <div class="section-label">Streamer & Viewer Integration</div>
+        <h2 class="section-title">Hardcore as a Spectator Sport</h2>
         <p class="section-desc">
-          This addon is built by the community, for the community.
-          Cast your vote on the rules that matter most.
+          Turn every death, duel, and milestone into content. Real-time overlays,
+          viewer interaction, and public profiles — all bridged through a companion app.
         </p>
       </div>
 
-      <div class="voting-stats reveal">
-        <div class="voting-stat">
-          <div class="voting-stat-num" id="totalVotes">0</div>
-          <div class="voting-stat-label">Total Votes</div>
+      <div class="streamer-grid">
+
+        <!-- OBS Overlay -->
+        <div class="streamer-card reveal">
+          <div class="streamer-card-icon">🎥</div>
+          <h3 class="streamer-card-title">OBS Overlay API</h3>
+          <p class="streamer-card-desc">Companion app exposes a local WebSocket that OBS Browser Sources connect to —
+            showing live data directly on stream.</p>
+          <ul class="streamer-card-bullets">
+            <li>Live HP bar, mana, and combat status</li>
+            <li>Current score and leaderboard position</li>
+            <li>Death counter and active mode indicator</li>
+            <li>Equipped gear display with item links</li>
+            <li>Kill feed and recent achievement ticker</li>
+          </ul>
         </div>
-        <div class="voting-stat">
-          <div class="voting-stat-num">6</div>
-          <div class="voting-stat-label">Active Polls</div>
+
+        <!-- Viewer Penalty Votes -->
+        <div class="streamer-card reveal">
+          <div class="streamer-card-icon">🗳️</div>
+          <h3 class="streamer-card-title">Viewer Penalty Votes</h3>
+          <p class="streamer-card-desc">Viewers choose the punishment. Twitch polls or chat commands let the audience
+            decide penalty severity in real-time.</p>
+          <ul class="streamer-card-bullets">
+            <li>Streamer dies → poll triggers: "Gear wipe or score penalty?"</li>
+            <li>Vote results pushed via companion app → SavedVariables → addon</li>
+            <li>Configurable options per mode (HC Plus allows viewer choice, HC Classic overrides)</li>
+            <li>Twitch Extension or chat bot integration</li>
+            <li>Timeout window to prevent spam — one vote per death event</li>
+          </ul>
         </div>
-        <div class="voting-stat">
-          <div class="voting-stat-num" id="votersCount">0</div>
-          <div class="voting-stat-label">Participants</div>
+
+        <!-- Player Profiles -->
+        <div class="streamer-card reveal">
+          <div class="streamer-card-icon">👤</div>
+          <h3 class="streamer-card-title">Public Player Profiles</h3>
+          <p class="streamer-card-desc">Opt-in web profiles showing your HC journey. Link your Twitch, share your plans,
+            flex your stats.</p>
+          <ul class="streamer-card-bullets">
+            <li>Streamer link (Twitch / YouTube / Kick) displayed on profile</li>
+            <li>Current character, mode, level, and plan notes</li>
+            <li>Full death history with cause, zone, and timestamp</li>
+            <li>Account-wide stats: total score, chars played, boost usage</li>
+            <li>Privacy controls — choose what's visible</li>
+          </ul>
         </div>
+
+        <!-- Stream Alerts -->
+        <div class="streamer-card reveal">
+          <div class="streamer-card-icon">🔔</div>
+          <h3 class="streamer-card-title">Stream Event Alerts</h3>
+          <p class="streamer-card-desc">Auto-triggered visual and audio alerts for key moments — making every milestone
+            and death cinematic.</p>
+          <ul class="streamer-card-bullets">
+            <li>Death alert: screen flash, sound effect, death recap overlay</li>
+            <li>Level milestone: celebration animation + score popup</li>
+            <li>Gear Battle: split-screen wager reveal + result</li>
+            <li>First kill / boss kill: custom badge animation</li>
+            <li>OBS scene auto-switch on death (e.g. swap to death cam)</li>
+          </ul>
+        </div>
+
+        <!-- Viewer Challenges -->
+        <div class="streamer-card reveal">
+          <div class="streamer-card-icon">🎮</div>
+          <h3 class="streamer-card-title">Viewer Challenges</h3>
+          <p class="streamer-card-desc">Viewers spend channel points to influence the streamer's HC run — adding stakes
+            and interactivity.</p>
+          <ul class="streamer-card-bullets">
+            <li>Spend points to force a Gear Battle challenge</li>
+            <li>Place bounties on the streamer (other HC players can claim)</li>
+            <li>Vote on which zone the streamer must quest in next</li>
+            <li>Trigger "gauntlet mode" — extra death penalty for X minutes</li>
+            <li>Reward top contributors with in-stream shoutouts</li>
+          </ul>
+        </div>
+
+        <!-- Account-Wide Stats -->
+        <div class="streamer-card reveal">
+          <div class="streamer-card-icon">📊</div>
+          <h3 class="streamer-card-title">Account-Wide Stats</h3>
+          <p class="streamer-card-desc">One page to see your entire HC legacy — every character, every death, every
+            title earned.</p>
+          <ul class="streamer-card-bullets">
+            <li>All characters: active, voided, boosted — with class colors</li>
+            <li>Achievement timeline with ripple effects (boost unlocks, follow-up chars)</li>
+            <li>Gear Battle W/L record and title collection</li>
+            <li>Total playtime, average death level, PvP stats</li>
+            <li>Shareable link + embeddable widget for stream panels</li>
+          </ul>
+        </div>
+
       </div>
 
-      <div class="polls-grid" id="pollsGrid">
-        <!-- Polls injected by JS -->
+      <div class="streamer-notice reveal">
+        <span>⚠️</span>
+        <span>Viewer → game interactions require legal review against <strong>Blizzard addon policy</strong> and
+          <strong>Twitch Extension guidelines</strong>. Companion app architecture avoids direct API calls from the
+          addon.</span>
       </div>
     </div>
   </section>
@@ -630,32 +712,6 @@
           </ul>
         </div>
 
-        <!-- Streamer & Viewer Integration -->
-        <div class="idea-card reveal" data-category="feature">
-          <div class="idea-card-top">
-            <span class="idea-tag feature">Feature</span>
-            <span class="idea-status">Fleshing Out</span>
-          </div>
-          <h3 class="idea-title">Streamer & Viewer Integration</h3>
-          <p class="idea-desc">Turn hardcore into a spectator sport. OBS overlays, viewer-controlled penalties, and
-            public profiles with streamer links.</p>
-          <ul class="idea-bullets">
-            <li><strong>OBS Overlay API</strong> — companion app exposes local WebSocket for OBS Browser Source (live
-              HP, score, death count, gear)</li>
-            <li><strong>Viewer Penalty Votes</strong> — Twitch chat/polls let viewers vote on penalty severity; result
-              pushed to addon via companion app → SavedVariables</li>
-            <li><strong>Player Profiles</strong> — public web profiles showing stats, streamer link, plans, current
-              mode, death history (opt-in)</li>
-            <li><strong>Stream Alerts</strong> — auto-triggers for OBS scene changes on death, Gear Battle, or milestone
-              (sound + visual)</li>
-            <li><strong>Viewer Challenges</strong> — let viewers spend channel points to trigger in-game Gear Battle
-              challenges or bounty requests</li>
-            <li><strong>Account-Wide Stats Page</strong> — aggregated view of all characters, deaths, scores, titles
-              across the account</li>
-            <li><strong>Legal check needed</strong> — verify Twitch Extension + Blizzard addon policy compatibility for
-              viewer → game interaction</li>
-          </ul>
-        </div>
 
         <!-- Anti-Boosting -->
         <div class="idea-card reveal" data-category="mechanic">
