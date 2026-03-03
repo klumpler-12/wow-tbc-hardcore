@@ -238,7 +238,9 @@ function setLanguage(lang) {
         const keys = key.split('.');
         let text = translations[lang];
         keys.forEach(k => {
-            text = text[k];
+            if (text !== undefined) {
+                text = text[k];
+            }
         });
 
         if (text) {
