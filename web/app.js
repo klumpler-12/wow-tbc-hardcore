@@ -16,9 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAchievementFeed();
   initDiscordFeed();
   initGearBattle();
-  initRulesetTags();
   initGithubProgress();
-  initMilestoneModals();
 });
 
 
