@@ -994,98 +994,101 @@ const projectPhases = {
     icon: "🛠️",
     title: { en: "Phase 1: Foundation & UI Mockups", de: "Phase 1: Fundament & UI" },
     desc: {
-      en: "Setting up the initial project identity, web presence, and core documentation.",
-      de: "Einrichtung der initialen Projektidentität, Webpräsenz und Kerndokumentation."
+      en: "Setting up the initial project identity, web presence, core localization pipeline, and competitor research.",
+      de: "Einrichtung der Projektidentität, Webpräsenz, Kernlokalisierung und Marktanalyse."
     },
     draft: {
-      en: "We will prioritize an aesthetic web presence with Vanilla CSS to avoid framework bloat. The documentation will serve as the guiding light for backend schemas. Localized content is driven by standard data-i18n tags hooked to a lightweight JSON router.",
-      de: "Wir setzen auf eine ästhetische Webpräsenz mit Vanilla CSS, um Framework-Overhead zu vermeiden. Die Dokumentation dient als Leitfaden für die Backend-Struktur. Die Lokalisierung läuft über data-i18n Tags und einen schlanken JSON-Router."
+      en: "<strong>Research & Strategy:</strong> We prioritize an aesthetic, highly performant web presence using Vanilla CSS, avoiding React/Vue framework bloat to ensure immediate load times for streamers. Localization is handled via custom `data-i18n` tags routing through a lightweight JSON parser. <br><br><strong>Security & Legal:</strong> Research into Blizzard's Addon Policy reveals strict monetization rules. We must ensure that any Twitch integration (Tips/Bits) is entirely decoupled from the in-game addon code to remain compliant. Consequently, the core documentation dictates a completely isolated backend structure.",
+      de: "<strong>Forschung & Strategie:</strong> Wir priorisieren Vanilla CSS ohne Framework-Overhead. Lokalisierung über data-i18n Tags.<br><br><strong>Sicherheit & Rechtliches:</strong> Blizzards Addon-Richtlinie verbietet direkte Monetarisierung (Pay-to-Win). Die Twitch-Integration muss strikt vom Addon-Code getrennt sein, um konform zu bleiben."
     },
     tasks: [
-      { en: "Initial Repository Setup & Git Configuration", de: "Initiale Repository-Einrichtung & Git-Konfiguration", done: true },
-      { en: "UI Design: Dark Mode, Glassmorphism & TBC aesthetics", de: "UI-Design: Dark Mode, Glassmorphismus & TBC-Ästhetik", done: true },
-      { en: "HTML Structure: Landing Page, Ideas Lab, Streamer Tools", de: "HTML-Struktur: Startseite, Ideen-Labor, Streamer-Tools", done: true },
-      { en: "Core Documentation: Competitor & Legal Research", de: "Kerndokumentation: Marktanalyse & Rechtliches", done: true },
-      { en: "Dynamic GitHub Milestone tracking integration", de: "Dynamische GitHub-Meilenstein-Tracker-Integration", done: true }
+      { en: "Initialize Repository & establish Git workflow standards", de: "Repository initialisieren & Git-Workflow definieren", done: true },
+      { en: "Design System: CSS Variables, Glassmorphism, Dark Mode", de: "Design-System: CSS-Variablen, Glassmorphismus, Dark Mode", done: true },
+      { en: "Core Documentation: Technical guidelines & Milestones", de: "Kerndokumentation: Technische Richtlinien & Meilensteine", done: true },
+      { en: "Legal Research: Blizzard Addon ToS vs Twitch Extension API", de: "Rechtsrecherche: Blizzard Addon ToS vs Twitch Extension API", done: true },
+      { en: "Dynamically integrate GitHub API for Milestone tracking", de: "Dynamische GitHub-API-Integration zur Meilenstein-Verfolgung", done: true }
     ],
-    tech: "HTML5, CSS Variables, Vanilla JS, GitHub API"
+    tech: "HTML5, Vanilla CSS, JavaScript ES6, GitHub API"
   },
   2: {
-    icon: "🗳️", // Wait, timeline uses 🗳️ for Phase 2 Community Voting. Let's adjust to match PROJECT_PLAN.
+    icon: "🗳️",
     title: { en: "Phase 2: Addon Architecture", de: "Phase 2: Addon-Architektur" },
     desc: {
-      en: "Building the core LUA addon logic to track player state, deaths, and rules.",
-      de: "Entwicklung der zentralen LUA-Addon-Logik zur Verfolgung von Spielerstatus, Toden und Regeln."
+      en: "Building the deeply integrated LUA addon logic (2.4.3 API) to track player state, deaths, penalties, and rulesets.",
+      de: "Entwicklung der LUA-Addon-Logik (2.4.3 API) zur Verfolgung von Spielerstatus, Toden, Strafen und Regeln."
     },
     draft: {
-      en: "We need a robust communication pipeline before the first testing phase. We will utilize `C_ChatInfo.SendAddonMessage` on a hidden channel, using the prefix `TBCHC`. The Guild Master client will broadcast state updates every 5 minutes or on demand to keep the entire raid synchronized effortlessly.",
-      de: "Wir benötigen eine stabile Kommunikationspipeline vor dem ersten Test. Wir nutzen `C_ChatInfo.SendAddonMessage` auf einem versteckten Kanal mit dem Präfix `TBCHC`. Der Gildenmeister-Client sendet State-Updates ab, um den gesamten Schlachtzug synchron zu halten."
+      en: "<strong>Core Tracker Logic:</strong> Relying solely on the `PLAYER_DEAD` event is known to be flawed in TBC (false positives via Warlock Soulstones or Hunter Feign Death). We must reverse-engineer a multi-step verification using `UNIT_HEALTH` and tracking active Aura IDs to confirm absolute permadeath.<br><br><strong>Guild Sync Protocol:</strong> To enforce hardcore rules across an entire guild (e.g., AH locking), we will exploit the `C_ChatInfo.SendAddonMessage` architecture. The Guild Master addon will serialize the ruleset into a compressed string and broadcast it to the hidden `TBCHC` channel. All guild members' clients will silently receive, deserialize, and enforce the rules seamlessly.",
+      de: "<strong>Tracker-Logik:</strong> Das `PLAYER_DEAD` Event in TBC ist unzuverlässig (falsch positiv durch Seelenstein/Totstellen). Wir implementieren eine Verifizierung via `UNIT_HEALTH` und Aura-IDs.<br><br><strong>Gilden-Sync-Protokoll:</strong> Zur Durchsetzung der Regeln nutzen wir `C_ChatInfo.SendAddonMessage`. Der Gildenmeister sendet das Regelwerk als serialisierten String an den versteckten `TBCHC` Kanal. Alle Clients synchronisieren sich lautlos."
     },
     tasks: [
-      { en: "Initialize standard WoW Addon structure (.toc, .lua)", de: "Standard-WoW-Addon-Struktur initialisieren (.toc, .lua)", done: false },
-      { en: "Event listeners: PLAYER_DEAD, UNIT_INVENTORY_CHANGED", de: "Event-Listener: PLAYER_DEAD, UNIT_INVENTORY_CHANGED", done: false },
-      { en: "Guild Communication channel for ruleset syncing", de: "Gilden-Kommunikationskanal zur Synchronisierung von Regelwerken", done: false },
-      { en: "State Machine: Death processing vs Spirit Healer vs PvP", de: "Zustandsmaschine: Todesverarbeitung vs. Geistheiler vs. PvP", done: false },
-      { en: "Implementation: Use Ace3 framework for config management", de: "Implementierung: Ace3-Framework für Konfigurationsverwaltung", done: false }
+      { en: "Scaffold WoW Addon architecture utilizing Ace3 Framework", de: "WoW-Addon-Architektur mit Ace3-Framework aufbauen", done: false },
+      { en: "Implement multi-step authentic Death Verification Engine", de: "Mehrstufige authentische Todesverifizierungs-Engine", done: false },
+      { en: "Develop hidden Guild Communication channel for Ruleset Sync", de: "Versteckten Gildenkanal zur Regelwerk-Synchronisation", done: false },
+      { en: "Write SSF Enforcer logic (Trading/Mailbox/AH blocking hooks)", de: "SSF Durchsetzungs-Logik (Blockierung von Handel/Post/AH)", done: false },
+      { en: "Local Serialization module to lock config in SavedVariables", de: "Lokales Serialisierungs-Modul für SavedVariables", done: false }
     ],
-    tech: "LUA, Ace3, WoW TBC API 2.4.3"
+    tech: "LUA 5.1, Ace3 Framework, WoW TBC API 2.4.3"
   },
   3: {
     icon: "📊",
     title: { en: "Phase 3: Web-App Backend", de: "Phase 3: Web-App Backend" },
     desc: {
-      en: "Developing the central server and connecting the addon to enforce logic.",
-      de: "Entwicklung des zentralen Servers und Anbindung des Addons zur Durchsetzung der Logik."
+      en: "Engineering the cloud infrastructure, database schema, and the secure desktop bridge relay.",
+      de: "Technik der Cloud-Infrastruktur, des Datenbankschemas und der Desktop-Bridge."
     },
     draft: {
-      en: "To secure the backend against arbitrary payload injection from WoW clients, we'll build a Companion Desktop App using Electron. The app reads the raw `SavedVariables.lua` file, constructs a verified payload via HMAC signing, and acts as the bridge to our Node.js ecosystem safely.",
-      de: "Um das Backend vor unerlaubten Payloads zu schützen, entwickeln wir eine Companion Desktop App mit Electron. Diese liest die `SavedVariables.lua` sicher aus, signiert den Payload via HMAC und leitet ihn gesichert an die Node.js API weiter."
+      en: "<strong>Security & Bridge:</strong> Web browsers cannot read local game files. We must construct an Electron Companion App. This lightweight local daemon monitors file-write events on `WTF/Account/.../SavedVariables.lua`. Upon a `PLAYER_DEAD` write, the app immediately hashes the payload payload using an HMAC-SHA256 local secret to prevent API spoofing, and securely transmits it via WebSocket to our central server.<br><br><strong>Cloud Architecture:</strong> The backend will utilize Node.js & Express.js for fast asynchronous I/O, coupled with MongoDB for flexible schema indexing. WebSockets will power the 'Live Guild Feed' entirely.",
+      de: "<strong>Sicherheit & Bridge:</strong> Webbrowser können keine lokalen Dateien lesen. Wir bauen eine Electron Companion App, die Änderungen an der `SavedVariables.lua` überwacht. Bei einem Tod wird der Payload via HMAC-SHA256 signiert und sicher per WebSocket an den Server gesendet, um Spoofing zu verhindern.<br><br><strong>Architektur:</strong> Das Backend nutzt Node.js & Express.js. MongoDB als Datenbank. WebSockets treiben den Live-Feed an."
     },
     tasks: [
-      { en: "Setup Node.js Express server to receive data", de: "Node.js Express-Server zum Empfang von Daten einrichten", done: false },
-      { en: "Database Schema Design: Players, Guilds, Deaths", de: "Datenbankschema-Design: Spieler, Gilden, Tode", done: false },
-      { en: "API Endpoints: /api/deaths, /api/leaderboard", de: "API-Endpunkte: /api/deaths, /api/leaderboard", done: false },
-      { en: "Real-time Websocket connection for Live Guild feeds", de: "Echtzeit-Websocket-Verbindung für Live-Gilden-Feeds", done: false }
+      { en: "Setup Node.js REST API Gateway with JWT Authentication", de: "Node.js REST API Gateway mit JWT-Authentifizierung", done: false },
+      { en: "Design MongoDB schemas (Leaderboard, Players, Checkpoints)", de: "MongoDB Schema-Design (Bestenliste, Spieler, Checkpoints)", done: false },
+      { en: "Develop Electron Companion App for local file monitoring", de: "Entwicklung der Electron Companion App zur lokalen Dateiüberwachung", done: false },
+      { en: "Implement HMAC payload hashing to protect against API spoofing", de: "Implementierung von HMAC-Hashing zum Schutz vor API-Spoofing", done: false },
+      { en: "Deploy realtime WebSocket server for instant Leaderboard updates", de: "Echtzeit-WebSocket-Server für sofortige Updates", done: false }
     ],
-    tech: "Node.js, Express, MongoDB, Websockets, Electron"
+    tech: "Node.js, Express, MongoDB, Socket.io, Electron"
   },
   4: {
     icon: "🧪",
     title: { en: "Phase 4: Streamer Tools & Mechanics", de: "Phase 4: Streamer-Tools & Mechaniken" },
     desc: {
-      en: "Building the spectator integrations and interactive Twitch tools.",
-      de: "Entwicklung der Zuschauer-Integrationen und interaktiven Twitch-Tools."
+      en: "Implementing the interactive spectator ecosystem, penalty wheel, and OBS overlays.",
+      de: "Implementierung der Zuschauerinteraktion, des Strafen-Rads und der OBS-Overlays."
     },
     draft: {
-      en: "Stream interaction is processed via the official Twitch Extension framework. When a viewer spins the Penalty Wheel, the Twitch EBS will validate the Twitch Bits transaction (server-side) and emit a WebSocket push notification down to the Streamer's Companion App, which will dynamically instruct the local WoW Addon to drop gear.",
-      de: "Die Stream-Interaktion läuft über das offizielle Twitch-Extension Framework. Dreht ein Zuschauer das Strafenrad, validiert das EBS die Zahlung und sendet via WebSocket einen Befehl an die lokale App des Streamers, welche das WoW Addon anweist, Ausrüstung zu löschen."
+      en: "<strong>Twitch Extension Workflow:</strong> Viewer interaction operates via the official Twitch Extension Backend Service (EBS). A viewer spends Twitch Bits on the 'Penalty Wheel'. Twitch validates the transaction and pings our EBS webhook.<br><br><strong>Execution Layer:</strong> Our EBS routes a secure WebSocket push notification to the specific streamer's Electron Companion App, which instantly injects a macro or triggers a lua hook executing the penalty (e.g., deleting an equipped item). The entire pipeline must resolve in under 500ms to maintain broadcast sync.",
+      de: "<strong>Twitch Extension:</strong> Zuschauer interagieren via Twitch Extension Backend Service (EBS). Twitch validiert Bits-Transaktionen und pingt unseren EBS-Webhook.<br><br><strong>Ausführung:</strong> Der EBS leitet den Befehl per WebSocket an die Companion App des Streamers, welche sofort ein Lua-Hook im Addon auslöst (z.B. Zerstörung des Helms). Die Latenz muss unter 500ms liegen."
     },
     tasks: [
-      { en: "Build basic Twitch Extension frontend", de: "Grundlegendes Twitch-Extension-Frontend entwickeln", done: false },
-      { en: "Connect Twitch Extension EBS to Node API", de: "Twitch-Extension EBS mit Node-API verbinden", done: false },
-      { en: "Viewer Penalty Wheel logic via Websockets", de: "Zuschauer-Strafenrad-Logik über Websockets", done: false },
-      { en: "Addon listener for 'Trigger Penalty' from companion app", de: "Addon-Listener für 'Strafe auslösen' aus der Companion-App", done: false }
+      { en: "Register Twitch Developer Organization and provision API secrets", de: "Twitch-Entwickler-Org registrieren und API-Secrets anfordern", done: false },
+      { en: "Build secure Twitch Extension Backend Service (EBS) endpoints", de: "Sichere Twitch-EBS-Endpunkte entwickeln", done: false },
+      { en: "Develop 2-way streaming WebSocket listener in Companion App", de: "Entwicklung des 2-Wege-WebSocket-Listeners in der Companion App", done: false },
+      { en: "Engineer Addon hooks to securely execute localized UI penalties", de: "Addon-Hooks zur sicheren Ausführung lokalisierter Strafen", done: false },
+      { en: "Design transparent, modular OBS Browser Source overlays", de: "Design transparenter, modularer OBS-Browser-Quellen-Overlays", done: false }
     ],
-    tech: "Twitch API, Electron (Companion App), LUA Hooks"
+    tech: "Twitch API, Webhooks, Electron Inter-Process Auth"
   },
   5: {
     icon: "🚀",
-    title: { en: "Phase 5: First Full Version Released", de: "Phase 5: Erster vollständiger Release" },
+    title: { en: "Phase 5: Release & Production Infra", de: "Phase 5: Release & Produktions-Infrastruktur" },
     desc: {
-      en: "Public launch of TBC Hardcore Version 1.0.",
-      de: "Öffentlicher Start von TBC Hardcore Version 1.0."
+      en: "Architecting the scalable production environment and orchestrating the public Version 1.0 launch.",
+      de: "Aufbau der skalierbaren Umgebung und Organisation des Version 1.0 Launches."
     },
     draft: {
-      en: "The infrastructure must scale on launch day. We will containerize the Node.js backend using Docker and deploy via CI/CD pipelines. A load balancer will distribute incoming Companion App heartbeat requests. We will host the verified addon zip via GitHub Releases directly tied into the Curseforge sync.",
-      de: "Die Infrastruktur muss am Starttag skalieren. Das Node.js Backend wird über Docker containerisiert und via CI/CD bereitgestellt. Ein Loadbalancer verteilt die eingehenden Anfragen. Das verifizierte Addon hosten wir über GitHub Releases, gekoppelt mit Curseforge."
+      en: "<strong>Deployment & Scaling:</strong> The official launch day will invite extreme network traffic. We will containerize the Node.js backend using Docker Compose. A highly-available Nginx reverse proxy will terminate SSL and balance load. <br><br><strong>DDoS Mitigation:</strong> Hardcore WoW projects frequently face targeted DDoS attacks. We will place the entire infrastructure behind a Cloudflare Web Application Firewall (WAF) to aggressively filter invalid requests while caching read-only Leaderboard endpoints at the edge.",
+      de: "<strong>Skalierung:</strong> Der Starttag wird extremen Traffic bringen. Wir containerisieren das Backend via Docker Compose. Nginx übernimmt SSL-Terminierung und Loadbalancing.<br><br><strong>DDoS-Schutz:</strong> Hardcore-Projekte werden oft angegriffen. Wir platzieren die Infrastruktur hinter einer Cloudflare WAF, um bösartige Anfragen zu filtern und Leaderboard-Daten am Edge zu cachen."
     },
     tasks: [
-      { en: "Deploy backend to production architecture (Pi/Docker)", de: "Backend in Produktionsarchitektur deployen (Pi/Docker)", done: false },
-      { en: "Host Web Frontend on public domain", de: "Web-Frontend auf öffentlicher Domain hosten", done: false },
-      { en: "Upload WoW Addon to Curseforge / Github Releases", de: "WoW Addon bei Curseforge / Github Releases hochladen", done: false },
-      { en: "Final security review of Item Recovery exploits", de: "Abschließende Sicherheitsüberprüfung von Item-Recovery-Exploits", done: false }
+      { en: "Finalize Multi-Container Docker configuration for production", de: "Multi-Container-Docker-Konfiguration für Produktion finalisieren", done: false },
+      { en: "Configure Nginx Reverse Proxy with Let's Encrypt automated TLS", de: "Nginx-Reverse-Proxy mit Let's Encrypt TLS einrichten", done: false },
+      { en: "Integrate Cloudflare WAF and aggressively cache static routes", de: "Cloudflare WAF integrieren und statische Routen cachen", done: false },
+      { en: "Automate Addon distribution via Curseforge Developer API / GitHub Releases", de: "Automatisierte Addon-Verteilung (Curseforge/GitHub Releases)", done: false },
+      { en: "Execute final penetration test targeting the Leaderboard API", de: "Abschließender Penetrationstest der Leaderboard-API", done: false }
     ],
-    tech: "Docker, Nginx, Linux, CurseForge Developer API"
+    tech: "Docker, Nginx, Let's Encrypt, Cloudflare WAF"
   }
 };
 
