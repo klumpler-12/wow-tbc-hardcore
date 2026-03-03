@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideas Lab — TBC Hardcore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-logo-icon">⚔️</span>
+                <span class="nav-logo-text">TBC Hardcore</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#modes">Modes</a>
+                <a href="index.html#streamer">Streamer Tools</a>
+                <a href="ideas.html" class="active">Ideas Lab</a>
+                <a href="compare.html">Compare</a>
+            </div>
+        </div>
+    </nav>
+
+    <div style="padding: 100px 0 60px; min-height: 100vh;">
+        <div class="container">
+            <a href="index.html"
+                style="display:inline-flex; align-items:center; gap:6px; color:var(--ember-orange); font-size:0.85rem; text-decoration:none; margin-bottom:20px;">←
+                Back to Home</a>
+
+            <!-- ═══ Ideas Lab ═══ -->
+            <section class="ideas" id="ideas">
+                <div class="container">
+                    <div class="ideas-header reveal">
+                        <div class="section-label">Work In Progress</div>
+                        <h2 class="section-title">Ideas Lab</h2>
+                        <p class="section-desc">
+                            Raw concepts and brainstorms being explored. These aren't final features — they're
+                            possibilities being shaped.
+                        </p>
+                    </div>
+
+                    <div class="ideas-notice-wrap reveal">
+                        <div class="ideas-notice">
+                            🧪 This section is separate from the core concept — it's a living brainstorm board
+                        </div>
+                    </div>
+
+                    <div class="ideas-categories reveal" id="ideaCategories">
+                        <button class="idea-cat-btn active" data-cat="all">All Ideas</button>
+                        <button class="idea-cat-btn" data-cat="mechanic">Mechanics</button>
+                        <button class="idea-cat-btn" data-cat="feature">Features</button>
+                        <button class="idea-cat-btn" data-cat="security">Anti-Cheat</button>
+                        <button class="idea-cat-btn" data-cat="integration">Integrations</button>
+                        <button class="idea-cat-btn" data-cat="business">Business</button>
+                        <button class="idea-cat-btn" data-cat="social">Social</button>
+                    </div>
+
+                    <div class="ideas-grid" id="ideasGrid">
+
+                        <!-- PvP Integration -->
+                        <div class="idea-card reveal" data-category="mechanic">
+                            <div class="idea-card-top"><span class="idea-tag mechanic">Mechanic</span><span
+                                    class="idea-status">Brainstorm</span></div>
+                            <h3 class="idea-title">PvP Death Penalties</h3>
+                            <p class="idea-desc">PvP deaths should have unique penalties — not just ban or delete. Make
+                                PvP engaging within HC rules.</p>
+                            <ul class="idea-bullets">
+                                <li>Score deductions scaled by opponent's level</li>
+                                <li>Temporary gear lock (can't upgrade for X minutes)</li>
+                                <li>Bounty system — killing high-score players earns bounty</li>
+                                <li>Separate PvP ELO leaderboard</li>
+                            </ul>
+                        </div>
+
+                        <!-- Item Unlocks -->
+                        <div class="idea-card reveal" data-category="mechanic">
+                            <div class="idea-card-top"><span class="idea-tag mechanic">Mechanic</span><span
+                                    class="idea-status">Concept</span></div>
+                            <h3 class="idea-title">Score-Based Item Unlocks</h3>
+                            <p class="idea-desc">Reaching scoring milestones unlocks access to higher gear tiers.</p>
+                            <ul class="idea-bullets">
+                                <li>"Must earn X points before equipping Epic items"</li>
+                                <li>Addon monitors equip events and enforces restrictions</li>
+                                <li>Creates natural gating without arbitrary locks</li>
+                            </ul>
+                        </div>
+
+                        <!-- Gear Battle -->
+                        <div class="idea-card reveal" data-category="mechanic">
+                            <div class="idea-card-top"><span class="idea-tag mechanic">Mechanic</span><span
+                                    class="idea-status">Concept</span></div>
+                            <h3 class="idea-title">Gear Battle Duels</h3>
+                            <p class="idea-desc">Global opt-in mechanic (not mode-specific). Challenge another player,
+                                each wagers an item. Winner earns score + title.</p>
+                            <ul class="idea-bullets">
+                                <li>Custom UI for selecting wagered item</li>
+                                <li>Both players confirm before duel starts</li>
+                                <li>Loser's item auto-deleted by addon</li>
+                                <li>Exclusive titles for win streaks</li>
+                            </ul>
+                        </div>
+
+                        <!-- Anti-Cheat -->
+                        <div class="idea-card reveal" data-category="security">
+                            <div class="idea-card-top"><span class="idea-tag security">Anti-Cheat</span><span
+                                    class="idea-status">Researched</span></div>
+                            <h3 class="idea-title">Backend Verification Layer</h3>
+                            <p class="idea-desc">Blizzard's Item Restoration lets players recover deleted items every
+                                24h — a cheating vector. Companion app solves this.</p>
+                            <ul class="idea-bullets">
+                                <li>Companion app reads SavedVariables, posts to backend</li>
+                                <li>Inventory hash snapshots detect restored items</li>
+                                <li>Two-step verification: app must run before WoW launch</li>
+                                <li>Optional — only for tournaments needing integrity</li>
+                            </ul>
+                        </div>
+
+                        <!-- Discord Integration -->
+                        <div class="idea-card reveal" data-category="integration">
+                            <div class="idea-card-top"><span class="idea-tag integration">Integration</span><span
+                                    class="idea-status">Planned</span></div>
+                            <h3 class="idea-title">Discord Bot Integration</h3>
+                            <p class="idea-desc">A bot that bridges the addon with Discord for real-time event
+                                management and notifications.</p>
+                            <ul class="idea-bullets">
+                                <li>Death notifications posted to guild channel</li>
+                                <li>Leaderboard updates on schedule</li>
+                                <li>Slash commands for player stats lookup</li>
+                                <li>Event scheduling and tournament management</li>
+                            </ul>
+                        </div>
+
+                        <!-- Desktop / Browser Setup -->
+                        <div class="idea-card reveal" data-category="feature">
+                            <div class="idea-card-top"><span class="idea-tag feature">Feature</span><span
+                                    class="idea-status">Concept</span></div>
+                            <h3 class="idea-title">Desktop / Browser Setup</h3>
+                            <p class="idea-desc">Configure everything from a web dashboard — no need to be in-game to
+                                manage addon settings.</p>
+                            <ul class="idea-bullets">
+                                <li>Web UI for modes, rules, guild settings</li>
+                                <li>REST API for addon ↔ backend ↔ Discord</li>
+                                <li>Leaderboard viewer accessible from browser</li>
+                                <li>Settings sync via companion app → SavedVariables</li>
+                            </ul>
+                        </div>
+
+                        <!-- Mixed Groups -->
+                        <div class="idea-card reveal" data-category="social">
+                            <div class="idea-card-top"><span class="idea-tag social">Social</span><span
+                                    class="idea-status">Brainstorm</span></div>
+                            <h3 class="idea-title">Mixed Group Play</h3>
+                            <p class="idea-desc">Can HC and non-HC players group together? Needs careful registration
+                                and verification layers.</p>
+                            <ul class="idea-bullets">
+                                <li>Characters must be pre-registered before receiving mail/items</li>
+                                <li>Guild/player-level setting for mixed group rules</li>
+                                <li>Multi-layer verification (server + Blizzard + addon)</li>
+                                <li>Prevents non-HC players from feeding items to HC players</li>
+                            </ul>
+                        </div>
+
+                        <!-- Monetization -->
+                        <div class="idea-card reveal" data-category="business">
+                            <div class="idea-card-top"><span class="idea-tag business">Business</span><span
+                                    class="idea-status">Brainstorm</span></div>
+                            <h3 class="idea-title">Monetization Concepts</h3>
+                            <p class="idea-desc">Sustainable revenue without paywalling core HC functionality.</p>
+                            <ul class="idea-bullets">
+                                <li>Unlock fee for custom modes (not HC Classic/Plus)</li>
+                                <li>Premium streamer tools: overlays, viewer controls</li>
+                                <li>Advanced stats dashboard and data exports</li>
+                                <li>Must verify legality with Blizzard addon policy</li>
+                            </ul>
+                        </div>
+
+                        <!-- Anti-Boosting -->
+                        <div class="idea-card reveal" data-category="mechanic">
+                            <div class="idea-card-top"><span class="idea-tag mechanic">Mechanic</span><span
+                                    class="idea-status">Concept</span></div>
+                            <h3 class="idea-title">Anti-Boost Detection</h3>
+                            <p class="idea-desc">Optional toggle to prevent power-leveling. Detects when a high-level
+                                player is carrying.</p>
+                            <ul class="idea-bullets">
+                                <li>Grouped with player <strong>20+ levels higher</strong> who uses abilities near you
+                                </li>
+                                <li>Quest auto-abandoned if completed under boosted conditions</li>
+                                <li>Configurable threshold (guild can set level gap)</li>
+                                <li>Togglable per mode — strict for HC Classic, optional for HC Plus</li>
+                            </ul>
+                        </div>
+
+                        <!-- Achievement Mode -->
+                        <div class="idea-card reveal" data-category="mechanic">
+                            <div class="idea-card-top"><span class="idea-tag mechanic">Mechanic</span><span
+                                    class="idea-status">Brainstorm</span></div>
+                            <h3 class="idea-title">Achievement Mode</h3>
+                            <p class="idea-desc">Solo-focused HC variant. Track specific milestones and challenges — for
+                                adventurers who want personal goals.</p>
+                            <ul class="idea-bullets">
+                                <li>Pre-defined lists: "Clear all TBC dungeons solo", "Reach 70 no deaths"</li>
+                                <li>Custom checklists players can define themselves</li>
+                                <li>Progress tracking with timestamps and proof logs</li>
+                                <li>Shareable achievement cards for profiles and streams</li>
+                            </ul>
+                        </div>
+
+                        <!-- Randomized Party HC -->
+                        <div class="idea-card reveal" data-category="mechanic">
+                            <div class="idea-card-top"><span class="idea-tag mechanic">Mechanic</span><span
+                                    class="idea-status">Brainstorm</span></div>
+                            <h3 class="idea-title">Randomized Party Hardcore</h3>
+                            <p class="idea-desc">Spin-the-wheel chaos mode. Random events, constraints, and viewer
+                                triggers — never the same run twice.</p>
+                            <ul class="idea-bullets">
+                                <li><strong>Zone Lock:</strong> Random zone + random objective — can't leave until done
+                                </li>
+                                <li><strong>Timer Events:</strong> New constraint every X minutes (melee only, no
+                                    healing)</li>
+                                <li><strong>Viewer Triggers:</strong> Chat spins the wheel for next event</li>
+                                <li><strong>Stacking Modifiers:</strong> Events stack — "melee only + zone locked + no
+                                    potions"</li>
+                            </ul>
+                        </div>
+
+                        <!-- Griefing Prevention -->
+                        <div class="idea-card reveal" data-category="mechanic">
+                            <div class="idea-card-top"><span class="idea-tag mechanic">Mechanic</span><span
+                                    class="idea-status">Concept</span></div>
+                            <h3 class="idea-title">Griefing Prevention</h3>
+                            <p class="idea-desc">Guild Masters or TBCHC Admins can revoke a death if caused by griefing.
+                                Targeted at OF3 and moderated events.</p>
+                            <ul class="idea-bullets">
+                                <li>GM or <strong>TBCHC Admin</strong> reviews death and votes to revoke</li>
+                                <li>Death log includes context: killer, zone, nearby players</li>
+                                <li>Only in specific modes — <strong>not available in HC Classic</strong></li>
+                                <li>Primarily designed for <strong>OF3 tournament play</strong></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- Achievement Timeline Concept Preview -->
+                    <div class="idea-preview reveal" style="margin-top: 48px;">
+                        <h3 class="idea-preview-title">📋 Profile & Achievement Concept Preview</h3>
+                        <p class="idea-preview-desc">What an account-wide achievement feed could look like — tracking
+                            milestones, unlocks, and their ripple effects.</p>
+                        <div class="achievement-timeline">
+                            <div class="ach-entry milestone">
+                                <div class="ach-timestamp">Feb 18, 2026 — 14:32</div>
+                                <div class="ach-content">
+                                    <span class="ach-icon">⚔️</span>
+                                    <div class="ach-text">
+                                        <strong class="ach-headline">Unlocked Outland</strong> on <span
+                                            class="ach-char paladin">Pupi</span>
+                                        <div class="ach-detail">Reached level 58 in 3d 14h playtime · 0 deaths · HC Plus
+                                            mode</div>
+                                        <div class="ach-followup"><span
+                                                class="ach-followup-icon">🔓</span><span>Triggered <strong>58 Boost
+                                                    Unlock</strong> — 2 boost characters created since</span></div>
+                                    </div>
+                                    <span class="ach-score positive">+100</span>
+                                </div>
+                            </div>
+                            <div class="ach-entry unlock">
+                                <div class="ach-timestamp">Feb 28, 2026 — 22:15</div>
+                                <div class="ach-content">
+                                    <span class="ach-icon">🏆</span>
+                                    <div class="ach-text">
+                                        <strong class="ach-headline">Reached Level 70</strong> on <span
+                                            class="ach-char paladin">Pupi</span>
+                                        <div class="ach-detail">First character to 70 · 8d 7h total playtime · 0 deaths
+                                        </div>
+                                        <div class="ach-followup"><span class="ach-followup-icon">⚡</span><span>Unlocked
+                                                <strong>Gear Battle</strong> toggle · Boosted 2 alts</span></div>
+                                    </div>
+                                    <span class="ach-score positive">+500</span>
+                                </div>
+                            </div>
+                            <div class="ach-entry death">
+                                <div class="ach-timestamp">Mar 2, 2026 — 03:12</div>
+                                <div class="ach-content">
+                                    <span class="ach-icon">💀</span>
+                                    <div class="ach-text">
+                                        <strong class="ach-headline">Character Voided</strong> — <span
+                                            class="ach-char priest">Zuzu</span>
+                                        <div class="ach-detail">Died in Hellfire Peninsula at level 62 · Killed by Fel
+                                            Reaver</div>
+                                        <div class="ach-followup"><span class="ach-followup-icon">📉</span><span>Score
+                                                impact: <strong class="highlight-red">−300</strong></span></div>
+                                    </div>
+                                    <span class="ach-score negative">−300</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>TBC Hardcore Concept · Ideas Lab</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
