@@ -977,6 +977,10 @@ const projectPhases = {
       en: "Setting up the initial project identity, web presence, and core documentation.",
       de: "Einrichtung der initialen Projektidentität, Webpräsenz und Kerndokumentation."
     },
+    draft: {
+      en: "We will prioritize an aesthetic web presence with Vanilla CSS to avoid framework bloat. The documentation will serve as the guiding light for backend schemas. Localized content is driven by standard data-i18n tags hooked to a lightweight JSON router.",
+      de: "Wir setzen auf eine ästhetische Webpräsenz mit Vanilla CSS, um Framework-Overhead zu vermeiden. Die Dokumentation dient als Leitfaden für die Backend-Struktur. Die Lokalisierung läuft über data-i18n Tags und einen schlanken JSON-Router."
+    },
     tasks: [
       { en: "Initial Repository Setup & Git Configuration", de: "Initiale Repository-Einrichtung & Git-Konfiguration", done: true },
       { en: "UI Design: Dark Mode, Glassmorphism & TBC aesthetics", de: "UI-Design: Dark Mode, Glassmorphismus & TBC-Ästhetik", done: true },
@@ -992,6 +996,10 @@ const projectPhases = {
     desc: {
       en: "Building the core LUA addon logic to track player state, deaths, and rules.",
       de: "Entwicklung der zentralen LUA-Addon-Logik zur Verfolgung von Spielerstatus, Toden und Regeln."
+    },
+    draft: {
+      en: "We need a robust communication pipeline before the first testing phase. We will utilize `C_ChatInfo.SendAddonMessage` on a hidden channel, using the prefix `TBCHC`. The Guild Master client will broadcast state updates every 5 minutes or on demand to keep the entire raid synchronized effortlessly.",
+      de: "Wir benötigen eine stabile Kommunikationspipeline vor dem ersten Test. Wir nutzen `C_ChatInfo.SendAddonMessage` auf einem versteckten Kanal mit dem Präfix `TBCHC`. Der Gildenmeister-Client sendet State-Updates ab, um den gesamten Schlachtzug synchron zu halten."
     },
     tasks: [
       { en: "Initialize standard WoW Addon structure (.toc, .lua)", de: "Standard-WoW-Addon-Struktur initialisieren (.toc, .lua)", done: false },
@@ -1009,13 +1017,17 @@ const projectPhases = {
       en: "Developing the central server and connecting the addon to enforce logic.",
       de: "Entwicklung des zentralen Servers und Anbindung des Addons zur Durchsetzung der Logik."
     },
+    draft: {
+      en: "To secure the backend against arbitrary payload injection from WoW clients, we'll build a Companion Desktop App using Electron. The app reads the raw `SavedVariables.lua` file, constructs a verified payload via HMAC signing, and acts as the bridge to our Node.js ecosystem safely.",
+      de: "Um das Backend vor unerlaubten Payloads zu schützen, entwickeln wir eine Companion Desktop App mit Electron. Diese liest die `SavedVariables.lua` sicher aus, signiert den Payload via HMAC und leitet ihn gesichert an die Node.js API weiter."
+    },
     tasks: [
       { en: "Setup Node.js Express server to receive data", de: "Node.js Express-Server zum Empfang von Daten einrichten", done: false },
       { en: "Database Schema Design: Players, Guilds, Deaths", de: "Datenbankschema-Design: Spieler, Gilden, Tode", done: false },
       { en: "API Endpoints: /api/deaths, /api/leaderboard", de: "API-Endpunkte: /api/deaths, /api/leaderboard", done: false },
       { en: "Real-time Websocket connection for Live Guild feeds", de: "Echtzeit-Websocket-Verbindung für Live-Gilden-Feeds", done: false }
     ],
-    tech: "Node.js, Express, MongoDB, Websockets"
+    tech: "Node.js, Express, MongoDB, Websockets, Electron"
   },
   4: {
     icon: "🧪",
@@ -1023,6 +1035,10 @@ const projectPhases = {
     desc: {
       en: "Building the spectator integrations and interactive Twitch tools.",
       de: "Entwicklung der Zuschauer-Integrationen und interaktiven Twitch-Tools."
+    },
+    draft: {
+      en: "Stream interaction is processed via the official Twitch Extension framework. When a viewer spins the Penalty Wheel, the Twitch EBS will validate the Twitch Bits transaction (server-side) and emit a WebSocket push notification down to the Streamer's Companion App, which will dynamically instruct the local WoW Addon to drop gear.",
+      de: "Die Stream-Interaktion läuft über das offizielle Twitch-Extension Framework. Dreht ein Zuschauer das Strafenrad, validiert das EBS die Zahlung und sendet via WebSocket einen Befehl an die lokale App des Streamers, welche das WoW Addon anweist, Ausrüstung zu löschen."
     },
     tasks: [
       { en: "Build basic Twitch Extension frontend", de: "Grundlegendes Twitch-Extension-Frontend entwickeln", done: false },
@@ -1038,6 +1054,10 @@ const projectPhases = {
     desc: {
       en: "Public launch of TBC Hardcore Version 1.0.",
       de: "Öffentlicher Start von TBC Hardcore Version 1.0."
+    },
+    draft: {
+      en: "The infrastructure must scale on launch day. We will containerize the Node.js backend using Docker and deploy via CI/CD pipelines. A load balancer will distribute incoming Companion App heartbeat requests. We will host the verified addon zip via GitHub Releases directly tied into the Curseforge sync.",
+      de: "Die Infrastruktur muss am Starttag skalieren. Das Node.js Backend wird über Docker containerisiert und via CI/CD bereitgestellt. Ein Loadbalancer verteilt die eingehenden Anfragen. Das verifizierte Addon hosten wir über GitHub Releases, gekoppelt mit Curseforge."
     },
     tasks: [
       { en: "Deploy backend to production architecture (Pi/Docker)", de: "Backend in Produktionsarchitektur deployen (Pi/Docker)", done: false },
@@ -1099,11 +1119,21 @@ function initMilestoneModals() {
 
       // Get translation for the "Tech Stack & Strategy:"
       let techLabel = "Tech Stack & Strategy:";
+      let draftLabel = "Implementation Draft & Solutions:";
       if (window.translations && window.translations[lang] && window.translations[lang].milestoneModal) {
         techLabel = window.translations[lang].milestoneModal.tech;
+        draftLabel = window.translations[lang].milestoneModal.draft || draftLabel;
       }
 
-      listHTML += `<div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: var(--highlight-purple);"><strong>${techLabel}</strong><br><span style="color: var(--text-muted);">${phaseData.tech}</span></div>`;
+      const draftText = phaseData.draft ? (phaseData.draft[lang] || phaseData.draft['en']) : '';
+      if (draftText) {
+        listHTML += `<div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: var(--text-primary);">
+            <strong style="color: var(--highlight-orange);">${draftLabel}</strong><br>
+            <span style="color: var(--text-secondary); line-height: 1.6; display: inline-block; margin-top: 8px;">${draftText}</span>
+          </div>`;
+      }
+
+      listHTML += `<div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: var(--highlight-purple);"><strong>${techLabel}</strong><br><span style="color: var(--text-muted);">${phaseData.tech}</span></div>`;
 
       checklist.innerHTML = listHTML;
       modal.classList.add('active');

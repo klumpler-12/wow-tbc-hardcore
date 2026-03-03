@@ -109,7 +109,8 @@ const translations = {
         },
         milestoneModal: {
             btn: "Close Plan",
-            tech: "Tech Stack & Strategy:"
+            tech: "Tech Stack & Strategy:",
+            draft: "Implementation Draft & Solutions:"
         }
     },
     de: {
@@ -222,7 +223,8 @@ const translations = {
         },
         milestoneModal: {
             btn: "Plan Schließen",
-            tech: "Tech-Stack & Strategie:"
+            tech: "Tech-Stack & Strategie:",
+            draft: "Implementierungsentwurf & Lösungen:"
         }
     }
 };
