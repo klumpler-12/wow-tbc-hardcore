@@ -90,31 +90,34 @@
 
       <!-- Primary Modes Grid (HC Plus Left, Softcore Right) -->
       <div class="modes-grid primary-modes">
-        <!-- ██ Hardcore Plus — Featured ██ -->
-        <div class="mode-card hcplus featured reveal">
-          <div class="hcplus-featured-badge" data-i18n="modes.hcplus.badge">⭐ Recommended</div>
+        <!-- ██ Hardcore Plus ██ -->
+        <div class="mode-card plus reveal"
+          style="border-top: 3px solid var(--highlight-purple); background: linear-gradient(180deg, rgba(168, 85, 247, 0.05) 0%, rgba(0,0,0,0) 100%); position: relative;">
+          <div
+            style="position: absolute; top: -12px; right: 20px; background: linear-gradient(90deg, var(--highlight-purple), #c084fc); color: white; padding: 4px 12px; border-radius: 12px; font-size: 0.7rem; font-weight: bold; letter-spacing: 1px; box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);"
+            data-i18n="modes.plus.badge">
+            ⭐ RECOMMENDED</div>
           <div class="mode-icon">⚡</div>
-          <h3 class="mode-name" data-i18n="modes.hcplus.title">Hardcore Plus</h3>
-          <p class="mode-tagline" data-i18n="modes.hcplus.desc">
+          <h3 class="mode-name" data-i18n="modes.plus.title">Hardcore Plus</h3>
+          <p class="mode-tagline" data-i18n="modes.plus.desc">
             <strong>The Ultimate TBC Challenge.</strong> Stand out as a verified elite player by conquering Outland with
-            the highest stakes.
-            <br><br>Like Retro, but adapted for TBC. Strict rules with critical adjustments to make Outland progression
-            feasible.
+            the highest stakes.<br><br>Like Retro, but adapted for TBC. Strict rules with critical adjustments to make
+            Outland progression feasible.
           </p>
-          <div class="mode-details">
+          <div class="mode-details" style="font-size: 0.8rem;">
             <div class="mode-detail"><span class="mode-detail-icon">⚰️</span><span
-                data-i18n="modes.hcplus.bullet1"><strong class="highlight-red">Forgiving Permadeath</strong> — 1 death
+                data-i18n="modes.plus.bullet1"><strong class="highlight-red">Forgiving Permadeath</strong> — 1 death
                 allowed before deletion</span></div>
             <div class="mode-detail"><span class="mode-detail-icon">🔓</span><span
-                data-i18n="modes.hcplus.bullet2"><strong class="highlight-purple">Checkpoint boost</strong>: reach 70
-                once → unlock <strong>58 boost</strong>
+                data-i18n="modes.plus.bullet2"><strong class="highlight-purple">Checkpoint boost</strong>: reach 70 once
+                → unlock <strong>58 boost</strong>
                 for alts</span></div>
             <div class="mode-detail"><span class="mode-detail-icon">📊</span><span
-                data-i18n="modes.hcplus.bullet3">Account-wide <strong class="highlight-green">scoring</strong> — quests,
+                data-i18n="modes.plus.bullet3">Account-wide <strong class="highlight-green">scoring</strong> — quests,
                 dungeons, achievements</span></div>
             <div class="mode-detail"><span class="mode-detail-icon">🏷️</span><span
-                data-i18n="modes.hcplus.bullet4">Auto-generated <strong class="highlight-purple">tags</strong> expose
-                your rules at a glance</span></div>
+                data-i18n="modes.plus.bullet4">Auto-generated <strong class="highlight-purple">tags</strong> expose your
+                rules at a glance</span></div>
           </div>
           <div class="hcplus-tags-preview">
             <span class="tag tag-mode">HCP</span>
@@ -646,9 +649,31 @@
             style="color: var(--highlight-green); font-family: var(--font-display); font-weight: bold; font-size: 1.5rem; text-shadow: 0 0 10px rgba(46,204,113,0.3);">~%</span>
         </div>
         <div
-          style="width: 100%; height: 10px; background: rgba(255,255,255,0.05); border-radius: 5px; overflow: hidden; position: relative;">
+          style="width: 100%; height: 12px; background: rgba(255,255,255,0.05); border-radius: 6px; position: relative;">
+
+          <!-- Marker indicating current plan target -->
+          <div
+            style="position: absolute; left: 40%; top: -20px; font-size: 0.75rem; color: var(--highlight-orange); font-weight: bold; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%); z-index: 5;">
+            <span>Current Target</span>
+            <span style="font-size: 1rem;">▼</span>
+          </div>
+
+          <!-- Milestone divisions -->
+          <div
+            style="position: absolute; left: 20%; top: 0; width: 2px; height: 100%; background: rgba(255,255,255,0.2); z-index: 2;">
+          </div>
+          <div
+            style="position: absolute; left: 40%; top: 0; width: 2px; height: 100%; background: rgba(255,255,255,0.2); z-index: 2;">
+          </div>
+          <div
+            style="position: absolute; left: 60%; top: 0; width: 2px; height: 100%; background: rgba(255,255,255,0.2); z-index: 2;">
+          </div>
+          <div
+            style="position: absolute; left: 80%; top: 0; width: 2px; height: 100%; background: rgba(255,255,255,0.2); z-index: 2;">
+          </div>
+
           <div id="githubProgressBar"
-            style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--highlight-purple), var(--highlight-green)); transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 5px; box-shadow: 0 0 15px rgba(46,204,113,0.4);">
+            style="position: relative; z-index: 1; width: 0%; height: 100%; background: linear-gradient(90deg, var(--highlight-purple), var(--highlight-green)); transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 6px; box-shadow: 0 0 15px rgba(46,204,113,0.4);">
           </div>
         </div>
         <div
@@ -660,95 +685,121 @@
         </div>
       </div>
 
-      <!-- Reusing the CSS from the Ideas Lab timeline -->
-      <div class="achievement-timeline" style="max-width: 800px; margin: 0 auto;">
-        <div class="ach-entry milestone">
-          <div class="ach-timestamp">March 2026</div>
-          <div class="ach-content">
-            <span class="ach-icon">🛠️</span>
-            <div class="ach-text">
-              <strong class="ach-headline">Project Initialization</strong>
-              <div class="ach-detail">Work started on TBC Hardcore architecture, UI mockups, and core tracker logic.
-              </div>
-            </div>
-          </div>
+      <!-- Text Above Roadmap -->
+      <p
+        style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 32px; font-size: 0.95rem;">
+        We are building the future of WoW TBC Hardcore layer by layer. Click on any of the strategic phases below to
+        view our detailed implementation drafts, technical strategies, and the live status of our architectural design.
+      </p>
+
+      <!-- Horizontal Roadmap Layout -->
+      <div class="roadmap-horizontal"
+        style="display: flex; justify-content: space-between; position: relative; max-width: 1000px; margin: 0 auto 40px; padding: 20px 0; overflow-x: auto; gap: 16px;">
+        <!-- Connecting Line -->
+        <div
+          style="position: absolute; top: 45px; left: 50px; right: 50px; height: 2px; background: rgba(255,255,255,0.1); z-index: 0;">
         </div>
 
-        <div class="ach-entry unlock">
-          <div class="ach-timestamp">May 2026</div>
-          <div class="ach-content">
-            <span class="ach-icon">🗳️</span>
-            <div class="ach-text">
-              <strong class="ach-headline">Community Voting on Core Features</strong>
-              <div class="ach-detail">Opening polls for scoring systems regarding TBC dungeons and raids. Let the
-                community decide the meta.</div>
-            </div>
-          </div>
+        <!-- Phase 1 -->
+        <div class="ach-entry milestone"
+          style="flex: 1; min-width: 160px; text-align: center; position: relative; z-index: 1; padding: 0 12px; margin: 0; border: none; background: transparent;">
+          <div class="ach-timestamp" style="margin-bottom: 8px; font-size: 0.8rem;">Mar 2026</div>
+          <div class="ach-icon"
+            style="margin: 0 auto 16px; background: var(--bg-darker); border: 2px solid var(--highlight-purple); width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border-radius: 50%; box-shadow: 0 0 10px rgba(168,85,247,0.3);">
+            🛠️</div>
+          <strong class="ach-headline" style="display: block; font-size: 0.95rem; margin-bottom: 8px;">Phase
+            1:<br>Foundation & UI</strong>
+          <div class="ach-detail" style="font-size: 0.8rem; display: none;">Core tracker logic and mockups.</div>
+          <!-- hidden details, click opens modal -->
         </div>
 
-        <div class="ach-entry milestone">
-          <div class="ach-timestamp">June 2026</div>
-          <div class="ach-content">
-            <span class="ach-icon">📊</span>
-            <div class="ach-text">
-              <strong class="ach-headline">Result Summary & Final Ruleset</strong>
-              <div class="ach-detail">Publishing the finalized logic for scoring, death appeals, and streamer
-                integrations based on May's votes.</div>
-            </div>
-          </div>
+        <!-- Phase 2 -->
+        <div class="ach-entry unlock"
+          style="flex: 1; min-width: 160px; text-align: center; position: relative; z-index: 1; padding: 0 12px; margin: 0; border: none; background: transparent;">
+          <div class="ach-timestamp" style="margin-bottom: 8px; font-size: 0.8rem;">Apr 2026</div>
+          <div class="ach-icon"
+            style="margin: 0 auto 16px; background: var(--bg-darker); border: 2px solid var(--highlight-green); width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border-radius: 50%;">
+            🗳️</div>
+          <strong class="ach-headline" style="display: block; font-size: 0.95rem; margin-bottom: 8px;">Phase 2:<br>Addon
+            Core</strong>
+          <div class="ach-detail" style="font-size: 0.8rem; display: none;">Community voting on rules.</div>
         </div>
 
-        <div class="ach-entry unlock">
-          <div class="ach-timestamp">July 2026</div>
-          <div class="ach-content">
-            <span class="ach-icon">🧪</span>
-            <div class="ach-text">
-              <strong class="ach-headline">First Test Version Released</strong>
-              <div class="ach-detail">Closed beta for Guild Masters and streamers to test the overlay and
-              </div>
+        <!-- Phase 3 -->
+        <div class="ach-entry milestone"
+          style="flex: 1; min-width: 160px; text-align: center; position: relative; z-index: 1; padding: 0 12px; margin: 0; border: none; background: transparent;">
+          <div class="ach-timestamp" style="margin-bottom: 8px; font-size: 0.8rem;">May 2026</div>
+          <div class="ach-icon"
+            style="margin: 0 auto 16px; background: var(--bg-darker); border: 2px solid var(--portal-purple); width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border-radius: 50%;">
+            📊</div>
+          <strong class="ach-headline" style="display: block; font-size: 0.95rem; margin-bottom: 8px;">Phase 3:<br>Web
+            Backend</strong>
+          <div class="ach-detail" style="font-size: 0.8rem; display: none;">Publishing the finalized logic.</div>
+        </div>
 
-              <div class="ach-entry unlock" style="border-color: var(--highlight-gold);">
-                <div class="ach-timestamp" style="color: var(--highlight-gold);">August 2026</div>
-                <div class="ach-content"
-                  style="background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.2);">
-                  <span class="ach-icon">🚀</span>
-                  <div class="ach-text">
-                    <strong class="ach-headline" style="color: var(--highlight-gold);">First Full Version
-                      Released</strong>
-                    <div class="ach-detail">Public launch of TBC Hardcore (Version 1.0).</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <!-- Phase 4 -->
+        <div class="ach-entry milestone"
+          style="flex: 1; min-width: 160px; text-align: center; position: relative; z-index: 1; padding: 0 12px; margin: 0; border: none; background: transparent;">
+          <div class="ach-timestamp" style="margin-bottom: 8px; font-size: 0.8rem;">Jun 2026</div>
+          <div class="ach-icon"
+            style="margin: 0 auto 16px; background: var(--bg-darker); border: 2px solid var(--highlight-orange); width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border-radius: 50%;">
+            🧪</div>
+          <strong class="ach-headline" style="display: block; font-size: 0.95rem; margin-bottom: 8px;">Phase 4:<br>Test
+            Server</strong>
+          <div class="ach-detail" style="font-size: 0.8rem; display: none;">Closed beta for Guild Masters.</div>
+        </div>
 
-            <!-- Milestone Details Modal -->
-            <div id="milestoneModal" class="modal">
-              <div class="modal-content" style="max-width: 700px; text-align: left; position: relative;">
-                <button class="modal-close" onclick="window.closeMilestoneModal()"
-                  style="position: absolute; right: 20px; top: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">&times;</button>
+        <!-- Phase 5 -->
+        <div class="ach-entry unlock"
+          style="flex: 1; min-width: 160px; text-align: center; position: relative; z-index: 1; padding: 0 12px; margin: 0; border: none; background: transparent;">
+          <div class="ach-timestamp" style="color: var(--highlight-gold); margin-bottom: 8px; font-size: 0.8rem;">Aug
+            2026</div>
+          <div class="ach-icon"
+            style="margin: 0 auto 16px; background: var(--bg-darker); border: 2px solid var(--highlight-gold); width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border-radius: 50%; box-shadow: 0 0 15px rgba(255,215,0,0.3);">
+            🚀</div>
+          <strong class="ach-headline"
+            style="color: var(--highlight-gold); display: block; font-size: 0.95rem; margin-bottom: 8px;">Phase
+            5:<br>Version 1.0</strong>
+          <div class="ach-detail" style="font-size: 0.8rem; display: none;">Public launch of TBC Hardcore.</div>
+        </div>
+      </div>
 
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-                  <span id="msModalIcon" style="font-size: 2rem;">📌</span>
-                  <h2 id="msModalTitle"
-                    style="color: var(--highlight-gold); margin: 0; font-family: var(--font-display);">Phase Title</h2>
-                </div>
-                <p id="msModalDesc"
-                  style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.5;">Phase
-                  Description</p>
+      <!-- Text Below Roadmap -->
+      <div style="text-align: center; margin-top: 16px;">
+        <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+          <em>Note: Timeline estimates are actively updated based on real git progress. As core blockers are resolved,
+            these milestone targets will automatically shift. Check the detailed cards for technical blockers and
+            integration status.</em>
+        </p>
+      </div>
+      <!-- Milestone Details Modal -->
+      <div id="milestoneModal" class="modal">
+        <div class="modal-content" style="max-width: 700px; text-align: left; position: relative;">
+          <button class="modal-close" onclick="window.closeMilestoneModal()"
+            style="position: absolute; right: 20px; top: 20px; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">&times;</button>
 
-                <h4 style="font-family: var(--font-display); color: var(--text-primary); margin-bottom: 12px;">
-                  Implementation Checklist</h4>
-                <div id="msModalChecklist"
-                  style="background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: 8px; padding: 20px;">
-                  <!-- JS fills this via projectPhases -->
-                </div>
-
-                <button class="btn btn-primary" onclick="window.closeMilestoneModal()"
-                  style="margin-top: 24px; width: 100%;" data-i18n="milestoneModal.btn">Close Plan</button>
-              </div>
-            </div>
-
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+            <span id="msModalIcon" style="font-size: 2rem;">📌</span>
+            <h2 id="msModalTitle" style="color: var(--highlight-gold); margin: 0; font-family: var(--font-display);">
+              Phase Title</h2>
           </div>
+          <p id="msModalDesc"
+            style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.5;">Phase
+            Description</p>
+
+          <h4 style="font-family: var(--font-display); color: var(--text-primary); margin-bottom: 12px;">
+            Implementation Checklist</h4>
+          <div id="msModalChecklist"
+            style="background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: 8px; padding: 20px;">
+            <!-- JS fills this via projectPhases -->
+          </div>
+
+          <button class="btn btn-primary" onclick="window.closeMilestoneModal()" style="margin-top: 24px; width: 100%;"
+            data-i18n="milestoneModal.btn">Close Plan</button>
+        </div>
+      </div>
+
+    </div>
   </section>
 
   <!-- ═══ Streamer & Viewer Showcase ═══ -->
