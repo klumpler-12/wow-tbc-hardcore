@@ -1373,6 +1373,230 @@ body {
   font-size: 0.7rem;
 }
 
+/* --- Achievement Timeline --- */
+.idea-preview {
+  padding: 32px;
+  border-radius: 16px;
+  background: rgba(12, 10, 25, 0.9);
+  border: 1px solid rgba(240, 238, 245, 0.08);
+}
+
+.idea-preview-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.idea-preview-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+
+.achievement-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.achievement-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 22px;
+  bottom: 0;
+  width: 2px;
+  background: rgba(240, 238, 245, 0.06);
+}
+
+.ach-entry {
+  position: relative;
+  padding-left: 52px;
+  padding-bottom: 24px;
+}
+
+.ach-entry::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 17px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: var(--bg-void);
+  z-index: 1;
+}
+
+.ach-entry.milestone::before {
+  border-color: var(--fel-green);
+  box-shadow: 0 0 8px var(--fel-green-dim);
+}
+
+.ach-entry.unlock::before {
+  border-color: var(--gold-loot);
+  box-shadow: 0 0 8px var(--gold-dim);
+}
+
+.ach-entry.gearbattle::before {
+  border-color: var(--portal-purple);
+  box-shadow: 0 0 8px var(--portal-purple-dim);
+}
+
+.ach-entry.death::before {
+  border-color: var(--blood-red);
+  box-shadow: 0 0 8px var(--blood-dim);
+}
+
+.ach-timestamp {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.ach-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: rgba(19, 16, 42, 0.6);
+  border: 1px solid rgba(240, 238, 245, 0.05);
+}
+
+.ach-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ach-text {
+  flex: 1;
+}
+
+.ach-headline {
+  font-size: 0.9rem;
+}
+
+.ach-char {
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.ach-char.paladin {
+  color: #f58cba;
+  background: rgba(245, 140, 186, 0.1);
+}
+
+.ach-char.priest {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ach-char.warlock {
+  color: #9482c9;
+  background: rgba(148, 130, 201, 0.1);
+}
+
+.ach-char.warrior {
+  color: #c79c6e;
+  background: rgba(199, 156, 110, 0.1);
+}
+
+.ach-class {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.ach-detail {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.ach-followup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(255, 215, 0, 0.04);
+  border: 1px dashed rgba(255, 215, 0, 0.12);
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+.ach-followup-icon {
+  font-size: 14px;
+}
+
+.ach-score {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  min-width: 50px;
+  text-align: right;
+}
+
+.ach-score.positive {
+  color: var(--fel-green);
+}
+
+.ach-score.negative {
+  color: var(--blood-red);
+}
+
+.ach-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+  padding: 16px;
+  border-radius: 10px;
+  background: rgba(19, 16, 42, 0.8);
+  border: 1px solid rgba(240, 238, 245, 0.06);
+}
+
+.ach-summary-item {
+  text-align: center;
+}
+
+.ach-summary-label {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.ach-summary-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.ach-summary-value.positive {
+  color: var(--fel-green);
+}
+
+@media (max-width: 768px) {
+  .ach-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ach-score {
+    display: none;
+  }
+}
+
 /* Ideas footer divider */
 .ideas-footer-divider {
   position: relative;
