@@ -145,15 +145,24 @@
         </div>
       </div>
 
-      <!-- Arrow Transition / Guide -->
+      <!-- Visual Transition / Guide -->
       <div class="gm-guide-transition reveal">
+        <div class="gm-guide-line-top"></div>
         <div class="gm-guide-content">
-          <div class="gmg-icon">⚙️</div>
+          <div class="gmg-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+              </path>
+            </svg>
+          </div>
           <h3>Your Rules, Your Realm</h3>
           <p>Both <strong class="highlight-purple">Hardcore Plus</strong> and <strong
               class="highlight-orange">Softcore</strong> allow the Guild Master to fine-tune the experience.</p>
-          <div class="gmg-arrow">⬇️</div>
         </div>
+        <div class="gm-guide-line-bottom"></div>
       </div>
 
       <!-- Full Width: GM Customization -->
@@ -564,7 +573,7 @@
           <div class="mockup-label">Twitch Stream — Customizable HC Overlay</div>
           <div class="obs-scene">
             <img src="assets/twitch_stream.png" alt="WoW Twitch Stream" class="obs-bg-img">
-            <div class="hc-widget">
+            <div class="hc-widget" style="transform: scale(0.85); transform-origin: top right;">
               <div class="hcw-header">
                 <span class="hcw-badge">LIVE TRACKER</span>
                 <a href="profile.html" class="hcw-profile-link" title="View Full Profile">↗</a>
@@ -684,10 +693,22 @@
         </div>
       </div>
 
-      <!-- Row 3: Live Penalty Execution -->
-      <div class="mockup-row" style="justify-content: center; margin-top: 24px;">
-        <div class="mockup-panel reveal" style="max-width: 600px; width: 100%;">
-          <div class="mockup-label">Live Penalty Execution — Gear Wipe</div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ═══ Live Penalty Execution ═══ -->
+  <section class="animated-showcase" id="penaltySection">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <div class="section-label">Interactive Punishments</div>
+        <h2 class="section-title">Live Penalty Execution</h2>
+        <p class="section-desc">When chat votes for a punishment, it happens instantly in-game.</p>
+      </div>
+      <div class="mockup-row reveal" style="justify-content: center;">
+        <div class="mockup-panel" style="max-width: 600px; width: 100%; border-color: var(--blood-red);">
+          <div class="mockup-label" style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">Penalty
+            Processing — Gear Wipe</div>
           <div class="penalty-execute">
             <div class="pe-header" id="peHeader">Rolling for penalty item...</div>
             <div class="pe-slot-machine">
@@ -819,8 +840,9 @@
         </div>
         <div class="radar-info">
           <h3>Scanning for Infractions</h3>
-          <p>The addon monitors group composition. If a player 20+ levels higher is using abilities near your character,
-            the system flags it. Quests completed under boosted conditions can be auto-voided.</p>
+          <p>The addon precisely monitors your party and raid composition. Any mismatched groups with significant level
+            disparities are immediately flagged. Characters boosted by grouping with high-level players can be
+            automatically voided, providing complete transparency to Guild Masters.</p>
           <div class="radar-log">
             <div class="radar-log-entry"><span class="flag">⚠ FLAGGED</span> Zuzu (62) grouped with Thokk (70) — 8 lvl
               gap</div>

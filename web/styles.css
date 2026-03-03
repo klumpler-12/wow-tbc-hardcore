@@ -3435,6 +3435,60 @@ body {
   }
 }
 
+/* === GM Guide Transition === */
+.gm-guide-transition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto 50px;
+  position: relative;
+  max-width: 600px;
+  text-align: center;
+}
+
+.gm-guide-line-top,
+.gm-guide-line-bottom {
+  width: 2px;
+  margin: 0 auto;
+}
+
+.gm-guide-line-top {
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--portal-purple));
+  margin-bottom: 20px;
+}
+
+.gm-guide-line-bottom {
+  height: 60px;
+  background: linear-gradient(to bottom, var(--portal-purple), transparent);
+  margin-top: 20px;
+}
+
+.gmg-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--portal-purple);
+  filter: drop-shadow(0 0 12px rgba(155, 89, 240, 0.5));
+}
+
+.gm-guide-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.gm-guide-content p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 /* ============================================
    NEW ANIMATED SECTIONS
    ============================================ */
