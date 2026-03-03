@@ -176,16 +176,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1400px;
-  /* Prevent spreading too far on ultrawide */
+  max-width: 1300px;
   margin: 0 auto;
+  height: 100%;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 .nav-logo {
   text-decoration: none;
   display: flex;
   align-items: center;
-  flex-shrink: 0;
 }
 
 .nav-logo-text {
@@ -195,17 +200,17 @@ body {
   color: #fff;
   letter-spacing: 3px;
   text-transform: uppercase;
-  background: linear-gradient(to right, #fff, var(--portal-purple));
+  background: linear-gradient(135deg, #fff 0%, var(--portal-purple) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.3s ease;
-  position: relative;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 32px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -214,35 +219,67 @@ body {
 .nav-links a {
   text-decoration: none;
   color: var(--text-secondary);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   transition: all 0.3s ease;
-  padding: 8px 0;
+  padding: 4px 0;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--portal-purple);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #fff;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .nav-lang-toggle {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   align-items: center;
-  margin-left: 24px;
 }
 
 .btn-lang {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-muted);
   width: 32px;
-  height: 24px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  font-size: 0.65rem;
-  font-weight: 800;
+  font-size: 0.6rem;
+  font-weight: 900;
   cursor: pointer;
   transition: all 0.2s;
+}
+
+.btn-lang:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
 }
 
 .btn-lang.active {
