@@ -168,6 +168,49 @@
   border-left: 3px solid #FF7D0A;
 }
 
+/* Golden Profile Highlight (for HC Plus Users) */
+.profile-card.hcplus-highlight {
+  border: 1px solid var(--gold-loot);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, rgba(20, 15, 5, 0.8) 0%, rgba(19, 16, 42, 0.8) 100%);
+}
+
+.profile-card.hcplus-highlight .profile-avatar-wrap img {
+  border-color: var(--gold-loot);
+  box-shadow: 0 0 15px var(--gold-loot-dim);
+}
+
+.profile-card.hcplus-highlight .profile-char-mode {
+  color: var(--gold-loot);
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+/* Pulsing Target Highlight */
+#mod-boosts:target {
+  animation: goldPulse 2s infinite;
+  border-color: var(--gold-loot);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+  scroll-margin-top: 100px;
+}
+
+@keyframes goldPulse {
+  0% {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+  }
+
+  100% {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  }
+}
+
+.mode-card-link:hover .mode-card {
+  transform: translateY(-5px);
+}
+
 .hybrid-showcase-container {
   grid-column: 1 / -1;
   display: flex;
