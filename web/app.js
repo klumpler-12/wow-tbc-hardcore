@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPolls();
   animateCounters();
   initIdeasFilter();
+  initPenaltySpin();
 });
 
 /* ─── Navigation ─── */
@@ -334,4 +335,101 @@ function initIdeasFilter() {
       }
     });
   });
+}
+
+/* ─── Penalty Spin Wheel ─── */
+const PE_ITEMS = [
+  { name: 'Krol Blade', type: 'epic', icon: 'inv_sword_16' },
+  { name: 'Lionheart Champion', type: 'epic', icon: 'inv_sword_62' },
+  { name: 'Swift Zulian Tiger', type: 'legendary', icon: 'ability_mount_jungletiger' },
+  { name: 'Jade Defender', type: 'rare', icon: 'inv_shield_30' },
+  { name: 'Justicar Crown', type: 'epic', icon: 'inv_helmet_15' },
+  { name: 'Boots of the Righteous Path', type: 'uncommon', icon: 'inv_boots_plate_06' },
+  { name: 'Band of Eternal Defender', type: 'epic', icon: 'inv_jewelry_ring_47' },
+  { name: 'Cloak of the Pit Stalker', type: 'rare', icon: 'inv_misc_cape_18' },
+  { name: 'Aldor Legacy Defender', type: 'epic', icon: 'inv_shield_31' },
+  { name: 'Dragonspine Trophy', type: 'epic', icon: 'inv_misc_gem_pearl_04' }
+];
+
+function initPenaltySpin() {
+  const reel = document.getElementById('penaltyReel');
+  const status = document.getElementById('penaltyStatus');
+  const header = document.getElementById('peHeader');
+  if (!reel || !status || !header) return;
+
+  const ITEM_WIDTH = 65; // 50px item + 15px gap
+  const TOTAL_ITEMS = 80;
+
+  function buildReel(sequence) {
+    reel.innerHTML = sequence.map(item => `
+      <div class="pe-item ${item.type}">
+        <img src="https://wow.zamimg.com/images/wow/icons/medium/${item.icon}.jpg" alt="${item.name}">
+      </div>
+    `).join('');
+  }
+
+  function playSpinSequence() {
+    let sequence = [];
+    for (let i = 0; i < TOTAL_ITEMS; i++) {
+      sequence.push(PE_ITEMS[Math.floor(Math.random() * PE_ITEMS.length)]);
+    }
+
+    // Choose winning index around item 55-65
+    const winIndex = 55 + Math.floor(Math.random() * 10);
+    const winningItem = sequence[winIndex];
+
+    buildReel(sequence);
+    status.textContent = "Spinning roulette...";
+    status.className = "pe-status";
+    header.textContent = "Rolling for penalty item...";
+    header.style.color = "var(--text-secondary)";
+    reel.style.transition = 'none';
+    reel.style.transform = 'translateX(0px)';
+    reel.classList.remove('pe-reel-shake');
+
+    setTimeout(() => {
+      // Container is max 380px wide. We need the selector box center
+      const windowWidth = document.querySelector('.pe-window').clientWidth;
+      const selectorCenterPos = windowWidth / 2;
+      // offset within the item for a slightly random stop
+      const itemOffset = Math.random() * 20 - 10;
+      const itemCenterPos = (winIndex * ITEM_WIDTH) + (50 / 2) + itemOffset;
+      const targetX = selectorCenterPos - itemCenterPos;
+
+      // Spin
+      reel.style.transition = 'transform 4s cubic-bezier(0.15, 0.85, 0.35, 1)';
+      reel.style.transform = `translateX(${targetX}px)`;
+
+      // Handle spin end
+      setTimeout(() => {
+        status.textContent = `${winningItem.name} selected!`;
+
+        // Destroy animation after a brief pause
+        setTimeout(() => {
+          const items = reel.querySelectorAll('.pe-item');
+          if (items[winIndex]) {
+            items[winIndex].classList.add('destroyed');
+          }
+          reel.classList.add('pe-reel-shake');
+          status.textContent = `${winningItem.name} DESTROYED!`;
+          status.classList.add('danger');
+          header.textContent = "Penalty Executed";
+          header.style.color = "var(--blood-red)";
+
+          // Reset and spin again loop
+          setTimeout(playSpinSequence, 4000);
+        }, 1200);
+
+      }, 4100);
+    }, 100);
+  }
+
+  // Use intersection observer to start only when visible
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      playSpinSequence();
+      observer.disconnect();
+    }
+  }, { threshold: 0.5 });
+  observer.observe(reel.parentElement);
 }

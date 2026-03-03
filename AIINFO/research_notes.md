@@ -4,8 +4,7 @@
 
 ## OnlyFangs 3 Event
 - **Game:** WoW TBC (Burning Crusade)
-- **Led by:** Sodapoppin; Tyler1 possibly involved
-- **Timeline:** TBC Pre-Patch Jan 13 2026, Full Launch Feb 5 2026; OF3 starts LATER in TBC lifecycle (multiple raids available)
+- **Event type:** Community hardcore challenge event, starts later in TBC lifecycle (multiple raids available)
 - **Death Rules Under Discussion:** Permadeath, restart from 58, gear-loss options
 - **58 Boost:** Possibly allowed for alts
 - **Goal:** Avoid "stale gaps" that plagued previous Classic progression
