@@ -732,56 +732,46 @@
         <img src="assets/hybrid_raid_overlay.png" alt="Hybrid Raid Overlay" class="obs-bg-img"
           style="width:100%; height:100%; object-fit: cover;">
 
-        <!-- Skull Life Counter Overlay -->
-        <div class="skull-overlay">
-          <div class="skull-row">
-            <span class="skull-label">Player</span>
-            <div class="skull-icons">
-              <span class="skull-icon">💀</span>
-              <span class="skull-icon">💀</span>
-              <span class="skull-icon lost">💀</span>
-            </div>
-          </div>
-          <div class="skull-row">
-            <span class="skull-label">Mate</span>
-            <div class="skull-icons">
-              <span class="skull-icon">💀</span>
-              <span class="skull-icon">💀</span>
-              <span class="skull-icon">💀</span>
-            </div>
-          </div>
-        </div>
       </div>
 
-      <!-- Right: Explanation Content -->
-      <div class="hsc-content">
-        <h4 class="hsc-title">Hybrid Hardcore — <strong class="highlight-purple">Possible</strong> Rule Example:
-          Individual Raid Lives</h4>
-        <p class="hsc-text">
-          In <strong class="highlight-purple">Hybrid Mode</strong>, the Hardcore experience is modular. This example
-          shows an individual "Instance Life" system where each player manages their own survival pool.
-        </p>
-        <ul class="hsc-penalty-list">
-          <li class="hsc-penalty-item">
-            <span class="hsc-pi-icon">🛡️</span>
-            <div>
-              <strong>Group Fail Penalty (Anti-Abuse)</strong><br>
-              If the raid is not cleared within the designated individual lives, a <strong
-                class="highlight-orange">Global Penalty</strong> (e.g. gear wipe) can be triggered for the whole group
-              to prevent reckless play.
-            </div>
-          </li>
-          <li class="hsc-penalty-item">
-            <span class="hsc-pi-icon">⚰️</span>
-            <div>
-              <strong>Elimination Policy</strong><br>
-              Once an individual's 3 lives are gone (skulls depleted), the chosen penalty triggers—ranging from <strong
-                class="highlight-red">Character Deletion</strong> to a gear-wipe or permanent lockout depending on the
-              GM's choice.
-            </div>
-          </li>
-        </ul>
+      <!-- Cinematic Death Banner Overlay -->
+      <div class="stream-death-banner">
+        <span class="sdb-icon">💀</span>
+        <span class="sdb-text">PUPI DIED — <span style="color: rgba(255,255,255,0.8); font-weight: 400;">Killed by Fel
+            Reaver</span></span>
+        <span class="sdb-icon">💀</span>
       </div>
+    </div>
+
+    <!-- Right: Explanation Content -->
+    <div class="hsc-content">
+      <h4 class="hsc-title">Hybrid Hardcore — <strong class="highlight-purple">Possible</strong> Rule Example:
+        Individual Raid Lives</h4>
+      <p class="hsc-text">
+        In <strong class="highlight-purple">Hybrid Mode</strong>, the Hardcore experience is modular. This example
+        shows an individual "Instance Life" system where each player manages their own survival pool.
+      </p>
+      <ul class="hsc-penalty-list">
+        <li class="hsc-penalty-item">
+          <span class="hsc-pi-icon">🛡️</span>
+          <div>
+            <strong>Group Fail Penalty (Anti-Abuse)</strong><br>
+            If the raid is not cleared within the designated individual lives, a <strong class="highlight-orange">Global
+              Penalty</strong> (e.g. gear wipe) can be triggered for the whole group
+            to prevent reckless play.
+          </div>
+        </li>
+        <li class="hsc-penalty-item">
+          <span class="hsc-pi-icon">⚰️</span>
+          <div>
+            <strong>Elimination Policy</strong><br>
+            Once an individual's 3 lives are gone (skulls depleted), the chosen penalty triggers—ranging from <strong
+              class="highlight-red">Character Deletion</strong> to a gear-wipe or permanent lockout depending on the
+            GM's choice.
+          </div>
+        </li>
+      </ul>
+    </div>
     </div>
 
     <!-- Row 3: Viewer Vote + Alerts -->
@@ -809,26 +799,39 @@
         </div>
       </div>
       <div class="mockup-panel reveal">
-        <div class="mockup-label">Stream Event Alerts</div>
+        <div class="mockup-label">
+          <span style="color: #9146FF;">●</span> Stream Event Alerts (Live API)
+        </div>
         <div class="alert-mockup">
           <div class="salert death">
             <div class="salert-icon">💀</div>
-            <div class="salert-body"><strong>CHARACTER VOIDED</strong><br>Zuzu (Priest) — Fel Reaver,
-              Hellfire<br><span class="salert-pts neg">−300 pts</span></div>
+            <div class="salert-body">
+              <strong>Character Voided</strong><br>
+              Zuzu (Priest) — Fel Reaver, Hellfire<br>
+              <span class="salert-pts neg">−300 pts · Deletion Pending</span>
+            </div>
           </div>
           <div class="salert milestone">
             <div class="salert-icon">🏆</div>
-            <div class="salert-body"><strong>MILESTONE</strong><br>Pupi hit Level 68 — Nagrand<br><span
-                class="salert-pts pos">+100 pts · Rank #3</span></div>
+            <div class="salert-body">
+              <strong>Milestone Reached</strong><br>
+              Pupi hit Level 68 — Nagrand<br>
+              <span class="salert-pts pos">+100 pts · Global Rank #3</span>
+            </div>
           </div>
           <div class="salert gb">
             <div class="salert-icon">⚔️</div>
-            <div class="salert-body"><strong>GEAR BATTLE WON</strong><br>Pupi vs Thokk — Lionheart Blade<br><span
-                class="salert-pts pos">+75 pts · "Duelist"</span></div>
+            <div class="salert-body">
+              <strong>Gear Battle Won</strong><br>
+              Pupi vs Thokk — Lionheart Blade<br>
+              <span class="salert-pts pos">+75 pts · New Title: "Duelist"</span>
+            </div>
           </div>
           <div class="salert viewer">
             <div class="salert-icon">🎮</div>
-            <div class="salert-body"><strong>VIEWER CHALLENGE</strong><br>xXhunterXx spent 5k pts — Zone Lock: Nagrand
+            <div class="salert-body">
+              <strong>Interaction: Viewer Challenge</strong><br>
+              xXhunterXx triggered <span style="color: #9146FF; font-weight: 700;">Zone Lock: Nagrand</span>
             </div>
           </div>
         </div>

@@ -314,8 +314,153 @@
   padding-top: 10px;
 }
 
-.gs-meta-item strong {
-  color: var(--text-secondary);
+/* ═══ Stream Event Alerts & Death Banner ═══ */
+.stream-death-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  background: linear-gradient(90deg, transparent 0%, rgba(220, 38, 38, 0.9) 15%, rgba(220, 38, 38, 0.9) 85%, transparent 100%);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  box-shadow: 0 0 50px rgba(220, 38, 38, 0.4);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 100;
+  animation: bannerFadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  backdrop-filter: blur(5px);
+}
+
+@keyframes bannerFadeIn {
+  from {
+    opacity: 0;
+    width: 0%;
+    filter: brightness(2);
+  }
+
+  to {
+    opacity: 1;
+    width: 100%;
+    filter: brightness(1);
+  }
+}
+
+.sdb-text {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 255, 255, 0.3);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.sdb-icon {
+  font-size: 2.4rem;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+.alert-mockup {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid rgba(145, 70, 255, 0.3);
+  /* Twitch Purple */
+  position: relative;
+  overflow: hidden;
+}
+
+.salert {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: rgba(20, 10, 30, 0.8);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  animation: alertSlideIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes alertSlideIn {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.salert.death {
+  border-left: 4px solid var(--blood-red);
+}
+
+.salert.milestone {
+  border-left: 4px solid var(--gold-loot);
+}
+
+.salert.gb {
+  border-left: 4px solid var(--fel-green);
+}
+
+.salert.viewer {
+  border-left: 4px solid #9146FF;
+}
+
+.salert-icon {
+  font-size: 1.5rem;
+  width: 32px;
+  text-align: center;
+}
+
+.salert-body {
+  flex: 1;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.salert-body strong {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.salert-pts {
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.salert-pts.neg {
+  color: var(--blood-red);
+}
+
+.salert-pts.pos {
+  color: var(--fel-green);
+}
+
+/* Animation Delays */
+.salert:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.salert:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.salert:nth-child(4) {
+  animation-delay: 0.6s;
 }
 
 .hybrid-showcase-container {
