@@ -219,331 +219,162 @@
     </div>
   </section>
 
-  <!-- ═══ Features ═══ -->
-  <section class="features" id="features">
-    <div class="ambient-orb orb-green" style="bottom: -150px; left: -100px;"></div>
+  <!-- ═══ Features Strip ═══ -->
+  <section class="features-strip" id="features">
     <div class="container">
-      <div class="features-header reveal">
-        <div class="section-label">What's Under The Hood</div>
-        <h2 class="section-title">Built for Outland</h2>
-        <p class="section-desc">
-          Everything you need for organized hardcore TBC, running entirely client-side
-          via the WoW Addon API.
-        </p>
+      <div class="strip-row reveal">
+        <div class="strip-item"><span>📡</span> Death Monitoring</div>
+        <div class="strip-item"><span>⚖️</span> Penalty Engine</div>
+        <div class="strip-item"><span>🏅</span> Scoring System</div>
+        <div class="strip-item"><span>👥</span> Guild Sync</div>
+        <div class="strip-item"><span>🔐</span> SSF Enforcement</div>
+        <div class="strip-item"><span>📊</span> Leaderboards</div>
       </div>
-      <div class="features-grid">
-        <div class="feature-card reveal">
-          <span class="feature-icon">📡</span>
-          <h3 class="feature-name">Death Monitoring</h3>
-          <p class="feature-desc">Real-time combat log analysis detects deaths instantly — recording cause, zone, level,
-            killer, and timestamp.</p>
-        </div>
-        <div class="feature-card reveal">
-          <span class="feature-icon">⚖️</span>
-          <h3 class="feature-name">Penalty Engine</h3>
-          <p class="feature-desc">Configurable penalty tiers from character voiding to gear deletion to score
-            deductions. Your guild, your rules.</p>
-        </div>
-        <div class="feature-card reveal">
-          <span class="feature-icon">🏅</span>
-          <h3 class="feature-name">Scoring System</h3>
-          <p class="feature-desc">Points for quests, dungeons, achievements, and milestones. Deaths subtract. Compete on
-            the leaderboard.</p>
-        </div>
-        <div class="feature-card reveal">
-          <span class="feature-icon">👥</span>
-          <h3 class="feature-name">Guild Integration</h3>
-          <p class="feature-desc">Auto-kick on HC death, death announcements, guild-wide sync, and a memorial archive
-            for the fallen.</p>
-        </div>
-        <div class="feature-card reveal">
-          <span class="feature-icon">🔐</span>
-          <h3 class="feature-name">SSF Enforcement</h3>
-          <p class="feature-desc">Optional mail lock, trade restrictions, and AH bans. Enforced through addon
-            verification and guild rules.</p>
-        </div>
-        <div class="feature-card reveal">
-          <span class="feature-icon">📊</span>
-          <h3 class="feature-name">Live Leaderboards</h3>
-          <p class="feature-desc">Real-time scores synced via addon messages across guild members. See who's leading the
-            charge into Outland.</p>
-        </div>
+      <div class="strip-link reveal">
+        <a href="details.html" class="btn btn-ghost">Explore Features, Scoring & Pipeline →</a>
       </div>
     </div>
   </section>
 
-  <!-- ═══ How It Works ═══ -->
-  <section class="flow" id="flow">
-    <div class="container">
-      <div class="flow-header reveal">
-        <div class="section-label">The Pipeline</div>
-        <h2 class="section-title">From Death to Data</h2>
-        <p class="section-desc">
-          What happens when you fall in Outland — tracked, processed, and broadcast in real-time.
-        </p>
-      </div>
-      <div class="flow-steps">
-        <div class="flow-step reveal">
-          <div class="flow-step-num">1</div>
-          <span class="flow-step-icon">💀</span>
-          <h4 class="flow-step-title">Death Detected</h4>
-          <p class="flow-step-desc">Combat log fires PLAYER_DEAD event. Addon captures all context.</p>
-          <span class="flow-arrow">→</span>
-        </div>
-        <div class="flow-step reveal">
-          <div class="flow-step-num">2</div>
-          <span class="flow-step-icon">🔍</span>
-          <h4 class="flow-step-title">Mode Check</h4>
-          <p class="flow-step-desc">Addon reads the player's registered mode: Hardcore, Softcore, or Nullcore.</p>
-          <span class="flow-arrow">→</span>
-        </div>
-        <div class="flow-step reveal">
-          <div class="flow-step-num">3</div>
-          <span class="flow-step-icon">⚡</span>
-          <h4 class="flow-step-title">Penalty Applied</h4>
-          <p class="flow-step-desc">Mode-specific penalties execute: guild removal, gear wipe, or score deduction.</p>
-          <span class="flow-arrow">→</span>
-        </div>
-        <div class="flow-step reveal">
-          <div class="flow-step-num">4</div>
-          <span class="flow-step-icon">📢</span>
-          <h4 class="flow-step-title">Broadcast</h4>
-          <p class="flow-step-desc">Death details shared with guild members via addon messaging channel.</p>
-          <span class="flow-arrow">→</span>
-        </div>
-        <div class="flow-step reveal">
-          <div class="flow-step-num">5</div>
-          <span class="flow-step-icon">📊</span>
-          <h4 class="flow-step-title">Leaderboard</h4>
-          <p class="flow-step-desc">Score updated, death log appended, leaderboard recalculated.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ Streamer & Viewer Concepts ═══ -->
+  <!-- ═══ Streamer & Viewer Showcase ═══ -->
   <section class="streamer" id="streamer">
-    <div class="ambient-orb orb-orange" style="top: 100px; right: -200px;"></div>
     <div class="container">
       <div class="streamer-header reveal">
         <div class="section-label">Streamer & Viewer Integration</div>
         <h2 class="section-title">Hardcore as a Spectator Sport</h2>
         <p class="section-desc">
-          Turn every death, duel, and milestone into content. Real-time overlays,
-          viewer interaction, and public profiles — all bridged through a companion app.
+          Turn every death, duel, and milestone into content. Here's what addon data looks like in action.
         </p>
       </div>
-
-      <div class="streamer-grid">
-
-        <!-- OBS Overlay -->
-        <div class="streamer-card reveal">
-          <div class="streamer-card-icon">🎥</div>
-          <h3 class="streamer-card-title">OBS Overlay API</h3>
-          <p class="streamer-card-desc">Companion app exposes a local WebSocket that OBS Browser Sources connect to —
-            showing live data directly on stream.</p>
-          <ul class="streamer-card-bullets">
-            <li>Live HP bar, mana, and combat status</li>
-            <li>Current score and leaderboard position</li>
-            <li>Death counter and active mode indicator</li>
-            <li>Equipped gear display with item links</li>
-            <li>Kill feed and recent achievement ticker</li>
-          </ul>
+      <div class="mockup-row">
+        <div class="mockup-panel reveal">
+          <div class="mockup-label">OBS Stream Overlay</div>
+          <div class="obs-mockup">
+            <div class="obs-header"><span class="obs-mode-badge">HC PLUS</span><span class="obs-live">● LIVE</span>
+            </div>
+            <div class="obs-player">
+              <span class="obs-avatar">⚔️</span>
+              <div class="obs-player-info">
+                <div class="obs-name">Pupi <span class="obs-class-tag paladin">Ret Paladin</span></div>
+                <div class="obs-level">Level 68 · Nagrand</div>
+              </div>
+              <div class="obs-score-box">
+                <div class="obs-score-label">Score</div>
+                <div class="obs-score-val">3,475</div>
+              </div>
+            </div>
+            <div class="obs-bars">
+              <div class="obs-bar-row"><span class="obs-bar-label">HP</span>
+                <div class="obs-bar">
+                  <div class="obs-bar-fill hp" style="width:72%"></div>
+                </div><span class="obs-bar-num">5,842/8,114</span>
+              </div>
+              <div class="obs-bar-row"><span class="obs-bar-label">MP</span>
+                <div class="obs-bar">
+                  <div class="obs-bar-fill mp" style="width:45%"></div>
+                </div><span class="obs-bar-num">2,180/4,840</span>
+              </div>
+            </div>
+            <div class="obs-stats">
+              <div class="obs-stat"><span>💀</span> 0 Deaths</div>
+              <div class="obs-stat"><span>⚔️</span> 1W/0L</div>
+              <div class="obs-stat"><span>🏆</span> Rank #3</div>
+            </div>
+            <div class="obs-feed">
+              <div class="obs-feed-item green">🏅 +100 pts — Reached Nagrand</div>
+              <div class="obs-feed-item">⚔️ Gear Battle won vs Thokk</div>
+              <div class="obs-feed-item dim">📜 +15 pts — Ring of Blood</div>
+            </div>
+          </div>
         </div>
-
-        <!-- Viewer Penalty Votes -->
-        <div class="streamer-card reveal">
-          <div class="streamer-card-icon">🗳️</div>
-          <h3 class="streamer-card-title">Viewer Penalty Votes</h3>
-          <p class="streamer-card-desc">Viewers choose the punishment. Twitch polls or chat commands let the audience
-            decide penalty severity in real-time.</p>
-          <ul class="streamer-card-bullets">
-            <li>Streamer dies → poll triggers: "Gear wipe or score penalty?"</li>
-            <li>Vote results pushed via companion app → SavedVariables → addon</li>
-            <li>Configurable options per mode (HC Plus allows viewer choice, HC Classic overrides)</li>
-            <li>Twitch Extension or chat bot integration</li>
-            <li>Timeout window to prevent spam — one vote per death event</li>
-          </ul>
+        <div class="mockup-panel reveal">
+          <div class="mockup-label">Public Streamer Profile</div>
+          <div class="profile-mockup">
+            <div class="prof-head">
+              <div class="prof-avatar">⚔️</div>
+              <div class="prof-info">
+                <div class="prof-name">Pupi</div>
+                <div class="prof-class">Retribution Paladin · HC Plus</div>
+                <div class="prof-links"><span class="plink twitch">📺 twitch.tv/pupi</span><span class="plink yt">▶️
+                    YouTube</span></div>
+              </div>
+            </div>
+            <div class="prof-stats">
+              <div class="pstat"><span class="pstat-num">3,475</span><span class="pstat-lbl">Score</span></div>
+              <div class="pstat"><span class="pstat-num">0</span><span class="pstat-lbl">Deaths</span></div>
+              <div class="pstat"><span class="pstat-num">3</span><span class="pstat-lbl">Chars</span></div>
+              <div class="pstat"><span class="pstat-num">1/0</span><span class="pstat-lbl">GB W/L</span></div>
+            </div>
+            <div class="prof-chars">
+              <div class="pchar active"><span class="cdot paladin"></span>Pupi <span class="clvl">68</span><span
+                  class="cstatus live">Active</span></div>
+              <div class="pchar"><span class="cdot warlock"></span>Hexmaw <span class="clvl">61</span><span
+                  class="cstatus live">Active</span></div>
+              <div class="pchar dead"><span class="cdot priest"></span>Zuzu <span class="clvl">62</span><span
+                  class="cstatus void">Voided</span></div>
+            </div>
+            <div class="prof-plan">
+              <div class="pplan-lbl">Current Plan</div>
+              <div class="pplan-txt">"Pushing Pupi to 70 for Kara. HC Plus guild wanted. Stream: Tue/Thu 8pm."</div>
+            </div>
+          </div>
         </div>
-
-        <!-- Player Profiles -->
-        <div class="streamer-card reveal">
-          <div class="streamer-card-icon">👤</div>
-          <h3 class="streamer-card-title">Public Player Profiles</h3>
-          <p class="streamer-card-desc">Opt-in web profiles showing your HC journey. Link your Twitch, share your plans,
-            flex your stats.</p>
-          <ul class="streamer-card-bullets">
-            <li>Streamer link (Twitch / YouTube / Kick) displayed on profile</li>
-            <li>Current character, mode, level, and plan notes</li>
-            <li>Full death history with cause, zone, and timestamp</li>
-            <li>Account-wide stats: total score, chars played, boost usage</li>
-            <li>Privacy controls — choose what's visible</li>
-          </ul>
-        </div>
-
-        <!-- Stream Alerts -->
-        <div class="streamer-card reveal">
-          <div class="streamer-card-icon">🔔</div>
-          <h3 class="streamer-card-title">Stream Event Alerts</h3>
-          <p class="streamer-card-desc">Auto-triggered visual and audio alerts for key moments — making every milestone
-            and death cinematic.</p>
-          <ul class="streamer-card-bullets">
-            <li>Death alert: screen flash, sound effect, death recap overlay</li>
-            <li>Level milestone: celebration animation + score popup</li>
-            <li>Gear Battle: split-screen wager reveal + result</li>
-            <li>First kill / boss kill: custom badge animation</li>
-            <li>OBS scene auto-switch on death (e.g. swap to death cam)</li>
-          </ul>
-        </div>
-
-        <!-- Viewer Challenges -->
-        <div class="streamer-card reveal">
-          <div class="streamer-card-icon">🎮</div>
-          <h3 class="streamer-card-title">Viewer Challenges</h3>
-          <p class="streamer-card-desc">Viewers spend channel points to influence the streamer's HC run — adding stakes
-            and interactivity.</p>
-          <ul class="streamer-card-bullets">
-            <li>Spend points to force a Gear Battle challenge</li>
-            <li>Place bounties on the streamer (other HC players can claim)</li>
-            <li>Vote on which zone the streamer must quest in next</li>
-            <li>Trigger "gauntlet mode" — extra death penalty for X minutes</li>
-            <li>Reward top contributors with in-stream shoutouts</li>
-          </ul>
-        </div>
-
-        <!-- Account-Wide Stats -->
-        <div class="streamer-card reveal">
-          <div class="streamer-card-icon">📊</div>
-          <h3 class="streamer-card-title">Account-Wide Stats</h3>
-          <p class="streamer-card-desc">One page to see your entire HC legacy — every character, every death, every
-            title earned.</p>
-          <ul class="streamer-card-bullets">
-            <li>All characters: active, voided, boosted — with class colors</li>
-            <li>Achievement timeline with ripple effects (boost unlocks, follow-up chars)</li>
-            <li>Gear Battle W/L record and title collection</li>
-            <li>Total playtime, average death level, PvP stats</li>
-            <li>Shareable link + embeddable widget for stream panels</li>
-          </ul>
-        </div>
-
       </div>
-
-      <div class="streamer-notice reveal">
-        <span>⚠️</span>
-        <span>Viewer → game interactions require legal review against <strong>Blizzard addon policy</strong> and
-          <strong>Twitch Extension guidelines</strong>. Companion app architecture avoids direct API calls from the
-          addon.</span>
+      <div class="mockup-row">
+        <div class="mockup-panel reveal">
+          <div class="mockup-label">Viewer Penalty Vote (Twitch)</div>
+          <div class="vote-mockup">
+            <div class="vote-event">💀 PUPI DIED — Killed by Fel Reaver</div>
+            <div class="vote-q">Chat decides the penalty!</div>
+            <div class="vote-opts">
+              <div class="vopt" style="--pct:42%">
+                <div class="vopt-fill"></div><span class="vopt-txt">⚔️ Full gear wipe</span><span
+                  class="vopt-pct">42%</span>
+              </div>
+              <div class="vopt winner" style="--pct:35%">
+                <div class="vopt-fill"></div><span class="vopt-txt">📉 Score penalty (−300)</span><span
+                  class="vopt-pct">35%</span>
+              </div>
+              <div class="vopt" style="--pct:23%">
+                <div class="vopt-fill"></div><span class="vopt-txt">🔒 Gear lock 1hr</span><span
+                  class="vopt-pct">23%</span>
+              </div>
+            </div>
+            <div class="vote-foot"><span>1,247 votes</span><span class="vote-timer">⏱ 28s</span></div>
+          </div>
+        </div>
+        <div class="mockup-panel reveal">
+          <div class="mockup-label">Stream Event Alerts</div>
+          <div class="alert-mockup">
+            <div class="salert death">
+              <div class="salert-icon">💀</div>
+              <div class="salert-body"><strong>CHARACTER VOIDED</strong><br>Zuzu (Priest) — Fel Reaver,
+                Hellfire<br><span class="salert-pts neg">−300 pts</span></div>
+            </div>
+            <div class="salert milestone">
+              <div class="salert-icon">🏆</div>
+              <div class="salert-body"><strong>MILESTONE</strong><br>Pupi hit Level 68 — Nagrand<br><span
+                  class="salert-pts pos">+100 pts · Rank #3</span></div>
+            </div>
+            <div class="salert gb">
+              <div class="salert-icon">⚔️</div>
+              <div class="salert-body"><strong>GEAR BATTLE WON</strong><br>Pupi vs Thokk — Lionheart Blade<br><span
+                  class="salert-pts pos">+75 pts · "Duelist"</span></div>
+            </div>
+            <div class="salert viewer">
+              <div class="salert-icon">🎮</div>
+              <div class="salert-body"><strong>VIEWER CHALLENGE</strong><br>xXhunterXx spent 5k pts — Zone Lock: Nagrand
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <div class="streamer-notice reveal"><span>⚠️</span><span>Viewer → game interactions require legal review against
+          <strong>Blizzard addon policy</strong> and <strong>Twitch Extension guidelines</strong>.</span></div>
     </div>
   </section>
 
-  <!-- ═══ Scoring Concept ═══ -->
-  <section class="scoring" id="scoring">
-    <div class="ambient-orb orb-purple" style="bottom: -100px; left: -150px;"></div>
-    <div class="container">
-      <div class="scoring-header reveal">
-        <div class="section-label">The Point System</div>
-        <h2 class="section-title">How Scoring Works</h2>
-        <p class="section-desc">
-          Every action matters. Quests, dungeons, and milestones grow your score. Deaths take it away.
-        </p>
-      </div>
 
-      <div class="scoring-layout">
-        <div class="scoring-breakdown reveal">
-          <div class="score-row">
-            <div class="score-row-left">
-              <span class="score-row-icon">📜</span>
-              <span class="score-row-label">Quest Completed</span>
-            </div>
-            <span class="score-row-value positive">+5 — +25</span>
-          </div>
-          <div class="score-row">
-            <div class="score-row-left">
-              <span class="score-row-icon">⚔️</span>
-              <span class="score-row-label">Dungeon Cleared</span>
-            </div>
-            <span class="score-row-value positive">+50 — +200</span>
-          </div>
-          <div class="score-row">
-            <div class="score-row-left">
-              <span class="score-row-icon">🐉</span>
-              <span class="score-row-label">Raid Boss Kill</span>
-            </div>
-            <span class="score-row-value positive">+200 — +1000</span>
-          </div>
-          <div class="score-row">
-            <div class="score-row-left">
-              <span class="score-row-icon">🎖️</span>
-              <span class="score-row-label">Level Milestone (10, 20, ... 70)</span>
-            </div>
-            <span class="score-row-value positive">+100</span>
-          </div>
-          <div class="score-row">
-            <div class="score-row-left">
-              <span class="score-row-icon">🏅</span>
-              <span class="score-row-label">Achievement Unlocked</span>
-            </div>
-            <span class="score-row-value positive">+10 — +50</span>
-          </div>
-          <div class="score-row">
-            <div class="score-row-left">
-              <span class="score-row-icon">💀</span>
-              <span class="score-row-label">Player Death</span>
-            </div>
-            <span class="score-row-value negative">−100 — −500</span>
-          </div>
-          <div class="score-row">
-            <div class="score-row-left">
-              <span class="score-row-icon">🏳️</span>
-              <span class="score-row-label">PvP Death (if enabled)</span>
-            </div>
-            <span class="score-row-value negative">−25 — −100</span>
-          </div>
-        </div>
-
-        <div class="scoring-demo reveal">
-          <h3 class="scoring-demo-title">🏆 Sample Leaderboard</h3>
-          <div class="leaderboard">
-            <div class="leaderboard-row gold">
-              <span class="lb-rank">1</span>
-              <span class="lb-class-icon">🧙</span>
-              <div class="lb-name">Shadowpriest<br><span class="lb-details">Level 70 · Shadow Priest · 0 Deaths</span>
-              </div>
-              <span class="lb-score">4,250</span>
-            </div>
-            <div class="leaderboard-row silver">
-              <span class="lb-rank">2</span>
-              <span class="lb-class-icon">⚔️</span>
-              <div class="lb-name">Thundercleave<br><span class="lb-details">Level 68 · Arms Warrior · 1 Death</span>
-              </div>
-              <span class="lb-score">3,820</span>
-            </div>
-            <div class="leaderboard-row bronze">
-              <span class="lb-rank">3</span>
-              <span class="lb-class-icon">🏹</span>
-              <div class="lb-name">Felhunter<br><span class="lb-details">Level 67 · BM Hunter · 0 Deaths</span></div>
-              <span class="lb-score">3,410</span>
-            </div>
-            <div class="leaderboard-row">
-              <span class="lb-rank" style="color: var(--text-muted)">4</span>
-              <span class="lb-class-icon">🌿</span>
-              <div class="lb-name">Lifebloomer<br><span class="lb-details">Level 66 · Resto Druid · 2 Deaths</span>
-              </div>
-              <span class="lb-score">2,780</span>
-            </div>
-            <div class="leaderboard-row">
-              <span class="lb-rank" style="color: var(--text-muted)">5</span>
-              <span class="lb-class-icon">🔮</span>
-              <div class="lb-name">Arcaneblast<br><span class="lb-details">Level 65 · Arcane Mage · 3 Deaths</span>
-              </div>
-              <span class="lb-score">2,150</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ═══ Ideas Lab Divider ═══ -->
   <div class="ideas-divider"></div>
