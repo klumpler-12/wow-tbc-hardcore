@@ -15,6 +15,98 @@
             padding: 120px 0 80px;
         }
 
+        /* === Visual Timeline Bar === */
+        .timeline-bar {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            margin-bottom: 60px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            min-height: 80px;
+        }
+
+        .timeline-step {
+            flex: 1;
+            padding: 16px 14px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            transition: transform 0.2s;
+        }
+
+        .timeline-step:not(:last-child)::after {
+            content: '▶';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .timeline-step .tl-month {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .timeline-step .tl-label {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .timeline-step .tl-icon {
+            font-size: 1.4rem;
+        }
+
+        .timeline-step.active {
+            background: linear-gradient(135deg, rgba(155, 89, 240, 0.25), rgba(155, 89, 240, 0.08));
+            box-shadow: inset 0 0 30px rgba(155, 89, 240, 0.1);
+        }
+
+        .timeline-step.active .tl-label {
+            color: var(--portal-purple);
+        }
+
+        .timeline-step.done {
+            background: rgba(76, 175, 80, 0.08);
+        }
+
+        .timeline-step.done .tl-label {
+            color: var(--highlight-green);
+        }
+
+        .timeline-step.future {
+            background: rgba(255, 255, 255, 0.02);
+            opacity: 0.6;
+        }
+
+        @media (max-width: 700px) {
+            .timeline-bar {
+                flex-direction: column;
+                border-radius: 12px;
+            }
+
+            .timeline-step:not(:last-child)::after {
+                content: '▼';
+                right: 50%;
+                top: auto;
+                bottom: -10px;
+                transform: translateX(50%);
+            }
+        }
+
+        /* === Phase Cards === */
         .phase-section {
             margin-bottom: 80px;
             padding: 40px;
@@ -144,10 +236,40 @@
 
     <div class="dev-page container">
         <header style="text-align: center; margin-bottom: 60px;">
-            <h1 style="font-family: var(--font-display); font-size: 3rem; margin-bottom: 10px;">Master Project Plan</h1>
-            <p style="color: var(--text-muted); font-size: 1.1rem;">Technical Specifications & Implementation Milestones
+            <h1 style="font-family: var(--font-display); font-size: 3rem; margin-bottom: 10px;">Development Roadmap</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">From concept to release — follow our progress
+                through each milestone.
             </p>
         </header>
+
+        <!-- Visual Timeline Bar -->
+        <div class="timeline-bar reveal">
+            <div class="timeline-step active">
+                <span class="tl-icon">🛠️</span>
+                <span class="tl-label">Foundation & UI</span>
+                <span class="tl-month">March 2026</span>
+            </div>
+            <div class="timeline-step future">
+                <span class="tl-icon">📦</span>
+                <span class="tl-label">Addon Core POC</span>
+                <span class="tl-month">April 2026</span>
+            </div>
+            <div class="timeline-step future">
+                <span class="tl-icon">🗳️</span>
+                <span class="tl-label">Community Vote</span>
+                <span class="tl-month">May 2026</span>
+            </div>
+            <div class="timeline-step future">
+                <span class="tl-icon">🧪</span>
+                <span class="tl-label">Limited Beta</span>
+                <span class="tl-month">July 2026</span>
+            </div>
+            <div class="timeline-step future">
+                <span class="tl-icon">🚀</span>
+                <span class="tl-label">Full Release v1.0</span>
+                <span class="tl-month">August 2026</span>
+            </div>
+        </div>
 
         <div id="development-content">
             <!-- Phase 1 -->
@@ -156,7 +278,7 @@
                     <div class="phase-icon">🛠️</div>
                     <div class="phase-title">
                         <h2>Phase 1: Foundation & UI</h2>
-                        <span>March 2026</span>
+                        <span>March 2026 — Active</span>
                     </div>
                 </div>
                 <div class="phase-grid">
@@ -185,11 +307,13 @@
                                 and color palette</li>
                             <li class="task-item done"><span class="task-check">✓</span> Implement real-time translation
                                 engine (DE/EN)</li>
-                            <li class="task-item"><span class="task-circle">○</span> Design interactive Hardcore Ruleset
+                            <li class="task-item done"><span class="task-check">✓</span> Design interactive Hardcore
+                                Ruleset
                                 documentation</li>
-                            <li class="task-item"><span class="task-circle">○</span> Create high-fidelity mockups for
+                            <li class="task-item done"><span class="task-check">✓</span> Create high-fidelity mockups
+                                for
                                 Character Profile cards</li>
-                            <li class="task-item"><span class="task-circle">○</span> Build responsive landing page
+                            <li class="task-item done"><span class="task-check">✓</span> Build responsive landing page
                                 container</li>
                         </ul>
                     </div>
@@ -201,7 +325,7 @@
                 <div class="phase-header">
                     <div class="phase-icon" style="border-color: var(--highlight-green);">📦</div>
                     <div class="phase-title">
-                        <h2>Phase 2: Addon Core</h2>
+                        <h2>Phase 2: Addon Core POC</h2>
                         <span>April 2026</span>
                     </div>
                 </div>
@@ -210,33 +334,37 @@
                         <div class="tech-box" style="margin-bottom: 24px;">
                             <h4>Strategy:</h4>
                             <div class="draft-content">
+                                <strong>Local Dev Environment:</strong> Setting up CMaNGOS TBC via Docker for safe,
+                                local
+                                addon development and testing. Never connects to retail servers — no ToS risk.<br><br>
                                 <strong>Lua State Machine:</strong> The addon acts as a passive listener for Blizzard
-                                events. We will implement robust hooks into `COMBAT_LOG_EVENT_UNFILTERED` and
-                                `UNIT_DIED` to track deaths instantly. <br><br>
-                                <strong>Anti-Cheat:</strong> For HC+, we need to verify deaths. The addon will generate
-                                a unique hash for every level-up and death event, combining character names, timestamps,
-                                and server ID to prevent manual data spoofing.
+                                events. We hook into `COMBAT_LOG_EVENT_UNFILTERED` and `UNIT_DIED` to track deaths
+                                instantly.
+                                The first POC will display a functional HC Status button in-game.<br><br>
+                                <strong>Anti-Cheat:</strong> For HC+, we generate a unique hash for every level-up and
+                                death
+                                event, combining character names, timestamps, and server ID to prevent data spoofing.
                             </div>
                         </div>
                         <div class="tech-box">
                             <h4>Tech Stack:</h4>
                             <p style="margin:0; font-family: monospace; color: var(--highlight-green);">Lua (Blizzard
-                                API), HMAC-SHA256, ACE3 Framework</p>
+                                API), CMaNGOS TBC Docker, HMAC-SHA256, ACE3 Framework</p>
                         </div>
                     </div>
                     <div class="phase-right">
                         <h4>Checklist:</h4>
                         <ul class="task-list">
+                            <li class="task-item"><span class="task-circle">○</span> Set up CMaNGOS TBC Docker on local
+                                Mac</li>
+                            <li class="task-item"><span class="task-circle">○</span> Create POC addon with functional UI
+                                button</li>
                             <li class="task-item"><span class="task-circle">○</span> Engineer core death tracking logic
                                 in Lua</li>
                             <li class="task-item"><span class="task-circle">○</span> Implement secure data encryption
                                 for event hashes</li>
                             <li class="task-item"><span class="task-circle">○</span> Build in-game Hardcore status UI
                                 (Unit Frames)</li>
-                            <li class="task-item"><span class="task-circle">○</span> Develop localized quest & mechanic
-                                tooltips</li>
-                            <li class="task-item"><span class="task-circle">○</span> Create export-to-web data protocol
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -245,43 +373,45 @@
             <!-- Phase 3 -->
             <section class="phase-section reveal" id="phase3">
                 <div class="phase-header">
-                    <div class="phase-icon" style="border-color: var(--highlight-orange);">📊</div>
+                    <div class="phase-icon" style="border-color: var(--highlight-orange);">🗳️</div>
                     <div class="phase-title">
-                        <h2>Phase 3: Web Backend & DB</h2>
+                        <h2>Phase 3: Community Voting</h2>
                         <span>May 2026</span>
                     </div>
                 </div>
                 <div class="phase-grid">
                     <div class="phase-left">
                         <div class="tech-box" style="margin-bottom: 24px;">
-                            <h4>Backend Infrastructure:</h4>
+                            <h4>Feedback Loop:</h4>
                             <div class="draft-content">
-                                <strong>Real-time API:</strong> Using Node.js and Socket.io to push death alerts to the
-                                website within milliseconds. This allows for the "Global Death Ticker" feature.<br><br>
-                                <strong>Leaderboard Logic:</strong> A PostgreSQL database will store character data.
-                                Rankings are calculated based on a weighted formula: (Level * 100) + Quest Completion %
-                                - Death Penalties.
+                                <strong>Community Feature Vote:</strong> Opening polls to let players and guild leaders
+                                vote on which features should ship in v1.0 vs. which stay experimental. Modes like
+                                Nullcore
+                                League and Chaos Wheel events will be prioritized based on demand.<br><br>
+                                <strong>Balance Adjustments:</strong> Based on early POC playtesting feedback,
+                                penalties,
+                                scoring multipliers, and GM customization options will be tuned to match community
+                                expectations for fair play and excitement.
                             </div>
                         </div>
                         <div class="tech-box">
-                            <h4>Tech Stack:</h4>
-                            <p style="margin:0; font-family: monospace; color: var(--highlight-green);">Node.js,
-                                Express, PostgreSQL, Socket.io</p>
+                            <h4>Channels:</h4>
+                            <p style="margin:0; font-family: monospace; color: var(--highlight-green);">Discord Polls,
+                                Website Survey, Twitch Chat Integration, Guild Master Feedback</p>
                         </div>
                     </div>
                     <div class="phase-right">
                         <h4>Checklist:</h4>
                         <ul class="task-list">
-                            <li class="task-item"><span class="task-circle">○</span> Set up production-grade PostgreSQL
-                                schema</li>
-                            <li class="task-item"><span class="task-circle">○</span> Build authenticated REST API for
-                                Companion App communication</li>
-                            <li class="task-item"><span class="task-circle">○</span> Implement real-time WebSocket death
-                                ticker</li>
-                            <li class="task-item"><span class="task-circle">○</span> Design algorithmic ranking system
-                                for Leaderboards</li>
-                            <li class="task-item"><span class="task-circle">○</span> Develop character history viewing
-                                backend</li>
+                            <li class="task-item"><span class="task-circle">○</span> Publish feature survey to guild
+                                leaders and streamers</li>
+                            <li class="task-item"><span class="task-circle">○</span> Collect and analyze community
+                                preferences</li>
+                            <li class="task-item"><span class="task-circle">○</span> Adjust feature roadmap based on
+                                vote results</li>
+                            <li class="task-item"><span class="task-circle">○</span> Finalize v1.0 feature scope</li>
+                            <li class="task-item"><span class="task-circle">○</span> Publish transparency report with
+                                community decisions</li>
                         </ul>
                     </div>
                 </div>
@@ -292,42 +422,44 @@
                 <div class="phase-header">
                     <div class="phase-icon" style="border-color: var(--highlight-blue);">🧪</div>
                     <div class="phase-title">
-                        <h2>Phase 4: Streamer Tools</h2>
-                        <span>June 2026</span>
+                        <h2>Phase 4: Limited Beta</h2>
+                        <span>July 2026</span>
                     </div>
                 </div>
                 <div class="phase-grid">
                     <div class="phase-left">
                         <div class="tech-box" style="margin-bottom: 24px;">
-                            <h4>Streamer Ecosystem:</h4>
+                            <h4>Beta Strategy:</h4>
                             <div class="draft-content">
-                                <strong>Chaos Integration:</strong> Building a Twitch Extension that allows viewers to
-                                spin a 'Penalty Gear'. If a penalty wins, the backend pushes a command to the streamer's
-                                Desktop Companion App.<br><br>
-                                <strong>Companion App:</strong> A specialized Electron application that bridges the web
-                                browser and the WoW Addon files, allowing automated UI updates and penalty execution
-                                (e.g., deleting an item).
+                                <strong>Closed Testing:</strong> First release to a small group of trusted guilds and
+                                streamers. Limited feature set — core death tracking, scoring, and basic GM tools only.
+                                No streamer integration yet.<br><br>
+                                <strong>Web Backend:</strong> A Node.js + PostgreSQL backend goes live for real-time
+                                death
+                                tickers, leaderboard calculations, and character data storage. WebSocket connections
+                                push
+                                death alerts to the website within milliseconds.
                             </div>
                         </div>
                         <div class="tech-box">
                             <h4>Tech Stack:</h4>
-                            <p style="margin:0; font-family: monospace; color: var(--highlight-green);">Twitch API v5,
-                                Electron, OAuth2.0</p>
+                            <p style="margin:0; font-family: monospace; color: var(--highlight-green);">Node.js,
+                                Express, PostgreSQL, Socket.io, Twitch API v5</p>
                         </div>
                     </div>
                     <div class="phase-right">
                         <h4>Checklist:</h4>
                         <ul class="task-list">
-                            <li class="task-item"><span class="task-circle">○</span> Build Electron Bridge App for
-                                file-system access</li>
-                            <li class="task-item"><span class="task-circle">○</span> Register official Twitch Extension
-                                on Dev Dashboard</li>
-                            <li class="task-item"><span class="task-circle">○</span> Develop interactive 'Penalty Gear'
-                                animation</li>
-                            <li class="task-item"><span class="task-circle">○</span> Engineer OBS Overlay templates for
-                                death tracking</li>
-                            <li class="task-item"><span class="task-circle">○</span> Test Twitch Bits integration for
-                                penalty tiering</li>
+                            <li class="task-item"><span class="task-circle">○</span> Deploy backend API and database to
+                                production</li>
+                            <li class="task-item"><span class="task-circle">○</span> Invite top 10 HC guilds for closed
+                                beta</li>
+                            <li class="task-item"><span class="task-circle">○</span> Implement real-time WebSocket death
+                                ticker</li>
+                            <li class="task-item"><span class="task-circle">○</span> Test Twitch Extension penalty
+                                wheel integration</li>
+                            <li class="task-item"><span class="task-circle">○</span> Collect beta feedback and file bug
+                                reports</li>
                         </ul>
                     </div>
                 </div>
@@ -338,7 +470,7 @@
                 <div class="phase-header">
                     <div class="phase-icon" style="border-color: var(--highlight-purple);">🚀</div>
                     <div class="phase-title">
-                        <h2>Phase 5: Release v1.0</h2>
+                        <h2>Phase 5: Full Release v1.0</h2>
                         <span>August 2026</span>
                     </div>
                 </div>
@@ -349,6 +481,9 @@
                             <div class="draft-content">
                                 <strong>Global Rollout:</strong> Deploying the infrastructure across multiple Docker
                                 containers on AWS or a high-performance VPS. <br><br>
+                                <strong>Full Feature Set:</strong> All community-voted features enabled. Streamer tools,
+                                Twitch penalty wheel, Guild vs. Guild competitions (Team Tyler vs Team Soda style), and
+                                the full Companion App bridge go live.<br><br>
                                 <strong>High Availability:</strong> Utilizing Cloudflare's WAF to protect against the
                                 DDoS attacks common to large-scale private WoW projects, ensuring 24/7 leaderboard
                                 availability even during peak launches.
@@ -357,7 +492,7 @@
                         <div class="tech-box">
                             <h4>Tech Stack:</h4>
                             <p style="margin:0; font-family: monospace; color: var(--highlight-green);">Docker, AWS ECS,
-                                Cloudflare WAF, Nginx</p>
+                                Cloudflare WAF, Nginx, Electron (Companion App)</p>
                         </div>
                     </div>
                     <div class="phase-right">
@@ -371,8 +506,8 @@
                                 backups & SSL</li>
                             <li class="task-item"><span class="task-circle">○</span> Launch landing page marketing
                                 campaign</li>
-                            <li class="task-item"><span class="task-circle">○</span> Public Beta release for top 10
-                                Hardcore Guilds</li>
+                            <li class="task-item"><span class="task-circle">○</span> Public release for all Hardcore
+                                Guilds</li>
                         </ul>
                     </div>
                 </div>

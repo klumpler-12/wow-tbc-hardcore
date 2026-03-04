@@ -1,0 +1,9 @@
+## Interface: 20400
+## Title: TBC Hardcore
+## Notes: Hardcore mode tracking, scoring, and penalty engine for The Burning Crusade.
+## Author: TBC Hardcore Team
+## Version: 0.1.0-poc
+## SavedVariables: TBCHardcoreDB
+## DefaultState: enabled
+
+Core.lua
