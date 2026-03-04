@@ -250,18 +250,18 @@
                 <span class="tl-month">March 2026</span>
             </div>
             <div class="timeline-step future">
-                <span class="tl-icon">📦</span>
-                <span class="tl-label">Early PoC</span>
+                <span class="tl-icon">💬</span>
+                <span class="tl-label">Communication PoC</span>
                 <span class="tl-month">April 2026</span>
             </div>
             <div class="timeline-step future">
-                <span class="tl-icon">🗳️</span>
-                <span class="tl-label">Core Mechanics Vote</span>
+                <span class="tl-icon">⚙️</span>
+                <span class="tl-label">Core LUA Engine</span>
                 <span class="tl-month">May 2026</span>
             </div>
             <div class="timeline-step future">
-                <span class="tl-icon">🧪</span>
-                <span class="tl-label">Limited Beta</span>
+                <span class="tl-icon">🌐</span>
+                <span class="tl-label">Web & Twitch Integration</span>
                 <span class="tl-month">July 2026</span>
             </div>
             <div class="timeline-step future">
@@ -323,9 +323,9 @@
             <!-- Phase 2 -->
             <section class="phase-section reveal" id="phase2">
                 <div class="phase-header">
-                    <div class="phase-icon" style="border-color: var(--highlight-green);">📦</div>
+                    <div class="phase-icon" style="border-color: var(--highlight-green);">💬</div>
                     <div class="phase-title">
-                        <h2>Phase 2: Early PoC / Lua Learning</h2>
+                        <h2>Phase 2: Communication PoC</h2>
                         <span>April 2026</span>
                     </div>
                 </div>
@@ -334,31 +334,28 @@
                         <div class="tech-box" style="margin-bottom: 24px;">
                             <h4>Strategy:</h4>
                             <div class="draft-content">
-                                <strong>General Addon Knowledge:</strong> Focus entirely on understanding Blizzard's Lua
-                                environment without diving directly into deep Hardcore mechanics yet.<br><br>
-                                <strong>First Addon Test:</strong> Testing simple API actions like "Hello World" frame
-                                drawing and simple `COMBAT_LOG_EVENT_UNFILTERED` debugging output.<br><br>
-                                <strong>Local Base Structure:</strong> Establish the git pipeline for `.toc` files and
-                                safe CMaNGOS integration so actual development can start smoothly in May.
+                                <strong>Addon Syncing:</strong> Before building complex track logic, we must prove local
+                                addons can talk to each other synchronously.<br><br>
+                                <strong>Hidden Channels:</strong> Utilizing the `SendAddonMessage` API to silently
+                                broadcast active Rulesets and Death alerts across the Guild channel so all viewers stay
+                                in sync.
                             </div>
                         </div>
                         <div class="tech-box">
                             <h4>Tech Stack:</h4>
-                            <p style="margin:0; font-family: monospace; color: var(--highlight-green);">Lua (Blizzard
-                                API), CMaNGOS TBC Docker</p>
+                            <p style="margin:0; font-family: monospace; color: var(--highlight-green);">LUA (Blizzard
+                                API)</p>
                         </div>
                     </div>
                     <div class="phase-right">
                         <h4>Checklist:</h4>
                         <ul class="task-list">
-                            <li class="task-item"><span class="task-circle">○</span> Execute step-by-step Sandbox guide
+                            <li class="task-item"><span class="task-circle">○</span> Create `/tbchc ping` slash command
                             </li>
-                            <li class="task-item"><span class="task-circle">○</span> Render a standard UI Frame with
-                                standard WoW art</li>
-                            <li class="task-item"><span class="task-circle">○</span> Bind an OnClick Lua function to a
-                                test button</li>
-                            <li class="task-item"><span class="task-circle">○</span> Use Print() to output local
-                                variables in chat</li>
+                            <li class="task-item"><span class="task-circle">○</span> Hook into `CHAT_MSG_ADDON` listen
+                                events</li>
+                            <li class="task-item"><span class="task-circle">○</span> Execute successful cross-client
+                                Ping/Pong test</li>
                         </ul>
                     </div>
                 </div>
@@ -367,45 +364,37 @@
             <!-- Phase 3 -->
             <section class="phase-section reveal" id="phase3">
                 <div class="phase-header">
-                    <div class="phase-icon" style="border-color: var(--highlight-orange);">🗳️</div>
+                    <div class="phase-icon" style="border-color: var(--highlight-orange);">⚙️</div>
                     <div class="phase-title">
-                        <h2>Phase 3: Core Mechanics & Vote</h2>
+                        <h2>Phase 3: Core LUA Engine</h2>
                         <span>May 2026</span>
                     </div>
                 </div>
                 <div class="phase-grid">
                     <div class="phase-left">
                         <div class="tech-box" style="margin-bottom: 24px;">
-                            <h4>Feedback Loop:</h4>
+                            <h4>Death Tracking Matrix:</h4>
                             <div class="draft-content">
-                                <strong>Community Feature Vote:</strong> Opening polls to let players and guild leaders
-                                vote on which features should ship in v1.0 vs. which stay experimental. Modes like
-                                Nullcore
-                                League and Chaos Wheel events will be prioritized based on demand.<br><br>
-                                <strong>Balance Adjustments:</strong> Based on early POC playtesting feedback,
-                                penalties,
-                                scoring multipliers, and GM customization options will be tuned to match community
-                                expectations for fair play and excitement.
+                                <strong>Authentic Engine:</strong> Implementing multi-step death verification combining
+                                `PLAYER_DEAD`, `UNIT_DIED`, and aura scanning to filter out false positives like
+                                Soulstones and Feign Death.<br><br>
+                                <strong>Saved Variables:</strong> Local configuration and death tallies persist across
+                                relogs securely using the Ace3 database framework.
                             </div>
                         </div>
                         <div class="tech-box">
-                            <h4>Channels:</h4>
-                            <p style="margin:0; font-family: monospace; color: var(--highlight-green);">Discord Polls,
-                                Website Survey, Twitch Chat Integration, Guild Master Feedback</p>
+                            <h4>Tech Stack:</h4>
+                            <p style="margin:0; font-family: monospace; color: var(--highlight-green);">LUA (Blizzard
+                                API), Ace3 Framework</p>
                         </div>
                     </div>
                     <div class="phase-right">
                         <h4>Checklist:</h4>
                         <ul class="task-list">
-                            <li class="task-item"><span class="task-circle">○</span> Publish feature survey to guild
-                                leaders and streamers</li>
-                            <li class="task-item"><span class="task-circle">○</span> Collect and analyze community
-                                preferences</li>
-                            <li class="task-item"><span class="task-circle">○</span> Adjust feature roadmap based on
-                                vote results</li>
-                            <li class="task-item"><span class="task-circle">○</span> Finalize v1.0 feature scope</li>
-                            <li class="task-item"><span class="task-circle">○</span> Publish transparency report with
-                                community decisions</li>
+                            <li class="task-item"><span class="task-circle">○</span> Build True-Death Verifier</li>
+                            <li class="task-item"><span class="task-circle">○</span> Trigger Hybrid Gear Wipes via
+                                `UNIT_INVENTORY_CHANGED`</li>
+                            <li class="task-item"><span class="task-circle">○</span> Build SSF Enforcer limits</li>
                         </ul>
                     </div>
                 </div>

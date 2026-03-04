@@ -1,93 +1,81 @@
 # WoW TBC Hardcore: Master Technical Project Plan
 
-This document serves as the central architectural blueprint and milestone tracker for the entire TBC Hardcore project. It outlines the strategic goals, technical research, mitigating steps for Blizzard API compliance, and granular subtasks required for a successful Version 1.0 launch.
-
-## 📌 Phase 1: Foundation, UI Mockups & Research (Status: In Progress)
-**Objective:** Establish a high-performance web presence, finalize localization pipelines, and conduct critical legal/technical research regarding Twitch and Blizzard API integrations.
-
-### Research & Strategy
-* **Tech Stack:** Vanilla CSS, HTML5, Vanilla JavaScript. Avoiding heavy frameworks (React/Vue) ensures optimal load times for streamers embedding overlays.
-* **Localization:** Implemented custom `data-i18n` attribute parsing. The dictionary object is loaded asynchronously to prevent render-blocking.
-* **Legal Compliance:** Blizzard's Addon Policy explicitly forbids pay-to-win or direct monetary gating of addon features. Therefore, the Twitch Extension (Bits) must be entirely decoupled from the in-game Addon. The addon will only react to local file changes initiated by a separate Companion App.
-
-### Subtasks
-- [x] Initial Repository Setup & Git Configuration (GitHub Milestones active).
-- [x] UI Design: Dark Mode, Glassmorphism & authentic TBC aesthetics.
-- [x] HTML Structure: Mode Selection, Ideas Lab, Streamer Tools, Interactive Roadmap.
-- [x] Addon Simulation UI: Gear Battle Wager animations and Penalty Wheels.
-- [x] Core Documentation: Competitor & Legal Research documented within `AIINFO`.
-- [x] Dynamic GitHub Milestone tracking integration on the frontend.
-- [ ] Mobile Responsive Polish & Cross-Browser Testing for Safari/Firefox.
+This document serves as the central architectural blueprint and milestone tracker for the entire TBC Hardcore project. The absolute priority is the core **LUA Addon tracking engine** running in the 2.4.3 client, validating that dynamic Hardcore rulesets and synchronized death events are technically feasible before scaling up the web presence.
 
 ---
 
-## 📌 Phase 2: Core Addon Architecture (Lua 5.1, WoW 2.4.3)
-**Objective:** Develop the deeply integrated LUA addon logic necessary to track player state, deaths, penalties, and enforce hardcore rulesets without server-side validation.
+## 📌 Phase 1: Environment & Hello World PoC (Status: Completed)
+**Objective:** Establish a safe, offline testing environment and successfully execute a basic LUA trace inside a WoW 2.4.3 client.
 
-### Research & Strategy
-* **Authentic Death Engine:** Relying on `PLAYER_DEAD` triggers false positives via Warlock Soulstones, Shaman Reincarnation, or Hunter Feign Death. We must synthesize `UNIT_DIED`, `UNIT_HEALTH` <= 1, and aura scanning to confirm an absolute permanent death.
-* **Guild Synchronization:** Since there is no modern synchronized server state for Vanilla servers, we exploit `C_ChatInfo.SendAddonMessage`. The Guild Master addon will serialize the active ruleset into a compressed string and broadcast it to the hidden `TBCHC` channel.
+### Strategy
+* **Safe Sandbox:** Set up a local CMaNGOS TBC server via Docker to prevent any interaction with official Blizzard retail servers.
+* **Addon Scaffold:** Learn the basic structure of WoW Addons (`.toc` manifest and `.lua` logic) and how to load them.
+* **Execution:** Successfully hook into `ADDON_LOADED` and print a "Hello World" trace to the default chat frame.
+
+### Steps Reached
+- [x] Researched safe ToS environments (CMaNGOS TBC Docker).
+- [x] Defined Hardcore Rulesets and scope on advertisement website (`development.html`).
+- [x] Built the first functional LUA Addon rendering a basic frame.
+- [x] Pushed web marketing materials to GitHub / Local Raspberry Pi.
+
+---
+
+## 📌 Phase 2: Communication PoC (Status: Active)
+**Objective:** Prove that two separate LUA addons on different game clients can communicate custom data synchronously without requiring an external database.
+
+### Strategy
+* **The Problem:** Private TBC servers do not have modern synchronized tracking databases out-of-the-box. We cannot easily track Guild Rulesets if players run the addon independently.
+* **The Solution:** We must exploit the hidden addon communication channel API: `C_ChatInfo.SendAddonMessage` (or the 2.4.3 equivalent `SendAddonMessage`).
+* **The Test:** Create a command `/tbchc ping` that broadcasts a hidden message to the guild channel. Any other player with the addon must receive that message and print "Pong received from [Player]" in their local chat window. This proves rulesets and death notifications can be managed purely in-game.
 
 ### Subtasks
-- [ ] Scaffold standard WoW Addon architecture utilizing the Ace3 Framework for robust configuration management.
+- [ ] Determine the exact 2.4.3 signature for `SendAddonMessage("prefix", "text", "type", "target")`.
+- [ ] Hook into the `CHAT_MSG_ADDON` event listener to catch incoming hidden broadcasts.
+- [ ] Execute a successful Ping/Pong sequence between two LUA clients in the CMaNGOS sandbox.
+- [ ] Build a serialization function that converts a simple table (e.g. `{mode="HCP", lives=1}`) into a broadcastable string and parses it back securely.
+
+---
+
+## 📌 Phase 3: Core LUA Engine & Death Tracking
+**Objective:** Develop the deeply integrated LUA logic necessary to track player state, deaths, level-ups, and enforce hardcore rulesets. 
+
+### Strategy
+* **Authentic Death Engine:** Relying purely on `PLAYER_DEAD` triggers false positives via Warlock Soulstones, Shaman Reincarnation, or Hunter Feign Death. We must synthesize `UNIT_DIED`, `UNIT_HEALTH` <= 1, and aura scanning to confirm an absolute permanent death.
+* **Saved Variables:** Changes to rulesets and death events must persist through re-logs. We must configure standard Ace3 Database management (`SavedVariables.lua`).
+
+### Subtasks
 - [ ] Implement multi-step authentic Death Verification Engine to filter false positives.
-- [ ] Event listeners: Hook into `UNIT_INVENTORY_CHANGED` for gear wiping penalties.
-- [ ] Develop hidden Guild Communication channel for Ruleset Sync (`TBCHC` prefix).
+- [ ] Hook into `UNIT_INVENTORY_CHANGED` to monitor gear wipes (Hybrid Hardcore penalty).
 - [ ] Write SSF Enforcer logic (Trading/Mailbox/AH blocking hooks).
-- [ ] Local Serialization module to securely lock configuration changes into `SavedVariables.lua`.
+- [ ] Structure the local Save file to securely lock configuration changes into `TBCHardcoreDB`.
 
 ---
 
-## 📌 Phase 3: Web-App Backend & Desktop Bridge (Node.js & Electron)
-**Objective:** Engineer the cloud infrastructure, database schema, and the secure desktop bridge relay that transmits local WoW data to the cloud.
+## 📌 Phase 4: The Desktop Bridge & Web-App Backend
+**Objective:** Only after the Addon successfully tracks deaths locally, we engineer the cloud infrastructure and the secure desktop bridge relay that transmits local WoW data to the global website.
 
-### Research & Strategy
+### Strategy
 * **The Bridge Problem:** Web browsers and cloud servers cannot read local game files (`SavedVariables.lua`).
 * **The Bridge Solution:** Construct an Electron Companion App. This lightweight local daemon monitors file-write events on `WTF/Account/.../SavedVariables.lua`. 
 * **Security:** Upon a `PLAYER_DEAD` write, the app immediately hashes the payload using an HMAC-SHA256 local secret to prevent API spoofing, and securely transmits it via WebSocket to the central server.
-* **Backend:** Node.js processing realtime state changes, MongoDB for deep leaderboard indexing.
+* **Backend:** Node.js API Gateway, MongoDB tracking leaderboard scores.
 
 ### Subtasks
-- [ ] Setup Node.js REST API Gateway with JWT Authentication.
-- [ ] Design MongoDB schema design: Players (Scores, Deaths), Guilds (Rulesets), Checkpoints.
-- [ ] API Endpoints: `/api/deaths`, `/api/leaderboard`, `/api/guild/:id`.
-- [ ] Develop Electron Companion App interface (Login with Twitch, Select WoW Directory).
+- [ ] Setup Node.js REST API Gateway with JWT.
+- [ ] Design MongoDB schema design: Players (Scores, Deaths), Guilds (Rulesets).
+- [ ] Develop basic Electron Companion App UI (Select WoW Directory).
 - [ ] Implement file system watcher (`fs.watch`) in Electron for `SavedVariables.lua`.
 - [ ] Implement HMAC payload hashing to protect against API spoofing.
-- [ ] Deploy realtime WebSocket server using `Socket.io` for instant Leaderboard updates.
 
 ---
 
-## 📌 Phase 4: Streamer Mechanics & Twitch Extension 
+## 📌 Phase 5: Streamer Mechanics & Twitch Extension 
 **Objective:** Implement the interactive spectator ecosystem, penalty wheel, and OBS overlays governed by the official Twitch Developer API.
 
-### Research & Strategy
-* **Twitch Extension Workflow:** Viewer interaction operates via the official Twitch Extension Backend Service (EBS). A viewer spends Twitch Bits on the 'Penalty Wheel'.
-* **Validation:** Twitch validates the transaction and pings our EBS webhook securely.
-* **Execution Layer:** Our EBS routes a secure WebSocket push notification to the specific streamer's Electron Companion App, which instantly injects a macro or triggers a lua hook executing the penalty (e.g., deleting an equipped item). The entire pipeline must resolve in under 500ms to maintain broadcast sync.
+### Strategy
+* **Execution Layer:** A viewer spends Twitch Bits on the 'Penalty Wheel'. Our Twitch Backend Service (EBS) routes a secure WebSocket notification to the specific streamer's Electron Companion App, which instantly injects a trigger to the local Addon, executing the penalty (e.g., forced RP walk or item deletion).
 
 ### Subtasks
 - [ ] Register Twitch Developer Organization and provision API secrets.
-- [ ] Build secure Twitch Extension Backend Service (EBS) endpoints to receive Bits transactions.
-- [ ] Develop basic Twitch Extension frontend (HTML/JS Panel for Twitch UI).
-- [ ] Develop 2-way streaming WebSocket listener in the Companion App.
-- [ ] Engineer Addon hooks to securely execute localized UI penalties from external triggers.
-- [ ] Design transparent, modular OBS Browser Source overlays for Live Trackers.
-
----
-
-## 📌 Phase 5: Production Infrastructure & Version 1.0 Release
-**Objective:** Architect the scalable production environment, harden security, and orchestrate the public Version 1.0 launch.
-
-### Research & Strategy
-* **Deployment & Scaling:** The official launch day will invite extreme network traffic. We will containerize the Node.js backend using Docker Compose. A highly-available Nginx reverse proxy will terminate SSL and balance load across multiple Node instances.
-* **DDoS Mitigation:** Hardcore WoW projects frequently face targeted DDoS attacks. We will place the entire infrastructure behind a Cloudflare Web Application Firewall (WAF) to aggressively filter invalid requests while caching read-only Leaderboard endpoints at the edge.
-
-### Subtasks
-- [ ] Finalize Multi-Container Docker configuration for production deployment (Raspberry Pi compatibility test).
-- [ ] Configure Nginx Reverse Proxy with Let's Encrypt automated TLS certificates.
-- [ ] Host Web Frontend on a high-availability CDN (Cloudflare Pages or Vercel).
-- [ ] Integrate Cloudflare WAF and aggressively cache static JSON routes.
-- [ ] Automate Addon distribution via Curseforge Developer API & GitHub Releases Actions.
-- [ ] Execute final penetration test targeting the Leaderboard API endpoints.
-- [ ] Invite 5 prominent Guild Masters for Closed Alpha testing of the syncing rulesets.
+- [ ] Build secure Twitch Extension Backend Service endpoints.
+- [ ] Engineer Addon hooks to securely execute localized UI penalties from external triggers via the Companion App bridge.
