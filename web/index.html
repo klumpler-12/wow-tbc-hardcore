@@ -64,17 +64,7 @@
         <span class="line-1" data-i18n="hero.title1">Hardcore Reimagined</span>
         <span class="line-2" data-i18n="hero.title2">For The Burning Crusade</span>
       </h1>
-      <p class="hero-subtitle" data-i18n="hero.subtitle">
-        TBC was never designed for hardcore. We're changing that. Choose your challenge mode,
-        shape the rules with the community, and compete on the leaderboard.
-      </p>
       <a href="#modes" class="btn btn-primary" data-i18n="hero.btnModes">Explore Modes</a>
-
-      <div class="hero-feature-links reveal"
-        style="display: flex; gap: 16px; margin-top: 24px; justify-content: center;">
-        <a href="#modes" class="btn-ghost"><span>⚔️</span> Modes</a>
-        <a href="#streamer" class="btn-ghost"><span>🎥</span> Streamer Tools</a>
-      </div>
     </div>
   </section>
 
@@ -83,11 +73,8 @@
     <div class="ambient-orb orb-purple" style="top: -200px; right: -100px;"></div>
     <div class="container">
       <div class="modes-header reveal">
-        <div class="section-label" data-i18n="modes.label">Choose Your Challenge</div>
-        <h2 class="section-title" data-i18n="modes.title">Choose or Customize your Hardcore Event</h2>
-        <p class="section-desc" data-i18n="modes.desc">
-          Choose between progression-focused Guild Master customized realms or the classic brutal experience.
-        </p>
+        <div class="section-label">Choose Your Challenge</div>
+        <h2 class="section-title">Two Playing Modes</h2>
       </div>
 
       <!-- Primary Modes Grid (HC Plus Left, Hybrid Hardcore Right) -->
@@ -396,61 +383,21 @@
               });
             });
           });
-        </script>
+        </div >
 
-        <!-- Secondary Modes Grid (HC Classic, Nullcore) -->
-        <div class="secondary-modes-header reveal">
-          <h3
-            style="text-align:center; font-family:var(--font-display); color:var(--text-secondary); margin-bottom:24px;">
-            Other Ways to Play</h3>
-        </div>
-        <div class="modes-grid secondary-modes">
-          <!-- ██ Retro Mode (HC Classic) ██ -->
-          <div class="mode-card hardcore small reveal">
-            <div class="mode-icon">💀</div>
-            <h3 class="mode-name">Retro Mode (Classic)</h3>
-            <p class="mode-tagline">The original ruleset. One life, full SSF. Death is absolute.</p>
-            <div class="mode-details" style="font-size: 0.8rem;">
-              <div class="mode-detail"><span class="mode-detail-icon">⚰️</span><span>Character voided forever on
-                  death</span></div>
-              <div class="mode-detail"><span class="mode-detail-icon">🔒</span><span>Full SSF — no mail, AH, or
-                  trading</span></div>
+            <!-- Mode Spectrum Bar -->
+            <div class="mode-spectrum reveal" style="margin: 32px 0 0; padding: 0 20px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">
+                <span>← <strong style="color: var(--gold-loot);">Classic HC / Individual</strong></span>
+                <span><strong style="color: var(--portal-purple);">TBC Optimized / Streamer & Guild</strong> →</span>
+              </div>
+              <div style="height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--gold-loot), var(--portal-purple)); opacity: 0.6;"></div>
             </div>
-            <div class="mode-severity">
-              <span class="mode-severity-label">Severity</span>
-              <span class="severity-dot active red"></span><span class="severity-dot active red"></span><span
-                class="severity-dot active red"></span><span class="severity-dot active red"></span><span
-                class="severity-dot active red"></span>
-            </div>
-          </div>
 
-          <!-- ██ Nullcore ██ -->
-          <div class="mode-card nullcore small reveal">
-            <div class="mode-icon">🏆</div>
-            <h3 class="mode-name">Nullcore League</h3>
-            <p class="mode-tagline">No permadeath. Pure score-based competitive seasons.</p>
-            <div class="mode-details" style="font-size: 0.8rem;">
-              <div class="mode-detail"><span class="mode-detail-icon">📊</span><span>Deaths deduct points, quests
-                  earn</span></div>
-              <div class="mode-detail"><span class="mode-detail-icon">🎲</span><span><strong
-                    class="highlight-orange">Risk
-                    Multipliers</strong>: Bonus points for under-gearing, under-leveling, and speed-clears. Repeating
-                  dungeons gives diminishing returns.</span></div>
-              <div class="mode-detail"><span class="mode-detail-icon">🌍</span><span>No trade restrictions — play
-                  normally</span></div>
-            </div>
-            <div class="mode-severity">
-              <span class="mode-severity-label">Severity</span>
-              <span class="severity-dot active teal"></span><span class="severity-dot"></span><span
-                class="severity-dot"></span><span class="severity-dot"></span><span class="severity-dot"></span>
-            </div>
-          </div>
-        </div>
+      </div >
+  </section >
 
-      </div>
-  </section>
-
-  <!-- ═══ Playstyles (Solo vs Guilds) ═══ -->
+  < !-- ═══ Playstyles(Solo vs Guilds) ═══ -->
   <section class="playstyles" id="playstyles">
     <div class="container">
       <div class="playstyle-grid">
@@ -564,7 +511,7 @@
 
       <!-- Full Width: Active Mechanics Trackers -->
       <div class="mechanics-trackers reveal"
-        style="margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;">
+        style="margin-top: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
         <!-- PvE & PvP Rulesets -->
         <div class="tracker-card">
           <div class="tracker-header">
@@ -606,37 +553,77 @@
           <div class="tracker-header">
             <span class="tracker-icon">⚔️</span>
             <div>
-              <h4 style="font-family: var(--font-display); font-size: 1.1rem;">Gear Battle Wagers</h4>
-              <p style="font-size: 0.8rem; color: var(--text-muted);">Dual to the death for the opponent's item</p>
+              <h4 style="font-family: var(--font-display); font-size: 1rem;">Gear Battle Wagers</h4>
+              <p style="font-size: 0.75rem; color: var(--text-muted);">Wager your best item — winner takes all</p>
             </div>
           </div>
           <div class="tracker-body duel-anim-body">
-            <div class="duel-row" style="margin-bottom: 8px;">
-              <div class="duel-player" id="duelP1">Zuzu<br><span>Destiny</span></div>
-              <div class="duel-vs" id="duelVS">VS</div>
-              <div class="duel-player" id="duelP2">Thokk<br><span>Nightblade</span></div>
-            </div>
-
-            <!-- Health Bars added for animation -->
-            <div class="duel-healthbars"
-              style="display: flex; justify-content: space-between; gap: 16px; margin-bottom: 12px;">
-              <div
-                style="flex: 1; background: rgba(0,0,0,0.5); height: 8px; border-radius: 4px; overflow: hidden; transform: scaleX(-1);">
-                <div id="duelHp1"
-                  style="width: 100%; height: 100%; background: var(--highlight-green); transition: width 0.3s ease;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <div style="text-align: center; flex: 1;">
+                <div style="font-family: var(--font-display); font-size: 0.9rem; color: var(--text-primary);">Zuzu</div>
+                <div style="font-size: 0.65rem; color: var(--text-muted);">Paladin</div>
+                <div style="margin-top: 6px; padding: 4px 8px; background: rgba(230, 126, 34, 0.15); border: 1px solid rgba(230, 126, 34, 0.3); border-radius: 6px; font-size: 0.65rem;">
+                  <span style="color: var(--ember-orange);">⚔️ Destiny</span><br>
+                  <span style="color: var(--text-muted); font-size: 0.6rem;">ilvl 115 · Epic Sword</span>
                 </div>
               </div>
-              <div style="flex: 1; background: rgba(0,0,0,0.5); height: 8px; border-radius: 4px; overflow: hidden;">
-                <div id="duelHp2"
-                  style="width: 100%; height: 100%; background: var(--highlight-green); transition: width 0.3s ease;">
+              <div style="font-family: var(--font-display); font-size: 1.2rem; color: var(--blood-red); padding: 0 8px;">VS</div>
+              <div style="text-align: center; flex: 1;">
+                <div style="font-family: var(--font-display); font-size: 0.9rem; color: var(--text-primary);">Thokk</div>
+                <div style="font-size: 0.65rem; color: var(--text-muted);">Rogue</div>
+                <div style="margin-top: 6px; padding: 4px 8px; background: rgba(155, 89, 182, 0.15); border: 1px solid rgba(155, 89, 182, 0.3); border-radius: 6px; font-size: 0.65rem;">
+                  <span style="color: var(--portal-purple);">🗡️ Nightblade</span><br>
+                  <span style="color: var(--text-muted); font-size: 0.6rem;">ilvl 110 · Rare Dagger</span>
                 </div>
               </div>
             </div>
-
+            <!-- Health Bars -->
+            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+              <div style="flex: 1; background: rgba(0,0,0,0.5); height: 6px; border-radius: 3px; overflow: hidden; transform: scaleX(-1);">
+                <div id="duelHp1" style="width: 100%; height: 100%; background: var(--highlight-green); transition: width 0.3s ease;"></div>
+              </div>
+              <div style="flex: 1; background: rgba(0,0,0,0.5); height: 6px; border-radius: 3px; overflow: hidden;">
+                <div id="duelHp2" style="width: 100%; height: 100%; background: var(--highlight-green); transition: width 0.3s ease;"></div>
+              </div>
+            </div>
             <div class="duel-status blinking" id="duelStatusText"
-              style="text-align: center; font-size: 0.75rem; color: var(--ember-orange); font-weight: bold; min-height: 14px;">
-              MATCH IN PROGRESS...
+              style="text-align: center; font-size: 0.7rem; color: var(--ember-orange); font-weight: bold; min-height: 14px;">
+              ⚔️ MATCH IN PROGRESS...
             </div>
+          </div>
+        </div>
+
+        <!-- RP Walk Punishment -->
+        <div class="tracker-card">
+          <div class="tracker-header">
+            <span class="tracker-icon">🐢</span>
+            <div>
+              <h4 style="font-family: var(--font-display); font-size: 1rem;">GM Punishments</h4>
+              <p style="font-size: 0.75rem; color: var(--text-muted);">Rule-breaking has real consequences</p>
+            </div>
+          </div>
+          <div class="tracker-body">
+            <div style="background: rgba(230, 57, 70, 0.08); border: 1px solid rgba(230, 57, 70, 0.2); border-radius: 10px; padding: 12px; margin-bottom: 8px;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                <div style="width: 36px; height: 36px; border-radius: 8px; background: rgba(230, 57, 70, 0.2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">🐢</div>
+                <div>
+                  <div style="font-family: var(--font-display); font-size: 0.85rem; color: var(--blood-red);">Forced RP Walk</div>
+                  <div style="font-size: 0.65rem; color: var(--text-muted);">Imposed by GM — Rule: <strong style="color: var(--ember-orange);">Ninja'd Loot</strong></div>
+                </div>
+                <div style="margin-left: auto; text-align: center;">
+                  <div style="font-family: var(--font-display); font-size: 1.1rem; color: var(--blood-red);">59:42</div>
+                  <div style="font-size: 0.55rem; color: var(--text-muted);">remaining</div>
+                </div>
+              </div>
+              <div style="height: 4px; background: rgba(0,0,0,0.3); border-radius: 2px; overflow: hidden;">
+                <div style="width: 98%; height: 100%; background: var(--blood-red); border-radius: 2px;"></div>
+              </div>
+            </div>
+            <ul style="font-size: 0.7rem; color: var(--text-muted); padding-left: 14px; margin: 0; line-height: 1.5;">
+              <li>Overrides fast-walk toggles — no way to skip</li>
+              <li>Tracks <strong style="color: var(--text-secondary);">active playtime</strong> only — AFK doesn't count</li>
+              <li>GM can stack or extend punishment duration</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -743,11 +730,15 @@
       </div>
 
       <!-- Cinematic Death Banner Overlay -->
-      <div class="stream-death-banner">
-        <span class="sdb-icon">💀</span>
-        <span class="sdb-text">PUPI DIED — <span style="color: rgba(255,255,255,0.8); font-weight: 400;">Killed by Fel
-            Reaver</span></span>
-        <span class="sdb-icon">💀</span>
+      <div class="stream-death-banner" style="font-size: 0.75rem; padding: 6px 16px;">
+        <div style="display: flex; align-items: center; gap: 12px; justify-content: center;">
+          <span class="sdb-icon" style="font-size: 1rem;">💀</span>
+          <div style="text-align: center;">
+            <div style="font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 2px;">PUPI DIED — <span style="color: rgba(255,255,255,0.7); font-weight: 400;">Killed by Fel Reaver</span></div>
+            <div style="margin-top: 4px; font-size: 0.7rem; color: var(--text-muted);">HC Lives: <span style="color: var(--blood-red);">💀</span> <span style="color: var(--blood-red);">💀</span> <span style="opacity: 0.3;">💀</span> — <strong style="color: var(--ember-orange);">1 life remaining</strong></div>
+          </div>
+          <span class="sdb-icon" style="font-size: 1rem;">💀</span>
+        </div>
       </div>
     </div>
 
@@ -782,7 +773,7 @@
     </div>
     </div>
 
-    <!-- Row 3: Viewer Vote + Alerts -->
+    <!--Row 3: Viewer Vote + Alerts-- >
     <div class="mockup-row">
       <div class="mockup-panel reveal">
         <div class="mockup-label">Viewer Penalty Vote (Twitch)</div>
@@ -934,37 +925,7 @@
     </div>
   </section>
 
-  <!-- ═══ Explore More ═══ -->
-  <section class="explore-more" id="explore" style="padding-top: 80px;">
-    <div class="container">
-      <h2 class="section-title" style="text-align:center; margin-bottom:48px;" data-i18n="explore.title">Explore More
-      </h2>
-      <div class="explore-grid">
-        <a href="research.html" class="explore-card reveal">
-          <div class="explore-icon">🧪</div>
-          <h3 data-i18n="explore.ideas.title">Research Hub</h3>
-          <p data-i18n="explore.ideas.desc">Brainstorms, raw concepts, list of todos, monetization ideas, and future
-            possibilities being shaped.</p>
-        </a>
-        <a href="profile.html" class="explore-card reveal">
-          <div class="explore-icon">👤</div>
-          <h3 data-i18n="explore.profile.title">Mock Profile</h3>
-          <p data-i18n="explore.profile.desc">Full streamer profile: armory, deathclips, achievements, death log.</p>
-        </a>
-        <a href="intro.html" class="explore-card reveal">
-          <div class="explore-icon">📖</div>
-          <h3 data-i18n="explore.intro.title">Explain WoW HC</h3>
-          <p data-i18n="explore.intro.desc">A dedicated page for new viewers explaining what World of Warcraft and
-            Hardcore mode are all about.</p>
-        </a>
-        <a href="development.html" class="explore-card reveal">
-          <div class="explore-icon">📋</div>
-          <h3 data-i18n="nav.dev">Development</h3>
-          <p>Detailed project milestones, technical strategy, and implementation plans.</p>
-        </a>
-      </div>
-    </div>
-  </section>
+
 
   <!-- ═══ Footer ═══ -->
   <footer class="footer">
@@ -994,10 +955,28 @@
       border-color: var(--highlight-orange) !important;
       transform: translateY(-2px);
     }
+
+    /* Shrink playstyle panels */
+    .ps-desc { font-size: 0.8rem !important; margin-bottom: 8px !important; }
+    .psf-content p { font-size: 0.78rem !important; margin-bottom: 4px !important; }
+    .psf-content h4 { font-size: 0.9rem !important; }
+    .ps-header h3 { font-size: 1.1rem !important; }
+    .playstyle-panel { padding: 20px !important; }
+    .ps-feature { gap: 8px !important; }
+
+    /* Tighter section spacing */
+    .playstyles { padding-top: 40px !important; padding-bottom: 40px !important; }
+    .streamer { padding-top: 40px !important; }
+    .modes { padding-bottom: 40px !important; }
+
+    /* Responsive 3-col tracker */
+    @media (max-width: 1000px) {
+      .mechanics-trackers { grid-template-columns: 1fr !important; }
+    }
   </style>
 
   <script src="js/i18n.js"></script>
-  <script src="app.js"></script>
+        <script src="app.js"></script>
 </body>
 
 </html>
