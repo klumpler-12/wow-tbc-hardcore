@@ -477,8 +477,6 @@
 .hsc-visual {
   flex: 1.5;
   position: relative;
-  min-height: 250px;
-  max-height: 400px;
   overflow: hidden;
   max-width: 100%;
 }
@@ -2364,7 +2362,6 @@ body {
   overflow: hidden;
   border: 1px solid rgba(240, 238, 245, 0.08);
   background: rgba(10, 9, 20, 0.9);
-  max-height: 450px;
   max-width: 100%;
   display: flex;
   flex-direction: column;
