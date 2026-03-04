@@ -3103,12 +3103,12 @@ body {
 
 .ideas-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 
 .idea-card {
-  padding: 24px;
+  padding: 16px;
   border-radius: 14px;
   background: rgba(15, 12, 30, 0.8);
   border: 1px solid rgba(240, 238, 245, 0.06);

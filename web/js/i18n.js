@@ -3,7 +3,7 @@ const translations = {
         nav: {
             modes: 'Modes',
             streamer: 'Streamer Tools',
-            ideas: 'Ideas Lab',
+            ideas: 'Research Hub',
             profile: 'Profile',
             explain: 'Explain WoW HC'
         },
@@ -11,7 +11,7 @@ const translations = {
             badge: 'Built for OnlyFangs 3',
             title1: 'Hardcore Reimagined',
             title2: 'For The Burning Crusade',
-            subtitle: "TBC was never designed for hardcore. We're changing that. Choose your challenge mode, shape the rules with the community, and compete on the leaderboard.",
+            subtitle: "A flexible Addon and companion bridge to sync deaths, rulesets, and Twitch interactivity offline without risking retail server ToS.",
             btnModes: 'Explore Modes',
             btnVote: 'Cast Your Vote',
             btnScore: 'View Scoring'
@@ -95,8 +95,8 @@ const translations = {
         explore: {
             title: 'Explore More',
             ideas: {
-                title: 'Ideas Lab',
-                desc: 'Brainstorms, raw concepts, list of todos, monetization ideas, and future possibilities being shaped.'
+                title: 'Research Hub',
+                desc: 'A gathering space for ideas, tracking issues, and defining technical research targets.'
             },
             profile: {
                 title: 'Mock Profile',
@@ -117,7 +117,7 @@ const translations = {
         nav: {
             modes: 'Modi',
             streamer: 'Streamer-Tools',
-            ideas: 'Ideen-Labor',
+            ideas: 'Research Hub',
             profile: 'Profil',
             explain: 'Erkläre WoW HC'
         },
@@ -125,7 +125,7 @@ const translations = {
             badge: 'Entwickelt für OnlyFangs 3',
             title1: 'Hardcore Neu Gedacht',
             title2: 'Für The Burning Crusade',
-            subtitle: "TBC war nie für Hardcore ausgelegt. Wir ändern das. Wähle deinen Modus, bestimme die Regeln mit der Community und kämpfe um die Bestenliste.",
+            subtitle: "Ein flexibles Addon und eine Begleit-App, um Tode, Regelwerke und Twitch-Interaktivität offline zu synchronisieren, ohne die Nutzungsbedingungen der Retail-Server zu riskieren.",
             btnModes: 'Modi entdecken',
             btnVote: 'Stimme abgeben',
             btnScore: 'Wertung ansehen'
@@ -209,8 +209,8 @@ const translations = {
         explore: {
             title: 'Mehr entdecken',
             ideas: {
-                title: 'Ideen-Labor',
-                desc: 'Brainstorms, rohe Konzepte, To-Do-Listen, Monetarisierungsideen und zukünftige Möglichkeiten.'
+                title: 'Research Hub',
+                desc: 'Ein Sammelplatz für Ideen, das Verfolgen von Problemen und das Definieren technischer Forschungsziele.'
             },
             profile: {
                 title: 'Mock-Profil',
