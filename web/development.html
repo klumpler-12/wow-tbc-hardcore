@@ -251,12 +251,12 @@
             </div>
             <div class="timeline-step future">
                 <span class="tl-icon">📦</span>
-                <span class="tl-label">Addon Core POC</span>
+                <span class="tl-label">Early PoC</span>
                 <span class="tl-month">April 2026</span>
             </div>
             <div class="timeline-step future">
                 <span class="tl-icon">🗳️</span>
-                <span class="tl-label">Community Vote</span>
+                <span class="tl-label">Core Mechanics Vote</span>
                 <span class="tl-month">May 2026</span>
             </div>
             <div class="timeline-step future">
@@ -325,7 +325,7 @@
                 <div class="phase-header">
                     <div class="phase-icon" style="border-color: var(--highlight-green);">📦</div>
                     <div class="phase-title">
-                        <h2>Phase 2: Addon Core POC</h2>
+                        <h2>Phase 2: Early PoC / Lua Learning</h2>
                         <span>April 2026</span>
                     </div>
                 </div>
@@ -334,37 +334,31 @@
                         <div class="tech-box" style="margin-bottom: 24px;">
                             <h4>Strategy:</h4>
                             <div class="draft-content">
-                                <strong>Local Dev Environment:</strong> Setting up CMaNGOS TBC via Docker for safe,
-                                local
-                                addon development and testing. Never connects to retail servers — no ToS risk.<br><br>
-                                <strong>Lua State Machine:</strong> The addon acts as a passive listener for Blizzard
-                                events. We hook into `COMBAT_LOG_EVENT_UNFILTERED` and `UNIT_DIED` to track deaths
-                                instantly.
-                                The first POC will display a functional HC Status button in-game.<br><br>
-                                <strong>Anti-Cheat:</strong> For HC+, we generate a unique hash for every level-up and
-                                death
-                                event, combining character names, timestamps, and server ID to prevent data spoofing.
+                                <strong>General Addon Knowledge:</strong> Focus entirely on understanding Blizzard's Lua
+                                environment without diving directly into deep Hardcore mechanics yet.<br><br>
+                                <strong>First Addon Test:</strong> Testing simple API actions like "Hello World" frame
+                                drawing and simple `COMBAT_LOG_EVENT_UNFILTERED` debugging output.<br><br>
+                                <strong>Local Base Structure:</strong> Establish the git pipeline for `.toc` files and
+                                safe CMaNGOS integration so actual development can start smoothly in May.
                             </div>
                         </div>
                         <div class="tech-box">
                             <h4>Tech Stack:</h4>
                             <p style="margin:0; font-family: monospace; color: var(--highlight-green);">Lua (Blizzard
-                                API), CMaNGOS TBC Docker, HMAC-SHA256, ACE3 Framework</p>
+                                API), CMaNGOS TBC Docker</p>
                         </div>
                     </div>
                     <div class="phase-right">
                         <h4>Checklist:</h4>
                         <ul class="task-list">
-                            <li class="task-item"><span class="task-circle">○</span> Set up CMaNGOS TBC Docker on local
-                                Mac</li>
-                            <li class="task-item"><span class="task-circle">○</span> Create POC addon with functional UI
-                                button</li>
-                            <li class="task-item"><span class="task-circle">○</span> Engineer core death tracking logic
-                                in Lua</li>
-                            <li class="task-item"><span class="task-circle">○</span> Implement secure data encryption
-                                for event hashes</li>
-                            <li class="task-item"><span class="task-circle">○</span> Build in-game Hardcore status UI
-                                (Unit Frames)</li>
+                            <li class="task-item"><span class="task-circle">○</span> Execute step-by-step Sandbox guide
+                            </li>
+                            <li class="task-item"><span class="task-circle">○</span> Render a standard UI Frame with
+                                standard WoW art</li>
+                            <li class="task-item"><span class="task-circle">○</span> Bind an OnClick Lua function to a
+                                test button</li>
+                            <li class="task-item"><span class="task-circle">○</span> Use Print() to output local
+                                variables in chat</li>
                         </ul>
                     </div>
                 </div>
@@ -375,7 +369,7 @@
                 <div class="phase-header">
                     <div class="phase-icon" style="border-color: var(--highlight-orange);">🗳️</div>
                     <div class="phase-title">
-                        <h2>Phase 3: Community Voting</h2>
+                        <h2>Phase 3: Core Mechanics & Vote</h2>
                         <span>May 2026</span>
                     </div>
                 </div>
