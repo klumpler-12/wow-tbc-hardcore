@@ -1,1036 +1,880 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TBC Hardcore — Multi-Mode Hardcore for The Burning Crusade</title>
-  <meta name="description"
-    content="A configurable hardcore addon for WoW TBC. Choose your challenge: Hardcore, Hybrid Hardcore, or Nullcore. Community-driven rules for OnlyFangs 3 and beyond.">
-  <meta property="og:title" content="TBC Hardcore — Multi-Mode Hardcore for The Burning Crusade">
-  <meta property="og:description"
-    content="Death tracking, scoring, guild management, and community voting for WoW TBC.">
+  <title>Hardcore Plus — Hybrid Hardcore for WoW TBC</title>
+  <meta name="description" content="The definitive hardcore addon for WoW: The Burning Crusade. Customizable rulesets, house competition, creative punishments, scoring systems, and guild management. Built for OnlyFangs 3 and beyond.">
+  <meta property="og:title" content="Hardcore Plus — Hybrid Hardcore for WoW TBC">
+  <meta property="og:description" content="TBC Hardcore reimagined. Customizable rules, houses, scoring, creative punishments. Free on CurseForge.">
   <meta property="og:type" content="website">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-  <!-- ═══ Support Banner ═══ -->
-  <div class="support-banner">
-    <div class="container">
-      ❤️ Enjoying the project? <a href="#" class="support-link">Support Development & Keep the Servers Running</a>
-    </div>
-  </div>
 
   <!-- ═══ Navigation ═══ -->
   <nav class="nav" id="nav">
-    <div class="container">
-      <div class="nav-left">
-        <a href="index.html" class="nav-logo">
-          <span class="nav-logo-text">TBC HARDCORE PLUS</span>
-        </a>
-        <div class="nav-links" id="navLinks">
-          <a href="index.html" class="active" data-i18n="nav.home">Home</a>
-          <a href="research.html" data-i18n="nav.ideas">Research Hub</a>
-          <a href="profile.html" data-i18n="nav.profile">Profile</a>
-          <a href="development.html" data-i18n="nav.dev">Development</a>
-        </div>
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">HARDCORE<span class="accent">+</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#features">Features</a>
+        <a href="#onlyfangs">OnlyFangs 3</a>
+        <a href="#for-you">For You</a>
+        <a href="#scoring">Scoring</a>
+        <a href="#houses">Houses</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#download">Download</a>
       </div>
-      <div class="nav-right">
-        <div class="nav-lang-toggle">
-          <button id="lang-en" class="btn-lang" title="English">EN</button>
-          <button id="lang-de" class="btn-lang" title="Deutsch">DE</button>
-        </div>
-        <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
   <!-- ═══ Hero ═══ -->
-  <section class="hero" id="hero">
-    <div class="hero-bg">
-      <img src="assets/hero-bg.png" alt="" loading="eager">
-    </div>
-    <div class="hero-particles" id="heroParticles"></div>
-    <div class="hero-content">
-      <div class="hero-badge" data-i18n="hero.badge">
-        <span class="pulse"></span>
-        Built for OnlyFangs 3
-      </div>
+  <header class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">WoW: The Burning Crusade</div>
       <h1 class="hero-title">
-        <span class="line-1" data-i18n="hero.title1">Hardcore Reimagined</span>
-        <span class="line-2" data-i18n="hero.title2">For The Burning Crusade</span>
+        <span class="hero-title-line">Hybrid</span>
+        <span class="hero-title-line accent-glow">Hardcore</span>
       </h1>
-      <a href="#modes" class="btn btn-primary" data-i18n="hero.btnModes">Explore Modes</a>
-    </div>
-  </section>
-
-  <!-- ═══ Game Modes ═══ -->
-  <section class="modes" id="modes">
-    <div class="ambient-orb orb-purple" style="top: -200px; right: -100px;"></div>
-    <div class="container">
-      <div class="modes-header reveal">
-        <div class="section-label">Choose Your Challenge</div>
-        <h2 class="section-title">Two Playing Modes</h2>
-      </div>
-
-      <!-- Primary Modes Grid (HC Plus Left, Hybrid Hardcore Right) -->
-      <div class="modes-grid primary-modes">
-        <!-- ██ Hardcore Plus ██ -->
-        <a href="profile.html#mod-boosts" class="mode-card-link"
-          style="text-decoration: none; color: inherit; display: block;">
-          <div class="mode-card hcplus reveal"
-            style="border-top: 3px solid var(--gold-loot); background: linear-gradient(180deg, rgba(255, 215, 0, 0.05) 0%, rgba(0,0,0,0) 100%); position: relative;">
-
-            <div class="mode-icon">⚡</div>
-            <h3 class="mode-name" data-i18n="modes.plus.title">Hardcore Plus</h3>
-            <p class="mode-tagline" data-i18n="modes.plus.desc">
-              <strong>Checkpoint Progression.</strong> Experience TBC content with a unique safety net. Secure your
-              character's journey through progression-locked checkpoints.
-            </p>
-            <div class="mode-details" style="font-size: 0.8rem;">
-              <div class="mode-detail">
-                <span class="mode-detail-icon">📌</span>
-                <span><strong>Milestone Protection</strong>: Reach key levels or clear zones to "save" your character
-                  state.</span>
-              </div>
-              <div class="mode-detail">
-                <span class="mode-detail-icon">🔄</span>
-                <span><strong>Partial Reset</strong>: Death reverts you to your last secured checkpoint instead of full
-                  deletion.</span>
-              </div>
-              <div class="mode-detail">
-                <span class="mode-detail-icon">🏆</span>
-                <span>The perfect balance of risk and feasible TBC endgame progression.</span>
-              </div>
-            </div>
-            <div class="hcplus-tags-preview">
-              <span class="tag tag-mode">HCP</span>
-              <span class="tag tag-guild">Guild: OnlyFangs</span>
-              <span class="tag tag-rule">SSF</span>
-              <span class="tag tag-rule">Checkpoint OK</span>
-              <span class="tag tag-rule">No AH</span>
-            </div>
-            <div class="mode-severity">
-              <span class="mode-severity-label">Severity</span>
-              <span class="severity-dot active red"></span><span class="severity-dot active red"></span><span
-                class="severity-dot active red"></span><span class="severity-dot active red"></span><span
-                class="severity-dot"></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- ██ Hybrid Hardcore ██ -->
-        <a href="#hybrid-showcase" class="mode-card-link"
-          style="text-decoration: none; color: inherit; display: block;">
-          <div class="mode-card hybrid reveal">
-            <div class="mode-icon">⚖️</div>
-            <h3 class="mode-name" data-i18n="modes.softcore.title">Hybrid Hardcore</h3>
-            <p class="mode-tagline" data-i18n="modes.softcore.desc">
-              <strong>Custom Event Module.</strong> Pure flexibility for GMs and Streamers. Mix hardcore tension with
-              custom rules for community events.
-            </p>
-            <div class="mode-details" style="font-size: 0.8rem;">
-              <div class="mode-detail">
-                <span class="mode-detail-icon">⚙️</span>
-                <span><strong>Configurable Rules</strong>: Instance-lives, gear-lockouts, or <strong
-                    class="highlight-orange">Gear Score Caps</strong>.</span>
-              </div>
-              <div class="mode-detail">
-                <span class="mode-detail-icon">🎥</span>
-                <span><strong>Stream Toolkit</strong>: Pre-made assets and overlays for event organizers and
-                  shoutcasters.</span>
-              </div>
-              <div class="mode-detail">
-                <span class="mode-detail-icon">⚡</span>
-                <span><strong>Leveling Mods</strong>: "Hardmode" the leveling phase with modular difficulty
-                  modifiers.</span>
-              </div>
-            </div>
-            <div class="softcore-tags-preview">
-              <span class="tag tag-mode">Hybrid</span>
-              <span class="tag tag-guild">Custom Rules</span>
-              <span class="tag tag-rule">Event Only</span>
-            </div>
-            <div class="mode-severity">
-              <span class="mode-severity-label">Severity</span>
-              <span class="severity-dot active orange"></span><span class="severity-dot active orange"></span><span
-                class="severity-dot active orange"></span><span class="severity-dot"></span><span
-                class="severity-dot"></span>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Visual Transition / Guide -->
-      <div class="gm-guide-transition reveal">
-        <div class="gm-guide-line-top"></div>
-        <div class="gm-guide-content">
-          <div class="gmg-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"></circle>
-              <path
-                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-              </path>
-            </svg>
-          </div>
-          <h3>Your Rules, Your Realm</h3>
-          <p>Especially in <strong class="highlight-orange">Hybrid Hardcore</strong>, the Guild Master can fine-tune
-            every rule, penalty, and interaction.</p>
-        </div>
-        <div class="gm-guide-line-bottom"></div>
-      </div>
-
-      <!-- Full Width: GM Customization -->
-      <div class="gm-controls reveal" style="margin-top: 0; margin-bottom: 60px;">
-        <div class="gmc-header">
-          <h3>⚙️ Guild Master Ruleset Customization</h3>
-          <p>Tweak the exact difficulty and rules for your guild/event right from the addon UI.</p>
-        </div>
-        <div style="display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
-          <!-- Left side: GM Dashboard -->
-          <div class="gmc-dashboard" id="gmDashboard" style="flex: 1; min-width: 350px;">
-            <div class="gmc-sidebar">
-              <div class="gmc-nav active" data-tab="ruleset">Ruleset Profile</div>
-              <div class="gmc-nav" data-tab="classes">Class Restrictions</div>
-              <div class="gmc-nav" data-tab="buffs">World Buffs</div>
-              <div class="gmc-nav" data-tab="penalties">Death Penalties</div>
-              <div class="gmc-nav" data-tab="rewards">Score Unlocks</div>
-            </div>
-            <div class="gmc-content">
-              <!-- Tab: Ruleset -->
-              <div class="gmc-tab-pane active" id="tab-ruleset">
-                <div class="gmc-setting-row">
-                  <div class="gmc-setting-info">
-                    <strong>Trading Allowed</strong>
-                    <span>Can guild members trade with each other?</span>
-                  </div>
-                  <div class="gmc-toggle active" id="toggleTrading"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF'; window.updateRulesetTags();">
-                    ON</div>
-                </div>
-                <div class="gmc-setting-row">
-                  <div class="gmc-setting-info">
-                    <strong>Auction House Lock</strong>
-                    <span>Are players blocked from using the AH?</span>
-                  </div>
-                  <div class="gmc-toggle active" id="toggleAH"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF'; window.updateRulesetTags();">
-                    ON</div>
-                </div>
-                <div class="gmc-setting-row">
-                  <div class="gmc-setting-info">
-                    <strong>Mailbox Restrictions</strong>
-                    <span>Disable sending/receiving mail to non-guildies.</span>
-                  </div>
-                  <div class="gmc-toggle"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF'; window.updateRulesetTags();">
-                    OFF</div>
-                </div>
-              </div>
-
-              <!-- Tab: Classes -->
-              <div class="gmc-tab-pane" id="tab-classes" style="display:none;">
-                <div class="gmc-setting-row">
-                  <div class="gmc-setting-info">
-                    <strong>Class Limits</strong>
-                    <span>Max number of same class per 40m Raid.</span>
-                  </div>
-                  <select class="gmc-select">
-                    <option>Unlimited</option>
-                    <option selected>Max 5</option>
-                    <option>Max 3</option>
-                  </select>
-                </div>
-                <div class="gmc-setting-row">
-                  <div class="gmc-setting-info">
-                    <strong>Paladin Bubble-Hearth</strong>
-                    <span>Is Divine Shield + Hearthstone allowed?</span>
-                  </div>
-                  <div class="gmc-toggle"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                    OFF</div>
-                </div>
-              </div>
-
-              <!-- Tab: Buffs -->
-              <div class="gmc-tab-pane" id="tab-buffs" style="display:none;">
-                <div class="gmc-setting-row">
-                  <div class="gmc-setting-info">
-                    <strong>Chronoboon Dispenser</strong>
-                    <span>Allow storing world buffs?</span>
-                  </div>
-                  <div class="gmc-toggle active" id="toggleChrono"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF'; window.updateRulesetTags();">
-                    ON</div>
-                </div>
-                <div class="gmc-setting-row">
-                  <div class="gmc-setting-info">
-                    <strong>World Buff Purge on Boss Pull</strong>
-                    <span>Automatically remove WBs when engaging raid bosses.</span>
-                  </div>
-                  <div class="gmc-toggle"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF'; window.updateRulesetTags();">
-                    OFF</div>
-                </div>
-              </div>
-
-              <!-- Tab: Penalties -->
-              <div class="gmc-tab-pane" id="tab-penalties" style="display:none;">
-                <div class="gmc-setting-row">
-                  <div class="gmc-setting-info">
-                    <strong>Death Penalty Mode</strong>
-                    <span>What happens when a player dies in PvE/PvP?</span>
-                  </div>
-                  <select class="gmc-select">
-                    <option>Full Character Wipe (Delete)</option>
-                    <option>Respawn Sickness (24h)</option>
-                    <option selected>Score Deduction & Item Drop</option>
-                    <option>Bounty Placed on Killer</option>
-                  </select>
-                </div>
-                <div class="gmc-setting-row">
-                  <div class="gmc-setting-info">
-                    <strong>Gear Drop on Death</strong>
-                    <span>Player drops an equipped item upon dying.</span>
-                  </div>
-                  <div class="gmc-toggle active" id="toggleDrop"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF'; window.updateRulesetTags();">
-                    ON</div>
-                </div>
-                <div class="gmc-setting-row">
-                  <div class="gmc-setting-info">
-                    <strong>Viewer Execution (Streamers)</strong>
-                    <span>Allow Twitch chat to spin the penalty wheel.</span>
-                  </div>
-                  <div class="gmc-toggle active"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                    ON</div>
-                </div>
-              </div>
-
-              <!-- Tab: Score Unlocks -->
-              <div class="gmc-tab-pane" id="tab-rewards" style="display:none;">
-                <div class="gmc-setting-row">
-                  <div class="gmc-setting-info">
-                    <strong>Cosmetic Titles via Score</strong>
-                    <span>Unlock Titles at score milestones (e.g., 2000 pts).</span>
-                  </div>
-                  <div class="gmc-toggle active"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                    ON</div>
-                </div>
-                <div class="gmc-setting-row">
-                  <div class="gmc-setting-info">
-                    <strong>Mount Unlocks</strong>
-                    <span>Use guild score to unlock specific mounts.</span>
-                  </div>
-                  <div class="gmc-toggle active"
-                    onclick="this.classList.toggle('active'); this.textContent = this.classList.contains('active') ? 'ON' : 'OFF';">
-                    ON</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right side: Auto-Generated Ruleset Tags -->
-          <div class="gmc-tags-panel"
-            style="flex: 0 0 320px; background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 12px; padding: 24px;">
-            <h4
-              style="color: var(--text-primary); font-family: var(--font-display); margin-bottom: 16px; font-size: 1.1rem;">
-              Generated Ruleset Tags</h4>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">These tags are automatically
-              generated from your settings and visible to everyone inspecting your guild.</p>
-            <div class="hcplus-tags-preview" id="dynamicRulesetTags" style="gap: 12px; display: flex; flex-wrap: wrap;">
-              <span class="tag tag-mode">Hybrid</span>
-              <span class="tag tag-rule" data-feature="trading"
-                style="background: rgba(46, 204, 113, 0.1); color: var(--highlight-green);">Trading: ON</span>
-              <span class="tag tag-rule" data-feature="ahl"
-                style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">AH: Locked</span>
-              <span class="tag tag-rule" data-feature="chr">Chronoboon: ON</span>
-              <span class="tag tag-rule" data-feature="drp"
-                style="background: rgba(230, 57, 70, 0.1); color: var(--blood-red);">Drop Item on Death</span>
-            </div>
-          </div>
-        </div>
-
-        <script>
-          document.addEventListener('DOMContentLoaded', () => {
-            const navs = document.querySelectorAll('.gmc-nav');
-            const panes = document.querySelectorAll('.gmc-tab-pane');
-
-            navs.forEach(nav => {
-              nav.addEventListener('click', () => {
-                navs.forEach(n => n.classList.remove('active'));
-                panes.forEach(p => p.style.display = 'none');
-                nav.classList.add('active');
-                const tabId = nav.getAttribute('data-tab');
-                const pane = document.getElementById('tab-' + tabId);
-                if (pane) {
-                  pane.style.display = 'block';
-                  pane.style.opacity = '0';
-                  pane.style.transform = 'translateY(10px)';
-                  setTimeout(() => {
-                    pane.style.transition = 'all 0.3s ease';
-                    pane.style.opacity = '1';
-                    pane.style.transform = 'translateY(0)';
-                  }, 10);
-                }
-              });
-            });
-          });
-        </script>
-
-        <!-- Mode Spectrum Bar -->
-        <div class="mode-spectrum reveal" style="margin: 32px 0 0; padding: 0 20px;">
-          <div
-            style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">
-            <span>← <strong style="color: var(--gold-loot);">Classic HC / Individual</strong></span>
-            <span><strong style="color: var(--portal-purple);">TBC Optimized / Streamer & Guild</strong> →</span>
-          </div>
-          <div
-            style="height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--gold-loot), var(--portal-purple)); opacity: 0.6;">
-          </div>
-        </div>
-
-      </div>
-  </section>
-
-  <!-- ═══ Playstyles(Solo vs Guilds) ═══ -->
-  <section class="playstyles" id="playstyles">
-    <div class="container">
-      <div class="playstyle-grid">
-
-        <!-- Left: Solo & Small Group -->
-        <div class="playstyle-panel reveal">
-          <div class="ps-header">
-            <span class="ps-icon">🛡️</span>
-            <h3>Solo & Small Group</h3>
-          </div>
-          <p class="ps-desc">Skip the massive guild drama. Enjoy a fresh TBC experience tailored for lone wolves or
-            small friend groups, blending hardcore excitement with accessible new content.</p>
-          <div class="ps-features">
-            <div class="ps-feature">
-              <span class="psf-icon">👤</span>
-              <div class="psf-content">
-                <h4>Solo Adventurer (SSF)</h4>
-                <p>Pure isolation. Compare your SSF score on global leaderboards against other lone wolves while taking
-                  on new challenges at your own pace.</p>
-              </div>
-            </div>
-            <div class="ps-feature">
-              <span class="psf-icon">🤝</span>
-              <div class="psf-content">
-                <h4>Group Mode (Shared Fate)</h4>
-                <p>Link your soul with up to 4 friends. If one dies, <strong>everyone dies</strong>. Share the glory,
-                  share the penalty in a tightly-knit co-op adventure.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="ps-visual">
-            <div class="ps-leaderboard-mock">
-              <div class="psl-title">Top Solo SSF Scores</div>
-              <div class="psl-row"><span class="psl-rank gold">1</span><span class="psl-name">Ziqø (HC)</span><span
-                  class="psl-score">4,890</span></div>
-              <div class="psl-row"><span class="psl-rank silver">2</span><span class="psl-name">Xaryu (Null)</span><span
-                  class="psl-score">4,120</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Super Guilds & GM Controls -->
-        <div class="playstyle-panel reveal" style="animation-delay: 0.1s;">
-          <div class="ps-header">
-            <span class="ps-icon">⚔️</span>
-            <h3>Super Guilds & GM Control</h3>
-          </div>
-          <p class="ps-desc">Massive streamer communities colliding in customized rulesets with hosted live events.</p>
-          <div class="ps-features">
-            <div class="ps-feature">
-              <span class="psf-icon">🌍</span>
-              <div class="psf-content">
-                <h4>Super Guilds</h4>
-                <p>Multiple guilds linked under one "Super Guild Master" sharing the exact same unified Hardcore ruleset
-                  and chat.</p>
-              </div>
-            </div>
-            <div class="ps-feature">
-              <span class="psf-icon">🏆</span>
-              <div class="psf-content">
-                <h4>GM Hosted Competitions</h4>
-                <p>Guild Masters and <strong>Super GMs</strong> can configure and host Weekly/Monthly challenges (e.g.,
-                  Mythic clears, PvP bouts, Speed runs). Winners receive points to buy items, or get direct
-                  unlocks/lootboxes granted directly from the GM.</p>
-              </div>
-            </div>
-            <div class="ps-feature">
-              <span class="psf-icon">🔥</span>
-              <div class="psf-content">
-                <h4>Guild vs. Guild</h4>
-                <p>Draft your best players to compete in restricted time-trials, progression races, and cross-guild
-                  PvP score battles. (Includes a future Draft Mode for team Captains!)</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="ps-visual">
-            <div class="ps-superguild-mock"
-              style="text-align: center; margin-bottom: 0px; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 8px; position:relative; z-index:2;">
-              <strong
-                style="color: var(--highlight-purple); font-family: var(--font-display); font-size: 1.1rem;">OnlyFangs
-                3</strong><br>
-              <span style="font-size: 0.75rem; color: var(--text-muted);">Super Guild</span>
-            </div>
-            <div style="display: flex; justify-content: center;">
-              <div style="width: 2px; height: 16px; background: var(--glass-border); position:relative; z-index:1;">
-              </div>
-            </div>
-            <div class="ps-vs-mock" style="position: relative; margin-top: 0;">
-              <div
-                style="position: absolute; top: -16px; left: 25%; right: 25%; height: 2px; background: var(--glass-border);">
-              </div>
-              <div
-                style="position: absolute; top: -16px; left: 25%; width: 2px; height: 16px; background: var(--glass-border);">
-              </div>
-              <div
-                style="position: absolute; top: -16px; right: 25%; width: 2px; height: 16px; background: var(--glass-border);">
-              </div>
-
-              <div class="psv-guild blue" style="position:relative; z-index: 2;">Team Tyler<br><span>Score: 142k</span>
-              </div>
-              <div class="psv-vs" style="margin-top: 8px; position:relative; z-index: 2;">VS</div>
-              <div class="psv-guild red" style="position:relative; z-index: 2;">Team Soda<br><span>Score: 138k</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Full Width: Active Mechanics Trackers -->
-      <div class="mechanics-trackers reveal"
-        style="margin-top: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-        <!-- PvE & PvP Rulesets -->
-        <div class="tracker-card">
-          <div class="tracker-header">
-            <span class="tracker-icon">📜</span>
-            <div>
-              <h4 style="font-family: var(--font-display); font-size: 1.1rem;">Dynamic Rulesets: PvE & PvP</h4>
-              <p style="font-size: 0.8rem; color: var(--text-muted);">Balanced between feasible and thrilling.
-              </p>
-            </div>
-          </div>
-          <div class="tracker-body">
-            <div style="display: block;">
-              <p style="font-size: 0.85rem; margin-bottom: 8px; color: var(--text-primary);">
-                Classic HC rules are <strong class="highlight-red">suicide in TBC</strong> — one death in a raid or BG
-                means total character deletion. Nobody would dare touch endgame.
-                But just playing normal TBC? <strong class="highlight-orange">No stakes, no stories, no
-                  adrenaline.</strong>
-              </p>
-              <p style="font-size: 0.85rem; margin-bottom: 8px; color: var(--text-primary);">
-                We sit in the middle: <strong class="highlight-green">dynamic penalties make dangerous content
-                  playable</strong> (gear wipes, score loss, lockouts instead of permadeath),
-                while <strong class="highlight-purple">point incentives and risk multipliers</strong> reward you for
-                pushing into content no sane HC player would attempt. Speedrun a dungeon under-levelled? Massive bonus.
-                Wipe the raid? Heavy penalty, but your character lives.
-              </p>
-              <ul style="font-size: 0.8rem; color: var(--text-muted); padding-left: 16px; margin: 0;">
-                <li style="margin-bottom: 6px;"><strong class="highlight-purple">PvE:</strong> Raids and dungeons use
-                  scaled penalties (gear drops, score loss) instead of deletion — making progression actually possible.
-                </li>
-                <li><strong class="highlight-orange">PvP:</strong> BGs and Arenas apply gear lockouts or rank loss on
-                  death — real consequences without the instant delete that kills all motivation.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Gear Battle Duels -->
-        <div class="tracker-card" id="duelContainer">
-          <div class="tracker-header">
-            <span class="tracker-icon">⚔️</span>
-            <div>
-              <h4 style="font-family: var(--font-display); font-size: 1rem;">Gear Battle Wagers</h4>
-              <p style="font-size: 0.75rem; color: var(--text-muted);">Wager your best item — winner takes all</p>
-            </div>
-          </div>
-          <div class="tracker-body duel-anim-body">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <div style="text-align: center; flex: 1;">
-                <div style="font-family: var(--font-display); font-size: 0.9rem; color: var(--text-primary);">Zuzu</div>
-                <div style="font-size: 0.65rem; color: var(--text-muted);">Paladin</div>
-                <div
-                  style="margin-top: 6px; padding: 4px 8px; background: rgba(230, 126, 34, 0.15); border: 1px solid rgba(230, 126, 34, 0.3); border-radius: 6px; font-size: 0.65rem;">
-                  <span style="color: var(--ember-orange);">⚔️ Destiny</span><br>
-                  <span style="color: var(--text-muted); font-size: 0.6rem;">ilvl 115 · Epic Sword</span>
-                </div>
-              </div>
-              <div
-                style="font-family: var(--font-display); font-size: 1.2rem; color: var(--blood-red); padding: 0 8px;">VS
-              </div>
-              <div style="text-align: center; flex: 1;">
-                <div style="font-family: var(--font-display); font-size: 0.9rem; color: var(--text-primary);">Thokk
-                </div>
-                <div style="font-size: 0.65rem; color: var(--text-muted);">Rogue</div>
-                <div
-                  style="margin-top: 6px; padding: 4px 8px; background: rgba(155, 89, 182, 0.15); border: 1px solid rgba(155, 89, 182, 0.3); border-radius: 6px; font-size: 0.65rem;">
-                  <span style="color: var(--portal-purple);">🗡️ Nightblade</span><br>
-                  <span style="color: var(--text-muted); font-size: 0.6rem;">ilvl 110 · Rare Dagger</span>
-                </div>
-              </div>
-            </div>
-            <!-- Health Bars -->
-            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
-              <div
-                style="flex: 1; background: rgba(0,0,0,0.5); height: 6px; border-radius: 3px; overflow: hidden; transform: scaleX(-1);">
-                <div id="duelHp1"
-                  style="width: 100%; height: 100%; background: var(--highlight-green); transition: width 0.3s ease;">
-                </div>
-              </div>
-              <div style="flex: 1; background: rgba(0,0,0,0.5); height: 6px; border-radius: 3px; overflow: hidden;">
-                <div id="duelHp2"
-                  style="width: 100%; height: 100%; background: var(--highlight-green); transition: width 0.3s ease;">
-                </div>
-              </div>
-            </div>
-            <div class="duel-status blinking" id="duelStatusText"
-              style="text-align: center; font-size: 0.7rem; color: var(--ember-orange); font-weight: bold; min-height: 14px;">
-              ⚔️ MATCH IN PROGRESS...
-            </div>
-          </div>
-        </div>
-
-        <!-- RP Walk Punishment -->
-        <div class="tracker-card">
-          <div class="tracker-header">
-            <span class="tracker-icon">🐢</span>
-            <div>
-              <h4 style="font-family: var(--font-display); font-size: 1rem;">GM Punishments</h4>
-              <p style="font-size: 0.75rem; color: var(--text-muted);">Rule-breaking has real consequences</p>
-            </div>
-          </div>
-          <div class="tracker-body">
-            <div
-              style="background: rgba(230, 57, 70, 0.08); border: 1px solid rgba(230, 57, 70, 0.2); border-radius: 10px; padding: 12px; margin-bottom: 8px;">
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-                <div
-                  style="width: 36px; height: 36px; border-radius: 8px; background: rgba(230, 57, 70, 0.2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
-                  🐢</div>
-                <div>
-                  <div style="font-family: var(--font-display); font-size: 0.85rem; color: var(--blood-red);">Forced RP
-                    Walk</div>
-                  <div style="font-size: 0.65rem; color: var(--text-muted);">Imposed by GM — Rule: <strong
-                      style="color: var(--ember-orange);">Ninja'd Loot</strong></div>
-                </div>
-                <div style="margin-left: auto; text-align: center;">
-                  <div style="font-family: var(--font-display); font-size: 1.1rem; color: var(--blood-red);">59:42</div>
-                  <div style="font-size: 0.55rem; color: var(--text-muted);">remaining</div>
-                </div>
-              </div>
-              <div style="height: 4px; background: rgba(0,0,0,0.3); border-radius: 2px; overflow: hidden;">
-                <div style="width: 98%; height: 100%; background: var(--blood-red); border-radius: 2px;"></div>
-              </div>
-            </div>
-            <ul style="font-size: 0.7rem; color: var(--text-muted); padding-left: 14px; margin: 0; line-height: 1.5;">
-              <li>Overrides fast-walk toggles — no way to skip</li>
-              <li>Tracks <strong style="color: var(--text-secondary);">active playtime</strong> only — AFK doesn't count
-              </li>
-              <li>GM can stack or extend punishment duration</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-  </section>
-
-  <!-- ═══ Streamer & Viewer Showcase ═══ -->
-  <section class="streamer" id="streamer">
-    <div class="container">
-      <div class="streamer-tools-showcase" id="hybrid-showcase">
-        <div class="section-label" data-i18n="streamer.label">Streamer & Viewer Integration</div>
-        <h2 class="section-title" data-i18n="streamer.title">Hardcore as a Spectator Sport</h2>
-        <p class="section-desc" data-i18n="streamer.desc">
-          Companion app bridges addon data to OBS overlays, Twitch chat, and public profiles.
-        </p>
-      </div>
-
-      <!-- Row 1: Stream Preview + Profile Card -->
-      <div class="mockup-row">
-        <!-- Twitch Stream with HC Overlay Widget -->
-        <div class="mockup-panel reveal">
-          <div class="mockup-label">Twitch Stream — Customizable HC Overlay</div>
-          <div class="obs-scene" style="position: relative;">
-            <img src="assets/twitch_stream.png" alt="WoW Twitch Stream" style="opacity: 0.25;">
-            <div class="hc-widget" style="transform: scale(0.85); transform-origin: top right;">
-              <div class="hcw-header">
-                <span class="hcw-badge">LIVE TRACKER</span>
-                <a href="profile.html" class="hcw-profile-link" title="View Full Profile">↗</a>
-              </div>
-
-              <!-- Tag Extraction Demo -->
-              <div class="hcw-tags">
-                <span class="tag tag-mode" style="font-size:0.55rem; padding:2px 4px;">HCP</span>
-                <span class="tag tag-guild" style="font-size:0.55rem; padding:2px 4px;">Guild: OnlyFangs</span>
-                <span class="tag tag-rule" style="font-size:0.55rem; padding:2px 4px;">1 Death</span>
-                <span class="tag tag-rule" style="font-size:0.55rem; padding:2px 4px;">No AH</span>
-              </div>
-
-              <div class="hcw-row" style="margin-top:8px;"><span class="hcw-lbl">Score</span><span
-                  class="hcw-val green">3,475</span></div>
-              <div class="hcw-row"><span class="hcw-lbl">Deaths</span><span class="hcw-val">1 (Forgiven)</span></div>
-              <div class="hcw-row"><span class="hcw-lbl">Rank</span><span class="hcw-val gold">#3</span></div>
-              <div class="hcw-divider"></div>
-              <div class="hcw-challenge">
-                <div class="hcw-challenge-title">🏔️ Active Challenge</div>
-                <div class="hcw-challenge-name">Nagrand to 70 — No Deaths</div>
-                <div class="hcw-challenge-progress">
-                  <div class="hcw-prog-bar">
-                    <div class="hcw-prog-fill" style="width:85%"></div>
-                  </div>
-                  <span class="hcw-prog-text">68/70</span>
-                </div>
-              </div>
-              <div class="hcw-feed-mini">
-                <div class="hcw-fi green">+100 Reached Nagrand</div>
-                <div class="hcw-fi">⚔️ GB won vs Thokk</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Profile Preview Card -->
-        <div class="mockup-panel reveal">
-          <div class="mockup-label">Player Profile — Data Extraction API</div>
-          <div class="profile-preview">
-            <div class="pp-hero">
-              <img src="assets/paladin_armory.png" alt="Pupi - Human Paladin" class="pp-model">
-            </div>
-            <div class="pp-info">
-              <div class="pp-name">Pupi</div>
-              <div class="pp-class">Retribution Paladin</div>
-              <div class="hcplus-tags-preview"
-                style="margin-top: 8px; padding-top: 0; border: none; justify-content: center;">
-                <span class="tag tag-mode">HCP</span>
-                <span class="tag tag-guild">Guild: OnlyFangs</span>
-                <span class="tag tag-rule">1 Death Ok</span>
-              </div>
-              <div class="pp-stat-row" style="margin-top: 16px;">
-                <div class="pp-stat"><span class="pp-sn">3,475</span><span class="pp-sl">Score</span></div>
-                <div class="pp-stat"><span class="pp-sn">1</span><span class="pp-sl">Deaths</span></div>
-                <div class="pp-stat"><span class="pp-sn">#3</span><span class="pp-sl">Rank</span></div>
-              </div>
-              <div class="pp-links">
-                <span class="pp-link">📺 Twitch</span>
-                <span class="pp-link">⚔️ Armory</span>
-                <span class="pp-link">🎬 Deathclips</span>
-              </div>
-              <a href="profile.html" class="pp-view-btn">View Full Profile API →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Row 2: Refined Hybrid Raid Showcase -->
-    <div class="hybrid-showcase-container reveal">
-      <!-- Left: Visual Mockup -->
-      <div class="hsc-visual">
-        <img src="assets/hybrid_raid_overlay.png" alt="Hybrid Raid Overlay">
-
-      </div>
-
-      <!-- Cinematic Death Banner Overlay -->
-      <div class="stream-death-banner" style="font-size: 0.75rem; padding: 6px 16px;">
-        <div style="display: flex; align-items: center; gap: 12px; justify-content: center;">
-          <span class="sdb-icon" style="font-size: 1rem;">💀</span>
-          <div style="text-align: center;">
-            <div style="font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 2px;">PUPI DIED — <span
-                style="color: rgba(255,255,255,0.7); font-weight: 400;">Killed by Fel Reaver</span></div>
-            <div style="margin-top: 4px; font-size: 0.7rem; color: var(--text-muted);">HC Lives: <span
-                style="color: var(--blood-red);">💀</span> <span style="color: var(--blood-red);">💀</span> <span
-                style="opacity: 0.3;">💀</span> — <strong style="color: var(--ember-orange);">1 life remaining</strong>
-            </div>
-          </div>
-          <span class="sdb-icon" style="font-size: 1rem;">💀</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right: Explanation Content -->
-    <div class="hsc-content">
-      <h4 class="hsc-title">Hybrid Hardcore — <strong class="highlight-purple">Possible</strong> Rule Example:
-        Individual Raid Lives</h4>
-      <p class="hsc-text">
-        In <strong class="highlight-purple">Hybrid Mode</strong>, the Hardcore experience is modular. This example
-        shows an individual "Instance Life" system where each player manages their own survival pool.
+      <p class="hero-subtitle">
+        TBC was never meant for permadeath. We're changing that.<br>
+        Customizable rulesets. Creative punishments. Competitive houses.<br>
+        <strong>Your rules. Your challenge. Your legacy.</strong>
       </p>
-      <ul class="hsc-penalty-list">
-        <li class="hsc-penalty-item">
-          <span class="hsc-pi-icon">🛡️</span>
-          <div>
-            <strong>Group Fail Penalty (Anti-Abuse)</strong><br>
-            If the raid is not cleared within the designated individual lives, a <strong class="highlight-orange">Global
-              Penalty</strong> (e.g. gear wipe) can be triggered for the whole group
-            to prevent reckless play.
-          </div>
-        </li>
-        <li class="hsc-penalty-item">
-          <span class="hsc-pi-icon">⚰️</span>
-          <div>
-            <strong>Elimination Policy</strong><br>
-            Once an individual's 3 lives are gone (skulls depleted), the chosen penalty triggers—ranging from <strong
-              class="highlight-red">Character Deletion</strong> to a gear-wipe or permanent lockout depending on the
-            GM's choice.
-          </div>
-        </li>
-      </ul>
-    </div>
-    </div>
-
-    <!--Row 3: Viewer Vote + Alerts-- >
-    <div class="mockup-row">
-      <div class="mockup-panel reveal">
-        <div class="mockup-label">Viewer Penalty Vote (Twitch)</div>
-        <div class="vote-mockup">
-          <div class="vote-event">💀 PUPI DIED — Killed by Fel Reaver</div>
-          <div class="vote-q">Chat decides the penalty!</div>
-          <div class="vote-opts">
-            <div class="vopt" style="--pct:42%">
-              <div class="vopt-fill"></div><span class="vopt-txt">⚔️ Full gear wipe</span><span
-                class="vopt-pct">42%</span>
-            </div>
-            <div class="vopt winner" style="--pct:35%">
-              <div class="vopt-fill"></div><span class="vopt-txt">📉 Score penalty (−300)</span><span
-                class="vopt-pct">35%</span>
-            </div>
-            <div class="vopt" style="--pct:23%">
-              <div class="vopt-fill"></div><span class="vopt-txt">🔒 Gear lock 1hr</span><span
-                class="vopt-pct">23%</span>
-            </div>
-          </div>
-          <div class="vote-foot"><span>1,247 votes</span><span class="vote-timer">⏱ 28s</span></div>
-        </div>
+      <div class="hero-actions">
+        <a href="#features" class="btn btn-primary">Explore Features</a>
+        <a href="#download" class="btn btn-secondary">Download Free</a>
       </div>
-      <div class="mockup-panel reveal">
-        <div class="mockup-label">
-          <span style="color: #9146FF;">●</span> Stream Event Alerts (Live API)
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-value">8+</span>
+          <span class="hero-stat-label">Tracking Modules</span>
         </div>
-        <div class="alert-mockup">
-          <div class="salert death">
-            <div class="salert-icon">💀</div>
-            <div class="salert-body">
-              <strong>Character Voided</strong><br>
-              Zuzu (Priest) — Fel Reaver, Hellfire<br>
-              <span class="salert-pts neg">−300 pts · Deletion Pending</span>
-            </div>
-          </div>
-          <div class="salert milestone">
-            <div class="salert-icon">🏆</div>
-            <div class="salert-body">
-              <strong>Milestone Reached</strong><br>
-              Pupi hit Level 68 — Nagrand<br>
-              <span class="salert-pts pos">+100 pts · Global Rank #3</span>
-            </div>
-          </div>
-          <div class="salert gb">
-            <div class="salert-icon">⚔️</div>
-            <div class="salert-body">
-              <strong>Gear Battle Won</strong><br>
-              Pupi vs Thokk — Lionheart Blade<br>
-              <span class="salert-pts pos">+75 pts · New Title: "Duelist"</span>
-            </div>
-          </div>
-          <div class="salert viewer">
-            <div class="salert-icon">🎮</div>
-            <div class="salert-body">
-              <strong>Interaction: Viewer Challenge</strong><br>
-              xXhunterXx triggered <span style="color: #9146FF; font-weight: 700;">Zone Lock: Nagrand</span>
-            </div>
-          </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">1000+</span>
+          <span class="hero-stat-label">Micro-Achievements</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">3</span>
+          <span class="hero-stat-label">Game Modes</span>
         </div>
       </div>
     </div>
-
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
     </div>
+  </header>
+
+  <!-- ═══ The Problem ═══ -->
+  <section class="section section-dark" id="problem">
+    <div class="container">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-title">TBC Hardcore Is <span class="accent">Broken</span></h2>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">&#9760;</div>
+          <h3>Random One-Shots</h3>
+          <p>TBC dungeons are brutal. Fears into extra packs, cleaves from behind, unavoidable boss mechanics. One mistake from anyone in your group and your 80-hour character is gone forever.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">&#128564;</div>
+          <h3>The Re-Leveling Slog</h3>
+          <p>Die at level 68 in a dungeon? Start over. The 58-70 grind through Hellfire Peninsula for the fifth time kills motivation faster than any boss mechanic ever could.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">&#9881;</div>
+          <h3>One Size Doesn't Fit All</h3>
+          <p>Every guild has different ideas about what makes hardcore fun. Current addons enforce rigid rules with zero flexibility. Your event, your community &mdash; but not your rules.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">&#128200;</div>
+          <h3>No Competition Framework</h3>
+          <p>Classic HC had the thrill of survival. TBC needs more. There's no scoring, no house competition, no micro-achievements. Just... don't die. That's not enough for 6+ months of content.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-
-
-  <!-- ═══ Project Schedule / Roadmap ═══ -->
-    <section class="achievements-section section-padding roadmap-reveal-trigger" id="roadmap"
-      style="background: var(--bg-void); padding-top: 100px;">
-      <div class="container">
-
-        <div class="roadmap-schedule-header reveal">
-          <span class="roadmap-label-small">PROJECT SCHEDULE</span>
-          <h2 class="roadmap-title-large">
-            <div class="icon">📅</div>
-            DEVELOPMENT ROADMAP
-          </h2>
+  <!-- ═══ The Solution ═══ -->
+  <section class="section section-gradient" id="solution">
+    <div class="container">
+      <div class="section-label">The Solution</div>
+      <h2 class="section-title">Hardcore, <span class="accent">Reimagined</span></h2>
+      <p class="section-desc">Hardcore Plus introduces <strong>Hybrid Hardcore</strong> &mdash; keeping the thrill of permadeath leveling while making endgame viable through configurable checkpoints, creative penalties, and a deep competition layer that keeps every player engaged for months.</p>
+      <div class="modes-grid">
+        <div class="mode-card mode-hc">
+          <div class="mode-badge">Hardcore</div>
+          <h3>Pure HC</h3>
+          <p>Traditional permadeath. One life. Die and your character is permanently voided. Gear destroyed. Guild-marked as dead. The ultimate challenge.</p>
+          <ul class="mode-features">
+            <li>Permadeath enforced</li>
+            <li>SSF enforced (no mail, no AH, no trade)</li>
+            <li>Full gear destruction on death</li>
+            <li>Guild auto-notification</li>
+          </ul>
         </div>
-
-        <!-- GitHub Progress Indicator -->
-        <div class="roadmap-progress-box reveal">
-          <div class="roadmap-progress-top">
-            <div class="roadmap-progress-info">
-              <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-              </svg>
-              <h4 data-i18n="roadmap.progress.title">PROJECT COMPLETION STATUS</h4>
-            </div>
-            <span id="githubProgressText" class="roadmap-progress-percentage">0%</span>
-          </div>
-
-          <div class="roadmap-progress-bar-container">
-            <div id="roadmapTargetMarker" class="roadmap-progress-marker" style="left: 0%;">
-              <span>Expected Target</span>
-              <div style="font-size: 1.2rem; color: #fff; margin-top: -5px;">▼</div>
-            </div>
-            <div id="githubProgressBar" class="roadmap-progress-bar-fill" style="width: 0%;"></div>
-          </div>
-
-          <div class="roadmap-progress-stats">
-            <span id="githubMilestoneStats">Tracking 5 Milestones | 1 Completed | 5 tracking Tasks</span>
-            <a href="https://github.com/klumpler-12/wow-tbc-hardcore/milestones" target="_blank"
-              data-i18n="roadmap.github_link">View Checklists on GitHub →</a>
-          </div>
+        <div class="mode-card mode-hybrid featured">
+          <div class="mode-badge">Hybrid HC</div>
+          <h3>The Sweet Spot</h3>
+          <p>Hardcore leveling with configurable checkpoints. Multiple lives in instances. All the thrill, none of the "I quit because Moroes one-shot me" moments.</p>
+          <ul class="mode-features">
+            <li>HC leveling (1-60/70, configurable)</li>
+            <li>Instance checkpoints &amp; extra lives</li>
+            <li>Configurable death penalties</li>
+            <li>GM sets instance rules per raid tier</li>
+          </ul>
         </div>
-
-        <p class="section-desc"
-          style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem; color: var(--text-secondary);">
-          We are building the future of WoW TBC Hardcore layer by layer. Click on any of the strategic phases below to
-          view our detailed implementation drafts, technical strategies, and the live status of our architectural
-          design.
-        </p>
-
-        <!-- Horizontal Roadmap -->
-        <div class="roadmap-horizontal-clean reveal">
-          <a href="development.html#phase1" class="roadmap-item-clean">
-            <span class="ach-timestamp">Mar 2026</span>
-            <div class="ach-icon-circle">🛠️</div>
-            <strong class="ach-headline">Phase 1:<br>Foundation & UI</strong>
-          </a>
-
-          <a href="development.html#phase2" class="roadmap-item-clean">
-            <span class="ach-timestamp">Apr 2026</span>
-            <div class="ach-icon-circle">📦</div>
-            <strong class="ach-headline">Phase 2:<br>Addon Core</strong>
-          </a>
-
-          <a href="development.html#phase3" class="roadmap-item-clean">
-            <span class="ach-timestamp">May 2026</span>
-            <div class="ach-icon-circle">📊</div>
-            <strong class="ach-headline">Phase 3:<br>Web Backend</strong>
-          </a>
-
-          <a href="development.html#phase4" class="roadmap-item-clean">
-            <span class="ach-timestamp">Jun 2026</span>
-            <div class="ach-icon-circle">🧪</div>
-            <strong class="ach-headline">Phase 4:<br>Test Server</strong>
-          </a>
-
-          <a href="development.html#phase5" class="roadmap-item-clean">
-            <span class="ach-timestamp">Aug 2026</span>
-            <div class="ach-icon-circle">🚀</div>
-            <strong class="ach-headline">Phase 5:<br>Version 1.0</strong>
-          </a>
+        <div class="mode-card mode-null">
+          <div class="mode-badge">Nullcore</div>
+          <h3>Score Only</h3>
+          <p>No gear loss, no permadeath. Points deducted on death. Perfect for guilds that want competitive scoring without the heartbreak.</p>
+          <ul class="mode-features">
+            <li>Death = score penalty only</li>
+            <li>Gear and inventory kept</li>
+            <li>Open economy</li>
+            <li>Full leaderboard participation</li>
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
+  <!-- ═══ Features ═══ -->
+  <section class="section section-dark" id="features">
+    <div class="container">
+      <div class="section-label">Core Features</div>
+      <h2 class="section-title">Everything You Need, <span class="accent">Nothing You Don't</span></h2>
+      <div class="features-grid">
 
+        <div class="feature-card">
+          <div class="feature-icon">&#9878;</div>
+          <h3>Ruleset Engine</h3>
+          <p>Hard rules that can't be changed (HC until 60) and soft rules your GM customizes. Self-Found, SSF, trade restrictions, lockouts &mdash; all configurable. Export and import rulesets across guilds. Compare scores across different rule configurations.</p>
+        </div>
 
-    <!-- ═══ Footer ═══ -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-brand">⚔️ TBC Hardcore</div>
-        <p class="footer-desc">
-          An open-source addon project making hardcore TBC feasible.<br>
-          Built for OnlyFangs 3 and the wider WoW community.
-        </p>
-        <ul class="footer-links">
-          <li><a href="https://github.com/klumpler-12/wow-tbc-hardcore" target="_blank">GitHub</a></li>
-          <li><a href="index.html#modes" data-i18n="nav.modes">Modes</a></li>
-          <li><a href="index.html#streamer" data-i18n="nav.streamer">Streamer Tools</a></li>
-          <li><a href="research.html" data-i18n="nav.ideas">Research Hub</a></li>
-          <li><a href="profile.html" data-i18n="nav.profile">Profile</a></li>
-          <li><a href="intro.html" data-i18n="nav.explain">Explain WoW HC</a></li>
-        </ul>
-        <p class="footer-copy">© 2026 TBC Hardcore Project · Not affiliated with Blizzard Entertainment</p>
+        <div class="feature-card">
+          <div class="feature-icon">&#128202;</div>
+          <h3>Track Everything</h3>
+          <p>Deaths, mob kills, fishing time, steps traveled, dungeons cleared, boss kills, equipment changes, trade activity. Every action feeds into your score and creates data for rewards, punishments, and leaderboards.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#127942;</div>
+          <h3>Scoring System</h3>
+          <p>Two modes (your community votes): complex multiplier-based scoring OR simple fixed-value points. Thousands of micro-achievements. First to fish 375? Points. Cleared Blood Furnace Heroic? Points. Killed 5 named mobs? Points.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#9889;</div>
+          <h3>Creative Punishments</h3>
+          <p>Rule violation? Your GM gets notified instantly. Then the fun begins: forced RP-walk for an hour, gear-lock, temporary trade bans. All triggered remotely. Because point deductions are boring.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#127968;</div>
+          <h3>Houses &amp; Sub-Guilds</h3>
+          <p>Split your guild into competing houses. Each house runs their own Karazhan, competes for points, drafts players with a budget system. Houses merge for 25-man raids. Think Game of Thrones, but in Outland.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#127918;</div>
+          <h3>Mini-Games</h3>
+          <p>Spontaneous races, scavenger hunts, first-to-X competitions. Your GM drops a challenge, sets the prize, and the guild scrambles. Keeps things fresh between raid lockouts.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#128274;</div>
+          <h3>Anti-Cheat</h3>
+          <p>Inventory hash snapshots detect gear restoration cheats. Cross-verification between guild members. Companion app enables backend verification. Community can flag suspicious deaths.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#127760;</div>
+          <h3>Web Dashboard</h3>
+          <p>Configure everything from your browser. Guild management, punishment designer, reward builder, leaderboards, player profiles. No need to be in-game to manage your event.</p>
+        </div>
+
       </div>
-    </footer>
+    </div>
+  </section>
 
+  <!-- ═══ OnlyFangs 3 Section ═══ -->
+  <section class="section section-of3" id="onlyfangs">
+    <div class="container">
+      <div class="section-label">Built For The Biggest Event</div>
+      <h2 class="section-title">Ready for <span class="accent">OnlyFangs 3</span></h2>
+      <p class="section-desc">Sodapoppin and NMP have outlined their vision for OF3. Aldor vs Scryer. Houses competing within teams. Point systems for heroic clears. Thousands of micro-achievements. Player drafts with rating budgets. <strong>Hardcore Plus was built to power exactly this.</strong></p>
 
+      <div class="of3-grid">
+        <div class="of3-card">
+          <div class="of3-need">
+            <span class="of3-tag">OF3 Needs</span>
+            Houses within Aldor vs Scryer
+          </div>
+          <div class="of3-solution">
+            <span class="of3-tag of3-tag-solved">HC+ Delivers</span>
+            Full Houses system with team aggregation. Create houses, assign leaders, track points per house AND per faction. Aldor vs Scryer leaderboard built-in.
+          </div>
+        </div>
 
-    <style>
-      .role-btn:hover {
-        background: rgba(255, 255, 255, 0.1) !important;
-        border-color: var(--highlight-orange) !important;
-        transform: translateY(-2px);
-      }
+        <div class="of3-card">
+          <div class="of3-need">
+            <span class="of3-tag">OF3 Needs</span>
+            Heroics rated by difficulty with points
+          </div>
+          <div class="of3-solution">
+            <span class="of3-tag of3-tag-solved">HC+ Delivers</span>
+            Community-voted difficulty ratings per dungeon. Blood Furnace = 20pts, Shattered Halls = 35pts. Automatically awarded on clear. Configurable by GMs.
+          </div>
+        </div>
 
-      /* Shrink playstyle panels */
-      .ps-desc {
-        font-size: 0.8rem !important;
-        margin-bottom: 8px !important;
-      }
+        <div class="of3-card">
+          <div class="of3-need">
+            <span class="of3-tag">OF3 Needs</span>
+            Thousands of micro-achievements
+          </div>
+          <div class="of3-solution">
+            <span class="of3-tag of3-tag-solved">HC+ Delivers</span>
+            Achievement framework with 1000+ definitions. First to fish 375. First to kill 5 named mobs. First to loot a gray from Winterspring yetis. GMs can create custom achievements on the fly.
+          </div>
+        </div>
 
-      .psf-content p {
-        font-size: 0.78rem !important;
-        margin-bottom: 4px !important;
-      }
+        <div class="of3-card">
+          <div class="of3-need">
+            <span class="of3-tag">OF3 Needs</span>
+            Player rating &amp; draft system
+          </div>
+          <div class="of3-solution">
+            <span class="of3-tag of3-tag-solved">HC+ Delivers</span>
+            Rate players 1-10. Officers draft with point budgets (60pts for 10-man, Ampy costs 10, you cost 7). Prevents sweat-stacking. Fair house composition.
+          </div>
+        </div>
 
-      .psf-content h4 {
-        font-size: 0.9rem !important;
-      }
+        <div class="of3-card">
+          <div class="of3-need">
+            <span class="of3-tag">OF3 Needs</span>
+            Points redeemable for guild rewards
+          </div>
+          <div class="of3-solution">
+            <span class="of3-tag of3-tag-solved">HC+ Delivers</span>
+            GM Reward Designer. Your house farmed the most heroics? Earn Spellstrike for your team. Points convert to tangible in-game advantages.
+          </div>
+        </div>
 
-      .ps-header h3 {
-        font-size: 1.1rem !important;
-      }
+        <div class="of3-card">
+          <div class="of3-need">
+            <span class="of3-tag">OF3 Needs</span>
+            Weekly guild meeting tallies
+          </div>
+          <div class="of3-solution">
+            <span class="of3-tag of3-tag-solved">HC+ Delivers</span>
+            Automated weekly reports. Aldor total vs Scryer total. Top house of the week. Top individual performers. Exportable to Discord or stream overlay.
+          </div>
+        </div>
+      </div>
 
-      .playstyle-panel {
-        padding: 20px !important;
-      }
+      <div class="of3-quote">
+        <blockquote>
+          "How would you even track this?"<br>
+          <span class="of3-quote-response">&mdash; With Hardcore Plus. Every single thing they discussed. Tracked, scored, and displayed.</span>
+        </blockquote>
+      </div>
+    </div>
+  </section>
 
-      .ps-feature {
-        gap: 8px !important;
-      }
+  <!-- ═══ For You Section ═══ -->
+  <section class="section section-dark" id="for-you">
+    <div class="container">
+      <div class="section-label">For Every Player</div>
+      <h2 class="section-title">No Matter How You <span class="accent">Play</span></h2>
 
-      /* Tighter section spacing */
-      .playstyles {
-        padding-top: 40px !important;
-        padding-bottom: 40px !important;
-      }
+      <div class="player-grid">
+        <div class="player-card">
+          <div class="player-type">The Event Chaser</div>
+          <h3>Want the OnlyFangs experience?</h3>
+          <p>Join a guild running Hardcore Plus and get the full OF3-style experience: houses, points, weekly competitions, creative punishments, and the most hype raid nights of your life. Even if you're not in OF3 itself, <strong>any guild</strong> can run this format.</p>
+          <div class="player-highlight">Houses &bull; Scoring &bull; Drafts &bull; Weekly Reports</div>
+        </div>
 
-      .streamer {
-        padding-top: 40px !important;
-      }
+        <div class="player-card">
+          <div class="player-type">The Challenge Seeker</div>
+          <h3>Want more challenge and excitement?</h3>
+          <p>Leveling feels too safe? Toggle on Hybrid Hardcore and suddenly every dungeon matters. Every pull is a decision. Track your deaths, build your score, climb the leaderboard. Normal TBC will never feel the same.</p>
+          <div class="player-highlight">Multi-Mode HC &bull; Leaderboards &bull; Achievements</div>
+        </div>
 
-      .modes {
-        padding-bottom: 40px !important;
-      }
+        <div class="player-card">
+          <div class="player-type">The HC Skeptic</div>
+          <h3>Love HC but think TBC can't work?</h3>
+          <p>You're right &mdash; pure permadeath in TBC is brutal and unfair. That's exactly why Hybrid Hardcore exists. Keep the tension of HC leveling. Get checkpoints where it matters. Die to Moroes? You lose points and a life, not 80 hours.</p>
+          <div class="player-highlight">Checkpoints &bull; Instance Lives &bull; Configurable Penalties</div>
+        </div>
 
-      /* Responsive 3-col tracker */
-      @media (max-width: 1000px) {
-        .mechanics-trackers {
-          grid-template-columns: 1fr !important;
+        <div class="player-card">
+          <div class="player-type">The Guild Master</div>
+          <h3>Running your own event?</h3>
+          <p>Full control over every rule. Design your own punishment system. Create house competitions. Set up achievement hunts. Manage everything from the web dashboard. Your event, your vision, powered by Hardcore Plus.</p>
+          <div class="player-highlight">Web Dashboard &bull; Rule Designer &bull; Punishment Builder</div>
+        </div>
+
+        <div class="player-card">
+          <div class="player-type">The Streamer</div>
+          <h3>Content that writes itself?</h3>
+          <p>House rivalries. Dramatic deaths. Creative punishments landing live. Draft night tension. Weekly point tallies. Mini-game chaos. Every single session generates content your viewers will love. No scripting needed.</p>
+          <div class="player-highlight">Overlays &bull; Alerts &bull; Twitch Integration (planned)</div>
+        </div>
+
+        <div class="player-card">
+          <div class="player-type">The Solo Wolf</div>
+          <h3>Just want to track yourself?</h3>
+          <p>Don't need a guild? Run Hardcore Plus solo. Track your deaths, build your personal score, push for micro-achievements. Compare yourself against the global leaderboard. The addon works just as well for one as it does for five hundred.</p>
+          <div class="player-highlight">Personal Stats &bull; Global Leaderboard &bull; Achievements</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Scoring Deep Dive ═══ -->
+  <section class="section section-gradient" id="scoring">
+    <div class="container">
+      <div class="section-label">Scoring</div>
+      <h2 class="section-title">Every Action <span class="accent">Counts</span></h2>
+      <p class="section-desc">Two scoring philosophies. Your community votes on which to use &mdash; or your GM picks for your guild.</p>
+
+      <div class="scoring-comparison">
+        <div class="scoring-option">
+          <h3>Complex Scoring</h3>
+          <p class="scoring-desc">Dynamic multipliers that reward skill and risk</p>
+          <div class="scoring-example">
+            <div class="scoring-formula">
+              <span class="formula-label">Boss Kill Score =</span>
+              <span class="formula-value">Base &times; (MobLvl / PlayerLvl) &times; Difficulty &times; Survivors</span>
+            </div>
+            <div class="scoring-case">
+              <strong>Example:</strong> Level 68 player kills Prince Malchezaar (lvl 73, difficulty 8.5)<br>
+              100 &times; (73/68) &times; 8.5 &times; 0.9 = <strong>821 points</strong>
+            </div>
+          </div>
+          <ul>
+            <li>Rewards underdogs more than overgeared players</li>
+            <li>Difficulty multiplier community-voted per boss</li>
+            <li>Survivor bonus: more alive = more points each</li>
+            <li>Deeper strategic layer</li>
+          </ul>
+        </div>
+        <div class="scoring-option">
+          <h3>Simple Scoring</h3>
+          <p class="scoring-desc">Fixed community-voted values, easy to understand</p>
+          <div class="scoring-example">
+            <div class="scoring-formula">
+              <span class="formula-label">Boss Kill Score =</span>
+              <span class="formula-value">Fixed Value (voted by community)</span>
+            </div>
+            <div class="scoring-case">
+              <strong>Example:</strong> Prince Malchezaar kill<br>
+              Community voted: <strong>+500 points</strong> per surviving player
+            </div>
+          </div>
+          <ul>
+            <li>Crystal clear &mdash; everyone knows the stakes</li>
+            <li>Community votes on every point value</li>
+            <li>Easy to explain to new players</li>
+            <li>Less math, more hype</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="achievements-showcase">
+        <h3>Micro-Achievements &mdash; Always Something To Chase</h3>
+        <div class="achievement-grid">
+          <div class="achievement">
+            <span class="achievement-pts">+250</span>
+            <span class="achievement-name">First to kill 5 named mobs</span>
+          </div>
+          <div class="achievement">
+            <span class="achievement-pts">+500</span>
+            <span class="achievement-name">First to reach Fishing 375</span>
+          </div>
+          <div class="achievement">
+            <span class="achievement-pts">+100</span>
+            <span class="achievement-name">Clear Blood Furnace Heroic</span>
+          </div>
+          <div class="achievement">
+            <span class="achievement-pts">+50</span>
+            <span class="achievement-name">Loot a gray from Winterspring yetis</span>
+          </div>
+          <div class="achievement">
+            <span class="achievement-pts">+1000</span>
+            <span class="achievement-name">First Karazhan full clear</span>
+          </div>
+          <div class="achievement">
+            <span class="achievement-pts">+75</span>
+            <span class="achievement-name">Sit in every chair in Shattrath</span>
+          </div>
+          <div class="achievement">
+            <span class="achievement-pts">-200</span>
+            <span class="achievement-name">Death during dungeon run</span>
+          </div>
+          <div class="achievement">
+            <span class="achievement-pts">+150</span>
+            <span class="achievement-name">Win a spontaneous GM race</span>
+          </div>
+        </div>
+        <p class="achievement-note">GMs can create unlimited custom achievements. Hidden ones surprise players on completion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Houses Deep Dive ═══ -->
+  <section class="section section-dark" id="houses">
+    <div class="container">
+      <div class="section-label">Houses</div>
+      <h2 class="section-title">Your Guild, <span class="accent">Many Banners</span></h2>
+      <p class="section-desc">Inspired by the OnlyFangs 3 format: split your guild into competing houses, each with their own leader, their own raids, and their own glory.</p>
+
+      <div class="houses-visual">
+        <div class="houses-team houses-team-left">
+          <div class="team-header">TEAM ALDOR</div>
+          <div class="house-card">
+            <div class="house-name">House Stormforge</div>
+            <div class="house-score">4,280 pts</div>
+            <div class="house-detail">Leader: Ampie &bull; 10 members &bull; Kara: 4/11</div>
+          </div>
+          <div class="house-card">
+            <div class="house-name">House Ironveil</div>
+            <div class="house-score">3,910 pts</div>
+            <div class="house-detail">Leader: Zary &bull; 10 members &bull; Kara: 3/11</div>
+          </div>
+          <div class="house-card">
+            <div class="house-name">House Ashborn</div>
+            <div class="house-score">2,750 pts</div>
+            <div class="house-detail">Leader: Sfan &bull; 10 members &bull; Kara: 1/11</div>
+          </div>
+        </div>
+        <div class="houses-vs">VS</div>
+        <div class="houses-team houses-team-right">
+          <div class="team-header">TEAM SCRYER</div>
+          <div class="house-card">
+            <div class="house-name">House Nighthollow</div>
+            <div class="house-score">4,100 pts</div>
+            <div class="house-detail">Leader: Tyler1 &bull; 10 members &bull; Kara: 3/11</div>
+          </div>
+          <div class="house-card">
+            <div class="house-name">House Duskwarden</div>
+            <div class="house-score">3,600 pts</div>
+            <div class="house-detail">Leader: Nick &bull; 10 members &bull; Kara: 2/11</div>
+          </div>
+          <div class="house-card">
+            <div class="house-name">House Felsworn</div>
+            <div class="house-score">2,200 pts</div>
+            <div class="house-detail">Leader: Phin &bull; 10 members &bull; Kara: 0/11</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="houses-features">
+        <div class="houses-feature">
+          <h4>Draft Night</h4>
+          <p>Officers draft players with a point budget. Top players cost more. Build your dream team without stacking all the sweats.</p>
+        </div>
+        <div class="houses-feature">
+          <h4>Raid Pairing</h4>
+          <p>Each house runs their own Kara (10-man). For Gruul's and Mag's (25-man), two houses merge. Different matchups every week.</p>
+        </div>
+        <div class="houses-feature">
+          <h4>Cross-House Competition</h4>
+          <p>Parse against the house you're paired with. Who does more DPS? Who survives? Weekly leaderboards per house and per team.</p>
+        </div>
+        <div class="houses-feature">
+          <h4>Team Aggregation</h4>
+          <p>All Aldor house points combine into the Aldor total. All Scryer houses into Scryer total. The faction war plays out through every heroic, every boss kill, every achievement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Punishments & Rewards ═══ -->
+  <section class="section section-gradient" id="punishments">
+    <div class="container">
+      <div class="section-label">Punishments &amp; Rewards</div>
+      <h2 class="section-title">Consequences That <span class="accent">Matter</span></h2>
+
+      <div class="pr-grid">
+        <div class="pr-column">
+          <h3 class="pr-header pr-punishment">Punishments</h3>
+          <div class="pr-card pr-card-punishment">
+            <div class="pr-name">RP Walk of Shame</div>
+            <p>Violated a rule? Your character can only RP-walk for the next hour. The entire guild sees you crawling through Shattrath.</p>
+            <span class="pr-badge">Premium</span>
+          </div>
+          <div class="pr-card pr-card-punishment">
+            <div class="pr-name">Gear Lock</div>
+            <p>Can't change equipment for 30 minutes. Hope you weren't about to swap to your healing set.</p>
+            <span class="pr-badge">Premium</span>
+          </div>
+          <div class="pr-card pr-card-punishment">
+            <div class="pr-name">Trade Embargo</div>
+            <p>Temporary ban from all trading. No mail, no AH, no player trades. Self-found whether you like it or not.</p>
+            <span class="pr-badge">Premium</span>
+          </div>
+          <div class="pr-card pr-card-punishment">
+            <div class="pr-name">Point Deduction</div>
+            <p>The classic. Lose 100-500 points depending on the severity. Your house feels it too.</p>
+            <span class="pr-badge pr-badge-free">Free</span>
+          </div>
+        </div>
+        <div class="pr-column">
+          <h3 class="pr-header pr-reward">Rewards</h3>
+          <div class="pr-card pr-card-reward">
+            <div class="pr-name">BiS Gear Allocation</div>
+            <p>Your house earned the most points this week? Spellstrike goes to your house's tailor. Tangible in-game advantage.</p>
+          </div>
+          <div class="pr-card pr-card-reward">
+            <div class="pr-name">Hidden Achievements</div>
+            <p>Surprise rewards that pop up when you least expect them. The GM planted them. You just happened to loot that specific gray item.</p>
+          </div>
+          <div class="pr-card pr-card-reward">
+            <div class="pr-name">Weekly MVP</div>
+            <p>Highest scorer of the week gets announced guild-wide. Custom title in the addon. Bragging rights are forever.</p>
+          </div>
+          <div class="pr-card pr-card-reward">
+            <div class="pr-name">Mini-Game Prizes</div>
+            <p>Win a spontaneous race? GM sets the prize: bonus points, priority on next loot council, or just eternal glory.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Web Dashboard Preview ═══ -->
+  <section class="section section-dark" id="dashboard">
+    <div class="container">
+      <div class="section-label">Premium</div>
+      <h2 class="section-title">Command Center: <span class="accent">Web Dashboard</span></h2>
+      <p class="section-desc">Manage your entire event from your browser. No more typing slash commands in-game to configure 50 rules.</p>
+
+      <div class="dashboard-features">
+        <div class="dash-feature">
+          <h4>Guild Rules Designer</h4>
+          <p>Toggle every rule on/off. Set death penalties per zone. Configure instance lives. Export your ruleset as a shareable link.</p>
+        </div>
+        <div class="dash-feature">
+          <h4>Punishment &amp; Reward Builder</h4>
+          <p>Create custom punishments and rewards. Set triggers, durations, and conditions. Assign them to rule violations or achievements.</p>
+        </div>
+        <div class="dash-feature">
+          <h4>House Management</h4>
+          <p>Create houses, assign leaders, run the draft. View house standings, member performance, raid progress. All in one place.</p>
+        </div>
+        <div class="dash-feature">
+          <h4>Live Leaderboards</h4>
+          <p>Player rankings, house standings, team totals. Updated every few minutes. Embeddable widgets for your stream overlay or Discord.</p>
+        </div>
+        <div class="dash-feature">
+          <h4>Achievement Designer</h4>
+          <p>Create custom micro-achievements for your event. Set point values, descriptions, and whether they're public or hidden surprises.</p>
+        </div>
+        <div class="dash-feature">
+          <h4>Analytics &amp; Reports</h4>
+          <p>Weekly automated reports. Death heatmaps. Scoring trends. Most deadly dungeons. Most active houses. Export to Discord or PDF.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Roadmap ═══ -->
+  <section class="section section-gradient" id="roadmap">
+    <div class="container">
+      <div class="section-label">Development</div>
+      <h2 class="section-title">The <span class="accent">Roadmap</span></h2>
+
+      <div class="roadmap">
+        <div class="roadmap-item roadmap-active">
+          <div class="roadmap-phase">Phase 0</div>
+          <div class="roadmap-content">
+            <h4>Concept &amp; Architecture</h4>
+            <p>Final feature spec. Free vs Premium matrix. Competitor analysis. Technical architecture. OF3 requirements mapping.</p>
+            <span class="roadmap-time">1-2 weeks</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-phase">Phase 1</div>
+          <div class="roadmap-content">
+            <h4>PoC: Basic WoW Menu</h4>
+            <p>Working addon in TBC 2.4.3 client. Simple menu with a button. Proof that the foundation works.</p>
+            <span class="roadmap-time">1-2 weeks</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-phase">Phase 2</div>
+          <div class="roadmap-content">
+            <h4>Tracking Library</h4>
+            <p>Build modular tracking for deaths, kills, movement, trades, dungeons, gear. The data backbone of the entire addon.</p>
+            <span class="roadmap-time">2-3 weeks</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-phase">Phase 3</div>
+          <div class="roadmap-content">
+            <h4>Guild Communication Layer</h4>
+            <p>Addon-to-addon messaging. Ruleset sync. Death broadcasts. Reusable plugin architecture for all social features.</p>
+            <span class="roadmap-time">2-3 weeks</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-phase">Phase 4</div>
+          <div class="roadmap-content">
+            <h4>Web Voting &amp; Backend</h4>
+            <p>Community voting for difficulty ratings and scoring systems. Simple API backend. Foundation for web dashboard.</p>
+            <span class="roadmap-time">1-2 weeks</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-phase">Phase 5</div>
+          <div class="roadmap-content">
+            <h4>Rudimentary HC Addon</h4>
+            <p>First playable version with examples from every feature category. Death tracking, scoring, one punishment, SSF enforcement, basic leaderboard.</p>
+            <span class="roadmap-time">3-4 weeks</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-phase">Phase 6</div>
+          <div class="roadmap-content">
+            <h4>Alpha &rarr; Beta</h4>
+            <p>All core features. Houses system. Mini-games. Web dashboard MVP. Companion app. Anti-cheat. Full feature set.</p>
+            <span class="roadmap-time">4-6 weeks</span>
+          </div>
+        </div>
+        <div class="roadmap-item">
+          <div class="roadmap-phase">Phase 7</div>
+          <div class="roadmap-content">
+            <h4>Playtesting &amp; Launch</h4>
+            <p>Closed beta. Feedback. Balancing. Stress testing. CurseForge upload. Patreon premium system. GM documentation.</p>
+            <span class="roadmap-time">4-6 weeks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Competitors ═══ -->
+  <section class="section section-dark" id="competitors">
+    <div class="container">
+      <div class="section-label">Landscape</div>
+      <h2 class="section-title">Why Not Just Use <span class="accent">What Exists?</span></h2>
+
+      <div class="comp-table-wrap">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Hardcore Plus</th>
+              <th>HardcoreTBC</th>
+              <th>Sauercrowd</th>
+              <th>Base HC Addon</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TBC Support</td>
+              <td class="yes">Native</td>
+              <td class="yes">Yes</td>
+              <td class="no">Classic Only</td>
+              <td class="no">Classic Only</td>
+            </tr>
+            <tr>
+              <td>Customizable Rules</td>
+              <td class="yes">Full Engine</td>
+              <td class="no">Fixed</td>
+              <td class="no">Hardcoded</td>
+              <td class="no">Fixed</td>
+            </tr>
+            <tr>
+              <td>Multiple HC Modes</td>
+              <td class="yes">3 Modes</td>
+              <td class="no">Death=Delete Only</td>
+              <td class="no">HC Only</td>
+              <td class="no">HC Only</td>
+            </tr>
+            <tr>
+              <td>Scoring System</td>
+              <td class="yes">Complex + Simple</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+            </tr>
+            <tr>
+              <td>Houses / Sub-Guilds</td>
+              <td class="yes">Full System</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+            </tr>
+            <tr>
+              <td>Creative Punishments</td>
+              <td class="yes">RP-Walk, Gear Lock...</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+            </tr>
+            <tr>
+              <td>Micro-Achievements</td>
+              <td class="yes">1000+ Definable</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+            </tr>
+            <tr>
+              <td>Web Dashboard</td>
+              <td class="yes">Full Dashboard</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+            </tr>
+            <tr>
+              <td>Mini-Games</td>
+              <td class="yes">GM-Created</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+            </tr>
+            <tr>
+              <td>Player Draft System</td>
+              <td class="yes">Budget-Based</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+              <td class="no">None</td>
+            </tr>
+            <tr>
+              <td>Anti-Cheat</td>
+              <td class="yes">Multi-Layer</td>
+              <td class="partial">Basic Audit</td>
+              <td class="no">None</td>
+              <td class="partial">Community</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Download / CTA ═══ -->
+  <section class="section section-cta" id="download">
+    <div class="container">
+      <h2 class="section-title">Start Your <span class="accent">Legacy</span></h2>
+      <p class="section-desc">Free on CurseForge. Premium features via Patreon. Every death tracked. Every point earned. Every house competing.</p>
+
+      <div class="tiers-grid">
+        <div class="tier-card">
+          <div class="tier-header">Free</div>
+          <div class="tier-price">$0</div>
+          <ul class="tier-features">
+            <li>Core death tracking</li>
+            <li>Basic scoring system</li>
+            <li>3 game modes (HC / Hybrid / Nullcore)</li>
+            <li>SSF enforcement</li>
+            <li>In-game leaderboard</li>
+            <li>Guild communication</li>
+            <li>Standard punishments (point deduction)</li>
+            <li>Micro-achievements (pre-defined)</li>
+          </ul>
+          <a href="#" class="btn btn-secondary">Coming to CurseForge</a>
+        </div>
+        <div class="tier-card tier-premium">
+          <div class="tier-header">Premium</div>
+          <div class="tier-price">Patreon</div>
+          <ul class="tier-features">
+            <li>Everything in Free, plus:</li>
+            <li>Creative punishments (RP-walk, gear lock...)</li>
+            <li>Extended statistics &amp; analytics</li>
+            <li>Houses &amp; sub-guild management</li>
+            <li>Player draft system</li>
+            <li>Web dashboard access</li>
+            <li>Custom achievement designer</li>
+            <li>Punishment &amp; reward builder</li>
+            <li>Mini-game framework</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Support on Patreon</a>
+        </div>
+      </div>
+
+      <div class="cta-note">
+        <p><strong>Principle:</strong> Free players can always participate in scoring, tracking, and leaderboards. Premium adds management tools and creative features. Never pay-to-win.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="nav-logo">HARDCORE<span class="accent">+</span></span>
+        <p>Hybrid Hardcore for WoW: The Burning Crusade</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">GitHub</a>
+        <a href="#">CurseForge</a>
+        <a href="#">Patreon</a>
+        <a href="#">Discord</a>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 Hardcore Plus. Not affiliated with Blizzard Entertainment.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open');
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          navLinks.classList.remove('open');
+          navToggle.classList.remove('open');
         }
-      }
-    </style>
+      });
+    });
 
-    <script src="js/i18n.js"></script>
-    <script src="app.js"></script>
+    // Intersection observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.feature-card, .mode-card, .of3-card, .player-card, .problem-card, .pr-card, .roadmap-item, .house-card, .tier-card, .achievement, .scoring-option, .dash-feature, .houses-feature').forEach(el => {
+      el.classList.add('fade-in');
+      observer.observe(el);
+    });
+  </script>
+
 </body>
-
 </html>
