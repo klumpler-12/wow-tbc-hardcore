@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Development Roadmap — Hardcore Plus</title>
+  <meta name="description" content="Development roadmap for Hardcore Plus, the hybrid hardcore addon for WoW: The Burning Crusade. Track our progress from concept to launch.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="roadmap.css">
+</head>
+<body>
+
+  <!-- ═══ Navigation ═══ -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        HARDCORE<span class="accent">+</span>
+        <span class="nav-logo-sub">Hybrid Hardcore</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#for-you">For You</a>
+        <a href="index.html#scoring">Scoring</a>
+        <a href="index.html#houses">Houses</a>
+        <a href="index.html#download">Guild Sites</a>
+        <a href="roadmap.html" class="nav-link-active">Roadmap</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ Roadmap Hero ═══ -->
+  <header class="rm-hero">
+    <div class="rm-hero-bg"></div>
+    <div class="rm-hero-overlay"></div>
+    <div class="container rm-hero-content">
+      <div class="rm-hero-badge">Development Timeline</div>
+      <h1 class="rm-hero-title">Development<br><span class="accent-glow">Roadmap</span></h1>
+      <p class="rm-hero-subtitle">
+        From concept to CurseForge. Track every phase of the Hardcore Plus addon as we build it.
+      </p>
+    </div>
+  </header>
+
+  <!-- ═══ Roadmap Content ═══ -->
+  <section class="section section-dark" id="roadmap">
+    <div class="container">
+
+      <!-- Dev Notes Toggle -->
+      <div class="rm-controls">
+        <label class="rm-dev-toggle" for="devNotesToggle">
+          <input type="checkbox" id="devNotesToggle">
+          <span class="rm-dev-toggle-slider"></span>
+          <span class="rm-dev-toggle-label">Show Dev Notes</span>
+        </label>
+        <div class="rm-legend">
+          <span class="rm-legend-item"><span class="rm-status-icon rm-status-done">&#10003;</span> Done</span>
+          <span class="rm-legend-item"><span class="rm-status-icon rm-status-progress"><span class="rm-spinner"></span></span> In Progress</span>
+          <span class="rm-legend-item"><span class="rm-status-icon rm-status-pending">&#9675;</span> Pending</span>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="rm-timeline">
+
+        <!-- ── Phase 0 ── -->
+        <div class="rm-phase rm-phase-active" data-phase="0">
+          <div class="rm-phase-dot">
+            <span class="rm-phase-dot-inner"></span>
+          </div>
+          <div class="rm-phase-card">
+            <button class="rm-phase-header" aria-expanded="true">
+              <div class="rm-phase-meta">
+                <span class="rm-phase-badge rm-badge-active">Phase 0</span>
+                <h3 class="rm-phase-title">Concept &amp; Architecture</h3>
+                <span class="rm-phase-time">1-2 weeks</span>
+              </div>
+              <span class="rm-phase-chevron">&#9662;</span>
+            </button>
+            <div class="rm-phase-body rm-phase-body-open">
+              <div class="rm-phase-body-inner">
+                <ul class="rm-steps">
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-done">&#10003;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Feature specification</span>
+                      <ul class="rm-substeps">
+                        <li>Core feature list finalized</li>
+                        <li>Mode definitions (Hardcore / Hybrid / Null)</li>
+                        <li>Punishment &amp; reward catalog drafted</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-done">&#10003;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Technical architecture</span>
+                      <ul class="rm-substeps">
+                        <li>Module dependency graph</li>
+                        <li>Data flow diagrams</li>
+                        <li>Addon communication protocol spec</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-progress"><span class="rm-spinner"></span></span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Requirements mapping</span>
+                      <ul class="rm-substeps">
+                        <li>OnlyFangs 3 specific requirements</li>
+                        <li>API surface definition</li>
+                        <li>SavedVariables schema design</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+                <div class="rm-dev-note">
+                  <span class="rm-dev-note-tag">Dev Note</span>
+                  Architecture is modular by design so guilds can enable/disable individual systems. Priority is getting the death detection and rule engine stable before anything else.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Phase 1 ── -->
+        <div class="rm-phase" data-phase="1">
+          <div class="rm-phase-dot">
+            <span class="rm-phase-dot-inner"></span>
+          </div>
+          <div class="rm-phase-card">
+            <button class="rm-phase-header" aria-expanded="false">
+              <div class="rm-phase-meta">
+                <span class="rm-phase-badge rm-badge-pending">Phase 1</span>
+                <h3 class="rm-phase-title">Core Framework</h3>
+                <span class="rm-phase-time">3-4 weeks</span>
+              </div>
+              <span class="rm-phase-chevron">&#9662;</span>
+            </button>
+            <div class="rm-phase-body">
+              <div class="rm-phase-body-inner">
+                <ul class="rm-steps">
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Lua addon skeleton</span>
+                      <ul class="rm-substeps">
+                        <li>TOC file and folder structure</li>
+                        <li>Core module loader</li>
+                        <li>Event registration framework</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">SavedVariables structure</span>
+                      <ul class="rm-substeps">
+                        <li>Per-character data schema</li>
+                        <li>Guild-wide shared state</li>
+                        <li>Migration and versioning system</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Addon communication protocol</span>
+                      <ul class="rm-substeps">
+                        <li>Prefix registration</li>
+                        <li>Message serialization / deserialization</li>
+                        <li>Throttling and queue management</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Basic death detection</span>
+                      <ul class="rm-substeps">
+                        <li>PLAYER_DEAD / PLAYER_ALIVE_AFTER_RELEASE hooks</li>
+                        <li>Ghost state tracking</li>
+                        <li>Death context capture (zone, level, killer)</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+                <div class="rm-dev-note">
+                  <span class="rm-dev-note-tag">Dev Note</span>
+                  Death detection is the single most critical piece. Must handle edge cases: disconnect deaths, instance resets, battleground deaths (excluded), and spirit healer interactions.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Phase 2 ── -->
+        <div class="rm-phase" data-phase="2">
+          <div class="rm-phase-dot">
+            <span class="rm-phase-dot-inner"></span>
+          </div>
+          <div class="rm-phase-card">
+            <button class="rm-phase-header" aria-expanded="false">
+              <div class="rm-phase-meta">
+                <span class="rm-phase-badge rm-badge-pending">Phase 2</span>
+                <h3 class="rm-phase-title">Rule Engine</h3>
+                <span class="rm-phase-time">3-4 weeks</span>
+              </div>
+              <span class="rm-phase-chevron">&#9662;</span>
+            </button>
+            <div class="rm-phase-body">
+              <div class="rm-phase-body-inner">
+                <ul class="rm-steps">
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Configurable ruleset system</span>
+                      <ul class="rm-substeps">
+                        <li>Rule definition DSL</li>
+                        <li>Condition evaluator (level ranges, zones, group size)</li>
+                        <li>Action dispatcher (punish, reward, announce)</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">GM control panel</span>
+                      <ul class="rm-substeps">
+                        <li>In-game rule editor UI</li>
+                        <li>Permission levels (GM, Officer, Member)</li>
+                        <li>Live rule preview and testing</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Rule import/export</span>
+                      <ul class="rm-substeps">
+                        <li>Serialized ruleset strings</li>
+                        <li>Preset library (Strict HC, Hybrid, Casual)</li>
+                        <li>Community sharing format</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+                <div class="rm-dev-note">
+                  <span class="rm-dev-note-tag">Dev Note</span>
+                  The rule engine is the core differentiator. It needs to be flexible enough for any guild's ruleset while being simple enough for non-technical GMs to configure.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Phase 3 ── -->
+        <div class="rm-phase" data-phase="3">
+          <div class="rm-phase-dot">
+            <span class="rm-phase-dot-inner"></span>
+          </div>
+          <div class="rm-phase-card">
+            <button class="rm-phase-header" aria-expanded="false">
+              <div class="rm-phase-meta">
+                <span class="rm-phase-badge rm-badge-pending">Phase 3</span>
+                <h3 class="rm-phase-title">Tracking &amp; Scoring</h3>
+                <span class="rm-phase-time">4-6 weeks</span>
+              </div>
+              <span class="rm-phase-chevron">&#9662;</span>
+            </button>
+            <div class="rm-phase-body">
+              <div class="rm-phase-body-inner">
+                <ul class="rm-steps">
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Death tracking module</span>
+                      <ul class="rm-substeps">
+                        <li>Death log with full context</li>
+                        <li>Death location recording (zone, coords)</li>
+                        <li>Kill attribution (mob, player, environment)</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Achievement system</span>
+                      <ul class="rm-substeps">
+                        <li>Micro-achievement definitions (1000+ possible)</li>
+                        <li>Progress tracking and toast notifications</li>
+                        <li>Achievement point aggregation</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Scoring engine (both modes)</span>
+                      <ul class="rm-substeps">
+                        <li>Survival-time scoring (HC mode)</li>
+                        <li>Weighted-points scoring (Hybrid mode)</li>
+                        <li>Score normalization and decay</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Leaderboards</span>
+                      <ul class="rm-substeps">
+                        <li>Per-guild leaderboard frame</li>
+                        <li>Sortable columns (score, deaths, achievements)</li>
+                        <li>Historical snapshots and trends</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+                <div class="rm-dev-note">
+                  <span class="rm-dev-note-tag">Dev Note</span>
+                  Scoring needs careful balancing. Survival-time scoring is straightforward but weighted-points needs tuning. Plan to ship with conservative defaults and expose multipliers to GMs.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Phase 4 ── -->
+        <div class="rm-phase" data-phase="4">
+          <div class="rm-phase-dot">
+            <span class="rm-phase-dot-inner"></span>
+          </div>
+          <div class="rm-phase-card">
+            <button class="rm-phase-header" aria-expanded="false">
+              <div class="rm-phase-meta">
+                <span class="rm-phase-badge rm-badge-pending">Phase 4</span>
+                <h3 class="rm-phase-title">Houses &amp; Competition</h3>
+                <span class="rm-phase-time">3-4 weeks</span>
+              </div>
+              <span class="rm-phase-chevron">&#9662;</span>
+            </button>
+            <div class="rm-phase-body">
+              <div class="rm-phase-body-inner">
+                <ul class="rm-steps">
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">House creation / management</span>
+                      <ul class="rm-substeps">
+                        <li>House naming, colors, and emblems</li>
+                        <li>Member assignment and roster management</li>
+                        <li>House chat channel integration</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Team aggregation</span>
+                      <ul class="rm-substeps">
+                        <li>House score = sum of member scores</li>
+                        <li>Weighted contribution tracking</li>
+                        <li>Inactive member handling</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">House leaderboards</span>
+                      <ul class="rm-substeps">
+                        <li>Head-to-head house comparison</li>
+                        <li>Seasonal standings and history</li>
+                        <li>House rivalry announcements</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Draft system <span class="rm-optional">(optional)</span></span>
+                      <ul class="rm-substeps">
+                        <li>Snake draft or random assignment</li>
+                        <li>Captain pick mode</li>
+                        <li>Trade window for member swaps</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+                <div class="rm-dev-note">
+                  <span class="rm-dev-note-tag">Dev Note</span>
+                  Houses are the social glue. Draft system is stretch goal but even basic random assignment creates immediate team identity and rivalry.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Phase 5 ── -->
+        <div class="rm-phase" data-phase="5">
+          <div class="rm-phase-dot">
+            <span class="rm-phase-dot-inner"></span>
+          </div>
+          <div class="rm-phase-card">
+            <button class="rm-phase-header" aria-expanded="false">
+              <div class="rm-phase-meta">
+                <span class="rm-phase-badge rm-badge-pending">Phase 5</span>
+                <h3 class="rm-phase-title">Punishments &amp; Rewards</h3>
+                <span class="rm-phase-time">2-3 weeks</span>
+              </div>
+              <span class="rm-phase-chevron">&#9662;</span>
+            </button>
+            <div class="rm-phase-body">
+              <div class="rm-phase-body-inner">
+                <ul class="rm-steps">
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Creative punishment triggers</span>
+                      <ul class="rm-substeps">
+                        <li>Death-based triggers (first death, streak break)</li>
+                        <li>Context-aware severity (dungeon wipe vs. world death)</li>
+                        <li>Punishment queue and cooldown system</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Reward distribution</span>
+                      <ul class="rm-substeps">
+                        <li>Milestone reward checks</li>
+                        <li>Streak bonus multipliers</li>
+                        <li>House-wide reward events</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">RP-walk, gear lock mechanics</span>
+                      <ul class="rm-substeps">
+                        <li>Forced RP-walk speed enforcement</li>
+                        <li>Gear slot locking (unequip penalties)</li>
+                        <li>Shame announcements in guild chat</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+                <div class="rm-dev-note">
+                  <span class="rm-dev-note-tag">Dev Note</span>
+                  Punishments must be fun, not frustrating. The RP-walk and gear lock are crowd favorites from testing. Shame announcements add the social pressure that makes HC exciting.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Phase 6 ── -->
+        <div class="rm-phase" data-phase="6">
+          <div class="rm-phase-dot">
+            <span class="rm-phase-dot-inner"></span>
+          </div>
+          <div class="rm-phase-card">
+            <button class="rm-phase-header" aria-expanded="false">
+              <div class="rm-phase-meta">
+                <span class="rm-phase-badge rm-badge-pending">Phase 6</span>
+                <h3 class="rm-phase-title">Companion App &amp; Web</h3>
+                <span class="rm-phase-time">4-6 weeks</span>
+              </div>
+              <span class="rm-phase-chevron">&#9662;</span>
+            </button>
+            <div class="rm-phase-body">
+              <div class="rm-phase-body-inner">
+                <ul class="rm-steps">
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Electron companion app</span>
+                      <ul class="rm-substeps">
+                        <li>Real-time SavedVariables sync</li>
+                        <li>Desktop notifications for deaths and events</li>
+                        <li>Overlay / OBS integration for streamers</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Guild site templates</span>
+                      <ul class="rm-substeps">
+                        <li>Static site generator for guild pages</li>
+                        <li>Auto-generated leaderboards and death feeds</li>
+                        <li>Custom theme support</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Character profiles</span>
+                      <ul class="rm-substeps">
+                        <li>Armory-style character pages</li>
+                        <li>Achievement showcase and death history</li>
+                        <li>Shareable profile links</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Analytics dashboard</span>
+                      <ul class="rm-substeps">
+                        <li>Death heatmaps by zone</li>
+                        <li>Class/spec survival statistics</li>
+                        <li>Guild activity trends and engagement metrics</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+                <div class="rm-dev-note">
+                  <span class="rm-dev-note-tag">Dev Note</span>
+                  The companion app is ambitious but the streamer overlay alone could drive adoption. Guild sites should be zero-config: install addon, data appears on your page.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Phase 7 ── -->
+        <div class="rm-phase" data-phase="7">
+          <div class="rm-phase-dot">
+            <span class="rm-phase-dot-inner"></span>
+          </div>
+          <div class="rm-phase-card">
+            <button class="rm-phase-header" aria-expanded="false">
+              <div class="rm-phase-meta">
+                <span class="rm-phase-badge rm-badge-pending">Phase 7</span>
+                <h3 class="rm-phase-title">Polish &amp; Launch</h3>
+                <span class="rm-phase-time">2-4 weeks</span>
+              </div>
+              <span class="rm-phase-chevron">&#9662;</span>
+            </button>
+            <div class="rm-phase-body">
+              <div class="rm-phase-body-inner">
+                <ul class="rm-steps">
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Beta testing</span>
+                      <ul class="rm-substeps">
+                        <li>Closed alpha with core testers</li>
+                        <li>Open beta with partner guilds</li>
+                        <li>Stress testing addon communication at scale</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">CurseForge packaging</span>
+                      <ul class="rm-substeps">
+                        <li>Automated build pipeline</li>
+                        <li>Version tagging and changelog generation</li>
+                        <li>CurseForge listing and metadata</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Documentation</span>
+                      <ul class="rm-substeps">
+                        <li>GM setup guide</li>
+                        <li>Player quick-start guide</li>
+                        <li>API reference for advanced users</li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="rm-step">
+                    <span class="rm-status-icon rm-status-pending">&#9675;</span>
+                    <div class="rm-step-content">
+                      <span class="rm-step-label">Community onboarding</span>
+                      <ul class="rm-substeps">
+                        <li>Discord server setup and bot integration</li>
+                        <li>Tutorial videos and walkthroughs</li>
+                        <li>Launch event with partner guilds</li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+                <div class="rm-dev-note">
+                  <span class="rm-dev-note-tag">Dev Note</span>
+                  Launch timing ideally coincides with a new OnlyFangs season. CurseForge listing is critical for discoverability. Discord bot can mirror in-game death feeds.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.rm-timeline -->
+
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="nav-logo">HARDCORE<span class="accent">+</span></span>
+        <p>Hybrid Hardcore for WoW: The Burning Crusade</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">GitHub</a>
+        <a href="#">CurseForge</a>
+        <a href="#">Patreon</a>
+        <a href="#">Discord</a>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 Hardcore Plus. Not affiliated with Blizzard Entertainment.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Nav scroll effect ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ── Mobile nav toggle ──
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open');
+    });
+
+    // ── Accordion toggle ──
+    document.querySelectorAll('.rm-phase-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const body = header.nextElementSibling;
+        const isOpen = body.classList.contains('rm-phase-body-open');
+        const expanded = header.getAttribute('aria-expanded') === 'true';
+
+        // Toggle this phase
+        body.classList.toggle('rm-phase-body-open');
+        header.setAttribute('aria-expanded', !expanded);
+        header.closest('.rm-phase-card').classList.toggle('rm-phase-card-open', !isOpen);
+
+        // Animate max-height
+        if (!isOpen) {
+          body.style.maxHeight = body.scrollHeight + 'px';
+        } else {
+          body.style.maxHeight = '0';
+        }
+      });
+    });
+
+    // Initialize: open the active phase, close others
+    document.querySelectorAll('.rm-phase-body').forEach(body => {
+      if (body.classList.contains('rm-phase-body-open')) {
+        body.style.maxHeight = body.scrollHeight + 'px';
+      } else {
+        body.style.maxHeight = '0';
+      }
+    });
+
+    // ── Dev Notes toggle ──
+    const devToggle = document.getElementById('devNotesToggle');
+    devToggle.addEventListener('change', () => {
+      document.body.classList.toggle('show-dev-notes', devToggle.checked);
+
+      // Recalculate max-height for open phases since dev notes change height
+      document.querySelectorAll('.rm-phase-body-open').forEach(body => {
+        body.style.maxHeight = 'none';
+        requestAnimationFrame(() => {
+          const h = body.scrollHeight;
+          body.style.maxHeight = h + 'px';
+        });
+      });
+    });
+
+    // ── Fade-in animations ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.rm-phase').forEach(el => {
+      el.classList.add('fade-in');
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
