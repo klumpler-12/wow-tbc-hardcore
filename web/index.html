@@ -876,5 +876,325 @@
     });
   </script>
 
+  <!-- ═══ Review Mode ═══ -->
+  <div id="reviewToggle" title="Toggle Review Mode (R)">&#9998;</div>
+  <div id="reviewPanel" class="review-hidden">
+    <div id="reviewHeader">
+      <span>Review Notes</span>
+      <div>
+        <button id="reviewExport" title="Copy all notes">Export</button>
+        <button id="reviewClear" title="Clear all">Clear</button>
+        <button id="reviewClose">&times;</button>
+      </div>
+    </div>
+    <div id="reviewNotes"></div>
+    <div id="reviewInput">
+      <textarea id="reviewText" placeholder="Click any element on the page to pin a note to it, or write a general note and press Enter..."></textarea>
+    </div>
+  </div>
+
+  <style>
+    /* Review Toggle Button */
+    #reviewToggle {
+      position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--accent); color: var(--bg-dark);
+      font-size: 1.4rem; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      transition: all 0.2s ease; border: none; user-select: none;
+    }
+    #reviewToggle:hover { transform: scale(1.1); background: var(--accent-glow); }
+    #reviewToggle.active { background: var(--red); }
+
+    /* Review Panel */
+    #reviewPanel {
+      position: fixed; top: 0; right: 0; bottom: 0; width: 380px; z-index: 9998;
+      background: #0e0e16; border-left: 2px solid var(--accent);
+      display: flex; flex-direction: column; font-family: var(--font-body);
+      box-shadow: -8px 0 40px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+    }
+    #reviewPanel.review-hidden { transform: translateX(100%); pointer-events: none; }
+    #reviewHeader {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 16px; background: #16161f; border-bottom: 1px solid var(--border);
+      font-weight: 600; color: var(--accent); font-size: 0.9rem;
+    }
+    #reviewHeader div { display: flex; gap: 8px; }
+    #reviewHeader button {
+      background: rgba(255,255,255,0.08); border: 1px solid var(--border);
+      color: var(--text-dim); padding: 4px 10px; border-radius: 4px;
+      cursor: pointer; font-size: 0.75rem; transition: all 0.2s;
+    }
+    #reviewHeader button:hover { background: rgba(255,255,255,0.15); color: var(--text); }
+    #reviewClose { font-size: 1.1rem !important; padding: 2px 8px !important; }
+
+    /* Notes List */
+    #reviewNotes {
+      flex: 1; overflow-y: auto; padding: 12px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .review-note {
+      background: #1a1a26; border: 1px solid var(--border); border-radius: 8px;
+      padding: 12px; position: relative; font-size: 0.82rem; line-height: 1.5;
+    }
+    .review-note:hover { border-color: var(--accent-dim); }
+    .review-note-section {
+      font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px;
+      color: var(--accent); margin-bottom: 6px; font-weight: 600;
+      cursor: pointer;
+    }
+    .review-note-section:hover { text-decoration: underline; }
+    .review-note-text { color: var(--text); white-space: pre-wrap; }
+    .review-note-time { font-size: 0.65rem; color: var(--text-dim); margin-top: 6px; }
+    .review-note-del {
+      position: absolute; top: 8px; right: 8px;
+      background: none; border: none; color: var(--text-dim);
+      cursor: pointer; font-size: 0.9rem; padding: 2px; opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .review-note:hover .review-note-del { opacity: 1; }
+    .review-note-del:hover { color: var(--red); }
+
+    /* Highlight on page */
+    .review-highlight {
+      outline: 2px dashed var(--accent) !important;
+      outline-offset: 4px;
+      position: relative;
+    }
+    .review-highlight::after {
+      content: attr(data-review-count);
+      position: absolute; top: -10px; right: -10px;
+      background: var(--accent); color: var(--bg-dark);
+      width: 20px; height: 20px; border-radius: 50%;
+      font-size: 0.65rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+    }
+    .review-pin-mode * { cursor: crosshair !important; }
+    .review-pin-mode *:hover {
+      outline: 2px solid rgba(232,166,36,0.5) !important;
+      outline-offset: 2px;
+    }
+
+    /* Input Area */
+    #reviewInput {
+      padding: 12px; border-top: 1px solid var(--border); background: #16161f;
+    }
+    #reviewText {
+      width: 100%; min-height: 70px; max-height: 140px;
+      background: #0e0e16; border: 1px solid var(--border); border-radius: 6px;
+      color: var(--text); padding: 10px; font-family: var(--font-body);
+      font-size: 0.82rem; resize: vertical; line-height: 1.5;
+    }
+    #reviewText:focus { outline: none; border-color: var(--accent); }
+    #reviewText::placeholder { color: var(--text-dim); }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+      #reviewPanel { width: 100%; }
+    }
+  </style>
+
+  <script>
+  (function() {
+    const STORAGE_KEY = 'hcplus_review_notes';
+    let reviewActive = false;
+    let pinMode = false;
+    let pinTarget = null;
+    let notes = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+
+    const toggle = document.getElementById('reviewToggle');
+    const panel = document.getElementById('reviewPanel');
+    const notesList = document.getElementById('reviewNotes');
+    const textArea = document.getElementById('reviewText');
+    const closeBtn = document.getElementById('reviewClose');
+    const exportBtn = document.getElementById('reviewExport');
+    const clearBtn = document.getElementById('reviewClear');
+
+    function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(notes)); }
+
+    function sectionLabel(el) {
+      // Walk up to find the nearest section or identifiable parent
+      let node = el;
+      while (node && node !== document.body) {
+        if (node.id && node.tagName !== 'BODY') {
+          const label = node.querySelector('.section-label, .section-title, h2, h3, h4');
+          if (label) return { id: node.id, text: label.textContent.trim().substring(0, 60) };
+          return { id: node.id, text: node.id };
+        }
+        if (node.classList && node.classList.contains('section')) {
+          const label = node.querySelector('.section-label');
+          return { id: node.id || '', text: label ? label.textContent.trim() : 'Section' };
+        }
+        node = node.parentElement;
+      }
+      return { id: '', text: 'General' };
+    }
+
+    function renderNotes() {
+      // Clear existing highlights
+      document.querySelectorAll('.review-highlight').forEach(el => {
+        el.classList.remove('review-highlight');
+        el.removeAttribute('data-review-count');
+      });
+
+      notesList.innerHTML = '';
+      if (notes.length === 0) {
+        notesList.innerHTML = '<div style="color:var(--text-dim);font-size:0.8rem;padding:20px;text-align:center;line-height:1.6;">No notes yet.<br><br><strong>Click any element</strong> on the page to pin a note to it.<br><br>Or type below and press <strong>Enter</strong> for a general note.</div>';
+        return;
+      }
+
+      // Count notes per section for badges
+      const countMap = {};
+      notes.forEach(n => {
+        if (n.sectionId) countMap[n.sectionId] = (countMap[n.sectionId] || 0) + 1;
+      });
+
+      // Apply highlights
+      Object.keys(countMap).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.classList.add('review-highlight');
+          el.setAttribute('data-review-count', countMap[id]);
+        }
+      });
+
+      notes.forEach((note, i) => {
+        const div = document.createElement('div');
+        div.className = 'review-note';
+        div.innerHTML = `
+          <div class="review-note-section" data-scroll="${note.sectionId}">${note.sectionLabel}</div>
+          <div class="review-note-text">${escHtml(note.text)}</div>
+          <div class="review-note-time">${note.time}</div>
+          <button class="review-note-del" data-idx="${i}">&times;</button>
+        `;
+        notesList.appendChild(div);
+      });
+
+      // Scroll-to-section on click
+      notesList.querySelectorAll('.review-note-section').forEach(el => {
+        el.addEventListener('click', () => {
+          const target = document.getElementById(el.dataset.scroll);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // Delete
+      notesList.querySelectorAll('.review-note-del').forEach(btn => {
+        btn.addEventListener('click', () => {
+          notes.splice(parseInt(btn.dataset.idx), 1);
+          save();
+          renderNotes();
+        });
+      });
+
+      notesList.scrollTop = notesList.scrollHeight;
+    }
+
+    function escHtml(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+    function addNote(text, section) {
+      const now = new Date();
+      const time = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+      notes.push({
+        text: text.trim(),
+        sectionId: section.id,
+        sectionLabel: section.text,
+        time: time
+      });
+      save();
+      renderNotes();
+    }
+
+    function openReview() {
+      reviewActive = true;
+      panel.classList.remove('review-hidden');
+      toggle.classList.add('active');
+      toggle.innerHTML = '&#10006;';
+      document.body.classList.add('review-pin-mode');
+      renderNotes();
+    }
+
+    function closeReview() {
+      reviewActive = false;
+      panel.classList.add('review-hidden');
+      toggle.classList.remove('active');
+      toggle.innerHTML = '&#9998;';
+      document.body.classList.remove('review-pin-mode');
+    }
+
+    toggle.addEventListener('click', () => {
+      reviewActive ? closeReview() : openReview();
+    });
+    closeBtn.addEventListener('click', closeReview);
+
+    // Keyboard shortcut: R to toggle
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
+      if (e.key === 'r' || e.key === 'R') {
+        e.preventDefault();
+        reviewActive ? closeReview() : openReview();
+      }
+    });
+
+    // Click on page to pin note
+    document.addEventListener('click', (e) => {
+      if (!reviewActive) return;
+      // Ignore clicks inside the review panel or toggle
+      if (e.target.closest('#reviewPanel') || e.target.closest('#reviewToggle')) return;
+      // Ignore nav links
+      if (e.target.closest('.nav')) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const section = sectionLabel(e.target);
+      pinTarget = section;
+      textArea.placeholder = `Note for: ${section.text}\nType and press Enter...`;
+      textArea.focus();
+    }, true);
+
+    // Enter to submit note
+    textArea.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        const text = textArea.value.trim();
+        if (!text) return;
+        const section = pinTarget || { id: '', text: 'General' };
+        addNote(text, section);
+        textArea.value = '';
+        pinTarget = null;
+        textArea.placeholder = 'Click any element on the page to pin a note to it, or write a general note and press Enter...';
+      }
+    });
+
+    // Export all notes
+    exportBtn.addEventListener('click', () => {
+      if (notes.length === 0) return;
+      const text = notes.map((n, i) =>
+        `[${n.sectionLabel}] (${n.time})\n${n.text}`
+      ).join('\n\n---\n\n');
+      navigator.clipboard.writeText(text).then(() => {
+        exportBtn.textContent = 'Copied!';
+        setTimeout(() => { exportBtn.textContent = 'Export'; }, 1500);
+      });
+    });
+
+    // Clear all notes
+    clearBtn.addEventListener('click', () => {
+      if (notes.length === 0) return;
+      if (confirm('Delete all review notes? This cannot be undone.')) {
+        notes = [];
+        save();
+        renderNotes();
+      }
+    });
+
+    // Initial render if notes exist
+    renderNotes();
+  })();
+  </script>
+
 </body>
 </html>
