@@ -876,8 +876,46 @@
     });
   </script>
 
-  <!-- ═══ Review Mode ═══ -->
+  <!-- ═══ Review & Annotation Mode ═══ -->
   <div id="reviewToggle" title="Toggle Review Mode (R)">&#9998;</div>
+
+  <!-- Drawing Canvas Overlay -->
+  <canvas id="drawCanvas"></canvas>
+
+  <!-- Floating Toolbar -->
+  <div id="drawToolbar" class="draw-hidden">
+    <div class="tb-group tb-tools">
+      <button class="tb-btn active" data-tool="pin" title="Pin Note (N)">&#128204;</button>
+      <button class="tb-btn" data-tool="pen" title="Freehand Draw (P)">&#9999;</button>
+      <button class="tb-btn" data-tool="rect" title="Rectangle (B)">&#9634;</button>
+      <button class="tb-btn" data-tool="circle" title="Circle (C)">&#9711;</button>
+      <button class="tb-btn" data-tool="arrow" title="Arrow (A)">&#10132;</button>
+      <button class="tb-btn" data-tool="text" title="Text Label (T)">T</button>
+      <button class="tb-btn" data-tool="dummy" title="Placeholder Box (D)">&#9632;</button>
+    </div>
+    <div class="tb-sep"></div>
+    <div class="tb-group tb-colors">
+      <button class="tb-color active" data-color="#e8a624" style="background:#e8a624;" title="Gold"></button>
+      <button class="tb-color" data-color="#ff4444" style="background:#ff4444;" title="Red"></button>
+      <button class="tb-color" data-color="#44ff44" style="background:#44ff44;" title="Green"></button>
+      <button class="tb-color" data-color="#4488ff" style="background:#4488ff;" title="Blue"></button>
+      <button class="tb-color" data-color="#ffffff" style="background:#ffffff;" title="White"></button>
+    </div>
+    <div class="tb-sep"></div>
+    <div class="tb-group tb-sizes">
+      <button class="tb-size" data-size="2" title="Thin">&#9679;</button>
+      <button class="tb-size active" data-size="4" title="Medium">&#11044;</button>
+      <button class="tb-size" data-size="8" title="Thick"><span style="font-size:1.4em">&#11044;</span></button>
+    </div>
+    <div class="tb-sep"></div>
+    <div class="tb-group">
+      <button class="tb-btn" id="undoBtn" title="Undo (Ctrl+Z)">&#8617;</button>
+      <button class="tb-btn" id="clearDrawBtn" title="Clear All Drawings">&#128465;</button>
+      <button class="tb-btn" id="exportPngBtn" title="Export as PNG">&#128247;</button>
+    </div>
+  </div>
+
+  <!-- Side Panel for Notes -->
   <div id="reviewPanel" class="review-hidden">
     <div id="reviewHeader">
       <span>Review Notes</span>
@@ -889,14 +927,14 @@
     </div>
     <div id="reviewNotes"></div>
     <div id="reviewInput">
-      <textarea id="reviewText" placeholder="Click any element on the page to pin a note to it, or write a general note and press Enter..."></textarea>
+      <textarea id="reviewText" placeholder="Click any element to pin a note, or type a general note and press Enter..."></textarea>
     </div>
   </div>
 
   <style>
-    /* Review Toggle Button */
+    /* === Review Toggle Button === */
     #reviewToggle {
-      position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+      position: fixed; bottom: 24px; right: 24px; z-index: 10010;
       width: 52px; height: 52px; border-radius: 50%;
       background: var(--accent); color: var(--bg-dark);
       font-size: 1.4rem; display: flex; align-items: center; justify-content: center;
@@ -906,9 +944,57 @@
     #reviewToggle:hover { transform: scale(1.1); background: var(--accent-glow); }
     #reviewToggle.active { background: var(--red); }
 
-    /* Review Panel */
+    /* === Drawing Canvas === */
+    #drawCanvas {
+      position: absolute; top: 0; left: 0;
+      width: 100%; pointer-events: none;
+      z-index: 10000; display: none;
+    }
+    #drawCanvas.active { display: block; pointer-events: auto; }
+    #drawCanvas.no-pointer { pointer-events: none; }
+
+    /* === Floating Toolbar === */
+    #drawToolbar {
+      position: fixed; top: 50%; left: 16px; z-index: 10005;
+      transform: translateY(-50%);
+      background: #16161fee; border: 1px solid var(--border);
+      border-radius: 12px; padding: 8px 6px;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    #drawToolbar.draw-hidden { opacity: 0; pointer-events: none; transform: translateY(-50%) translateX(-60px); }
+    .tb-group { display: flex; flex-direction: column; gap: 3px; }
+    .tb-sep { width: 32px; height: 1px; background: var(--border); margin: 4px 0; }
+    .tb-btn {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: rgba(255,255,255,0.05); border: 1px solid transparent;
+      color: var(--text-dim); font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.15s; user-select: none;
+    }
+    .tb-btn:hover { background: rgba(255,255,255,0.12); color: var(--text); }
+    .tb-btn.active { background: var(--accent); color: var(--bg-dark); border-color: var(--accent); }
+    .tb-color {
+      width: 24px; height: 24px; border-radius: 50%;
+      border: 2px solid transparent; cursor: pointer;
+      transition: all 0.15s; margin: 0 auto;
+    }
+    .tb-color:hover { transform: scale(1.2); }
+    .tb-color.active { border-color: #fff; box-shadow: 0 0 8px rgba(255,255,255,0.3); }
+    .tb-size {
+      width: 38px; height: 28px; border-radius: 6px;
+      background: rgba(255,255,255,0.05); border: 1px solid transparent;
+      color: var(--text-dim); font-size: 0.5rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .tb-size:hover { background: rgba(255,255,255,0.12); }
+    .tb-size.active { border-color: var(--accent); color: var(--accent); }
+
+    /* === Review Panel === */
     #reviewPanel {
-      position: fixed; top: 0; right: 0; bottom: 0; width: 380px; z-index: 9998;
+      position: fixed; top: 0; right: 0; bottom: 0; width: 360px; z-index: 10008;
       background: #0e0e16; border-left: 2px solid var(--accent);
       display: flex; flex-direction: column; font-family: var(--font-body);
       box-shadow: -8px 0 40px rgba(0,0,0,0.6);
@@ -928,8 +1014,6 @@
     }
     #reviewHeader button:hover { background: rgba(255,255,255,0.15); color: var(--text); }
     #reviewClose { font-size: 1.1rem !important; padding: 2px 8px !important; }
-
-    /* Notes List */
     #reviewNotes {
       flex: 1; overflow-y: auto; padding: 12px;
       display: flex; flex-direction: column; gap: 8px;
@@ -941,8 +1025,7 @@
     .review-note:hover { border-color: var(--accent-dim); }
     .review-note-section {
       font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px;
-      color: var(--accent); margin-bottom: 6px; font-weight: 600;
-      cursor: pointer;
+      color: var(--accent); margin-bottom: 6px; font-weight: 600; cursor: pointer;
     }
     .review-note-section:hover { text-decoration: underline; }
     .review-note-text { color: var(--text); white-space: pre-wrap; }
@@ -950,17 +1033,12 @@
     .review-note-del {
       position: absolute; top: 8px; right: 8px;
       background: none; border: none; color: var(--text-dim);
-      cursor: pointer; font-size: 0.9rem; padding: 2px; opacity: 0;
-      transition: opacity 0.2s;
+      cursor: pointer; font-size: 0.9rem; padding: 2px; opacity: 0; transition: opacity 0.2s;
     }
     .review-note:hover .review-note-del { opacity: 1; }
     .review-note-del:hover { color: var(--red); }
-
-    /* Highlight on page */
     .review-highlight {
-      outline: 2px dashed var(--accent) !important;
-      outline-offset: 4px;
-      position: relative;
+      outline: 2px dashed var(--accent) !important; outline-offset: 4px; position: relative;
     }
     .review-highlight::after {
       content: attr(data-review-count);
@@ -968,21 +1046,16 @@
       background: var(--accent); color: var(--bg-dark);
       width: 20px; height: 20px; border-radius: 50%;
       font-size: 0.65rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      pointer-events: none;
+      display: flex; align-items: center; justify-content: center; pointer-events: none;
     }
-    .review-pin-mode * { cursor: crosshair !important; }
-    .review-pin-mode *:hover {
-      outline: 2px solid rgba(232,166,36,0.5) !important;
-      outline-offset: 2px;
+    .review-pin-mode *:not(#drawCanvas):not(#drawToolbar *):not(#reviewPanel *):not(#reviewToggle) {
+      cursor: crosshair !important;
     }
-
-    /* Input Area */
     #reviewInput {
       padding: 12px; border-top: 1px solid var(--border); background: #16161f;
     }
     #reviewText {
-      width: 100%; min-height: 70px; max-height: 140px;
+      width: 100%; min-height: 60px; max-height: 120px;
       background: #0e0e16; border: 1px solid var(--border); border-radius: 6px;
       color: var(--text); padding: 10px; font-family: var(--font-body);
       font-size: 0.82rem; resize: vertical; line-height: 1.5;
@@ -990,50 +1063,381 @@
     #reviewText:focus { outline: none; border-color: var(--accent); }
     #reviewText::placeholder { color: var(--text-dim); }
 
-    /* Responsive */
-    @media (max-width: 500px) {
+    /* Text input modal for text tool */
+    #textInputOverlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5); z-index: 10020;
+      display: none; align-items: center; justify-content: center;
+    }
+    #textInputOverlay.active { display: flex; }
+    #textInputBox {
+      background: #16161f; border: 1px solid var(--accent); border-radius: 10px;
+      padding: 20px; width: 320px;
+    }
+    #textInputBox input {
+      width: 100%; background: #0e0e16; border: 1px solid var(--border);
+      border-radius: 6px; color: var(--text); padding: 10px;
+      font-family: var(--font-body); font-size: 0.9rem; margin-bottom: 10px;
+    }
+    #textInputBox input:focus { outline: none; border-color: var(--accent); }
+    #textInputBox .ti-actions { display: flex; gap: 8px; justify-content: flex-end; }
+    #textInputBox button {
+      padding: 6px 16px; border-radius: 6px; border: 1px solid var(--border);
+      cursor: pointer; font-size: 0.8rem;
+    }
+    #textInputBox .ti-ok { background: var(--accent); color: var(--bg-dark); border-color: var(--accent); }
+    #textInputBox .ti-cancel { background: transparent; color: var(--text-dim); }
+
+    @media (max-width: 600px) {
       #reviewPanel { width: 100%; }
+      #drawToolbar { left: 6px; padding: 6px 4px; }
+      .tb-btn { width: 32px; height: 32px; font-size: 0.9rem; }
     }
   </style>
 
+  <!-- Text Input Modal -->
+  <div id="textInputOverlay">
+    <div id="textInputBox">
+      <input type="text" id="textLabelInput" placeholder="Type label text..." autofocus>
+      <div class="ti-actions">
+        <button class="ti-cancel" id="textCancel">Cancel</button>
+        <button class="ti-ok" id="textOk">Add</button>
+      </div>
+    </div>
+  </div>
+
   <script>
   (function() {
-    const STORAGE_KEY = 'hcplus_review_notes';
+    /* ─── State ─── */
+    const NOTES_KEY = 'hcplus_review_notes';
+    const DRAW_KEY = 'hcplus_review_drawings';
     let reviewActive = false;
-    let pinMode = false;
+    let currentTool = 'pin';
+    let drawColor = '#e8a624';
+    let drawSize = 4;
     let pinTarget = null;
-    let notes = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    let notes = JSON.parse(localStorage.getItem(NOTES_KEY) || '[]');
+    let drawings = JSON.parse(localStorage.getItem(DRAW_KEY) || '[]');
 
+    /* ─── DOM refs ─── */
     const toggle = document.getElementById('reviewToggle');
+    const canvas = document.getElementById('drawCanvas');
+    const ctx = canvas.getContext('2d');
+    const toolbar = document.getElementById('drawToolbar');
     const panel = document.getElementById('reviewPanel');
     const notesList = document.getElementById('reviewNotes');
     const textArea = document.getElementById('reviewText');
     const closeBtn = document.getElementById('reviewClose');
     const exportBtn = document.getElementById('reviewExport');
     const clearBtn = document.getElementById('reviewClear');
+    const undoBtn = document.getElementById('undoBtn');
+    const clearDrawBtn = document.getElementById('clearDrawBtn');
+    const exportPngBtn = document.getElementById('exportPngBtn');
+    const textOverlay = document.getElementById('textInputOverlay');
+    const textInput = document.getElementById('textLabelInput');
+    const textOk = document.getElementById('textOk');
+    const textCancel = document.getElementById('textCancel');
 
-    function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(notes)); }
+    /* ─── Canvas sizing (debounced) ─── */
+    let _resizeTimer = null;
+    function resizeCanvas() {
+      const docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      if (canvas.width === window.innerWidth && canvas.height === docH) return;
+      canvas.width = window.innerWidth;
+      canvas.height = docH;
+      canvas.style.height = docH + 'px';
+      redrawAll();
+    }
+    function debouncedResize() { clearTimeout(_resizeTimer); _resizeTimer = setTimeout(resizeCanvas, 150); }
+    window.addEventListener('resize', debouncedResize);
+    new ResizeObserver(debouncedResize).observe(document.body);
 
-    function sectionLabel(el) {
-      // Walk up to find the nearest section or identifiable parent
-      let node = el;
-      while (node && node !== document.body) {
-        if (node.id && node.tagName !== 'BODY') {
-          const label = node.querySelector('.section-label, .section-title, h2, h3, h4');
-          if (label) return { id: node.id, text: label.textContent.trim().substring(0, 60) };
-          return { id: node.id, text: node.id };
+    /* ─── Save / Load ─── */
+    function saveNotes() { localStorage.setItem(NOTES_KEY, JSON.stringify(notes)); }
+    function saveDrawings() { localStorage.setItem(DRAW_KEY, JSON.stringify(drawings)); }
+
+    /* ─── Drawing state ─── */
+    let isDrawing = false;
+    let drawStart = null;
+    let currentPath = [];
+    let pendingTextPos = null;
+
+    /* ─── Redraw all persisted drawings onto canvas ─── */
+    function redrawAll() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawings.forEach(d => renderDrawing(d));
+    }
+
+    function renderDrawing(d) {
+      ctx.save();
+      ctx.strokeStyle = d.color;
+      ctx.fillStyle = d.color;
+      ctx.lineWidth = d.size;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      switch(d.type) {
+        case 'pen':
+          if (d.points.length < 2) break;
+          ctx.beginPath();
+          ctx.moveTo(d.points[0][0], d.points[0][1]);
+          for (let i = 1; i < d.points.length; i++) {
+            ctx.lineTo(d.points[i][0], d.points[i][1]);
+          }
+          ctx.stroke();
+          break;
+
+        case 'rect':
+          ctx.strokeRect(d.x, d.y, d.w, d.h);
+          break;
+
+        case 'circle': {
+          const rx = Math.abs(d.w) / 2;
+          const ry = Math.abs(d.h) / 2;
+          const cx = d.x + d.w / 2;
+          const cy = d.y + d.h / 2;
+          ctx.beginPath();
+          ctx.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2);
+          ctx.stroke();
+          break;
         }
-        if (node.classList && node.classList.contains('section')) {
-          const label = node.querySelector('.section-label');
-          return { id: node.id || '', text: label ? label.textContent.trim() : 'Section' };
+
+        case 'arrow': {
+          const dx = d.x2 - d.x1;
+          const dy = d.y2 - d.y1;
+          const angle = Math.atan2(dy, dx);
+          const headLen = Math.max(14, d.size * 4);
+          ctx.beginPath();
+          ctx.moveTo(d.x1, d.y1);
+          ctx.lineTo(d.x2, d.y2);
+          ctx.stroke();
+          // arrowhead
+          ctx.beginPath();
+          ctx.moveTo(d.x2, d.y2);
+          ctx.lineTo(d.x2 - headLen * Math.cos(angle - 0.4), d.y2 - headLen * Math.sin(angle - 0.4));
+          ctx.moveTo(d.x2, d.y2);
+          ctx.lineTo(d.x2 - headLen * Math.cos(angle + 0.4), d.y2 - headLen * Math.sin(angle + 0.4));
+          ctx.stroke();
+          break;
+        }
+
+        case 'text':
+          ctx.font = `bold ${Math.max(16, d.size * 4)}px Inter, sans-serif`;
+          ctx.fillText(d.label, d.x, d.y);
+          break;
+
+        case 'dummy': {
+          ctx.globalAlpha = 0.15;
+          ctx.fillRect(d.x, d.y, d.w, d.h);
+          ctx.globalAlpha = 1;
+          ctx.setLineDash([6, 4]);
+          ctx.strokeRect(d.x, d.y, d.w, d.h);
+          ctx.setLineDash([]);
+          // label
+          ctx.font = `bold 14px Inter, sans-serif`;
+          ctx.globalAlpha = 0.7;
+          const lbl = d.label || 'Placeholder';
+          const tw = ctx.measureText(lbl).width;
+          ctx.fillText(lbl, d.x + (d.w - tw) / 2, d.y + d.h / 2 + 5);
+          ctx.globalAlpha = 1;
+          break;
+        }
+      }
+      ctx.restore();
+    }
+
+    /* ─── Canvas mouse helpers ─── */
+    function canvasCoords(e) {
+      // Canvas is position:absolute at doc top, so getBoundingClientRect already
+      // accounts for scroll. Do NOT add scrollX/Y (that double-counts).
+      const rect = canvas.getBoundingClientRect();
+      return [e.clientX - rect.left, e.clientY - rect.top];
+    }
+
+    /* ─── Mouse events on canvas ─── */
+    canvas.addEventListener('mousedown', (e) => {
+      if (!reviewActive || currentTool === 'pin') return;
+      if (currentTool === 'text') {
+        pendingTextPos = canvasCoords(e);
+        textOverlay.classList.add('active');
+        textInput.value = '';
+        textInput.focus();
+        return;
+      }
+      isDrawing = true;
+      drawStart = canvasCoords(e);
+      currentPath = [drawStart];
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+      if (!isDrawing) return;
+      const [mx, my] = canvasCoords(e);
+
+      if (currentTool === 'pen') {
+        currentPath.push([mx, my]);
+        // live preview
+        redrawAll();
+        ctx.save();
+        ctx.strokeStyle = drawColor;
+        ctx.lineWidth = drawSize;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        ctx.moveTo(currentPath[0][0], currentPath[0][1]);
+        for (let i = 1; i < currentPath.length; i++) ctx.lineTo(currentPath[i][0], currentPath[i][1]);
+        ctx.stroke();
+        ctx.restore();
+      } else {
+        // live preview for shapes
+        redrawAll();
+        const tempD = buildShapeData(mx, my);
+        if (tempD) renderDrawing(tempD);
+      }
+    });
+
+    canvas.addEventListener('mouseup', (e) => {
+      if (!isDrawing) return;
+      isDrawing = false;
+      const [mx, my] = canvasCoords(e);
+
+      if (currentTool === 'pen') {
+        if (currentPath.length > 1) {
+          drawings.push({ type: 'pen', points: currentPath, color: drawColor, size: drawSize });
+          saveDrawings();
+        }
+      } else {
+        const d = buildShapeData(mx, my);
+        if (d) {
+          drawings.push(d);
+          saveDrawings();
+        }
+      }
+      currentPath = [];
+      drawStart = null;
+      redrawAll();
+    });
+
+    function buildShapeData(mx, my) {
+      if (!drawStart) return null;
+      const [sx, sy] = drawStart;
+      const w = mx - sx, h = my - sy;
+
+      switch (currentTool) {
+        case 'rect':
+          return { type: 'rect', x: sx, y: sy, w, h, color: drawColor, size: drawSize };
+        case 'circle':
+          return { type: 'circle', x: sx, y: sy, w, h, color: drawColor, size: drawSize };
+        case 'arrow':
+          return { type: 'arrow', x1: sx, y1: sy, x2: mx, y2: my, color: drawColor, size: drawSize };
+        case 'dummy':
+          return { type: 'dummy', x: sx, y: sy, w, h, color: drawColor, size: drawSize, label: 'Placeholder' };
+        default: return null;
+      }
+    }
+
+    /* ─── Text tool ─── */
+    function finishText() {
+      const txt = textInput.value.trim();
+      textOverlay.classList.remove('active');
+      if (!txt || !pendingTextPos) return;
+      // If we were in dummy mode when we triggered text, make a dummy with label
+      drawings.push({ type: 'text', x: pendingTextPos[0], y: pendingTextPos[1], label: txt, color: drawColor, size: drawSize });
+      saveDrawings();
+      redrawAll();
+      pendingTextPos = null;
+    }
+    textOk.addEventListener('click', finishText);
+    textCancel.addEventListener('click', () => { textOverlay.classList.remove('active'); pendingTextPos = null; });
+    textInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') finishText(); if (e.key === 'Escape') { textOverlay.classList.remove('active'); pendingTextPos = null; } });
+
+    /* ─── Toolbar interactions (stopPropagation to avoid pin-click leak) ─── */
+    toolbar.addEventListener('click', (e) => e.stopPropagation());
+    toolbar.querySelectorAll('.tb-tools .tb-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        toolbar.querySelectorAll('.tb-tools .tb-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentTool = btn.dataset.tool;
+        updateCanvasPointer();
+      });
+    });
+    toolbar.querySelectorAll('.tb-color').forEach(btn => {
+      btn.addEventListener('click', () => {
+        toolbar.querySelectorAll('.tb-color').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        drawColor = btn.dataset.color;
+      });
+    });
+    toolbar.querySelectorAll('.tb-size').forEach(btn => {
+      btn.addEventListener('click', () => {
+        toolbar.querySelectorAll('.tb-size').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        drawSize = parseInt(btn.dataset.size);
+      });
+    });
+
+    undoBtn.addEventListener('click', () => {
+      if (drawings.length === 0) return;
+      drawings.pop();
+      saveDrawings();
+      redrawAll();
+    });
+
+    clearDrawBtn.addEventListener('click', () => {
+      if (drawings.length === 0) return;
+      if (confirm('Clear all drawings? This cannot be undone.')) {
+        drawings = [];
+        saveDrawings();
+        redrawAll();
+      }
+    });
+
+    exportPngBtn.addEventListener('click', () => {
+      // Composite: screenshot page + drawings
+      const link = document.createElement('a');
+      link.download = 'review-annotated.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    function updateCanvasPointer() {
+      if (currentTool === 'pin') {
+        canvas.classList.add('no-pointer');
+        document.body.classList.add('review-pin-mode');
+      } else {
+        canvas.classList.remove('no-pointer');
+        document.body.classList.remove('review-pin-mode');
+        canvas.style.cursor = currentTool === 'pen' ? 'crosshair' :
+                              currentTool === 'text' ? 'text' : 'crosshair';
+      }
+    }
+
+    /* ─── Section detection (improved) ─── */
+    function sectionLabel(el) {
+      let node = el;
+      while (node && node !== document.body && node !== document.documentElement) {
+        // Check for section-like elements: has an ID and is a section/div/header
+        if (node.id) {
+          const heading = node.querySelector('h1, h2, h3, h4, .section-label, .section-title');
+          if (heading) return { id: node.id, text: heading.textContent.trim().substring(0, 60) };
+          return { id: node.id, text: node.id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) };
+        }
+        // Also match elements with class containing 'section'
+        if (node.className && typeof node.className === 'string' && /section|hero|feature|card/i.test(node.className)) {
+          const heading = node.querySelector('h1, h2, h3, h4, .section-label, .section-title');
+          if (heading) {
+            const parent = node.closest('[id]');
+            return { id: parent ? parent.id : '', text: heading.textContent.trim().substring(0, 60) };
+          }
         }
         node = node.parentElement;
       }
       return { id: '', text: 'General' };
     }
 
+    function escHtml(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+    /* ─── Notes rendering ─── */
     function renderNotes() {
-      // Clear existing highlights
       document.querySelectorAll('.review-highlight').forEach(el => {
         el.classList.remove('review-highlight');
         el.removeAttribute('data-review-count');
@@ -1041,158 +1445,143 @@
 
       notesList.innerHTML = '';
       if (notes.length === 0) {
-        notesList.innerHTML = '<div style="color:var(--text-dim);font-size:0.8rem;padding:20px;text-align:center;line-height:1.6;">No notes yet.<br><br><strong>Click any element</strong> on the page to pin a note to it.<br><br>Or type below and press <strong>Enter</strong> for a general note.</div>';
+        notesList.innerHTML = '<div style="color:var(--text-dim);font-size:0.8rem;padding:20px;text-align:center;line-height:1.6;">No notes yet.<br><br>Use <strong>Pin</strong> tool + click to attach notes to sections.<br>Use <strong>Draw</strong> tools to scribble, circle, arrow, or sketch.</div>';
         return;
       }
 
-      // Count notes per section for badges
       const countMap = {};
-      notes.forEach(n => {
-        if (n.sectionId) countMap[n.sectionId] = (countMap[n.sectionId] || 0) + 1;
-      });
-
-      // Apply highlights
+      notes.forEach(n => { if (n.sectionId) countMap[n.sectionId] = (countMap[n.sectionId] || 0) + 1; });
       Object.keys(countMap).forEach(id => {
         const el = document.getElementById(id);
-        if (el) {
-          el.classList.add('review-highlight');
-          el.setAttribute('data-review-count', countMap[id]);
-        }
+        if (el) { el.classList.add('review-highlight'); el.setAttribute('data-review-count', countMap[id]); }
       });
 
       notes.forEach((note, i) => {
         const div = document.createElement('div');
         div.className = 'review-note';
         div.innerHTML = `
-          <div class="review-note-section" data-scroll="${note.sectionId}">${note.sectionLabel}</div>
+          <div class="review-note-section" data-scroll="${note.sectionId}">${escHtml(note.sectionLabel)}</div>
           <div class="review-note-text">${escHtml(note.text)}</div>
           <div class="review-note-time">${note.time}</div>
-          <button class="review-note-del" data-idx="${i}">&times;</button>
-        `;
+          <button class="review-note-del" data-idx="${i}">&times;</button>`;
         notesList.appendChild(div);
       });
 
-      // Scroll-to-section on click
       notesList.querySelectorAll('.review-note-section').forEach(el => {
         el.addEventListener('click', () => {
-          const target = document.getElementById(el.dataset.scroll);
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const t = document.getElementById(el.dataset.scroll);
+          if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       });
-
-      // Delete
       notesList.querySelectorAll('.review-note-del').forEach(btn => {
-        btn.addEventListener('click', () => {
-          notes.splice(parseInt(btn.dataset.idx), 1);
-          save();
-          renderNotes();
-        });
+        btn.addEventListener('click', () => { notes.splice(parseInt(btn.dataset.idx), 1); saveNotes(); renderNotes(); });
       });
-
       notesList.scrollTop = notesList.scrollHeight;
     }
 
-    function escHtml(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-
     function addNote(text, section) {
-      const now = new Date();
-      const time = now.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
-      notes.push({
-        text: text.trim(),
-        sectionId: section.id,
-        sectionLabel: section.text,
-        time: time
-      });
-      save();
+      const t = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+      notes.push({ text: text.trim(), sectionId: section.id, sectionLabel: section.text, time: t });
+      saveNotes();
       renderNotes();
     }
 
+    /* ─── Open / Close ─── */
     function openReview() {
       reviewActive = true;
       panel.classList.remove('review-hidden');
+      toolbar.classList.remove('draw-hidden');
+      canvas.classList.add('active');
       toggle.classList.add('active');
       toggle.innerHTML = '&#10006;';
-      document.body.classList.add('review-pin-mode');
+      resizeCanvas();
+      updateCanvasPointer();
       renderNotes();
     }
 
     function closeReview() {
       reviewActive = false;
       panel.classList.add('review-hidden');
+      toolbar.classList.add('draw-hidden');
+      canvas.classList.remove('active');
       toggle.classList.remove('active');
       toggle.innerHTML = '&#9998;';
       document.body.classList.remove('review-pin-mode');
     }
 
-    toggle.addEventListener('click', () => {
-      reviewActive ? closeReview() : openReview();
-    });
+    toggle.addEventListener('click', () => { reviewActive ? closeReview() : openReview(); });
     closeBtn.addEventListener('click', closeReview);
 
-    // Keyboard shortcut: R to toggle
+    /* ─── Keyboard shortcuts ─── */
     document.addEventListener('keydown', (e) => {
       if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
-      if (e.key === 'r' || e.key === 'R') {
+      if (!reviewActive && (e.key === 'r' || e.key === 'R')) { e.preventDefault(); openReview(); return; }
+      if (!reviewActive) return;
+
+      const keyMap = { r: null, p: 'pen', b: 'rect', c: 'circle', a: 'arrow', t: 'text', d: 'dummy', n: 'pin' };
+      const lower = e.key.toLowerCase();
+
+      if (lower === 'r') { e.preventDefault(); closeReview(); return; }
+      if (keyMap[lower] !== undefined && keyMap[lower] !== null) {
         e.preventDefault();
-        reviewActive ? closeReview() : openReview();
+        currentTool = keyMap[lower];
+        toolbar.querySelectorAll('.tb-tools .tb-btn').forEach(b => b.classList.toggle('active', b.dataset.tool === currentTool));
+        updateCanvasPointer();
+        return;
+      }
+      if (e.key === 'z' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        if (drawings.length) { drawings.pop(); saveDrawings(); redrawAll(); }
       }
     });
 
-    // Click on page to pin note
+    /* ─── Pin-note click (bubble phase, non-blocking) ─── */
     document.addEventListener('click', (e) => {
-      if (!reviewActive) return;
-      // Ignore clicks inside the review panel or toggle
-      if (e.target.closest('#reviewPanel') || e.target.closest('#reviewToggle')) return;
-      // Ignore nav links
+      if (!reviewActive || currentTool !== 'pin') return;
+      if (e.target.closest('#reviewPanel') || e.target.closest('#reviewToggle') || e.target.closest('#drawToolbar') || e.target.closest('#textInputOverlay')) return;
       if (e.target.closest('.nav')) return;
-
-      e.preventDefault();
-      e.stopPropagation();
+      if (e.target.tagName === 'A') e.preventDefault(); // only block link navigation
 
       const section = sectionLabel(e.target);
       pinTarget = section;
       textArea.placeholder = `Note for: ${section.text}\nType and press Enter...`;
-      textArea.focus();
-    }, true);
+      // Brief flash on the clicked element to confirm selection
+      const el = e.target.closest('[id]') || e.target;
+      el.style.outline = '2px solid var(--accent)';
+      el.style.outlineOffset = '2px';
+      setTimeout(() => { el.style.outline = ''; el.style.outlineOffset = ''; }, 600);
+    });
 
-    // Enter to submit note
+    /* ─── Enter to submit note ─── */
     textArea.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         const text = textArea.value.trim();
         if (!text) return;
-        const section = pinTarget || { id: '', text: 'General' };
-        addNote(text, section);
+        addNote(text, pinTarget || { id: '', text: 'General' });
         textArea.value = '';
         pinTarget = null;
-        textArea.placeholder = 'Click any element on the page to pin a note to it, or write a general note and press Enter...';
+        textArea.placeholder = 'Click any element to pin a note, or type a general note and press Enter...';
       }
     });
 
-    // Export all notes
+    /* ─── Export / Clear notes ─── */
     exportBtn.addEventListener('click', () => {
-      if (notes.length === 0) return;
-      const text = notes.map((n, i) =>
-        `[${n.sectionLabel}] (${n.time})\n${n.text}`
-      ).join('\n\n---\n\n');
-      navigator.clipboard.writeText(text).then(() => {
+      if (!notes.length) return;
+      const txt = notes.map(n => `[${n.sectionLabel}] (${n.time})\n${n.text}`).join('\n\n---\n\n');
+      navigator.clipboard.writeText(txt).then(() => {
         exportBtn.textContent = 'Copied!';
         setTimeout(() => { exportBtn.textContent = 'Export'; }, 1500);
       });
     });
-
-    // Clear all notes
     clearBtn.addEventListener('click', () => {
-      if (notes.length === 0) return;
-      if (confirm('Delete all review notes? This cannot be undone.')) {
-        notes = [];
-        save();
-        renderNotes();
-      }
+      if (!notes.length) return;
+      if (confirm('Delete all review notes?')) { notes = []; saveNotes(); renderNotes(); }
     });
 
-    // Initial render if notes exist
+    /* ─── Init ─── */
     renderNotes();
+    resizeCanvas();
   })();
   </script>
 
