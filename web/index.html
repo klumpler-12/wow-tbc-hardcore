@@ -1179,7 +1179,7 @@
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0 });
 
     document.querySelectorAll('.fade-in, .reveal-up, .house-card, .achievement, .mockup-frame').forEach(el => {
       observer.observe(el);
@@ -2367,7 +2367,6 @@
           if (answers[key] !== undefined) {
             tag.classList.toggle('active', answers[key]);
           }
-        });
         });
       }
 
