@@ -11,7 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="css/review.css?v=1">
 </head>
 <body>
 
@@ -20,13 +21,8 @@
     <div class="container nav-inner">
       <a href="#" class="nav-logo"><span class="nav-hybrid">Hybrid</span><span class="nav-hc">HC</span></a>
       <div class="nav-links" id="navLinks">
-        <a href="#rule-config">Rules</a>
         <a href="#features">Features</a>
-        <a href="#for-you">Play Styles</a>
-        <a href="#scoring">Scoring</a>
-        <a href="#houses">Houses</a>
-        <a href="#guild-sites">Profiles</a>
-        <a href="#early-concepts">Ideas Lab</a>
+        <a href="#guild-tools">Guild &amp; Streamer Tools</a>
         <a href="roadmap.html">Roadmap</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -50,7 +46,7 @@
         The TBC addon that makes Hardcore actually viable.
       </p>
       <div class="hero-actions">
-        <a href="#how-it-works" class="btn btn-glow">See How It Works</a>
+        <a href="#features" class="btn btn-glow">Explore Features</a>
         <a href="#get-started" class="btn btn-secondary">Get Started</a>
       </div>
       <!-- hero stats removed per review #1 -->
@@ -63,75 +59,30 @@
     <div class="container">
       <div class="ct-wrap fade-in">
 
-        <!-- Top annotation boxes (small, with down-arrows to bar) -->
-        <div class="ct-row ct-row-top">
-          <div class="ct-cell">
-            <div class="ct-mini">
-              <span class="ct-mini-ico">☠</span>
-              <div class="ct-mini-text"><strong>Death = Permanent</strong><span>One life 1&ndash;60</span></div>
-            </div>
-            <div class="ct-arrow-down"></div>
-          </div>
-          <div class="ct-cell">
-            <div class="ct-mini">
-              <span class="ct-mini-ico"><span class="ct-heart full">♥</span><span class="ct-heart full">♥</span><span class="ct-heart empty">♡</span></span>
-              <div class="ct-mini-text"><strong>Life Counter</strong><span>Instances lvl 58+</span></div>
-            </div>
-            <div class="ct-arrow-down"></div>
-          </div>
-          <div class="ct-cell">
-            <div class="ct-mini">
-              <span class="ct-mini-ico">🏁</span>
-              <div class="ct-mini-text"><strong>Checkpoint</strong><span>Saved at lvl 60</span></div>
-            </div>
-            <div class="ct-arrow-down"></div>
-          </div>
+        <!-- Top tags (styled like customization gc-tags) -->
+        <div class="ct-tags" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px">
+          <span class="gc-tag active" style="font-size:0.8rem;padding:5px 12px">&#9760; Permadeath 1&ndash;70</span>
+          <span class="gc-tag active" style="font-size:0.8rem;padding:5px 12px;border-color:var(--neon-green);color:var(--neon-green)">&#10084;&#65039; 2&ndash;3 Instance Lives</span>
+          <span class="gc-tag active" style="font-size:0.8rem;padding:5px 12px">&#127937; Checkpoint at 58</span>
+          <span class="gc-tag active" style="font-size:0.8rem;padding:5px 12px">&#127942; Scoring</span>
+          <span class="gc-tag" style="font-size:0.8rem;padding:5px 12px;border-color:var(--purple);color:var(--purple)">&#128081; Full Customization</span>
         </div>
 
         <!-- The level bar (bigger) -->
         <div class="ct-bar-label">LEVEL</div>
         <div class="ct-line ct-line-big">
           <div class="ct-track">
-            <div class="ct-fill ct-fill-hc" style="left:0;width:85.7%"></div>
+            <div class="ct-fill ct-fill-hc" style="left:0;width:82.9%"></div>
           </div>
           <div class="ct-marker" style="left:0%"><span class="ct-marker-dot"></span><span class="ct-marker-label">1</span></div>
-          <div class="ct-marker" style="left:28.5%"><span class="ct-marker-dot sm"></span><span class="ct-marker-label">20</span></div>
-          <div class="ct-marker" style="left:57.1%"><span class="ct-marker-dot sm"></span><span class="ct-marker-label">40</span></div>
-          <div class="ct-marker ct-marker-major" style="left:71.4%"><span class="ct-marker-dot sm"></span><span class="ct-marker-label">50</span></div>
-          <div class="ct-marker ct-marker-checkpoint" style="left:85.7%"><span class="ct-marker-dot big"></span><span class="ct-marker-label">60</span></div>
+          <div class="ct-marker" style="left:28.5%"><span class="ct-marker-dot sm"></span></div>
+          <div class="ct-marker" style="left:57.1%"><span class="ct-marker-dot sm"></span></div>
+          <div class="ct-marker ct-marker-checkpoint" style="left:82.9%"><span class="ct-marker-dot big"></span><span class="ct-marker-label">58</span></div>
           <div class="ct-marker" style="left:100%"><span class="ct-marker-dot"></span><span class="ct-marker-label">70</span></div>
-          <!-- Bracket annotations on bar -->
-          <div class="ct-bracket" style="left:0;width:85.7%">
-            <div class="ct-bracket-line"></div>
-            <span class="ct-bracket-label">&#9760; Permadeath (open world deaths = permanent)</span>
-          </div>
-          <div class="ct-bracket ct-bracket-end" style="left:85.7%;width:14.3%">
-            <div class="ct-bracket-line"></div>
-            <span class="ct-bracket-label">&#127937; Checkpoint reached &mdash; soft reset or reroll</span>
-          </div>
         </div>
 
-        <!-- Bottom annotation boxes (custom options, with up-arrows to bar) -->
-        <div class="ct-row ct-row-bottom">
-          <div class="ct-cell">
-            <div class="ct-arrow-up"></div>
-            <div class="ct-mini ct-mini-custom">
-              <div class="ct-mini-text"><strong>Custom:</strong> Death penalties<span>Life loss, score deduction, or soft reset</span></div>
-            </div>
-          </div>
-          <div class="ct-cell">
-            <div class="ct-arrow-up"></div>
-            <div class="ct-mini ct-mini-custom">
-              <div class="ct-mini-text"><strong>Custom:</strong> Instance lives<span>Per-type rules (dungeon, raid, BG)</span></div>
-            </div>
-          </div>
-          <div class="ct-cell">
-            <div class="ct-arrow-up"></div>
-            <div class="ct-mini ct-mini-custom">
-              <div class="ct-mini-text"><strong>Custom:</strong> Checkpoints<span>Dynamic, class-wide, or account</span></div>
-            </div>
-          </div>
-        </div>
+        <!-- Customization note -->
+        <p style="text-align:center;font-size:0.68rem;color:var(--text-dim);margin-top:32px">Checkpoints, lives, death penalties, scoring &mdash; <strong>everything adapts.</strong> <span style="color:var(--purple)">Premium</span> unlocks full customization.</p>
 
       </div>
     </div>
@@ -141,241 +92,88 @@
   <section class="section instance-lives-section" id="instanceLives">
     <div class="container">
       <div class="section-label hybrid-accent">Base Mode</div>
-      <h2 class="section-title" style="text-align:center">Instance <span class="hybrid-glow">Life Rules</span></h2>
-      <p class="section-tagline"><span class="hybrid-glow">Anything is possible.</span></p>
-      <div class="il-desc-clean">
-        <p>Don&rsquo;t limit yourself &mdash; <strong>challenge yourself.</strong></p>
-        <p>Avoid one&#8209;shot perma&#8209;deaths while experiencing everything TBC has to offer.</p>
-        <p class="il-desc-meta">These are the <strong>base&nbsp;mode defaults</strong>. &nbsp;<span style="color:var(--purple)">Premium</span> unlocks full customization of every value.</p>
-      </div>
+      <h2 class="section-title" style="text-align:center">Dungeon &amp; Raid <span class="hybrid-glow">Lives</span></h2>
+      <p class="section-desc" style="text-align:center;max-width:580px;margin:0 auto 20px">Don&rsquo;t limit yourself &mdash; <strong>challenge yourself.</strong> Difficulty-based lives protect against one-shot wipes while keeping stakes real.</p>
 
-      <!-- Tier filter tabs -->
-      <div class="il-tabs" id="ilTabs">
-        <button class="il-tab" data-tier="normal">Normal <span class="il-tab-badge">Optional</span></button>
-        <button class="il-tab active" data-tier="heroic">Heroic</button>
-        <button class="il-tab" data-tier="raid">Raids</button>
-      </div>
+      <!-- Tags consolidated in Concept Timeline section -->
+      <p style="text-align:center;font-size:0.72rem;color:var(--text-dim);margin-bottom:20px">These are <strong>base&nbsp;mode defaults</strong>. <span style="color:var(--purple)">Premium</span> unlocks full customization of every value.</p>
 
-      <!-- ── Normal Dungeons ── -->
-      <div class="il-tier" id="ilNormal" style="display:none">
-        <div class="il-tier-header">
-          <span class="il-tier-title">Normal Dungeons</span>
-          <span class="il-tier-note il-tbd">
-            <span class="il-question">?</span> Whether normal dungeons have lives at all is under discussion. Deaths are <strong>tracked</strong>, but may only contribute to scoring &mdash; not permadeath. Community vote pending.
-          </span>
-        </div>
-        <div class="il-grid" id="ilGridNormal">
-          <!-- Hellfire Citadel -->
-          <div class="il-card il-undecided" data-lvl="60-62">
-            <span class="il-name">Hellfire Ramparts</span>
-            <span class="il-lvl">60–62</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
+      <!-- Heroic + Raids shown side-by-side (redesigned per review #3) -->
+      <div class="il-dual-view fade-in">
+        <!-- ── Heroic Dungeons ── -->
+        <div class="il-tier-panel">
+          <div class="il-tier-header">
+            <span class="il-tier-title">&#9876; Heroic Dungeons <span class="il-tier-badge">Lvl 70</span></span>
           </div>
-          <div class="il-card il-undecided" data-lvl="61-63">
-            <span class="il-name">Blood Furnace</span>
-            <span class="il-lvl">61–63</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <div class="il-card il-undecided" data-lvl="70">
-            <span class="il-name">Shattered Halls</span>
-            <span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <!-- Coilfang Reservoir -->
-          <div class="il-card il-undecided" data-lvl="62-64">
-            <span class="il-name">Slave Pens</span>
-            <span class="il-lvl">62–64</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <div class="il-card il-undecided" data-lvl="63-65">
-            <span class="il-name">Underbog</span>
-            <span class="il-lvl">63–65</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <div class="il-card il-undecided" data-lvl="67-70">
-            <span class="il-name">Steamvault</span>
-            <span class="il-lvl">67–70</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <!-- Auchindoun -->
-          <div class="il-card il-undecided" data-lvl="64-66">
-            <span class="il-name">Mana-Tombs</span>
-            <span class="il-lvl">64–66</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <div class="il-card il-undecided" data-lvl="65-67">
-            <span class="il-name">Auchenai Crypts</span>
-            <span class="il-lvl">65–67</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <div class="il-card il-undecided" data-lvl="67-69">
-            <span class="il-name">Sethekk Halls</span>
-            <span class="il-lvl">67–69</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <div class="il-card il-undecided" data-lvl="69-70">
-            <span class="il-name">Shadow Labyrinth</span>
-            <span class="il-lvl">69–70</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <!-- Caverns of Time -->
-          <div class="il-card il-undecided" data-lvl="66-68">
-            <span class="il-name">Old Hillsbrad</span>
-            <span class="il-lvl">66–68</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <div class="il-card il-undecided" data-lvl="68-70">
-            <span class="il-name">Black Morass</span>
-            <span class="il-lvl">68–70</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <!-- Tempest Keep -->
-          <div class="il-card il-undecided" data-lvl="69-70">
-            <span class="il-name">Mechanar</span>
-            <span class="il-lvl">69–70</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <div class="il-card il-undecided" data-lvl="70">
-            <span class="il-name">Botanica</span>
-            <span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <div class="il-card il-undecided" data-lvl="70">
-            <span class="il-name">Arcatraz</span>
-            <span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-          <!-- Sunwell -->
-          <div class="il-card il-undecided" data-lvl="70">
-            <span class="il-name">Magisters' Terrace</span>
-            <span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-q">?</span></div>
-          </div>
-        </div>
-      </div>
+          <p class="il-tier-explain">Lives are active. Harder heroics grant more lives. Reaching 0 = permadeath.</p>
 
-      <!-- ── Heroic Dungeons ── -->
-      <div class="il-tier" id="ilHeroic">
-        <div class="il-tier-header">
-          <span class="il-tier-title">Heroic Dungeons <span class="il-tier-badge">Lvl 70 &middot; Revered Rep</span></span>
-          <span class="il-tier-note il-active-note">Lives are active. Reaching the limit inside an instance = permadeath. <strong>No reset timer decided yet</strong> &mdash; community vote pending.</span>
-        </div>
-        <div class="il-grid" id="ilGridHeroic">
-          <!-- Easy heroics (♥♥): community consensus easiest — Mechanar, Slave Pens, Ramparts, Blood Furnace -->
-          <div class="il-card il-easy">
-            <span class="il-name">HC Mechanar</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
+          <div class="il-difficulty-group">
+            <div class="il-diff-label il-diff-easy">&#9733; Easy &mdash; 2 Lives</div>
+            <div class="il-grid il-grid-compact">
+              <div class="il-card il-easy"><span class="il-name">HC Mechanar</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-easy"><span class="il-name">HC Slave Pens</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-easy"><span class="il-name">HC Ramparts</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-easy"><span class="il-name">HC Blood Furnace</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+            </div>
           </div>
-          <div class="il-card il-easy">
-            <span class="il-name">HC Slave Pens</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-easy">
-            <span class="il-name">HC Ramparts</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-easy">
-            <span class="il-name">HC Blood Furnace</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <!-- Hard heroics (♥♥♥): Underbog, Old Hillsbrad, Botanica, Steamvault, Auchenai, Sethekk, Mana-Tombs, Shadow Lab, Arcatraz, Black Morass -->
-          <div class="il-card il-hard">
-            <span class="il-name">HC Underbog</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-hard">
-            <span class="il-name">HC Old Hillsbrad</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-hard">
-            <span class="il-name">HC Botanica</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-hard">
-            <span class="il-name">HC Steamvault</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-hard">
-            <span class="il-name">HC Auchenai Crypts</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-hard">
-            <span class="il-name">HC Sethekk Halls</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-hard">
-            <span class="il-name">HC Mana-Tombs</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-hard">
-            <span class="il-name">HC Shadow Labyrinth</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-hard">
-            <span class="il-name">HC Arcatraz</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-hard">
-            <span class="il-name">HC Black Morass</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <!-- Brutal heroics (♥♥♥♥♥): Only the 2 hardest — Shattered Halls, Magisters' Terrace -->
-          <div class="il-card il-brutal">
-            <span class="il-name">HC Shattered Halls</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-brutal">
-            <span class="il-name">HC Magisters' Terrace</span><span class="il-lvl">70</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-        </div>
-      </div>
 
-      <!-- ── Raids ── -->
-      <div class="il-tier" id="ilRaid" style="display:none">
-        <div class="il-tier-header">
-          <span class="il-tier-title">Raids</span>
-          <span class="il-tier-note il-active-note">Lives always active in raids. More lives for harder content. Reaching the limit = permadeath. <strong>No reset timer decided yet.</strong></span>
+          <div class="il-difficulty-group">
+            <div class="il-diff-label il-diff-hard">&#9733;&#9733; Hard &mdash; 3 Lives</div>
+            <div class="il-grid il-grid-compact" id="ilHeroicHard">
+              <div class="il-card il-hard"><span class="il-name">HC Shadow Lab</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">HC Arcatraz</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">HC Black Morass</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+            </div>
+            <div class="il-grid il-grid-compact il-expandable" id="ilHeroicHardMore" style="display:none">
+              <div class="il-card il-hard"><span class="il-name">HC Underbog</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">HC Old Hillsbrad</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">HC Botanica</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">HC Steamvault</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">HC Auchenai Crypts</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">HC Sethekk Halls</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">HC Mana-Tombs</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+            </div>
+            <button class="il-expand-btn" data-target="ilHeroicHardMore">Show all +7 more</button>
+          </div>
+
+          <div class="il-difficulty-group">
+            <div class="il-diff-label il-diff-brutal">&#9760; Brutal &mdash; 5 Lives</div>
+            <div class="il-grid il-grid-compact">
+              <div class="il-card il-brutal"><span class="il-name">HC Shattered Halls</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-brutal"><span class="il-name">HC Magisters' Terrace</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+            </div>
+          </div>
         </div>
-        <div class="il-grid" id="ilGridRaid">
-          <!-- Entry raids (♥♥♥): Karazhan, Gruul's, Magtheridon's -->
-          <div class="il-card il-hard">
-            <span class="il-name">Karazhan</span><span class="il-lvl">70 &middot; 10-man</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
+
+        <!-- ── Raids ── -->
+        <div class="il-tier-panel">
+          <div class="il-tier-header">
+            <span class="il-tier-title">&#128737; Raids</span>
           </div>
-          <div class="il-card il-hard">
-            <span class="il-name">Gruul's Lair</span><span class="il-lvl">70 &middot; 25-man</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
+          <p class="il-tier-explain">Lives always active. More lives for harder raids. Reaching 0 = permadeath.</p>
+
+          <div class="il-difficulty-group">
+            <div class="il-diff-label il-diff-hard">&#9733;&#9733; Entry &amp; Mid &mdash; 3 Lives</div>
+            <div class="il-grid il-grid-compact">
+              <div class="il-card il-hard"><span class="il-name">Karazhan</span><span class="il-lvl">10-man</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">Gruul's Lair</span><span class="il-lvl">25-man</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">Magtheridon</span><span class="il-lvl">25-man</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+            </div>
+            <div class="il-grid il-grid-compact il-expandable" id="ilRaidMore" style="display:none">
+              <div class="il-card il-hard"><span class="il-name">Zul'Aman</span><span class="il-lvl">10-man</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">Serpentshrine Cavern</span><span class="il-lvl">25-man</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">Tempest Keep</span><span class="il-lvl">25-man</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-hard"><span class="il-name">Mount Hyjal</span><span class="il-lvl">25-man</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+            </div>
+            <button class="il-expand-btn" data-target="ilRaidMore">Show all +4 more</button>
           </div>
-          <div class="il-card il-hard">
-            <span class="il-name">Magtheridon's Lair</span><span class="il-lvl">70 &middot; 25-man</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <!-- Hard raids (♥♥♥): ZA, SSC, TK, Hyjal -->
-          <div class="il-card il-hard">
-            <span class="il-name">Zul'Aman</span><span class="il-lvl">70 &middot; 10-man</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-hard">
-            <span class="il-name">Serpentshrine Cavern</span><span class="il-lvl">70 &middot; 25-man</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-hard">
-            <span class="il-name">Tempest Keep: The Eye</span><span class="il-lvl">70 &middot; 25-man</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-hard">
-            <span class="il-name">Mount Hyjal</span><span class="il-lvl">70 &middot; 25-man</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <!-- Brutal raids (♥♥♥♥♥): Only the 2 hardest — BT, Sunwell -->
-          <div class="il-card il-brutal">
-            <span class="il-name">Black Temple</span><span class="il-lvl">70 &middot; 25-man</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
-          </div>
-          <div class="il-card il-brutal">
-            <span class="il-name">Sunwell Plateau</span><span class="il-lvl">70 &middot; 25-man</span>
-            <div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div>
+
+          <div class="il-difficulty-group">
+            <div class="il-diff-label il-diff-brutal">&#9760; Brutal &mdash; 5 Lives</div>
+            <div class="il-grid il-grid-compact">
+              <div class="il-card il-brutal"><span class="il-name">Black Temple</span><span class="il-lvl">25-man</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+              <div class="il-card il-brutal"><span class="il-name">Sunwell Plateau</span><span class="il-lvl">25-man</span><div class="il-hearts"><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span><span class="il-h full">♥</span></div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -394,7 +192,7 @@
             <div class="il-oq"><span class="il-oq-icon">?</span> Do normal dungeons have lives, or are deaths just tracked for scoring?</div>
             <div class="il-oq"><span class="il-oq-icon">?</span> Is there a reset timer per dungeon (e.g., lives refresh weekly)?</div>
             <div class="il-oq"><span class="il-oq-icon">?</span> Does the life count reset when you leave the instance, or persist?</div>
-            <div class="il-oq"><span class="il-oq-icon">&#9745;</span> These will be settled by <strong>community vote</strong> before release.</div>
+            <div class="il-oq"><span class="il-oq-icon">&#9745;</span> These will be shaped by <strong>passive polling</strong> during alpha &mdash; popular settings define the base mode.</div>
           </div>
         </div>
         <!-- Sources footnote -->
@@ -417,10 +215,19 @@
     <div class="container">
       <div class="section-label hybrid-accent">Configure</div>
       <h2 class="section-title" style="text-align:center">Your Rules, <span class="hybrid-glow">Your Way</span></h2>
-      <p class="section-desc" style="text-align:center">Set up your guild's hardcore ruleset in seconds. Quick survey for beginners, full control for veterans. Copy from existing guilds or start from scratch.</p>
+      <p class="section-desc" style="text-align:center">Base mode works out of the box. Want more control? Customize everything below.</p>
 
-      <div class="rm-split fade-in">
-        <!-- Left: Survey Flow -->
+      <!-- Base mode default state -->
+      <div class="rm-base-default fade-in" id="rmBaseDefault">
+        <div class="rm-base-card">
+          <div class="rm-base-status"><span class="rm-base-dot"></span> Base Mode Active</div>
+          <p class="rm-base-desc">The community-driven default ruleset. Works for everyone, no configuration needed.</p>
+          <button class="btn btn-secondary rm-customize-btn" id="rmCustomizeBtn" style="margin-top:12px;font-size:0.8rem;padding:8px 20px">&#9878; Customize Rules</button>
+        </div>
+      </div>
+
+      <!-- Customization survey (hidden by default) -->
+      <div class="rm-split fade-in" id="rmCustomPanel" style="display:none">
         <div class="proto-box rm-ui" id="ruleManager">
           <h4>&#9878; Rule Setting Manager</h4>
           <div class="rm-tabs">
@@ -428,7 +235,7 @@
             <button class="rm-tab" data-rm="presets">&#128203; Presets</button>
           </div>
           <div class="rm-panel active" id="rmSurvey">
-            <p class="rm-mode-note">Answer a few questions to build your ruleset. <strong>Base mode</strong> uses unified defaults &mdash; <span style="color:var(--purple)">Premium</span> unlocks granular customization.</p>
+            <p class="rm-mode-note">Answer a few questions to build your ruleset. <span style="color:var(--purple)">Premium</span> unlocks granular customization.</p>
             <div class="survey-progress" id="surveyDots"></div>
             <div class="survey-cards" id="surveyCards"></div>
             <div class="survey-done" id="surveyDone" style="display:none">
@@ -446,7 +253,6 @@
             </div>
           </div>
         </div>
-        <!-- Right: Live Config Summary -->
         <div class="proto-box rm-config-summary" id="rmConfigSummary">
           <h4>&#128203; Your Ruleset</h4>
           <div class="rm-config-rows" id="rmConfigRows">
@@ -462,6 +268,23 @@
           <div class="rm-cfg-note">Answers update live as you go through the survey.</div>
         </div>
       </div>
+
+      <!-- Decision Tree Demo (animated, non-interactive) -->
+      <div class="decision-tree-demo fade-in" style="margin-top:28px">
+        <p style="text-align:center;font-size:0.72rem;color:var(--purple);font-weight:600;margin-bottom:10px">&#128081; Premium: Even More Customization</p>
+        <div class="dt-flow" id="dtFlow">
+          <div class="dt-node dt-root">&#9878; Ruleset</div>
+          <div class="dt-branch">
+            <div class="dt-line"></div>
+            <div class="dt-children">
+              <div class="dt-node dt-child">&#9760; Death Rules<span class="dt-sub">penalties, lives, reset timers</span></div>
+              <div class="dt-node dt-child">&#127942; Scoring<span class="dt-sub">values, categories, visibility</span></div>
+              <div class="dt-node dt-child">&#127968; Guild Setup<span class="dt-sub">houses, drafts, seasons</span></div>
+            </div>
+          </div>
+        </div>
+        <p style="text-align:center;font-size:0.65rem;color:var(--text-dim);margin-top:8px">Premium gives GMs a full decision tree &mdash; every rule is granular and configurable.</p>
+      </div>
     </div>
   </section>
 
@@ -470,10 +293,10 @@
     <div class="death-ticker-track" id="tickerTrack"></div>
   </div>
 
-  <!-- ═══ How It Works — Death Sequence ═══ -->
-  <section class="section section-dark" id="how-it-works">
+  <!-- ═══ Death Sequence ═══ -->
+  <section class="section section-dark" id="death-sequence">
     <div class="container">
-      <div class="section-label hybrid-accent">How It Works</div>
+      <div class="section-label hybrid-accent">The Stakes</div>
       <h2 class="section-title">Hardcore, <span class="hybrid-glow">Reimagined</span></h2>
       <p class="section-desc">Hardcore rules that actually work for TBC. Customizable death penalties, progressive consequences, and competitive scoring &mdash; all configurable by your guild.</p>
 
@@ -521,55 +344,11 @@
     </div>
   </section>
 
-  <!-- ═══ Features — Animated Demos ═══ -->
-  <section class="section section-gradient" id="features">
-    <div class="container">
-      <div class="section-label">Core Features</div>
-      <h2 class="section-title">Built for <span class="accent">TBC</span></h2>
-
-      <div class="demo-grid">
-        <!-- Achievement Feed -->
-        <div class="feature-demo fade-in">
-          <h3 class="feature-demo-label">&#127942; Live Achievement Feed</h3>
-          <div class="achievement-feed" id="achieveFeed"></div>
-        </div>
-        <!-- Guild Leaderboard Demo (replaces dynamic lives per review #7) -->
-        <div class="feature-demo fade-in">
-          <h3 class="feature-demo-label">&#127942; Guild Leaderboard</h3>
-          <div class="lb-demo" id="leaderboardDemo">
-            <div class="lb-row lb-gold"><span class="lb-rank">1</span><span class="lb-name">Theron</span><span class="lb-pts">12,450</span></div>
-            <div class="lb-row lb-silver"><span class="lb-rank">2</span><span class="lb-name">Korrak</span><span class="lb-pts">11,200</span></div>
-            <div class="lb-row lb-bronze"><span class="lb-rank">3</span><span class="lb-name">Frostleaf</span><span class="lb-pts">10,100</span></div>
-            <div class="lb-row"><span class="lb-rank">4</span><span class="lb-name">Pupi</span><span class="lb-pts">9,870</span></div>
-            <div class="lb-row"><span class="lb-rank">5</span><span class="lb-name">Moonwhisper</span><span class="lb-pts">8,540</span></div>
-          </div>
-        </div>
-        <!-- Rule Engine -->
-        <div class="feature-demo fade-in">
-          <h3 class="feature-demo-label">&#9878; Rule Engine</h3>
-          <div class="rule-toggles" id="ruleTogglesDemo">
-            <div class="rule-row"><span>Hybrid HC Mode</span><div class="toggle on"></div></div>
-            <div class="rule-row"><span>Dynamic Lives</span><div class="toggle on"></div></div>
-            <div class="rule-row"><span>Scoring System</span><div class="toggle on"></div></div>
-            <div class="rule-row"><span>Self-Found</span><div class="toggle off"></div></div>
-            <div class="rule-row"><span>House Competition</span><div class="toggle on"></div></div>
-            <div class="rule-row"><span>Checkpoints</span><div class="toggle on"></div></div>
-          </div>
-        </div>
-        <!-- Live Scoring -->
-        <div class="feature-demo fade-in">
-          <h3 class="feature-demo-label">&#128200; Live Scoring</h3>
-          <div class="score-demo">
-            <div class="score-display"><span id="scoreValue">0</span> pts</div>
-            <div class="score-events" id="scoreEvents"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- features anchor preserved for nav link -->
+  <span id="features"></span>
 
   <!-- ═══ For You — Guild Window + Playstyles ═══ -->
-  <section class="section section-dark" id="for-you">
+  <section class="section section-dark" id="for-you"><span id="guild-tools"></span>
     <div class="container">
       <div class="section-label">For Every Player</div>
       <h2 class="section-title">See It <span class="accent">In Action</span></h2>
@@ -638,31 +417,62 @@
         </div>
       </div>
 
-      <div class="playstyle-grid">
-        <div class="playstyle-card ps-interactive fade-in" tabindex="0">
-          <div class="ps-icon">&#9876;</div>
-          <h3>Free &mdash; Base Mode</h3>
-          <p class="ps-desc">Everyone plays with unified base rules. Toggle features on or off (lives, permadeath, checkpoints) but values are fixed. Solo players can adopt any Premium guild's ruleset to play along.</p>
-          <div class="ps-features">
-            <div class="ps-feat"><span class="ps-feat-icon">&#9878;</span><span>Basic Rule Toggles</span></div>
-            <div class="ps-feat"><span class="ps-feat-icon">&#127942;</span><span>Personal Leaderboard</span></div>
-            <div class="ps-feat"><span class="ps-feat-icon">&#128200;</span><span>Score Tracking</span></div>
-            <div class="ps-feat"><span class="ps-feat-icon">&#127918;</span><span>Mini-Game Events</span></div>
-          </div>
-          <div class="ps-cta">Free &mdash; Full Gameplay Access</div>
+      <!-- CTA buttons moved to dedicated CTA section -->
+    </div>
+  </section>
+
+  <!-- ═══ Houses (moved here to group with guild features per review #12) ═══ -->
+  <section class="section section-gradient" id="houses">
+    <div class="container">
+      <div class="section-label hybrid-accent">Houses</div>
+      <h2 class="section-title">Your Guild, <span class="hybrid-glow">Many Banners</span></h2>
+      <div class="houses-banner fade-in" style="display:flex;justify-content:center;gap:18px;margin-bottom:16px;font-size:1.4rem">
+        <span title="House system">&#127968;</span>
+        <span title="Scoring">&#127942;</span>
+        <span title="Competition">&#9876;</span>
+        <span title="Seasons">&#128197;</span>
+      </div>
+      <p class="section-desc">Split your guild into competing houses &mdash; sub-guild fractions with automated scoring tracking. Each house holds up to &#8539; of your guild's member cap. Need more room? Link as many guilds as you want as a <strong>Super Guild</strong> to manage them as one through the addon.</p>
+      <div class="il-open-questions" style="max-width:700px;margin:0 auto 24px;">
+        <div class="il-oq-title">&#9881; Open Design &mdash; Super Guild</div>
+        <div class="il-oq-list">
+          <div class="il-oq"><span class="il-oq-icon">?</span> How many guilds can link? (Draft feature supports up to 4 guilds for now)</div>
+          <div class="il-oq"><span class="il-oq-icon">?</span> Super Guild features are addon-only &mdash; gchat and in-game guild features remain separate</div>
+          <div class="il-oq"><span class="il-oq-icon">&#9745;</span> This is <strong>open for research</strong> &mdash; many details still being designed</div>
         </div>
-        <div class="playstyle-card premium ps-interactive fade-in" tabindex="0">
-          <div class="ps-icon">&#128081;</div>
-          <h3>Premium &mdash; Custom Rules</h3>
-          <p class="ps-desc">Define <strong>exactly</strong> how many lives, which scoring values, what penalties. Full rule engine, houses, drafts, web profiles. Not just GM tools &mdash; the entire customization layer.</p>
-          <div class="ps-features">
-            <div class="ps-feat"><span class="ps-feat-icon">&#9878;</span><span>Granular Rule Engine</span></div>
-            <div class="ps-feat"><span class="ps-feat-icon">&#128101;</span><span>Houses &amp; Draft</span></div>
-            <div class="ps-feat"><span class="ps-feat-icon">&#127760;</span><span>Guild Website</span></div>
-            <div class="ps-feat"><span class="ps-feat-icon">&#128274;</span><span>Adopt Guild Rulesets</span></div>
-          </div>
-          <div class="ps-cta ps-cta-premium">Premium &mdash; Full Customization</div>
+      </div>
+      <div class="houses-controls fade-in">
+        <div class="houses-toggle" id="housesToggle">
+          <button class="ht-btn active" data-mode="weekly">Weekly Score</button>
+          <button class="ht-btn" data-mode="total">Total Score</button>
         </div>
+        <div class="houses-countdown" id="housesCountdown">
+          <span class="hc-label">Week ends in:</span>
+          <span class="hc-timer" id="hcTimer">2d 14h 32m</span>
+          <button class="hc-resolve-btn" id="hcResolve">&#9654; Resolve Week</button>
+        </div>
+      </div>
+      <div class="houses-visual" id="housesVisual">
+        <div class="houses-team houses-team-left">
+          <div class="team-header">TEAM ALPHA</div>
+          <div class="house-card" data-weekly="1420" data-total="4280"><div class="house-name">House Ironforge</div><div class="house-score" data-target="1420">0 pts</div><div class="house-detail">Leader: Theron &bull; First Kara clear</div></div>
+          <div class="house-card" data-weekly="1180" data-total="3910"><div class="house-name">House Dawnblade</div><div class="house-score" data-target="1180">0 pts</div><div class="house-detail">Leader: Mirael &bull; Most achievements</div></div>
+          <div class="house-card" data-weekly="890" data-total="2750"><div class="house-name">House Ashwind</div><div class="house-score" data-target="890">0 pts</div><div class="house-detail">Leader: Korrak &bull; Zero deaths this week</div></div>
+        </div>
+        <div class="houses-vs">VS</div>
+        <div class="houses-team houses-team-right">
+          <div class="team-header">TEAM OMEGA</div>
+          <div class="house-card" data-weekly="1350" data-total="4100"><div class="house-name">House Stormgarde</div><div class="house-score" data-target="1350">0 pts</div><div class="house-detail">Leader: Vex &bull; Highest avg score</div></div>
+          <div class="house-card" data-weekly="1100" data-total="3600"><div class="house-name">House Thornwall</div><div class="house-score" data-target="1100">0 pts</div><div class="house-detail">Leader: Senna &bull; Most heroic clears</div></div>
+          <div class="house-card" data-weekly="680" data-total="2200"><div class="house-name">House Nightveil</div><div class="house-score" data-target="680">0 pts</div><div class="house-detail">Leader: Kel &bull; Best mini-game record</div></div>
+        </div>
+      </div>
+      <div class="houses-result" id="housesResult">
+        <div class="hr-banner">
+          <span class="hr-trophy">&#127942;</span>
+          <span class="hr-text" id="hrText">Winner: Team Alpha (+3,490 pts)</span>
+        </div>
+        <div class="hr-loser" id="hrLoser">Team Omega: +3,130 pts</div>
       </div>
     </div>
   </section>
@@ -720,92 +530,29 @@
       <div class="achievements-showcase fade-in">
         <h3>Custom Guild Achievements</h3>
         <div class="achievement-grid">
-          <div class="achievement"><span class="achievement-pts">+250</span><span class="achievement-name">First to kill 5 named mobs</span></div>
-          <div class="achievement"><span class="achievement-pts">+500</span><span class="achievement-name">First to reach Fishing 375</span></div>
-          <div class="achievement"><span class="achievement-pts">+100</span><span class="achievement-name">Clear Blood Furnace Heroic</span></div>
-          <div class="achievement"><span class="achievement-pts">+50</span><span class="achievement-name">Loot a gray from Winterspring yetis</span></div>
-          <div class="achievement"><span class="achievement-pts">+1000</span><span class="achievement-name">First Karazhan full clear</span></div>
-          <div class="achievement"><span class="achievement-pts">+75</span><span class="achievement-name">Sit in every chair in Shattrath</span></div>
-          <div class="achievement"><span class="achievement-pts">-200</span><span class="achievement-name">Death during dungeon run</span></div>
-          <div class="achievement"><span class="achievement-pts">+150</span><span class="achievement-name">Win a spontaneous GM race</span></div>
+          <div class="achievement" style="border-left:3px solid #0070dd"><span class="achievement-pts" style="color:#0070dd">+250</span><span class="achievement-name" style="color:#0070dd">First to kill 5 named mobs</span></div>
+          <div class="achievement" style="border-left:3px solid #a335ee"><span class="achievement-pts" style="color:#a335ee">+500</span><span class="achievement-name" style="color:#a335ee">First to reach Fishing 375</span></div>
+          <div class="achievement" style="border-left:3px solid #1eff00"><span class="achievement-pts" style="color:#1eff00">+100</span><span class="achievement-name" style="color:#1eff00">Clear Blood Furnace Heroic</span></div>
+          <div class="achievement" style="border-left:3px solid #fff"><span class="achievement-pts" style="color:#fff">+50</span><span class="achievement-name" style="color:#9d9d9d">Loot a gray from Winterspring yetis</span></div>
+          <div class="achievement" style="border-left:3px solid #ff8000"><span class="achievement-pts" style="color:#ff8000">+1000</span><span class="achievement-name" style="color:#ff8000">First Karazhan full clear</span></div>
+          <div class="achievement" style="border-left:3px solid #fff"><span class="achievement-pts" style="color:#fff">+75</span><span class="achievement-name" style="color:#9d9d9d">Sit in every chair in Shattrath</span></div>
+          <div class="achievement" style="border-left:3px solid var(--red)"><span class="achievement-pts" style="color:var(--red)">-200</span><span class="achievement-name" style="color:var(--red)">Death during dungeon run</span></div>
+          <div class="achievement" style="border-left:3px solid #1eff00"><span class="achievement-pts" style="color:#1eff00">+150</span><span class="achievement-name" style="color:#1eff00">Win a spontaneous GM race</span></div>
         </div>
         <p class="achievement-note">GMs can create unlimited custom achievements. Hidden ones surprise players on completion.</p>
       </div>
       </div><!-- /scoring-layout -->
 
-      <div class="voting-demo fade-in">
-        <h3 class="feature-demo-label">&#128499; Community Input &mdash; Development Roadmap</h3>
-        <p style="text-align:center;color:var(--text-dim);font-size:0.82rem;margin-bottom:16px;">At key milestones, the community votes on feature priorities. Example vote:</p>
-        <div class="vote-options">
-          <div class="vote-option"><div class="vote-bar" style="width:0%" data-target="67"></div><span class="vote-label">Enable Battleground HC with 5 lives</span><span class="vote-pct">67%</span></div>
-          <div class="vote-option"><div class="vote-bar" style="width:0%" data-target="23"></div><span class="vote-label">Keep Battlegrounds disabled</span><span class="vote-pct">23%</span></div>
-          <div class="vote-option"><div class="vote-bar" style="width:0%" data-target="10"></div><span class="vote-label">Enable with 1 life (true HC)</span><span class="vote-pct">10%</span></div>
-        </div>
-        <p style="text-align:center;color:var(--text-dim);font-size:0.7rem;margin-top:12px;font-style:italic;">Votes settle design decisions before implementation. Results shape the roadmap.</p>
-      </div>
     </div>
   </section>
 
-  <!-- ═══ Houses ═══ -->
-  <section class="section section-dark" id="houses">
-    <div class="container">
-      <div class="section-label hybrid-accent">Houses</div>
-      <h2 class="section-title">Your Guild, <span class="hybrid-glow">Many Banners</span></h2>
-      <p class="section-desc">Split your guild into competing houses &mdash; sub-guild fractions with automated scoring tracking. Each house holds up to &#8539; of your guild's member cap. Need more room? Link as many guilds as you want as a <strong>Super Guild</strong> to manage them as one through the addon.</p>
-      <div class="il-open-questions" style="max-width:700px;margin:0 auto 24px;">
-        <div class="il-oq-title">&#9881; Open Design &mdash; Super Guild</div>
-        <div class="il-oq-list">
-          <div class="il-oq"><span class="il-oq-icon">?</span> How many guilds can link? (Draft feature supports up to 4 guilds for now)</div>
-          <div class="il-oq"><span class="il-oq-icon">?</span> Super Guild features are addon-only &mdash; gchat and in-game guild features remain separate</div>
-          <div class="il-oq"><span class="il-oq-icon">&#9745;</span> This is <strong>open for research</strong> &mdash; many details still being designed</div>
-        </div>
-      </div>
-
-      <!-- Score type toggle + weekly countdown -->
-      <div class="houses-controls fade-in">
-        <div class="houses-toggle" id="housesToggle">
-          <button class="ht-btn active" data-mode="weekly">Weekly Score</button>
-          <button class="ht-btn" data-mode="total">Total Score</button>
-        </div>
-        <div class="houses-countdown" id="housesCountdown">
-          <span class="hc-label">Week ends in:</span>
-          <span class="hc-timer" id="hcTimer">2d 14h 32m</span>
-          <button class="hc-resolve-btn" id="hcResolve">&#9654; Resolve Week</button>
-        </div>
-      </div>
-
-      <div class="houses-visual" id="housesVisual">
-        <div class="houses-team houses-team-left">
-          <div class="team-header">TEAM ALPHA</div>
-          <div class="house-card" data-weekly="1420" data-total="4280"><div class="house-name">House Ironforge</div><div class="house-score" data-target="1420">0 pts</div><div class="house-detail">Leader: Theron &bull; First Kara clear</div></div>
-          <div class="house-card" data-weekly="1180" data-total="3910"><div class="house-name">House Dawnblade</div><div class="house-score" data-target="1180">0 pts</div><div class="house-detail">Leader: Mirael &bull; Most achievements</div></div>
-          <div class="house-card" data-weekly="890" data-total="2750"><div class="house-name">House Ashwind</div><div class="house-score" data-target="890">0 pts</div><div class="house-detail">Leader: Korrak &bull; Zero deaths this week</div></div>
-        </div>
-        <div class="houses-vs">VS</div>
-        <div class="houses-team houses-team-right">
-          <div class="team-header">TEAM OMEGA</div>
-          <div class="house-card" data-weekly="1350" data-total="4100"><div class="house-name">House Stormgarde</div><div class="house-score" data-target="1350">0 pts</div><div class="house-detail">Leader: Vex &bull; Highest avg score</div></div>
-          <div class="house-card" data-weekly="1100" data-total="3600"><div class="house-name">House Thornwall</div><div class="house-score" data-target="1100">0 pts</div><div class="house-detail">Leader: Senna &bull; Most heroic clears</div></div>
-          <div class="house-card" data-weekly="680" data-total="2200"><div class="house-name">House Nightveil</div><div class="house-score" data-target="680">0 pts</div><div class="house-detail">Leader: Kel &bull; Best mini-game record</div></div>
-        </div>
-      </div>
-
-      <!-- Winner overlay (animated in after resolve) -->
-      <div class="houses-result" id="housesResult">
-        <div class="hr-banner">
-          <span class="hr-trophy">&#127942;</span>
-          <span class="hr-text" id="hrText">Winner: Team Alpha (+3,490 pts)</span>
-        </div>
-        <div class="hr-loser" id="hrLoser">Team Omega: +3,130 pts</div>
-      </div>
-    </div>
-  </section>
+  <!-- Houses moved up to group with guild features (review #12) -->
 
   <!-- ═══ Punishments & Rules ═══ -->
   <section class="section section-gradient" id="punishments">
     <div class="container">
       <div class="section-label hybrid-accent">Punishments &amp; Rules</div>
-      <h2 class="section-title">Consequences <span class="hybrid-glow">Matter</span></h2>
+      <h2 class="section-title"><span style="color:var(--red)">Failures</span> have an <span class="hybrid-glow">Impact</span></h2>
       <p class="section-desc">Configure punishments, rewards, and rule enforcement. Part of the core Rule Engine.</p>
 
       <!-- Punishment Manager -->
@@ -826,49 +573,49 @@
             <span class="pm-col pm-col-type"><span class="pm-cat-tag death">&#9760; Death</span></span>
             <span class="pm-col pm-col-name">Instance Death</span>
             <span class="pm-col pm-col-severity"><div class="pm-severity"><div class="pm-sev-bar" style="width:90%"></div></div><span class="pm-sev-label">Critical</span></span>
-            <span class="pm-col pm-col-action">Lose 1 life + score penalty</span>
+            <span class="pm-col pm-col-action">Lose 1 life + score penalty<span class="pm-action-tip">Instance deaths consume lives from your pool</span></span>
             <span class="pm-col pm-col-toggle"><div class="toggle on"></div></span>
           </div>
           <div class="pm-row" data-cat="death">
             <span class="pm-col pm-col-type"><span class="pm-cat-tag death">&#9760; Death</span></span>
             <span class="pm-col pm-col-name">Open World Death</span>
             <span class="pm-col pm-col-severity"><div class="pm-severity"><div class="pm-sev-bar" style="width:100%"></div></div><span class="pm-sev-label">Fatal</span></span>
-            <span class="pm-col pm-col-action">Permadeath (1&ndash;60) / score penalty (60+)</span>
+            <span class="pm-col pm-col-action">Permadeath (1&ndash;70) / checkpoint at 58<span class="pm-action-tip">True hardcore &mdash; die in the open world, start over</span></span>
             <span class="pm-col pm-col-toggle"><div class="toggle on"></div></span>
           </div>
           <div class="pm-row" data-cat="infraction">
             <span class="pm-col pm-col-type"><span class="pm-cat-tag infraction">&#9888; Infraction</span></span>
             <span class="pm-col pm-col-name">GM Flagged Violation</span>
             <span class="pm-col pm-col-severity"><div class="pm-severity"><div class="pm-sev-bar" style="width:80%"></div></div><span class="pm-sev-label">High</span></span>
-            <span class="pm-col pm-col-action">Score deduction + public log entry</span>
+            <span class="pm-col pm-col-action">Score deduction + public log entry<span class="pm-action-tip">GM-flagged rule breaks visible to all</span></span>
             <span class="pm-col pm-col-toggle"><div class="toggle on"></div></span>
           </div>
           <div class="pm-row" data-cat="infraction">
             <span class="pm-col pm-col-type"><span class="pm-cat-tag infraction">&#9888; Infraction</span></span>
             <span class="pm-col pm-col-name">AFK / Inactive Timer</span>
             <span class="pm-col pm-col-severity"><div class="pm-severity"><div class="pm-sev-bar" style="width:30%"></div></div><span class="pm-sev-label">Low</span></span>
-            <span class="pm-col pm-col-action">Score decay after 7 days inactive</span>
+            <span class="pm-col pm-col-action">Score decay after 7 days inactive<span class="pm-action-tip">Encourages active play &mdash; optional rule</span></span>
             <span class="pm-col pm-col-toggle"><div class="toggle off"></div></span>
           </div>
           <div class="pm-row" data-cat="reward">
             <span class="pm-col pm-col-type"><span class="pm-cat-tag reward">&#9733; Reward</span></span>
             <span class="pm-col pm-col-name">Deathless Streak</span>
             <span class="pm-col pm-col-severity"><div class="pm-severity pm-sev-reward"><div class="pm-sev-bar reward" style="width:80%"></div></div><span class="pm-sev-label">High</span></span>
-            <span class="pm-col pm-col-action">+500 pts per 7-day streak</span>
+            <span class="pm-col pm-col-action">+500 pts per 7-day streak<span class="pm-action-tip">Stay alive, climb the leaderboard</span></span>
             <span class="pm-col pm-col-toggle"><div class="toggle on"></div></span>
           </div>
           <div class="pm-row" data-cat="reward">
             <span class="pm-col pm-col-type"><span class="pm-cat-tag reward">&#9733; Reward</span></span>
             <span class="pm-col pm-col-name">Weekly MVP</span>
             <span class="pm-col pm-col-severity"><div class="pm-severity pm-sev-reward"><div class="pm-sev-bar reward" style="width:60%"></div></div><span class="pm-sev-label">Bonus</span></span>
-            <span class="pm-col pm-col-action">Custom title + house score bonus</span>
+            <span class="pm-col pm-col-action">Custom title + house score bonus<span class="pm-action-tip">Top contributor earns recognition</span></span>
             <span class="pm-col pm-col-toggle"><div class="toggle on"></div></span>
           </div>
           <div class="pm-row" data-cat="custom">
             <span class="pm-col pm-col-type"><span class="pm-cat-tag custom">&#9998; Custom</span></span>
             <span class="pm-col pm-col-name">First Boss Kill</span>
             <span class="pm-col pm-col-severity"><div class="pm-severity pm-sev-reward"><div class="pm-sev-bar reward" style="width:50%"></div></div><span class="pm-sev-label">Bonus</span></span>
-            <span class="pm-col pm-col-action">+200 pts for server/guild first</span>
+            <span class="pm-col pm-col-action">+200 pts for server/guild first<span class="pm-action-tip">Reward competitive PvE milestones</span></span>
             <span class="pm-col pm-col-toggle"><div class="toggle on"></div></span>
           </div>
         </div>
@@ -892,51 +639,23 @@
         <div class="concept-card fade-in" id="hideSeekConcept">
           <div class="concept-tag">&#128269; Mini-Game</div>
           <h3>Hide &amp; Seek Mode</h3>
-          <div class="hs-demo" id="hsDemoBox">
-            <div class="hs-phase-strip">
-              <div class="hs-phase active" data-phase="0"><span class="hs-num">1</span><span>Hide</span></div>
-              <div class="hs-phase" data-phase="1"><span class="hs-num">2</span><span>Seek</span></div>
-              <div class="hs-phase" data-phase="2"><span class="hs-num">3</span><span>Found!</span></div>
+          <!-- Static split-view illustration -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0">
+            <div style="background:linear-gradient(135deg,#1a3a1a,#2a5a2a,#1a3a1a);border-radius:var(--radius);padding:16px 12px;text-align:center;border:1px solid rgba(57,255,20,0.2)">
+              <div style="font-size:0.7rem;font-weight:700;color:var(--neon-green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">&#128065; Hider</div>
+              <div style="font-size:1.2rem;margin-bottom:4px">&#128694;</div>
+              <div style="font-size:0.65rem;color:var(--text-dim)">60s to find a hiding spot</div>
+              <div style="font-size:0.6rem;color:var(--neon-green);margin-top:6px">Free to move &bull; No restrictions</div>
             </div>
-            <div class="hs-split" id="hsSplit">
-              <!-- Hider POV -->
-              <div class="hs-pov" id="hsHider">
-                <div class="hs-pov-label">HIDER</div>
-                <div class="hs-screen hs-screen-hider" id="hsScreenHider">
-                  <div class="hs-game-bg hs-bg-hider"></div>
-                  <div class="hs-player-marker hider-marker" style="left:35%;bottom:38%">
-                    <span class="hs-marker-name">Lyrah</span>
-                    <div class="hs-marker-model"></div>
-                  </div>
-                  <div class="hs-overlay" id="hsOverlayHider">
-                    <span class="hs-countdown" id="hsCountdown">3</span>
-                    <span class="hs-hint">Find a safe spot!</span>
-                  </div>
-                  <div class="hs-blackout" id="hsBlackout">
-                    <span class="hs-bo-icon">&#128065;</span>
-                    <span class="hs-bo-text">Screen blacked out</span>
-                    <span class="hs-bo-sub">Hidden — awaiting seek phase</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Seeker POV -->
-              <div class="hs-pov" id="hsSeeker">
-                <div class="hs-pov-label">SEEKER</div>
-                <div class="hs-screen hs-screen-seeker" id="hsScreenSeeker">
-                  <div class="hs-game-bg hs-bg-seeker"></div>
-                  <div class="hs-player-marker seeker-target" style="left:58%;bottom:40%">
-                    <div class="hs-marker-model"></div>
-                  </div>
-                  <div class="hs-overlay" id="hsOverlaySeeker">
-                    <span class="hs-countdown" id="hsCountdownSeeker">&#8987;</span>
-                    <span class="hs-hint">Waiting for hide phase...</span>
-                  </div>
-                </div>
-              </div>
+            <div style="background:linear-gradient(135deg,#1a1a1a,#0a0a0a,#1a1a1a);border-radius:var(--radius);padding:16px 12px;text-align:center;border:1px solid rgba(255,255,255,0.1)">
+              <div style="font-size:0.7rem;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">&#9899; Seeker</div>
+              <div style="font-size:1.2rem;margin-bottom:4px">&#9899;</div>
+              <div style="font-size:0.65rem;color:var(--text-dim)">Screen blacked out during hide phase</div>
+              <div style="font-size:0.6rem;color:var(--red);margin-top:6px">No UI &bull; No target &bull; Find &amp; click</div>
             </div>
           </div>
           <div class="concept-details">
-            <p><strong>How it works:</strong> Inspired by <a href="https://www.curseforge.com/wow/addons/ultra-hardcore" target="_blank" rel="noopener" style="color:var(--neon-green)">Ultra Hardcore</a>'s UI-off approach. During seek phase: no nameplates, no minimap, no target frames &mdash; pure game world. Seekers must physically walk to hidden players and click within 5 yards.</p>
+            <p><strong>How it works:</strong> A UI-off approach where immersion is key. During seek phase: no nameplates, no minimap, no target frames &mdash; pure game world. Seekers must physically walk to hidden players and click within 5 yards.</p>
             <div class="hs-ui-ref">
               <div class="hs-ref-item"><span class="hs-ref-x">&#10005;</span> Nameplates</div>
               <div class="hs-ref-item"><span class="hs-ref-x">&#10005;</span> Minimap</div>
@@ -955,7 +674,7 @@
           <div class="concept-tag">&#128260; Second Chance</div>
           <h3>The Soft Reset</h3>
           <div class="concept-details">
-            <p><strong>Concept:</strong> For players with limited playtime who hit permadeath. Instead of full character deletion, allow a &ldquo;soft reset&rdquo; if the character reached level 60+ before dying.</p>
+            <p><strong>Concept:</strong> For players with limited playtime who hit permadeath. Instead of full character deletion, allow a &ldquo;soft reset&rdquo; if the character reached the checkpoint (lvl 58) before dying.</p>
             <div class="soft-reset-flow">
               <div class="sr-step"><span class="sr-icon">&#128128;</span><span>Permadeath</span></div>
               <div class="sr-arrow">&rarr;</div>
@@ -1028,7 +747,7 @@
     <div class="container">
       <div class="section-label hybrid-accent">Premium</div>
       <h2 class="section-title">Guild Sites &amp; <span class="accent">Player Profiles</span></h2>
-      <p class="section-desc">Every guild gets a web presence. Every player gets a profile. <a href="#" style="color:var(--neon-green);font-size:0.8rem;">Preview Live Mockup &rarr;</a></p>
+      <p class="section-desc">Every guild gets a web presence. Every player gets a profile. <a href="profile.html" target="_blank" style="color:var(--neon-green);font-size:0.8rem;">Preview Player Profile &rarr;</a></p>
 
       <div class="mockup-row compact" style="grid-template-columns: 1fr 1fr;">
         <!-- Guild Site Mockup -->
@@ -1079,9 +798,9 @@
               </div>
               <div class="mp-section-label">Achievements</div>
               <div class="mp-ach-tags">
-                <span class="mp-ach">First to 70</span>
-                <span class="mp-ach">Kara Full Clear</span>
-                <span class="mp-ach">0 Deaths Week</span>
+                <span class="mp-ach" style="color:#a335ee;border-color:#a335ee">First to 70</span>
+                <span class="mp-ach" style="color:#ff8000;border-color:#ff8000">Kara Full Clear</span>
+                <span class="mp-ach" style="color:#0070dd;border-color:#0070dd">0 Deaths Week</span>
               </div>
             </div>
           </div>
@@ -1096,32 +815,129 @@
       <h2 class="section-title">Get <span class="accent">Started</span></h2>
       <p class="section-desc" style="margin:0 auto 40px;text-align:center">Free on CurseForge. Try the interactive demos below.</p>
 
-      <div class="proto-grid" style="grid-template-columns:1fr;max-width:500px;margin:0 auto;">
-        <!-- Guild Card Preview -->
-        <div class="proto-box fade-in" id="guildCard">
-          <h4>&#127183; Guild Card Preview</h4>
-          <div class="guild-card-preview">
-            <div class="gc-header"><span class="gc-name">Iron Wolves</span><span class="gc-badge">Hybrid HC</span></div>
-            <div class="gc-tags" id="gcTags">
-              <span class="gc-tag active" data-for="HC Mode">HC Mode</span>
-              <span class="gc-tag active" data-for="3 Lives">3 Lives</span>
-              <span class="gc-tag" data-for="SSF">SSF</span>
-              <span class="gc-tag active" data-for="Houses">Houses</span>
-              <span class="gc-tag" data-for="BGs">BGs</span>
-              <span class="gc-tag active" data-for="Scoring">Scoring</span>
-              <span class="gc-tag active" data-for="Checkpoints">Checkpoints</span>
-            </div>
-            <div class="gc-stats"><span>42 members</span><span>3 houses</span><span>Season 1</span></div>
-            <div class="gc-export">&#128274; Export (Premium)</div>
+      <!-- Mock profile demo links (open in new tabs) -->
+      <div class="mock-previews fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:700px;margin:0 auto 24px">
+        <!-- Player Profile Link Card -->
+        <a href="profile.html" target="_blank" class="mock-preview-card" style="text-decoration:none;color:inherit;cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s">
+          <div class="mock-pv-header"><span class="mock-pv-icon">&#128737;</span> <strong>Theron</strong> <span style="color:var(--text-dim);font-size:0.65rem">Paladin &bull; 70</span></div>
+          <div class="mock-pv-stats">
+            <span>Score: 12,450</span><span>Deaths: 0</span><span style="color:var(--neon-green)">&#9679; Alive</span>
           </div>
-        </div>
+          <div style="font-size:0.68rem;color:var(--text-dim);margin-top:6px">Full profile with gear, death log, achievements &amp; deathclip</div>
+          <span class="mock-pv-btn" style="display:inline-block;margin-top:8px">Open Player Profile &rarr;</span>
+        </a>
+        <!-- Guild Overview Link Card -->
+        <a href="guild-profile.html" target="_blank" class="mock-preview-card mock-pv-guild" style="text-decoration:none;color:inherit;cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s">
+          <div class="mock-pv-header"><span class="mock-pv-icon">&#127968;</span> <strong>Iron Wolves</strong> <span style="color:var(--text-dim);font-size:0.65rem">42 members</span></div>
+          <div class="mock-pv-stats">
+            <span>6 Houses</span><span>Season 1</span><span style="color:var(--purple)">&#128081; Premium</span>
+          </div>
+          <div style="font-size:0.68rem;color:var(--text-dim);margin-top:6px">Guild overview, house standings, roster &amp; premium features</div>
+          <span class="mock-pv-btn mock-pv-btn-guild" style="display:inline-block;margin-top:8px">Open Guild Overview &rarr;</span>
+        </a>
       </div>
 
-      <div class="hero-actions" style="margin-top:40px;justify-content:center">
+      <!-- Guild Card Preview moved to guild-profile.html per review #14 -->
+
+      <div class="hero-actions" style="margin-top:32px;justify-content:center">
         <a href="#" class="btn btn-glow">Coming to CurseForge</a>
         <a href="roadmap.html" class="btn btn-secondary">View Roadmap</a>
       </div>
       <p class="cta-model">Free players always participate fully. Premium adds management tools for GMs. Never pay-to-win.</p>
+    </div>
+  </section>
+
+  <!-- ═══ Customization — Your Rules ═══ -->
+  <section class="section section-dark" id="customization">
+    <div class="container" style="text-align:center">
+      <div class="section-label hybrid-accent">Customization</div>
+      <h2 class="section-title">Your <span class="hybrid-glow">Rules</span></h2>
+      <p class="section-desc" style="margin:0 auto 28px;text-align:center;max-width:580px">Every setting adapts to your playstyle. Slide checkpoints, tweak lives, adjust penalties &mdash; make it yours.</p>
+
+      <!-- Tags moved to Concept Timeline section -->
+
+      <!-- Animated Checkpoint Slider -->
+      <div class="checkpoint-demo fade-in" style="max-width:600px;margin:0 auto 20px">
+        <p style="color:var(--text-dim);font-size:0.82rem;margin-bottom:12px">Watch the checkpoint slide &mdash; from lvl 40 all the way to 70.</p>
+        <div class="cpd-bar" id="cpdBar" style="position:relative;height:44px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);overflow:visible">
+          <div class="cpd-fill" id="cpdFill" style="position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,rgba(212,64,64,0.3),rgba(57,255,20,0.15));border-radius:var(--radius) 0 0 var(--radius);width:82.9%;transition:width 0.8s ease"></div>
+          <div class="cpd-marker" id="cpdMarker" style="position:absolute;top:50%;transform:translate(-50%,-50%);left:82.9%;width:22px;height:22px;background:var(--neon-green);border-radius:50%;box-shadow:0 0 14px rgba(57,255,20,0.5);z-index:2;transition:left 0.8s ease;cursor:pointer"></div>
+          <span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:0.7rem;color:var(--text-dim)">Lvl 1</span>
+          <span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:0.7rem;color:var(--text-dim)">Lvl 70</span>
+          <span class="cpd-label" id="cpdLabel" style="position:absolute;top:-24px;left:82.9%;transform:translateX(-50%);font-size:0.8rem;color:var(--neon-green);font-weight:700;transition:left 0.8s ease">Checkpoint: 58</span>
+        </div>
+      </div>
+
+      <p style="color:var(--text-dim);font-size:0.78rem;margin-bottom:6px">Checkpoints, lives, death penalties, scoring &mdash; <strong>everything adapts.</strong></p>
+      <p style="color:var(--text-dim);font-size:0.68rem;font-style:italic">Base mode is just the starting point. Houses, punishments, and instance rules are all configurable too.</p>
+    </div>
+  </section>
+
+  <!-- ═══ Download & Support CTA ═══ -->
+  <section class="section" style="padding:40px 0">
+    <div class="container">
+      <div class="cta-boxes fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:700px;margin:0 auto">
+        <a href="https://curseforge.com/wow/addons/hybrid-hardcore" target="_blank" rel="noopener" class="cta-box cta-box-free" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px 20px;background:var(--bg-card);border:2px solid var(--neon-green);border-radius:var(--radius-lg);text-decoration:none;transition:all 0.25s;text-align:center">
+          <span style="font-size:1.6rem">&#128229;</span>
+          <span style="font-size:1rem;font-weight:700;color:var(--neon-green)">Download Free Add-on</span>
+          <span style="font-size:0.72rem;color:var(--text-dim)">Available on CurseForge &mdash; full base mode included</span>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:6px">
+            <span class="gc-tag active" style="font-size:0.58rem;padding:2px 8px">Permadeath</span>
+            <span class="gc-tag active" style="font-size:0.58rem;padding:2px 8px">Instance Lives</span>
+            <span class="gc-tag active" style="font-size:0.58rem;padding:2px 8px">Scoring</span>
+            <span class="gc-tag active" style="font-size:0.58rem;padding:2px 8px">Death Tracking</span>
+            <span class="gc-tag active" style="font-size:0.58rem;padding:2px 8px">Guild Roster</span>
+          </div>
+        </a>
+        <a href="https://patreon.com/hybridhc" target="_blank" rel="noopener" class="cta-box cta-box-premium" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px 20px;background:var(--bg-card);border:2px solid var(--purple);border-radius:var(--radius-lg);text-decoration:none;transition:all 0.25s;text-align:center">
+          <span style="font-size:1.6rem">&#128081;</span>
+          <span style="font-size:1rem;font-weight:700;color:var(--purple)">Support on Patreon</span>
+          <span style="font-size:0.72rem;color:var(--text-dim)">Unlock premium features, external customization files &amp; more</span>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:6px">
+            <span class="gc-tag" style="font-size:0.58rem;padding:2px 8px;border-color:var(--purple);color:var(--purple)">Custom Rulesets</span>
+            <span class="gc-tag" style="font-size:0.58rem;padding:2px 8px;border-color:var(--purple);color:var(--purple)">Guild Sites</span>
+            <span class="gc-tag" style="font-size:0.58rem;padding:2px 8px;border-color:var(--purple);color:var(--purple)">Player Profiles</span>
+            <span class="gc-tag" style="font-size:0.58rem;padding:2px 8px;border-color:var(--purple);color:var(--purple)">House Management</span>
+            <span class="gc-tag" style="font-size:0.58rem;padding:2px 8px;border-color:var(--purple);color:var(--purple)">Export Tools</span>
+            <span class="gc-tag" style="font-size:0.58rem;padding:2px 8px;border-color:var(--purple);color:var(--purple)">Config Files</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Project Phases ═══ -->
+  <section class="section" id="project-phases" style="padding:60px 0">
+    <div class="container" style="text-align:center;max-width:700px">
+      <div class="section-label hybrid-accent">Development</div>
+      <h2 class="section-title" style="font-size:1.6rem;margin-bottom:24px">Project <span class="hybrid-glow">Phases</span></h2>
+      <div class="phases-row fade-in" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+        <div style="flex:1;min-width:120px;background:var(--bg-card);border:1px solid var(--neon-green);border-radius:var(--radius);padding:14px 10px">
+          <div style="font-size:0.7rem;color:var(--neon-green);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Phase 1</div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text-bright)">Alpha</div>
+          <div style="font-size:0.7rem;color:var(--text-dim);margin-top:4px">Selected testers, core features</div>
+        </div>
+        <div style="flex:1;min-width:120px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 10px">
+          <div style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Phase 2</div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text-bright)">Public Alpha</div>
+          <div style="font-size:0.7rem;color:var(--text-dim);margin-top:4px">Open testing, passive polling</div>
+        </div>
+        <div style="flex:1;min-width:120px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 10px">
+          <div style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Phase 3</div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text-bright)">Beta</div>
+          <div style="font-size:0.7rem;color:var(--text-dim);margin-top:4px">Final rulesets &amp; features</div>
+        </div>
+        <div style="flex:1;min-width:120px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 10px">
+          <div style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Phase 4</div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text-bright)">Release</div>
+          <div style="font-size:0.7rem;color:var(--text-dim);margin-top:4px">Bug fixes, polish</div>
+        </div>
+        <div style="flex:1;min-width:120px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 10px;opacity:0.6">
+          <div style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Future</div>
+          <div style="font-weight:600;font-size:0.9rem;color:var(--text-bright)">WotLK &amp; Beyond</div>
+          <div style="font-size:0.7rem;color:var(--text-dim);margin-top:4px">Classic+, expansions</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1144,1380 +960,34 @@
     </div>
   </footer>
 
-  <script>
-    // Nav scroll effect
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    // Mobile nav toggle
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      navToggle.classList.toggle('open');
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          navLinks.classList.remove('open');
-          navToggle.classList.remove('open');
-        }
-      });
-    });
-
-    // Intersection observer for scroll-triggered animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0 });
-
-    document.querySelectorAll('.fade-in, .reveal-up, .house-card, .achievement, .mockup-frame').forEach(el => {
-      observer.observe(el);
-    });
-
-    // Hero particles
-    (function() {
-      const c = document.getElementById('heroParticles');
-      if (!c) return;
-      const ctx = c.getContext('2d');
-      let w, h, particles = [];
-      function resize() { const r = c.parentElement.getBoundingClientRect(); w = c.width = r.width; h = c.height = r.height; }
-      resize(); window.addEventListener('resize', resize);
-      for (let i = 0; i < 60; i++) {
-        particles.push({ x: Math.random()*w, y: Math.random()*h, r: Math.random()*2+0.5,
-          dx: (Math.random()-0.5)*0.4, dy: (Math.random()-0.5)*0.4,
-          a: Math.random()*0.4+0.1, g: Math.random() > 0.5 });
-      }
-      function draw() {
-        ctx.clearRect(0,0,w,h);
-        particles.forEach(p => {
-          p.x += p.dx; p.y += p.dy;
-          if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
-          if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
-          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-          ctx.fillStyle = p.g ? 'rgba(57,255,20,'+p.a+')' : 'rgba(255,255,255,'+p.a*0.5+')';
-          ctx.fill();
-        });
-        // Connection lines
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i+1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
-            const d = Math.sqrt(dx*dx + dy*dy);
-            if (d < 120) {
-              ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = 'rgba(57,255,20,'+(0.08*(1-d/120))+')';
-              ctx.stroke();
-            }
-          }
-        }
-        requestAnimationFrame(draw);
-      }
-      draw();
-    })();
-
-    // (Concept timeline is static — no JS animation needed)
-
-    // ═══════════════════════════════════════
-    // SECTION ANIMATIONS
-    // ═══════════════════════════════════════
-
-    /* ─── 0. Instance Lives Tabs ─── */
-    (function initInstanceLivesTabs() {
-      var tabs = document.querySelectorAll('#ilTabs .il-tab');
-      var tiers = { normal: document.getElementById('ilNormal'), heroic: document.getElementById('ilHeroic'), raid: document.getElementById('ilRaid') };
-      if (!tabs.length) return;
-      tabs.forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          tabs.forEach(function(t) { t.classList.remove('active'); });
-          tab.classList.add('active');
-          var tier = tab.getAttribute('data-tier');
-          Object.keys(tiers).forEach(function(k) {
-            if (tiers[k]) tiers[k].style.display = k === tier ? '' : 'none';
-          });
-        });
-      });
-    })();
-
-    /* ─── 1. Death Ticker ─── */
-    (function initDeathTicker() {
-      var track = document.getElementById('tickerTrack');
-      if (!track) return;
-      var DEATHS = [
-        { name: 'Zuzu (Priest, 62)', cause: 'Killed by Fel Reaver \u00B7 Hellfire Peninsula \u00B7 Alliance', guild: 'Iron Wolves', pts: '\u2212300' },
-        { name: 'Hexmaw (Warlock, 44)', cause: 'Drowning \u00B7 Zangarmarsh \u00B7 Horde', guild: '', pts: '\u2212180' },
-        { name: 'Thokk (Warrior, 68)', cause: 'Killed by Shattered Hand Legionnaire \u00B7 Shattered Halls \u00B7 Horde', guild: 'Warbringers', pts: '\u2212450' },
-        { name: 'Lightbane (Paladin, 70)', cause: 'Killed by Prince Malchezaar \u00B7 Karazhan \u00B7 Alliance', guild: 'Iron Wolves', pts: '\u2212600' },
-        { name: 'Frostleaf (Mage, 64)', cause: 'Falling \u00B7 Blade\'s Edge Mountains \u00B7 Alliance', guild: '', pts: '\u2212120' },
-        { name: 'Grimjaw (Rogue, 70)', cause: 'Killed by Murmur \u00B7 Shadow Labyrinth \u00B7 Horde', guild: 'Deathwish', pts: '\u2212340' },
-        { name: 'Moonwhisper (Druid, 58)', cause: 'Killed by Bog Giant \u00B7 Zangarmarsh \u00B7 Alliance', guild: 'Silver Dawn', pts: '\u2212260' },
-        { name: 'Darkshot (Hunter, 70)', cause: 'Killed by Nightbane \u00B7 Karazhan \u00B7 Horde', guild: '', pts: '\u2212550' },
-        { name: 'Soulrender (Warlock, 39)', cause: 'Fire/Lava \u00B7 Searing Gorge \u00B7 Horde', guild: 'Warbringers', pts: '\u2212150' },
-        { name: 'Ironvow (Warrior, 70)', cause: 'Killed by Gruul the Dragonkiller \u00B7 Gruul\'s Lair \u00B7 Alliance', guild: 'Iron Wolves', pts: '\u2212520' },
-      ];
-      var html = DEATHS.map(function(d) {
-        var guildTag = d.guild ? ' <span style="color:var(--text-dim)">&lt;' + d.guild + '&gt;</span>' : '';
-        return '<div class="ticker-item"><span class="skull">\u{1F480}</span> <span>' + d.name + '</span>' + guildTag + ' <span style="color:var(--text-dim)">\u2014 ' + d.cause + '</span> <span class="pts">' + d.pts + ' pts</span></div>';
-      }).join('');
-      track.innerHTML = html + html;
-    })();
-
-    /* ─── 2. Death Sequence (Battle Log) ─── */
-    (function initDeathSequence() {
-      var section = document.getElementById('deathSequence');
-      if (!section) return;
-      var logBody = document.getElementById('dsLogBody');
-      var overlay = document.getElementById('dsOverlay');
-      var pips = section.querySelectorAll('.ds-pip');
-      var livesLabel = section.querySelector('.ds-lives-label');
-
-      // 3 death sequences, each is a mini combat log
-      var COMBAT_LOG = [
-        // Death 1: Fel Reaver in Hellfire (2 sec fight)
-        { lines: [
-          { time: '14:32:05', text: 'Theron takes <span class="ds-dmg">2,841</span> from Fel Reaver [Stomp]' },
-          { time: '14:32:06', text: 'Theron casts Flash of Light (<span class="ds-heal">+1,200</span>)' },
-          { time: '14:32:07', text: 'Theron takes <span class="ds-dmg">8,420</span> from Fel Reaver [Melee] (CRUSHING)' },
-          { time: '14:32:07', text: '<span class="ds-death">Theron has died.</span> Life lost (2 remaining)', die: true }
-        ]},
-        // Death 2: Shadow Labs bad pull (4 sec)
-        { lines: [
-          { time: '19:07:41', text: 'Theron takes <span class="ds-dmg">1,640</span> from Cabal Shadow Priest [Mind Flay]' },
-          { time: '19:07:42', text: 'Theron casts Holy Light (<span class="ds-heal">+2,800</span>)' },
-          { time: '19:07:43', text: 'Cabal Ritualist casts Fear \u2014 Theron flees into pack' },
-          { time: '19:07:44', text: 'Theron takes <span class="ds-dmg">4,200</span> from 3 adds (extra pull)' },
-          { time: '19:07:45', text: '<span class="ds-death">Theron has died.</span> Life lost (1 remaining)', die: true }
-        ]},
-        // Death 3: Prince Malchezaar (instant — Enfeeble + Infernal)
-        { lines: [
-          { time: '23:44:12', text: 'Prince Malchezaar begins casting Enfeeble' },
-          { time: '23:44:14', text: 'Theron is Enfeebled (HP set to 1)' },
-          { time: '23:44:15', text: 'Infernal lands \u2014 Theron takes <span class="ds-dmg">9,999</span> [Hellfire]' },
-          { time: '23:44:15', text: '<span class="ds-death">Theron has died.</span> 0 lives remaining', die: true }
-        ]}
-      ];
-
-      var currentLife = 3;
-      var fired = false;
-
-      function addEntry(html) {
-        var el = document.createElement('div');
-        el.className = 'ds-entry';
-        el.innerHTML = html;
-        logBody.appendChild(el);
-        setTimeout(function() { el.classList.add('visible'); }, 30);
-        // Auto-scroll
-        logBody.scrollTop = logBody.scrollHeight;
-      }
-
-      function loseLife() {
-        currentLife--;
-        pips[2 - currentLife].classList.remove('full');
-        pips[2 - currentLife].classList.add('empty');
-        if (livesLabel) livesLabel.textContent = currentLife + ' / 3';
-      }
-
-      function playSequence(seqIdx, startDelay) {
-        var seq = COMBAT_LOG[seqIdx];
-        seq.lines.forEach(function(line, li) {
-          setTimeout(function() {
-            addEntry('<span class="ds-time">[' + line.time + ']</span> ' + line.text);
-            if (line.die) loseLife();
-          }, startDelay + li * 700);
-        });
-      }
-
-      var obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting && !fired) {
-          fired = true;
-          obs.disconnect();
-
-          // Play 3 death sequences with pauses between
-          playSequence(0, 500);       // Death 1 starts at 0.5s
-          playSequence(1, 4500);      // Death 2 starts at 4.5s
-          playSequence(2, 9000);      // Death 3 starts at 9s
-
-          // Show death overlay after final death
-          setTimeout(function() {
-            overlay.classList.add('active');
-          }, 12500);
-        }
-      }, { threshold: 0.3 });
-      obs.observe(section);
-    })();
-
-    /* ─── 3. Achievement Feed ─── */
-    (function initAchievementFeed() {
-      var feed = document.getElementById('achieveFeed');
-      if (!feed) return;
-
-      var EVENTS = [
-        { type: 'milestone', icon: '\u2694\uFE0F', title: 'Unlocked Outland', desc: 'Pupi reached level 58 in 3d 14h \u00B7 0 deaths', score: '+100', cls: 'pos', time: '14:32' },
-        { type: 'unlock', icon: '\u{1F3C6}', title: 'Reached Level 70', desc: 'Pupi \u2014 first char to 70 \u00B7 8d 7h total', score: '+500', cls: 'pos', time: '22:15' },
-        { type: 'pvp', icon: '\u2694\uFE0F', title: 'Gear Battle Won', desc: 'Pupi defeated Thokk \u2014 won Nightblade', score: '+75', cls: 'pos', time: '23:41' },
-        { type: 'death', icon: '\u{1F480}', title: 'Character Voided \u2014 Zuzu', desc: 'Killed by Fel Reaver \u00B7 Hellfire Peninsula lvl 62', score: '\u2212300', cls: 'neg', time: '03:12' },
-        { type: 'milestone', icon: '\u{1F3F0}', title: 'Cleared Karazhan', desc: 'Pupi \u2014 full clear, 0 wipes, guild run', score: '+800', cls: 'pos', time: '01:05' },
-        { type: 'unlock', icon: '\u{1F513}', title: 'Score Unlock: Epic Gear', desc: 'Pupi crossed 3,000 pts \u2014 Epics equippable', score: '+0', cls: 'pos', time: '01:06' },
-      ];
-
-      EVENTS.forEach(function(ev) {
-        var entry = document.createElement('div');
-        entry.className = 'af-entry ' + ev.type;
-        entry.innerHTML = '<div class="af-time">Today \u2014 ' + ev.time + '</div><div class="af-body"><div class="af-icon">' + ev.icon + '</div><div class="af-text"><strong>' + ev.title + '</strong><span>' + ev.desc + '</span></div><div class="af-score ' + ev.cls + '">' + ev.score + '</div></div>';
-        feed.appendChild(entry);
-      });
-
-      var obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting) {
-          var items = feed.querySelectorAll('.af-entry');
-          items.forEach(function(item, i) {
-            setTimeout(function() { item.classList.add('visible'); }, i * 300);
-          });
-          obs.disconnect();
-        }
-      }, { threshold: 0.2 });
-      obs.observe(feed);
-    })();
-
-    /* ─── 4. Rule Toggles Auto-Animate ─── */
-    (function initRuleToggles() {
-      var container = document.getElementById('ruleTogglesDemo');
-      if (!container) return;
-      var toggles = container.querySelectorAll('.toggle');
-      var fired = false;
-
-      var obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting && !fired) {
-          fired = true;
-          obs.disconnect();
-          // Periodically toggle random switches
-          setInterval(function() {
-            var idx = Math.floor(Math.random() * toggles.length);
-            var t = toggles[idx];
-            if (t.classList.contains('on')) {
-              t.classList.remove('on');
-              t.classList.add('off');
-            } else {
-              t.classList.remove('off');
-              t.classList.add('on');
-            }
-          }, 1800);
-        }
-      }, { threshold: 0.3 });
-      obs.observe(container);
-    })();
-
-    /* ─── 5. Live Score Counter ─── */
-    (function initScoreCounter() {
-      var scoreEl = document.getElementById('scoreValue');
-      var eventsEl = document.getElementById('scoreEvents');
-      if (!scoreEl || !eventsEl) return;
-
-      var SCORE_EVENTS = [
-        { text: 'Quest completed: +25 pts', delta: 25 },
-        { text: 'Dungeon clear: +150 pts', delta: 150 },
-        { text: 'Achievement unlocked: +50 pts', delta: 50 },
-        { text: 'PvP kill: +30 pts', delta: 30 },
-        { text: 'Boss first kill: +200 pts', delta: 200 },
-        { text: 'Rare mob: +40 pts', delta: 40 },
-        { text: 'Exploration milestone: +75 pts', delta: 75 },
-        { text: 'Heroic dungeon: +300 pts', delta: 300 },
-        { text: 'Death penalty: -100 pts', delta: -100 },
-        { text: 'Profession mastery: +60 pts', delta: 60 },
-      ];
-
-      var currentScore = 0;
-      var eventIdx = 0;
-      var fired = false;
-
-      function addEvent() {
-        var ev = SCORE_EVENTS[eventIdx % SCORE_EVENTS.length];
-        eventIdx++;
-        currentScore = Math.max(0, currentScore + ev.delta);
-
-        // Animate score value
-        scoreEl.textContent = currentScore.toLocaleString();
-        scoreEl.style.transform = 'scale(1.2)';
-        scoreEl.style.color = ev.delta >= 0 ? 'var(--accent)' : '#ff4444';
-        setTimeout(function() {
-          scoreEl.style.transform = 'scale(1)';
-          scoreEl.style.color = '';
-        }, 300);
-
-        // Add event line
-        var line = document.createElement('div');
-        line.className = 'score-event-line';
-        line.innerHTML = '<span>' + ev.text + '</span>';
-        line.style.color = ev.delta >= 0 ? 'var(--accent)' : '#ff4444';
-        eventsEl.insertBefore(line, eventsEl.firstChild);
-        setTimeout(function() { line.classList.add('visible'); }, 30);
-
-        // Keep max 5 events visible
-        while (eventsEl.children.length > 5) {
-          eventsEl.removeChild(eventsEl.lastChild);
-        }
-      }
-
-      var obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting && !fired) {
-          fired = true;
-          obs.disconnect();
-          addEvent();
-          setInterval(addEvent, 2200);
-        }
-      }, { threshold: 0.3 });
-      obs.observe(scoreEl.closest('.feature-demo') || scoreEl);
-    })();
-
-    /* ─── 6. Draft System + Guild Roster ─── */
-    (function initDraftAndRoster() {
-      var CLASS_COLORS = {
-        paladin: '#f58cba', priest: '#ffffff', rogue: '#fff569',
-        druid: '#ff7d0a', warlock: '#9482c9', mage: '#69ccf0',
-        hunter: '#abd473', warrior: '#c79c6e', shaman: '#0070de'
-      };
-
-      var PLAYERS = [
-        { name: 'Pupi', cls: 'priest', lvl: 70, rating: 3, div: null },
-        { name: 'Grimjaw', cls: 'rogue', lvl: 68, rating: 2, div: null },
-        { name: 'Moonwhisper', cls: 'druid', lvl: 70, rating: 3, div: null },
-        { name: 'Hexmaw', cls: 'warlock', lvl: 65, rating: 1, div: null },
-        { name: 'Frostleaf', cls: 'mage', lvl: 70, rating: 3, div: null },
-        { name: 'Korrak', cls: 'warrior', lvl: 70, rating: 2, div: null },
-        { name: 'Senna', cls: 'hunter', lvl: 69, rating: 2, div: null },
-        { name: 'Mirael', cls: 'shaman', lvl: 70, rating: 1, div: null },
-      ];
-
-      // Build player pool as list
-      var poolGrid = document.getElementById('draftPoolGrid');
-      var poolCount = document.getElementById('draftPoolCount');
-      function renderPool() {
-        if (!poolGrid) return;
-        poolGrid.innerHTML = '';
-        PLAYERS.forEach(function(p, i) {
-          var el = document.createElement('div');
-          el.className = 'draft-player' + (p.div ? ' drafted' : '');
-          el.setAttribute('data-idx', i);
-          var stars = '';
-          for (var s = 0; s < p.rating; s++) stars += '\u2605';
-          for (var s2 = p.rating; s2 < 3; s2++) stars += '\u2606';
-          el.innerHTML = '<span class="dp-name" style="color:' + CLASS_COLORS[p.cls] + '">' + p.name + '</span><span class="dp-class">' + p.cls + '</span><span class="dp-lvl">' + p.lvl + '</span><span class="dp-stars">' + stars + '</span>';
-          poolGrid.appendChild(el);
-        });
-      }
-      renderPool();
-
-      // Sort button
-      var sortBtn = document.getElementById('draftSortBtn');
-      if (sortBtn) {
-        sortBtn.addEventListener('click', function() {
-          PLAYERS.sort(function(a, b) { return b.rating - a.rating; });
-          renderPool();
-        });
-      }
-
-      // Draft auto-animation on scroll (no click needed)
-      var divAlphaSlots = document.getElementById('divAlphaSlots');
-      var divOmegaSlots = document.getElementById('divOmegaSlots');
-      var draftSystem = document.getElementById('draftSystem');
-      var draftFired = false;
-
-      function runDraftAnimation() {
-        if (draftFired) return;
-        draftFired = true;
-        var sorted = PLAYERS.slice().sort(function(a, b) { return b.rating - a.rating; });
-        var alphaCount = 0, omegaCount = 0;
-        sorted.forEach(function(p, i) {
-          var toAlpha = (i % 2 === 0);
-          var origIdx = PLAYERS.indexOf(p);
-          setTimeout(function() {
-            var poolEl = poolGrid.querySelector('[data-idx="' + origIdx + '"]');
-            if (poolEl) poolEl.classList.add('drafted');
-            var slot = document.createElement('div');
-            slot.className = 'draft-slot ' + (toAlpha ? 'alpha' : 'omega');
-            slot.textContent = p.name + ' \u2605'.repeat(p.rating);
-            if (toAlpha) {
-              divAlphaSlots.appendChild(slot);
-              alphaCount++;
-              divAlphaSlots.closest('.draft-division').querySelector('.draft-div-count').textContent = alphaCount + ' / 62';
-            } else {
-              divOmegaSlots.appendChild(slot);
-              omegaCount++;
-              divOmegaSlots.closest('.draft-division').querySelector('.draft-div-count').textContent = omegaCount + ' / 62';
-            }
-            setTimeout(function() { slot.classList.add('visible'); }, 50);
-            var remaining = PLAYERS.length - (i + 1);
-            if (poolCount) poolCount.textContent = remaining + ' available';
-          }, i * 500);
-        });
-      }
-
-      if (draftSystem) {
-        var draftObs = new IntersectionObserver(function(entries) {
-          if (entries[0].isIntersecting && !draftFired) {
-            draftObs.disconnect();
-            setTimeout(runDraftAnimation, 600);
-          }
-        }, { threshold: 0.25 });
-        draftObs.observe(draftSystem);
-      }
-
-      // Guild roster with custom notes
-      var tbody = document.getElementById('rosterBody');
-      if (!tbody) return;
-
-      var ROSTER = [
-        { name: 'Theron', cls: 'paladin', lvl: 70, note: 'Team Alpha \u00B7 House Ironforge \u00B7 \u2605\u2605\u2605', score: '12,450', lives: 3, status: 'Alive', achievements: 84, heroics: 12, deaths: 0, joined: 'Season 1, Week 1' },
-        { name: 'Pupi', cls: 'priest', lvl: 70, note: 'Team Alpha \u00B7 House Dawnblade \u00B7 \u2605\u2605\u2605', score: '9,870', lives: 2, status: 'Alive', achievements: 61, heroics: 8, deaths: 1, joined: 'Season 1, Week 1' },
-        { name: 'Grimjaw', cls: 'rogue', lvl: 68, note: 'Team Omega \u00B7 House Ironforge \u00B7 \u2605\u2605', score: '7,230', lives: 3, status: 'Alive', achievements: 44, heroics: 3, deaths: 0, joined: 'Season 1, Week 2' },
-        { name: 'Moonwhisper', cls: 'druid', lvl: 70, note: 'Team Alpha \u00B7 House Ashwind \u00B7 \u2605\u2605\u2605', score: '8,540', lives: 1, status: 'At risk', achievements: 52, heroics: 6, deaths: 2, joined: 'Season 1, Week 1' },
-        { name: 'Vex', cls: 'hunter', lvl: 69, note: 'Team Omega \u00B7 House Stormgarde \u00B7 \u2605\u2605', score: '6,800', lives: 3, status: 'Alive', achievements: 38, heroics: 2, deaths: 0, joined: 'Season 1, Week 3' },
-        { name: 'Frostleaf', cls: 'mage', lvl: 70, note: 'Team Omega \u00B7 House Thornwall \u00B7 \u2605\u2605\u2605', score: '10,100', lives: 2, status: 'Alive', achievements: 67, heroics: 9, deaths: 1, joined: 'Season 1, Week 1' },
-        { name: 'Korrak', cls: 'warrior', lvl: 70, note: 'Team Alpha \u00B7 House Ashwind \u00B7 \u2605\u2605', score: '11,200', lives: 0, status: 'DEAD', achievements: 71, heroics: 11, deaths: 3, joined: 'Season 1, Week 1' },
-        { name: 'Hexmaw', cls: 'warlock', lvl: 65, note: 'Team Omega \u00B7 \u2605', score: '5,120', lives: 3, status: 'Alive', achievements: 29, heroics: 0, deaths: 0, joined: 'Season 1, Week 4' },
-      ];
-
-      // Add detail panel under the table
-      var detailPanel = document.createElement('div');
-      detailPanel.className = 'roster-detail';
-      detailPanel.id = 'rosterDetail';
-      detailPanel.style.display = 'none';
-      detailPanel.innerHTML = '<div class="rd-header"><span class="rd-name" id="rdName"></span><span class="rd-close" id="rdClose">\u00D7</span></div><div class="rd-body" id="rdBody"></div>';
-      var guildBody = document.querySelector('#guildWindow .ingame-body');
-      if (guildBody) guildBody.appendChild(detailPanel);
-
-      ROSTER.forEach(function(m, idx) {
-        var tr = document.createElement('tr');
-        tr.className = 'roster-row-clickable';
-        tr.setAttribute('data-ridx', idx);
-        var pips = '';
-        for (var i = 0; i < 3; i++) {
-          pips += '<span class="life-pip ' + (i < m.lives ? 'alive' : 'dead') + '"></span>';
-        }
-        tr.innerHTML = '<td style="color:' + CLASS_COLORS[m.cls] + '">' + m.name + '</td><td>' + m.lvl + '</td><td style="font-size:0.65rem;color:var(--text-dim)">' + m.note + '</td><td>' + m.score + '</td><td class="lives-cell">' + pips + '</td>';
-        tr.style.opacity = '0';
-        tr.style.transform = 'translateY(10px)';
-        tr.style.cursor = 'pointer';
-        tr.addEventListener('click', function() {
-          showPlayerDetail(idx);
-        });
-        tbody.appendChild(tr);
-      });
-
-      function showPlayerDetail(idx) {
-        var m = ROSTER[idx];
-        var panel = document.getElementById('rosterDetail');
-        var nameEl = document.getElementById('rdName');
-        var bodyEl = document.getElementById('rdBody');
-        nameEl.innerHTML = '<span style="color:' + CLASS_COLORS[m.cls] + '">' + m.name + '</span> <span style="color:var(--text-dim);font-size:0.7rem">' + m.cls.charAt(0).toUpperCase() + m.cls.slice(1) + ' \u00B7 Lvl ' + m.lvl + '</span>';
-        var statusColor = m.status === 'DEAD' ? '#ff4444' : m.status === 'At risk' ? '#ffaa00' : 'var(--neon-green)';
-        bodyEl.innerHTML = '<div class="rd-stats">' +
-          '<div class="rd-stat"><span class="rd-stat-val" style="color:' + statusColor + '">' + m.status + '</span><span class="rd-stat-lbl">Status</span></div>' +
-          '<div class="rd-stat"><span class="rd-stat-val">' + m.score + '</span><span class="rd-stat-lbl">Score</span></div>' +
-          '<div class="rd-stat"><span class="rd-stat-val">' + m.achievements + '</span><span class="rd-stat-lbl">Achievements</span></div>' +
-          '<div class="rd-stat"><span class="rd-stat-val">' + m.heroics + '</span><span class="rd-stat-lbl">Heroics</span></div>' +
-          '<div class="rd-stat"><span class="rd-stat-val">' + m.deaths + '</span><span class="rd-stat-lbl">Deaths</span></div>' +
-          '<div class="rd-stat"><span class="rd-stat-val" style="font-size:0.65rem">' + m.joined + '</span><span class="rd-stat-lbl">Joined</span></div>' +
-          '</div>';
-        panel.style.display = 'block';
-        // Highlight row
-        tbody.querySelectorAll('tr').forEach(function(r) { r.classList.remove('roster-row-active'); });
-        tbody.querySelector('[data-ridx="' + idx + '"]').classList.add('roster-row-active');
-      }
-
-      var rdClose = document.getElementById('rdClose');
-      if (rdClose) rdClose.addEventListener('click', function() {
-        document.getElementById('rosterDetail').style.display = 'none';
-        tbody.querySelectorAll('tr').forEach(function(r) { r.classList.remove('roster-row-active'); });
-      });
-
-      var fired = false;
-      var obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting && !fired) {
-          fired = true;
-          obs.disconnect();
-          var rows = tbody.querySelectorAll('tr');
-          rows.forEach(function(row, i) {
-            setTimeout(function() {
-              row.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-              row.style.opacity = '1';
-              row.style.transform = 'translateY(0)';
-            }, i * 120);
-          });
-        }
-      }, { threshold: 0.2 });
-      obs.observe(document.getElementById('guildWindow') || tbody);
-    })();
-
-    /* ─── 7. House Scores Count-Up + Toggle + Resolve ─── */
-    (function initHouseScores() {
-      var container = document.getElementById('housesVisual');
-      if (!container) return;
-      var scoreEls = container.querySelectorAll('.house-score');
-      var cards = container.querySelectorAll('.house-card');
-      var fired = false;
-      var currentMode = 'weekly';
-      var flashInterval = null;
-
-      function countUp(el, from, to) {
-        var current = from || 0;
-        var step = Math.ceil(Math.abs(to - current) / 30) || 1;
-        var interval = setInterval(function() {
-          current += step;
-          if (current >= to) {
-            current = to;
-            clearInterval(interval);
-          }
-          el.textContent = current.toLocaleString() + ' pts';
-        }, 30);
-      }
-
-      function setScores(mode) {
-        currentMode = mode;
-        cards.forEach(function(card) {
-          var target = parseInt(card.getAttribute('data-' + mode)) || 0;
-          var scoreEl = card.querySelector('.house-score');
-          scoreEl.setAttribute('data-target', target);
-          countUp(scoreEl, 0, target);
-        });
-        highlightLeading();
-      }
-
-      function highlightLeading() {
-        var allScores = container.querySelectorAll('.house-score');
-        var maxScore = 0;
-        allScores.forEach(function(s) {
-          var v = parseInt(s.getAttribute('data-target')) || 0;
-          if (v > maxScore) maxScore = v;
-        });
-        allScores.forEach(function(s) {
-          var v = parseInt(s.getAttribute('data-target')) || 0;
-          s.closest('.house-card').classList.toggle('leading', v === maxScore);
-        });
-      }
-
-      // Toggle buttons
-      var toggleBtns = document.querySelectorAll('#housesToggle .ht-btn');
-      toggleBtns.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          toggleBtns.forEach(function(b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-          var mode = btn.getAttribute('data-mode');
-          setScores(mode);
-          // Show/hide countdown based on mode
-          var cd = document.getElementById('housesCountdown');
-          if (cd) cd.style.display = mode === 'weekly' ? 'flex' : 'none';
-          // Hide result + reset winner/loser
-          var result = document.getElementById('housesResult');
-          if (result) result.classList.remove('show');
-          container.classList.remove('resolved');
-          container.querySelector('.houses-team-left').classList.remove('winner', 'loser');
-          container.querySelector('.houses-team-right').classList.remove('winner', 'loser');
-        });
-      });
-
-      // Resolve Week button
-      var resolveBtn = document.getElementById('hcResolve');
-      if (resolveBtn) {
-        resolveBtn.addEventListener('click', function() {
-          if (flashInterval) clearInterval(flashInterval);
-          // Calculate team totals
-          var leftCards = container.querySelectorAll('.houses-team-left .house-card');
-          var rightCards = container.querySelectorAll('.houses-team-right .house-card');
-          var leftTotal = 0, rightTotal = 0;
-          leftCards.forEach(function(c) { leftTotal += parseInt(c.querySelector('.house-score').getAttribute('data-target')) || 0; });
-          rightCards.forEach(function(c) { rightTotal += parseInt(c.querySelector('.house-score').getAttribute('data-target')) || 0; });
-
-          var winnerText, loserText;
-          var leftWins = leftTotal >= rightTotal;
-          if (leftWins) {
-            winnerText = 'Winner: Team Alpha (+' + leftTotal.toLocaleString() + ' pts)';
-            loserText = 'Team Omega: +' + rightTotal.toLocaleString() + ' pts';
-          } else {
-            winnerText = 'Winner: Team Omega (+' + rightTotal.toLocaleString() + ' pts)';
-            loserText = 'Team Alpha: +' + leftTotal.toLocaleString() + ' pts';
-          }
-
-          // Dim the loser side
-          container.classList.add('resolved');
-          var leftTeam = container.querySelector('.houses-team-left');
-          var rightTeam = container.querySelector('.houses-team-right');
-          if (leftWins) {
-            leftTeam.classList.add('winner');
-            rightTeam.classList.add('loser');
-            leftTeam.classList.remove('loser');
-            rightTeam.classList.remove('winner');
-          } else {
-            rightTeam.classList.add('winner');
-            leftTeam.classList.add('loser');
-            rightTeam.classList.remove('loser');
-            leftTeam.classList.remove('winner');
-          }
-
-          // Show result banner
-          var result = document.getElementById('housesResult');
-          var hrText = document.getElementById('hrText');
-          var hrLoser = document.getElementById('hrLoser');
-          if (hrText) hrText.textContent = winnerText;
-          if (hrLoser) hrLoser.textContent = loserText;
-          if (result) {
-            result.classList.add('show');
-          }
-        });
-      }
-
-      // IntersectionObserver — initial count-up
-      var obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting && !fired) {
-          fired = true;
-          obs.disconnect();
-          setScores(currentMode);
-
-          // Add periodic flash events
-          flashInterval = setInterval(function() {
-            if (container.classList.contains('resolved')) return;
-            var allCards = container.querySelectorAll('.house-card');
-            var idx = Math.floor(Math.random() * allCards.length);
-            var card = allCards[idx];
-            var bonus = ['+50', '+25', '+100', '+75'][Math.floor(Math.random() * 4)];
-            var flash = document.createElement('span');
-            flash.className = 'score-flash';
-            flash.textContent = bonus + ' pts';
-            card.appendChild(flash);
-            setTimeout(function() { flash.classList.add('visible'); }, 30);
-            setTimeout(function() {
-              flash.classList.add('fade-out');
-              setTimeout(function() { flash.remove(); }, 500);
-            }, 1500);
-
-            // Update score
-            var scoreEl = card.querySelector('.house-score');
-            var curTarget = parseInt(scoreEl.getAttribute('data-target')) || 0;
-            var newTarget = curTarget + parseInt(bonus);
-            scoreEl.setAttribute('data-target', newTarget);
-            card.setAttribute('data-' + currentMode, newTarget);
-            scoreEl.textContent = newTarget.toLocaleString() + ' pts';
-            highlightLeading();
-          }, 3000);
-        }
-      }, { threshold: 0.2 });
-      obs.observe(container);
-    })();
-
-    /* ─── 8. Voting Bars ─── */
-    (function initVotingBars() {
-      var bars = document.querySelectorAll('.vote-bar');
-      if (!bars.length) return;
-      var fired = false;
-
-      var obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting && !fired) {
-          fired = true;
-          obs.disconnect();
-          bars.forEach(function(bar, i) {
-            var target = bar.getAttribute('data-target') || 0;
-            setTimeout(function() {
-              bar.style.transition = 'width 1.2s cubic-bezier(0.22, 0.61, 0.36, 1)';
-              bar.style.width = target + '%';
-            }, i * 200);
-          });
-        }
-      }, { threshold: 0.3 });
-      obs.observe(bars[0].closest('.voting-demo') || bars[0]);
-    })();
-
-    /* ─── 9. Punishment Manager Toggles ─── */
-    (function initPunishmentManager() {
-      var pm = document.getElementById('punishmentManager');
-      if (!pm) return;
-      var toggles = pm.querySelectorAll('.toggle');
-      toggles.forEach(function(toggle) {
-        toggle.style.cursor = 'pointer';
-        toggle.addEventListener('click', function() {
-          toggle.classList.toggle('on');
-          toggle.classList.toggle('off');
-        });
-      });
-      // Severity bar animation on scroll
-      var bars = pm.querySelectorAll('.pm-sev-bar');
-      var fired = false;
-      var obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting && !fired) {
-          fired = true;
-          obs.disconnect();
-          bars.forEach(function(bar, i) {
-            var w = bar.style.width;
-            bar.style.width = '0%';
-            setTimeout(function() {
-              bar.style.transition = 'width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1)';
-              bar.style.width = w;
-            }, i * 100);
-          });
-        }
-      }, { threshold: 0.2 });
-      obs.observe(pm);
-    })();
-
-    /* ─── 10. Scoring Tree ─── */
-    (function initScoringTree() {
-      var panel = document.getElementById('stPanel');
-      var countEl = document.getElementById('stCount');
-      var leafOpts = document.getElementById('stLeafOpts');
-      if (!panel) return;
-
-      var activeTab = 0;
-      var selectedLeaf = null;
-
-      /* Option types per category:
-         'maxable' = professions, rep → show Maxed First / Maxed General
-         'clearable' = dungeons, raids → show Clear options
-         'pts' = guild achievements → show points
-         'penalty' = penalties → no maxed options, no custom goal
-         'level' = leveling milestones → no maxed, just toggle
-         default = just toggle + visibility */
-      var TREE = [
-        { label: 'Character Progression', children: [
-          { label: 'Leveling', optType: 'level', children: [
-            { label: 'Lvl 20 milestone', on: true }, { label: 'Lvl 40 milestone', on: true },
-            { label: 'Lvl 58 (Outland)', on: true }, { label: 'Lvl 60', on: true },
-            { label: 'Lvl 65', on: true }, { label: 'Lvl 70 (Max)', on: true }
-          ]},
-          { label: 'Professions', optType: 'maxable', children: [
-            { label: 'Alchemy', on: true }, { label: 'Blacksmithing', on: true },
-            { label: 'Enchanting', on: true }, { label: 'Engineering', on: false },
-            { label: 'Herbalism', on: true }, { label: 'Jewelcrafting', on: true },
-            { label: 'Leatherworking', on: false }, { label: 'Mining', on: true },
-            { label: 'Skinning', on: false }, { label: 'Tailoring', on: true },
-            { label: 'Cooking', on: true }, { label: 'First Aid', on: true }, { label: 'Fishing', on: true },
-            { label: 'Skill Milestones (75/150/225/300/375)', on: true }
-          ]},
-          { label: 'Reputation', optType: 'maxable', children: [
-            { label: 'Honor Hold / Thrallmar', on: true }, { label: 'Cenarion Expedition', on: true },
-            { label: 'Lower City', on: true }, { label: "Sha'tar", on: true },
-            { label: 'Aldor / Scryers', on: true }, { label: 'Keepers of Time', on: true },
-            { label: 'Violet Eye', on: true }, { label: 'Consortium', on: false },
-            { label: 'Netherwing', on: false }, { label: "Ogri'la", on: false },
-            { label: 'Sporeggar', on: false }, { label: 'Skyguard', on: false }
-          ]},
-          { label: 'Gear Thresholds', optType: 'level', children: [
-            { label: 'Green (Uncommon)', on: false }, { label: 'Blue (Rare)', on: true },
-            { label: 'Purple (Epic)', on: true }, { label: 'Orange (Legendary)', on: true }
-          ]}
-        ]},
-        { label: 'PvE Content', children: [
-          { label: 'Dungeons', optType: 'clearable', children: [
-            { label: 'Normal Clears', on: true }, { label: 'Heroic Clears', on: true },
-            { label: 'Timed Runs', on: false },
-            { label: 'Hellfire Ramparts', on: true }, { label: 'Blood Furnace', on: true },
-            { label: 'Shattered Halls', on: true }, { label: 'Slave Pens', on: true },
-            { label: 'Underbog', on: true }, { label: 'Steamvault', on: true },
-            { label: 'Mana-Tombs', on: true }, { label: 'Auchenai Crypts', on: true },
-            { label: 'Sethekk Halls', on: true }, { label: 'Shadow Labyrinth', on: true },
-            { label: 'Mechanar', on: true }, { label: 'Botanica', on: true },
-            { label: 'Arcatraz', on: true }, { label: 'Old Hillsbrad', on: true },
-            { label: 'Black Morass', on: true }, { label: "Magister's Terrace", on: true }
-          ]},
-          { label: 'Raids', optType: 'clearable', children: [
-            { label: 'Boss Kills', on: true }, { label: 'Full Clears', on: true }, { label: 'Speed Clears', on: false },
-            { label: 'Karazhan (10-man)', on: true }, { label: "Gruul's Lair", on: true },
-            { label: "Magtheridon's Lair", on: true }, { label: 'Serpentshrine Cavern', on: true },
-            { label: 'The Eye', on: true }, { label: 'Hyjal Summit', on: true },
-            { label: 'Black Temple', on: true }, { label: 'Sunwell Plateau', on: true }
-          ]},
-          { label: 'World Content', optType: 'level', children: [
-            { label: 'Elite Kills', on: true }, { label: 'Rare Spawns', on: true },
-            { label: 'World Bosses (Kazzak, Doomwalker)', on: true }
-          ]}
-        ]},
-        { label: 'PvP Content', children: [
-          { label: 'Battlegrounds', optType: 'level', children: [
-            { label: 'BG Wins', on: false }, { label: 'Flag Captures', on: false }, { label: 'Killing Blows', on: false }
-          ]},
-          { label: 'Arena', optType: 'level', children: [
-            { label: 'Rating Thresholds', on: false }, { label: 'Win Streaks', on: false }
-          ]},
-          { label: 'World PvP', optType: 'level', children: [
-            { label: 'Zone Objectives', on: false }, { label: 'Honorable Kills', on: false }
-          ]}
-        ]},
-        { label: 'Guild Achievements', children: [
-          { label: 'Public Achievements', badge: 'public', optType: 'pts', children: [
-            { label: 'First maxxed Fishing in guild', on: true, pts: '+250' },
-            { label: 'First Karazhan full clear', on: true, pts: '+1000' },
-            { label: 'Guild-wide 0 deaths in a week', on: true, pts: '+500' }
-          ]},
-          { label: 'Hidden Achievements', badge: 'hidden', optType: 'pts', children: [
-            { label: 'Sit in every chair in Shattrath', on: true, pts: '+75', hidden: true },
-            { label: 'Die to Fel Reaver 3 times', on: true, pts: '-200', hidden: true },
-            { label: 'Complete a dungeon naked', on: false, pts: '+300', hidden: true }
-          ]}
-        ]},
-        { label: 'Penalties', children: [
-          { label: 'Death Penalties', optType: 'penalty', children: [
-            { label: 'Life Lost', on: true }, { label: 'Score Deduction', on: true }
-          ]},
-          { label: 'Infraction Penalties', optType: 'penalty', children: [
-            { label: 'Rule Violation', on: true }, { label: 'Unauthorized Trade', on: true }
-          ]},
-          { label: 'Custom Penalties (GM)', optType: 'penalty', children: [
-            { label: 'Custom Penalty', on: true }
-          ]}
-        ]}
-      ];
-
-      function countLeaves(nodes) {
-        var t = 0, e = 0;
-        (function walk(arr) {
-          arr.forEach(function(n) {
-            if (n.children) walk(n.children);
-            else { t++; if (n.on) e++; }
-          });
-        })(nodes);
-        return { total: t, enabled: e };
-      }
-
-      function updateCount() {
-        var c = countLeaves(TREE);
-        if (countEl) countEl.textContent = c.enabled + '/' + c.total + ' enabled';
-      }
-
-      function getState(node) {
-        if (!node.children) return node.on ? 'on' : 'off';
-        var onCount = 0, total = 0;
-        (function walk(ch) {
-          ch.forEach(function(c) {
-            if (c.children) walk(c.children);
-            else { total++; if (c.on) onCount++; }
-          });
-        })(node.children);
-        if (onCount === total) return 'on';
-        if (onCount === 0) return 'off';
-        return 'mixed';
-      }
-
-      function setAll(node, val) {
-        if (!node.children) { node.on = val; return; }
-        node.children.forEach(function(c) { setAll(c, val); });
-      }
-
-      // Render the panel for the active tab
-      function renderPanel() {
-        panel.innerHTML = '';
-        hideLeafOpts();
-        var cat = TREE[activeTab];
-        if (!cat || !cat.children) return;
-
-        // Sub-branch cards (horizontal row)
-        var branchRow = document.createElement('div');
-        branchRow.className = 'st-branch-row';
-
-        cat.children.forEach(function(branch, bi) {
-          var card = document.createElement('div');
-          card.className = 'st-branch-card';
-
-          // Branch header with toggle-all
-          var hdr = document.createElement('div');
-          hdr.className = 'st-branch-hdr';
-          var state = getState(branch);
-          var toggle = document.createElement('span');
-          toggle.className = 'st-check ' + state;
-          toggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            var newVal = getState(branch) !== 'on';
-            setAll(branch, newVal);
-            renderPanel();
-            updateCount();
-          });
-          hdr.appendChild(toggle);
-          var lbl = document.createElement('span');
-          lbl.className = 'st-branch-label';
-          lbl.textContent = branch.label;
-          hdr.appendChild(lbl);
-          if (branch.badge) {
-            var bdg = document.createElement('span');
-            bdg.className = 'st-badge ' + branch.badge;
-            bdg.textContent = branch.badge === 'hidden' ? '\uD83D\uDD12 Hidden' : branch.badge === 'public' ? '\u2605 Public' : branch.badge;
-            hdr.appendChild(bdg);
-          }
-          // Count for this branch
-          var bc = countLeaves([branch]);
-          var cnt = document.createElement('span');
-          cnt.className = 'st-branch-count';
-          cnt.textContent = bc.enabled + '/' + bc.total;
-          hdr.appendChild(cnt);
-          card.appendChild(hdr);
-
-          // Leaf items (children of this branch)
-          var items = branch.children || [];
-          var list = document.createElement('div');
-          list.className = 'st-leaf-list';
-          items.forEach(function(leaf) {
-            if (leaf.children) {
-              // Sub-sub-branch — flatten its children
-              leaf.children.forEach(function(sub) {
-                list.appendChild(buildLeafRow(sub, branch.optType || ''));
-              });
-            } else {
-              list.appendChild(buildLeafRow(leaf, branch.optType || ''));
-            }
-          });
-          card.appendChild(list);
-          branchRow.appendChild(card);
-        });
-
-        panel.appendChild(branchRow);
-      }
-
-      function buildLeafRow(leaf, optType) {
-        var row = document.createElement('div');
-        row.className = 'st-leaf-row' + (leaf.on ? '' : ' off');
-
-        var check = document.createElement('span');
-        check.className = 'st-check ' + (leaf.on ? 'on' : '');
-        check.addEventListener('click', function(e) {
-          e.stopPropagation();
-          leaf.on = !leaf.on;
-          renderPanel();
-          updateCount();
-        });
-        row.appendChild(check);
-
-        var name = document.createElement('span');
-        name.className = 'st-leaf-name';
-        name.textContent = leaf.label;
-        row.appendChild(name);
-
-        if (leaf.pts) {
-          var pts = document.createElement('span');
-          pts.className = 'st-badge';
-          pts.style.color = leaf.pts.charAt(0) === '+' ? 'var(--neon-green)' : 'var(--red)';
-          pts.textContent = leaf.pts;
-          row.appendChild(pts);
-        }
-        if (leaf.hidden) {
-          var hid = document.createElement('span');
-          hid.className = 'st-badge hidden';
-          hid.textContent = '\uD83D\uDD12';
-          row.appendChild(hid);
-        }
-
-        // Click leaf to show options (if applicable)
-        if (optType !== 'penalty' && optType !== 'level') {
-          row.style.cursor = 'pointer';
-          row.addEventListener('click', function(e) {
-            e.stopPropagation();
-            showLeafOpts(leaf, optType, row);
-          });
-        }
-
-        return row;
-      }
-
-      function showLeafOpts(leaf, optType, anchorRow) {
-        if (selectedLeaf === leaf) { hideLeafOpts(); return; }
-        selectedLeaf = leaf;
-        // Position the options panel right after the anchor row
-        var loName = document.getElementById('stLoName');
-        var loMaxFirst = document.getElementById('stLoMaxFirst');
-        var loMaxGen = document.getElementById('stLoMaxGen');
-        var loCustom = document.getElementById('stLoCustom');
-        if (loName) loName.textContent = leaf.label;
-
-        // Show/hide based on optType
-        if (loMaxFirst) loMaxFirst.style.display = (optType === 'maxable') ? 'flex' : 'none';
-        if (loMaxGen) loMaxGen.style.display = (optType === 'maxable') ? 'flex' : 'none';
-        if (loCustom) loCustom.style.display = (optType === 'maxable' || optType === 'clearable') ? 'flex' : 'none';
-
-        // Insert after anchor row
-        leafOpts.style.display = 'block';
-        anchorRow.parentNode.insertBefore(leafOpts, anchorRow.nextSibling);
-      }
-
-      function hideLeafOpts() {
-        selectedLeaf = null;
-        if (leafOpts) leafOpts.style.display = 'none';
-      }
-
-      // Close button
-      var loClose = document.getElementById('stLoClose');
-      if (loClose) loClose.addEventListener('click', hideLeafOpts);
-
-      // Tab switching
-      var tabs = document.querySelectorAll('#stTabs .st-tab');
-      tabs.forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          tabs.forEach(function(t) { t.classList.remove('active'); });
-          tab.classList.add('active');
-          activeTab = parseInt(tab.getAttribute('data-cat'));
-          renderPanel();
-        });
-      });
-
-      renderPanel();
-      updateCount();
-
-      // Add achievement button
-      var addBtn = document.getElementById('stAddAch');
-      var addForm = document.getElementById('stAddForm');
-      var achConfirm = document.getElementById('stAchConfirm');
-      if (addBtn && addForm) {
-        addBtn.addEventListener('click', function() {
-          addForm.style.display = addForm.style.display === 'none' ? 'flex' : 'none';
-        });
-      }
-      if (achConfirm) {
-        achConfirm.addEventListener('click', function() {
-          var name = document.getElementById('stAchName').value.trim();
-          var pts = document.getElementById('stAchPts').value || '100';
-          var hidden = document.getElementById('stAchHidden').checked;
-          if (!name) return;
-          var targetBranch = hidden ? TREE[3].children[1] : TREE[3].children[0];
-          targetBranch.children.push({
-            label: name, on: true, pts: (parseInt(pts) >= 0 ? '+' : '') + pts,
-            hidden: hidden
-          });
-          document.getElementById('stAchName').value = '';
-          document.getElementById('stAchPts').value = '100';
-          document.getElementById('stAchHidden').checked = false;
-          addForm.style.display = 'none';
-          // Switch to guild achievements tab
-          activeTab = 3;
-          tabs.forEach(function(t) { t.classList.remove('active'); });
-          tabs[3].classList.add('active');
-          renderPanel();
-          updateCount();
-        });
-      }
-    })();
-
-    /* ─── 11. Rule Manager UI ─── */
-    (function initRuleManagerUI() {
-      var manager = document.getElementById('ruleManager');
-      var tagsContainer = document.getElementById('gcTags');
-      if (!manager) return;
-
-      // Tab switching
-      var tabs = manager.querySelectorAll('.rm-tab');
-      var panels = manager.querySelectorAll('.rm-panel');
-      tabs.forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          tabs.forEach(function(t) { t.classList.remove('active'); });
-          panels.forEach(function(p) { p.classList.remove('active'); });
-          tab.classList.add('active');
-          var target = tab.getAttribute('data-rm');
-          var panel = document.getElementById('rm' + target.charAt(0).toUpperCase() + target.slice(1));
-          if (panel) panel.classList.add('active');
-        });
-      });
-
-      // Survey — guided flow: base mode → leveling → instances → scoring → extras
-      var QUESTIONS = [
-        { q: 'Are you using base mode or custom rules?', help: 'Base mode uses unified defaults. Custom lets you define everything.', opts: [
-          { text: 'Base Mode \u2014 unified defaults, free for all', tags: { 'Mode': 'base', 'HC Mode': true } },
-          { text: 'Custom Rules \u2014 full configuration (Premium)', tags: { 'Mode': 'custom', 'HC Mode': true } }
-        ]},
-        { q: 'Leveling phase (1\u201360): what happens on death?', help: 'This defines the core leveling experience.', opts: [
-          { text: 'Permadeath \u2014 die once, character is gone', tags: { 'Leveling': 'permadeath', '3 Lives': false } },
-          { text: 'Multiple lives \u2014 lose a life per death', tags: { 'Leveling': 'lives', '3 Lives': true } },
-          { text: 'Score only \u2014 deaths cost points, no deletion', tags: { 'Leveling': 'score', '3 Lives': false } }
-        ]},
-        { q: 'Instance lives: how many lives in dungeons and raids?', help: 'These protect against wipes inside instanced content.', opts: [
-          { text: 'Same for all \u2014 unified life count everywhere', tags: { 'InstanceLives': 'unified' } },
-          { text: 'Per-type \u2014 different lives for dungeons, heroics, raids', tags: { 'InstanceLives': 'per-type' } },
-          { text: 'No instance lives \u2014 deaths count as normal', tags: { 'InstanceLives': 'none' } }
-        ]},
-        { q: 'Enable scoring and leaderboards?', opts: [
-          { text: 'Full scoring + guild leaderboards', tags: { 'Scoring': true } },
-          { text: 'Basic tracking only', tags: { 'Scoring': true } },
-          { text: 'No scoring', tags: { 'Scoring': false } }
-        ]},
-        { q: 'Self-found restrictions?', opts: [
-          { text: 'Full SSF \u2014 no trading, no AH', tags: { 'SSF': true } },
-          { text: 'Guild trading only', tags: { 'SSF': true } },
-          { text: 'No restrictions', tags: { 'SSF': false } }
-        ]},
-        { q: 'PvP in hardcore?', opts: [
-          { text: 'PvP with scoring (BGs + Arena)', tags: { 'BGs': true } },
-          { text: 'PvP exempt from HC rules', tags: { 'BGs': false } }
-        ]},
-        { q: 'House competition?', opts: [
-          { text: 'Yes \u2014 draft into competing houses', tags: { 'Houses': true } },
-          { text: 'No houses', tags: { 'Houses': false } }
-        ]},
-        { q: 'Checkpoint system?', opts: [
-          { text: 'Yes \u2014 save at level milestones', tags: { 'Checkpoints': true } },
-          { text: 'No checkpoints', tags: { 'Checkpoints': false } }
-        ]}
-      ];
-
-      var answers = {};
-      var currentQ = 0;
-      var dotsContainer = document.getElementById('surveyDots');
-      var cardsContainer = document.getElementById('surveyCards');
-      var doneEl = document.getElementById('surveyDone');
-
-      // Build dots
-      QUESTIONS.forEach(function(_, i) {
-        var dot = document.createElement('span');
-        dot.className = 'survey-dot' + (i === 0 ? ' current' : '');
-        dotsContainer.appendChild(dot);
-      });
-
-      // Build cards
-      QUESTIONS.forEach(function(q, qi) {
-        var card = document.createElement('div');
-        card.className = 'survey-card' + (qi === 0 ? ' active' : '');
-        var helpHtml = q.help ? '<div class="survey-help">' + q.help + '</div>' : '';
-        card.innerHTML = '<div class="survey-q">' + q.q + '</div>' + helpHtml + '<div class="survey-options"></div>';
-        var optsDiv = card.querySelector('.survey-options');
-        q.opts.forEach(function(opt, oi) {
-          var btn = document.createElement('div');
-          btn.className = 'survey-option';
-          btn.textContent = opt.text;
-          btn.addEventListener('click', function() {
-            optsDiv.querySelectorAll('.survey-option').forEach(function(o) { o.classList.remove('selected'); });
-            btn.classList.add('selected');
-            Object.keys(opt.tags).forEach(function(k) { answers[k] = opt.tags[k]; });
-            updateConfigSummary();
-            setTimeout(function() { advanceSurvey(); }, 400);
-          });
-          optsDiv.appendChild(btn);
-        });
-        cardsContainer.appendChild(card);
-      });
-
-      function advanceSurvey() {
-        var dots = dotsContainer.querySelectorAll('.survey-dot');
-        var cards = cardsContainer.querySelectorAll('.survey-card');
-        dots[currentQ].classList.remove('current');
-        dots[currentQ].classList.add('done');
-        cards[currentQ].classList.remove('active');
-        currentQ++;
-        if (currentQ < QUESTIONS.length) {
-          dots[currentQ].classList.add('current');
-          cards[currentQ].classList.add('active');
-        } else {
-          doneEl.style.display = 'block';
-          var restartBtn = document.getElementById('rmRestart');
-          if (restartBtn) restartBtn.style.display = 'inline-block';
-          syncGuildCard();
-        }
-      }
-
-      // Config summary live update
-      function updateConfigSummary() {
-        var rows = document.getElementById('rmConfigRows');
-        if (!rows) return;
-        var cfgCells = rows.querySelectorAll('.rm-cfg-value');
-        var map = [
-          answers['Mode'] === 'base' ? 'Base Mode' : answers['Mode'] === 'custom' ? 'Custom (Premium)' : null,
-          answers['Leveling'] === 'permadeath' ? 'Permadeath' : answers['Leveling'] === 'lives' ? 'Multiple Lives' : answers['Leveling'] === 'score' ? 'Score Only' : null,
-          answers['InstanceLives'] === 'unified' ? 'Unified' : answers['InstanceLives'] === 'per-type' ? 'Per-Type' : answers['InstanceLives'] === 'none' ? 'None' : null,
-          answers['Scoring'] === true ? 'Enabled' : answers['Scoring'] === false ? 'Disabled' : null,
-          answers['SSF'] === true ? 'Enabled' : answers['SSF'] === false ? 'Off' : null,
-          answers['BGs'] === true ? 'Enabled' : answers['BGs'] === false ? 'Disabled' : null,
-          answers['Houses'] === true ? 'Enabled' : answers['Houses'] === false ? 'Disabled' : null,
-          answers['Checkpoints'] === true ? 'Enabled' : answers['Checkpoints'] === false ? 'Off' : null
-        ];
-        map.forEach(function(val, i) {
-          if (val && cfgCells[i]) {
-            cfgCells[i].textContent = val;
-            cfgCells[i].classList.remove('rm-cfg-pending');
-            cfgCells[i].classList.toggle('rm-cfg-on', val !== 'Disabled' && val !== 'Off' && val !== 'None');
-            cfgCells[i].classList.toggle('rm-cfg-off', val === 'Disabled' || val === 'Off' || val === 'None');
-          }
-        });
-      }
-
-      // Restart survey
-      var restartBtn = document.getElementById('rmRestart');
-      if (restartBtn) restartBtn.addEventListener('click', function() {
-        answers = {};
-        currentQ = 0;
-        var dots = dotsContainer.querySelectorAll('.survey-dot');
-        var cards = cardsContainer.querySelectorAll('.survey-card');
-        dots.forEach(function(d) { d.className = 'survey-dot'; });
-        cards.forEach(function(c) { c.classList.remove('active'); c.querySelectorAll('.survey-option').forEach(function(o) { o.classList.remove('selected'); }); });
-        if (dots[0]) dots[0].classList.add('current');
-        if (cards[0]) cards[0].classList.add('active');
-        doneEl.style.display = 'none';
-        restartBtn.style.display = 'none';
-        // Reset config summary
-        var cfgCells = document.querySelectorAll('.rm-cfg-value');
-        cfgCells.forEach(function(c) { c.textContent = '\u2014'; c.className = 'rm-cfg-value rm-cfg-pending'; });
-        syncGuildCard();
-      });
-
-      // Guild Card sync
-      function syncGuildCard() {
-        if (!tagsContainer) return;
-        var tags = tagsContainer.querySelectorAll('.gc-tag');
-        tags.forEach(function(tag) {
-          var key = tag.getAttribute('data-for');
-          if (answers[key] !== undefined) {
-            tag.classList.toggle('active', answers[key]);
-          }
-        });
-      }
-
-      // Initial guild card sync
-      syncGuildCard();
-    })();
-
-    /* ─── 12. Hide & Seek Splitscreen Animation ─── */
-    (function initHideSeek() {
-      var split = document.getElementById('hsSplit');
-      var overlayHider = document.getElementById('hsOverlayHider');
-      var overlaySeeker = document.getElementById('hsOverlaySeeker');
-      var blackout = document.getElementById('hsBlackout');
-      var countdown = document.getElementById('hsCountdown');
-      var countdownSeeker = document.getElementById('hsCountdownSeeker');
-      var phases = document.querySelectorAll('#hideSeekConcept .hs-phase');
-      var seekerScreen = document.getElementById('hsScreenSeeker');
-      var hiderMarker = document.querySelector('.hider-marker');
-      var seekerTarget = document.querySelector('.seeker-target');
-      if (!split) return;
-
-      // Create dynamic elements for seeker
-      var cursor = document.createElement('div');
-      cursor.className = 'hs-cursor';
-      seekerScreen.appendChild(cursor);
-
-      var foundEl = document.createElement('div');
-      foundEl.className = 'hs-found';
-      foundEl.innerHTML = '<span style="font-size:1.4rem">&#9876;</span> FOUND!';
-      seekerScreen.appendChild(foundEl);
-
-      var CYCLE = 10000;
-      var running = false;
-
-      function setPhase(idx) {
-        phases.forEach(function(p, i) { p.classList.toggle('active', i === idx); });
-      }
-
-      function runCycle() {
-        /* Reset everything */
-        overlayHider.classList.remove('reveal');
-        overlayHider.style.opacity = '1';
-        overlaySeeker.classList.remove('reveal');
-        overlaySeeker.style.opacity = '1';
-        blackout.classList.remove('active');
-        foundEl.classList.remove('active');
-        cursor.classList.remove('active');
-        if (hiderMarker) hiderMarker.classList.remove('visible');
-        if (seekerTarget) seekerTarget.classList.remove('visible');
-        setPhase(0);
-        countdown.textContent = '3';
-        if (countdownSeeker) countdownSeeker.textContent = '\u23F3';
-
-        /* Phase 0: Hide — hider sees countdown 3,2,1, seeker waits */
-        setTimeout(function() { countdown.textContent = '2'; }, 1000);
-        setTimeout(function() { countdown.textContent = '1'; }, 2000);
-
-        /* Phase 1a: Hider overlay reveals game view, show player marker briefly */
-        setTimeout(function() {
-          overlayHider.classList.add('reveal');
-          if (hiderMarker) hiderMarker.classList.add('visible');
-          // After brief view, blackout kicks in
-          setTimeout(function() { blackout.classList.add('active'); }, 600);
-        }, 2800);
-
-        /* Phase 1b: Seeker starts seeking — reveal game view */
-        setTimeout(function() {
-          overlaySeeker.classList.add('reveal');
-          setPhase(1);
-        }, 3600);
-
-        /* Phase 1c: Seeker scans — target player fades in at distance */
-        setTimeout(function() {
-          if (seekerTarget) seekerTarget.classList.add('visible');
-        }, 5200);
-
-        /* Phase 2: Seeker cursor locks on target */
-        setTimeout(function() {
-          cursor.classList.add('active');
-        }, 6500);
-
-        /* Phase 2b: FOUND! */
-        setTimeout(function() {
-          foundEl.classList.add('active');
-          setPhase(2);
-        }, 7300);
-
-        /* Reset */
-        setTimeout(runCycle, CYCLE);
-      }
-
-      var obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting && !running) {
-          running = true;
-          obs.disconnect();
-          runCycle();
-        }
-      }, { threshold: 0.2 });
-      obs.observe(split);
-    })();
-
-    /* ─── 13. Modular Architecture Demo ─── */
-    (function initArchDemo() {
-      var container = document.getElementById('archPlugins');
-      if (!container) return;
-      var cards = container.querySelectorAll('.arch-plugin');
-      var fired = false;
-
-      var obs = new IntersectionObserver(function(entries) {
-        if (entries[0].isIntersecting && !fired) {
-          fired = true;
-          obs.disconnect();
-          cards.forEach(function(card, i) {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(16px)';
-            setTimeout(function() {
-              card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            }, i * 120);
-          });
-
-          // Simulate toggle clicks
-          setInterval(function() {
-            var toggles = container.querySelectorAll('.arch-toggle:not(.core)');
-            if (!toggles.length) return;
-            var idx = Math.floor(Math.random() * toggles.length);
-            var t = toggles[idx];
-            t.classList.toggle('on');
-            var label = t.closest('.arch-plugin').querySelector('.arch-status');
-            if (label) label.textContent = t.classList.contains('on') ? 'Active' : 'Inactive';
-          }, 3500);
-        }
-      }, { threshold: 0.2 });
-      obs.observe(container);
-    })();
-  </script>
-
-
+  <!-- Modular JS -->
+  <script src="js/nav.js"></script>
+  <script src="js/observers.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/instance-lives.js"></script>
+  <script src="js/death-ticker.js"></script>
+  <script src="js/death-sequence.js"></script>
+  <script src="js/draft-roster.js"></script>
+  <script src="js/houses.js"></script>
+  <script src="js/punishments.js"></script>
+  <script src="js/scoring-tree.js"></script>
+  <script src="js/rule-manager.js"></script>
+  <script src="js/arch-demo.js"></script>
+  <script src="js/customization.js"></script>
+  <script src="js/review.js"></script>
+
+  <!-- All inline JS extracted to web/js/ modules -->
   <!-- ═══ Review & Annotation Mode (v3 — streamlined) ═══ -->
   <div id="reviewToggle" title="Toggle Review Mode (R)">&#9998;</div>
   <div id="elemOverlay"></div>
-
-  <!-- Compact Side Panel -->
   <div id="reviewPanel" class="review-hidden">
     <div id="reviewHeader">
       <span>Review</span>
       <div>
         <button id="undoBtn" title="Undo (Ctrl+Z)">&#8617;</button>
         <button id="clearAllBtn" title="Clear All">&#128465;</button>
-        <button id="reviewExport" title="Export with context">Export</button>
+        <button id="reviewCopyForClaude" title="Copy as markdown for Claude">Claude</button>
+        <button id="reviewExport" title="Export JSON">Export</button>
         <button id="reviewClear" title="Clear notes">Clear</button>
         <button id="reviewClose">&times;</button>
       </div>
@@ -2529,641 +999,6 @@
     </div>
   </div>
 
-  <style>
-    /* ─── Review Toggle ─── */
-    #reviewToggle {
-      position: fixed; bottom: 24px; right: 24px; z-index: 10010;
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--accent); color: var(--bg-dark);
-      font-size: 1.3rem; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-      transition: all 0.2s ease; border: none; user-select: none;
-    }
-    #reviewToggle:hover { transform: scale(1.1); background: var(--accent-glow); }
-    #reviewToggle.active { background: var(--red); }
-
-    /* ─── Element Overlay ─── */
-    #elemOverlay {
-      position: absolute; top: 0; left: 0; width: 100%;
-      pointer-events: none; z-index: 9999; display: none;
-    }
-    #elemOverlay.active { display: block; }
-    #elemOverlay.tool-select { pointer-events: auto; cursor: default; }
-    #elemOverlay.tool-create { pointer-events: auto; cursor: crosshair; }
-
-    /* ─── Placed Elements ─── */
-    .review-elem {
-      position: absolute; pointer-events: auto; cursor: grab;
-      box-sizing: border-box; user-select: none;
-      transition: box-shadow 0.15s;
-    }
-    .review-elem:active { cursor: grabbing; }
-    .elem-rect {
-      border: 2px dashed; background: rgba(255,68,68,0.04);
-      min-width: 30px; min-height: 20px;
-    }
-    .review-elem:hover { box-shadow: 0 0 0 1px rgba(255,68,68,0.3); }
-    .review-elem.selected {
-      border-style: solid !important;
-      border-color: var(--accent) !important;
-      box-shadow: 0 0 0 2px rgba(232,166,36,0.4);
-    }
-
-    /* ─── Element Badge ─── */
-    .elem-badge {
-      position: absolute; top: -12px; left: -8px;
-      background: #ff4444; color: #fff;
-      font-size: 0.6rem; font-weight: 700;
-      padding: 1px 5px; border-radius: 8px;
-      pointer-events: none; white-space: nowrap; line-height: 1.4;
-    }
-
-    /* ─── Element Controls ─── */
-    .elem-controls {
-      display: none; position: absolute; top: -36px; left: 50%;
-      transform: translateX(-50%);
-      flex-direction: row; gap: 3px;
-      background: #16161fee; border-radius: 6px; padding: 3px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
-      z-index: 10; pointer-events: auto;
-    }
-    .review-elem.selected .elem-controls { display: flex; }
-    .elem-ctrl {
-      width: 28px; height: 28px; border-radius: 5px;
-      border: none; background: rgba(255,255,255,0.1);
-      color: var(--text-dim); font-size: 0.85rem;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: all 0.15s;
-    }
-    .elem-ctrl:hover { background: rgba(255,255,255,0.2); color: var(--text); }
-    .elem-del:hover { background: rgba(255,68,68,0.3); color: #ff4444; }
-
-    /* ─── Resize Corner Handle ─── */
-    .elem-resize-handle {
-      display: none; position: absolute; bottom: -5px; right: -5px;
-      width: 12px; height: 12px; background: var(--accent);
-      border-radius: 3px; cursor: nwse-resize; pointer-events: auto;
-      border: 2px solid #16161f;
-    }
-    .review-elem.selected .elem-resize-handle { display: block; }
-
-    /* ─── Preview during creation ─── */
-    .elem-preview { pointer-events: none !important; opacity: 0.5; border-style: dashed !important; }
-
-    /* ─── Note Badge (in panel) ─── */
-    .note-badge {
-      display: inline-block; background: #ff4444; color: #fff;
-      font-size: 0.58rem; font-weight: 700; padding: 1px 5px;
-      border-radius: 6px; cursor: pointer; vertical-align: middle;
-      margin-right: 4px; transition: opacity 0.15s;
-    }
-    .note-badge:hover { opacity: 0.7; }
-
-    /* ─── Review Mode Body Push ─── */
-    html.review-active {
-      margin-right: 280px;
-      transition: margin-right 0.3s ease;
-    }
-    html.review-active #reviewToggle {
-      right: 304px;
-    }
-
-    /* ─── Review Panel (compact 280px) ─── */
-    #reviewPanel {
-      position: fixed; top: 0; right: 0; bottom: 0; width: 280px; z-index: 10008;
-      background: #0e0e16; border-left: 2px solid var(--accent);
-      display: flex; flex-direction: column; font-family: var(--font-body);
-      box-shadow: -8px 0 40px rgba(0,0,0,0.6);
-      transition: transform 0.3s ease;
-    }
-    #reviewPanel.review-hidden { transform: translateX(100%); pointer-events: none; }
-    #reviewHeader {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 12px; background: #16161f; border-bottom: 1px solid var(--border);
-      font-weight: 600; color: var(--accent); font-size: 0.8rem;
-    }
-    #reviewHeader div { display: flex; gap: 4px; flex-wrap: wrap; }
-    #reviewHeader button {
-      background: rgba(255,255,255,0.08); border: 1px solid var(--border);
-      color: var(--text-dim); padding: 3px 8px; border-radius: 4px;
-      cursor: pointer; font-size: 0.68rem; transition: all 0.2s;
-    }
-    #reviewHeader button:hover { background: rgba(255,255,255,0.15); color: var(--text); }
-    #reviewClose { font-size: 1rem !important; padding: 2px 6px !important; }
-    .rv-hint {
-      padding: 8px 12px; font-size: 0.68rem; color: var(--text-dim);
-      background: rgba(232,166,36,0.06); border-bottom: 1px solid var(--border);
-      line-height: 1.5;
-    }
-    .rv-hint b { color: var(--accent); }
-    #reviewNotes {
-      flex: 1; overflow-y: auto; padding: 8px;
-      display: flex; flex-direction: column; gap: 6px;
-    }
-    .review-note {
-      background: #1a1a26; border: 1px solid var(--border); border-radius: 6px;
-      padding: 8px 10px; position: relative; font-size: 0.75rem; line-height: 1.5;
-    }
-    .review-note:hover { border-color: var(--accent-dim); }
-    .review-note-text { color: var(--text); white-space: pre-wrap; }
-    .review-note-ctx {
-      font-size: 0.62rem; color: var(--text-dim); margin-top: 4px;
-      padding: 4px 6px; background: rgba(0,0,0,0.3); border-radius: 4px;
-      font-family: monospace; max-height: 40px; overflow: hidden;
-    }
-    .review-note-time { font-size: 0.6rem; color: var(--text-dim); margin-top: 4px; }
-    .review-note-del {
-      position: absolute; top: 6px; right: 6px;
-      background: none; border: none; color: var(--text-dim);
-      cursor: pointer; font-size: 0.85rem; padding: 2px; opacity: 0; transition: opacity 0.2s;
-    }
-    .review-note:hover .review-note-del { opacity: 1; }
-    .review-note-del:hover { color: var(--red); }
-    #reviewInput {
-      padding: 8px; border-top: 1px solid var(--border); background: #16161f;
-    }
-    #reviewText {
-      width: 100%; min-height: 50px; max-height: 100px;
-      background: #0e0e16; border: 1px solid var(--border); border-radius: 5px;
-      color: var(--text); padding: 8px; font-family: var(--font-body);
-      font-size: 0.75rem; resize: vertical; line-height: 1.5;
-    }
-    #reviewText:focus { outline: none; border-color: var(--accent); }
-    #reviewText::placeholder { color: var(--text-dim); }
-
-    @media (max-width: 600px) {
-      html.review-active { margin-right: 0; }
-      html.review-active #reviewToggle { right: 24px; }
-      #reviewPanel { width: 100%; }
-    }
-  </style>
-
-  <script>
-  (function() {
-    /* ═══ Storage ═══ */
-    var NK = 'hcplus_notes_v2';
-    var EK = 'hcplus_elems_v2';
-    function load(k) { try { return JSON.parse(localStorage.getItem(k) || '[]'); } catch(e) { return []; } }
-    function persist(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
-
-    /* ═══ State ═══ */
-    var active = false;
-    var tool = 'rect';
-    var color = '#ff4444';
-    var notes = load(NK);
-    var elems = load(EK);
-    var selId = null;
-    var history = [];
-
-    /* ═══ DOM ═══ */
-    var $ = function(id) { return document.getElementById(id); };
-    var toggle = $('reviewToggle');
-    var ovl = $('elemOverlay');
-    var panel = $('reviewPanel');
-    var notesList = $('reviewNotes');
-    var ta = $('reviewText');
-    var btnClose = $('reviewClose');
-    var btnExport = $('reviewExport');
-    var btnClear = $('reviewClear');
-    var btnUndo = $('undoBtn');
-    var btnClearAll = $('clearAllBtn');
-
-    /* ═══ Helpers ═══ */
-    function uid() { return 'e' + Date.now().toString(36) + Math.random().toString(36).substr(2,4); }
-    function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-    function elemNum(id) { var i = elems.findIndex(function(e) { return e.id === id; }); return i >= 0 ? i + 1 : 0; }
-
-    /* ═══ Sizing ═══ */
-    var _rt = null;
-    function resizeAll() {
-      var h = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-      ovl.style.height = h + 'px';
-    }
-    function debResize() { clearTimeout(_rt); _rt = setTimeout(resizeAll, 150); }
-    window.addEventListener('resize', debResize);
-    new ResizeObserver(debResize).observe(document.body);
-
-    /* ═══ Context Capture — find DOM elements under a rect ═══ */
-    function captureContext(el) {
-      if (el.type !== 'rect') return [];
-      var results = [];
-      // Temporarily hide overlay to not interfere
-      ovl.style.display = 'none';
-      // Sample points across the rect area
-      var sx = el.x, sy = el.y, ex = el.x + (el.w || 0), ey = el.y + (el.h || 0);
-      var seen = {};
-      var pts = [
-        [sx + 10, sy + 10], [(sx+ex)/2, (sy+ey)/2], [ex - 10, ey - 10],
-        [sx + 10, (sy+ey)/2], [(sx+ex)/2, sy + 10], [ex - 10, sy + 10],
-        [(sx+ex)/2, ey - 10]
-      ];
-      pts.forEach(function(p) {
-        // Convert page coords to viewport coords
-        var vx = p[0] - window.scrollX;
-        var vy = p[1] - window.scrollY;
-        if (vx < 0 || vy < 0) return;
-        var found = document.elementsFromPoint(vx, vy);
-        found.forEach(function(elem) {
-          if (elem === document.body || elem === document.documentElement) return;
-          if (elem.id === 'elemOverlay' || elem.closest('#reviewPanel') || elem.closest('#reviewToggle')) return;
-          var key = elem.tagName + (elem.id || '') + (elem.className || '').substring(0, 30);
-          if (seen[key]) return;
-          seen[key] = true;
-          var txt = (elem.textContent || '').trim().substring(0, 200).replace(/\s+/g, ' ');
-          if (!txt && !elem.id) return;
-          results.push({
-            tag: elem.tagName.toLowerCase(),
-            id: elem.id || undefined,
-            class: (elem.className && typeof elem.className === 'string') ? elem.className.split(' ').slice(0, 3).join(' ') : undefined,
-            text: txt || undefined
-          });
-        });
-      });
-      ovl.style.display = '';
-      ovl.classList.add('active');
-      // Keep most specific elements (limit to 5)
-      return results.slice(0, 5);
-    }
-
-    /* ═══ Elements — Boxes only ═══ */
-
-    function mkElem(el) {
-      var d = document.createElement('div');
-      d.className = 'review-elem elem-rect';
-      d.dataset.id = el.id;
-      applyPos(d, el);
-
-      var b = document.createElement('span');
-      b.className = 'elem-badge';
-      b.textContent = '#' + elemNum(el.id);
-      d.appendChild(b);
-
-      var ctrls = document.createElement('div');
-      ctrls.className = 'elem-controls';
-      ctrls.innerHTML = '<button class="elem-ctrl elem-del" title="Delete">&times;</button>';
-      d.appendChild(ctrls);
-
-      var rh = document.createElement('div');
-      rh.className = 'elem-resize-handle';
-      d.appendChild(rh);
-
-      return d;
-    }
-
-    function applyPos(d, el) {
-      d.style.left = el.x + 'px';
-      d.style.top = el.y + 'px';
-      d.style.width = (el.w || 100) + 'px';
-      d.style.height = (el.h || 60) + 'px';
-      d.style.borderColor = el.color || color;
-    }
-
-    function renderElems() {
-      ovl.innerHTML = '';
-      elems.forEach(function(el) { ovl.appendChild(mkElem(el)); });
-    }
-
-    function refreshBadges() {
-      elems.forEach(function(el, i) {
-        var d = ovl.querySelector('[data-id="' + el.id + '"]');
-        if (d) { var b = d.querySelector('.elem-badge'); if (b) b.textContent = '#' + (i+1); }
-      });
-    }
-
-    /* ─── Selection ─── */
-    function select(id) {
-      deselect();
-      selId = id;
-      var d = ovl.querySelector('[data-id="' + id + '"]');
-      if (d) d.classList.add('selected');
-      var el = elems.find(function(e) { return e.id === id; });
-      if (el) {
-        ta.placeholder = 'Comment on Box #' + elemNum(id) + '...\nPress Enter to add.';
-        ta.focus();
-      }
-    }
-
-    function deselect() {
-      if (!selId) return;
-      var d = ovl.querySelector('[data-id="' + selId + '"]');
-      if (d) d.classList.remove('selected');
-      selId = null;
-      ta.placeholder = 'Type a note and press Enter...';
-    }
-
-    function removeElem(id) {
-      var d = ovl.querySelector('[data-id="' + id + '"]');
-      if (d) d.remove();
-      elems = elems.filter(function(e) { return e.id !== id; });
-      persist(EK, elems);
-      if (selId === id) deselect();
-      refreshBadges();
-      renderNotes();
-    }
-
-    /* ─── Drag: move / resize / create ─── */
-    var dm = null, dt = null, ds = null;
-
-    function startDrag(mode, e, id) {
-      dm = mode;
-      ds = { px: e.pageX, py: e.pageY };
-
-      if (mode === 'move') {
-        var el = elems.find(function(x) { return x.id === id; });
-        ds.ox = el.x; ds.oy = el.y; ds.id = id;
-        dt = ovl.querySelector('[data-id="' + id + '"]');
-      }
-      if (mode === 'resize') {
-        var el2 = elems.find(function(x) { return x.id === id; });
-        ds.ow = el2.w || 0; ds.oh = el2.h || 0; ds.id = id;
-        dt = ovl.querySelector('[data-id="' + id + '"]');
-      }
-      if (mode === 'create') {
-        dt = document.createElement('div');
-        dt.className = 'review-elem elem-rect elem-preview';
-        dt.style.borderColor = color;
-        dt.style.left = e.pageX + 'px';
-        dt.style.top = e.pageY + 'px';
-        dt.style.width = '0'; dt.style.height = '0';
-        ovl.appendChild(dt);
-      }
-
-      document.addEventListener('mousemove', onDrag);
-      document.addEventListener('mouseup', endDrag);
-      e.preventDefault();
-    }
-
-    function onDrag(e) {
-      var dx = e.pageX - ds.px, dy = e.pageY - ds.py;
-      if (dm === 'move') {
-        var el = elems.find(function(x) { return x.id === ds.id; });
-        el.x = ds.ox + dx; el.y = ds.oy + dy;
-        dt.style.left = el.x + 'px'; dt.style.top = el.y + 'px';
-      }
-      if (dm === 'resize') {
-        var el2 = elems.find(function(x) { return x.id === ds.id; });
-        el2.w = Math.max(30, ds.ow + dx);
-        el2.h = Math.max(20, ds.oh + dy);
-        dt.style.width = el2.w + 'px'; dt.style.height = el2.h + 'px';
-      }
-      if (dm === 'create') {
-        var x = Math.min(ds.px, e.pageX), y = Math.min(ds.py, e.pageY);
-        dt.style.left = x + 'px'; dt.style.top = y + 'px';
-        dt.style.width = Math.abs(dx) + 'px'; dt.style.height = Math.abs(dy) + 'px';
-      }
-    }
-
-    function endDrag() {
-      document.removeEventListener('mousemove', onDrag);
-      document.removeEventListener('mouseup', endDrag);
-
-      if (dm === 'move' || dm === 'resize') { persist(EK, elems); }
-
-      if (dm === 'create' && dt) {
-        var x = parseInt(dt.style.left), y = parseInt(dt.style.top);
-        var w = parseInt(dt.style.width), h = parseInt(dt.style.height);
-        dt.remove();
-        if (w > 10 && h > 10) {
-          var el = { id: uid(), type: 'rect', x: x, y: y, w: w, h: h, color: color };
-          elems.push(el); persist(EK, elems);
-          ovl.appendChild(mkElem(el));
-          history.push({ t: 'elem', id: el.id });
-          setTool('select');
-          select(el.id);
-        }
-      }
-      dm = dt = ds = null;
-    }
-
-    /* ─── Overlay event handler ─── */
-    ovl.addEventListener('mousedown', function(e) {
-      if (!active) return;
-
-      if (e.target.classList.contains('elem-resize-handle')) {
-        e.stopPropagation();
-        startDrag('resize', e, e.target.closest('.review-elem').dataset.id);
-        return;
-      }
-
-      var ctrl = e.target.closest('.elem-ctrl');
-      if (ctrl) {
-        e.stopPropagation();
-        var id = ctrl.closest('.review-elem').dataset.id;
-        if (ctrl.classList.contains('elem-del')) { removeElem(id); return; }
-        return;
-      }
-
-      if (tool === 'rect') { startDrag('create', e, null); return; }
-
-      var ed = e.target.closest('.review-elem');
-      if (ed && tool === 'select') {
-        select(ed.dataset.id);
-        startDrag('move', e, ed.dataset.id);
-        return;
-      }
-
-      if (tool === 'select') deselect();
-    });
-
-    /* ═══ Tool switching ═══ */
-    function setTool(t) {
-      tool = t;
-      ovl.classList.toggle('tool-select', t === 'select');
-      ovl.classList.toggle('tool-create', t === 'rect');
-      if (t !== 'select') deselect();
-    }
-
-    btnUndo.addEventListener('click', function() {
-      if (!history.length) return;
-      var a = history.pop();
-      if (a.t === 'elem') removeElem(a.id);
-    });
-
-    btnClearAll.addEventListener('click', function() {
-      if (!elems.length && !notes.length) return;
-      if (!confirm('Clear all boxes and notes?')) return;
-      elems = []; notes = []; history = [];
-      persist(EK, elems); persist(NK, notes);
-      renderElems(); renderNotes(); deselect();
-    });
-
-    /* ═══ Notes ═══ */
-    function renderNotes() {
-      notesList.innerHTML = '';
-      if (!notes.length) {
-        notesList.innerHTML = '<div style="color:var(--text-dim);font-size:0.72rem;padding:16px;text-align:center;line-height:1.8;">' +
-          'No notes yet.<br>Draw a box, then type below.</div>';
-        return;
-      }
-
-      notes.forEach(function(n, i) {
-        var div = document.createElement('div');
-        div.className = 'review-note';
-
-        var badge = '';
-        if (n.eid) {
-          var num = elemNum(n.eid);
-          badge = num > 0
-            ? '<span class="note-badge" data-eid="' + n.eid + '">#' + num + '</span>'
-            : '<span class="note-badge" style="opacity:0.4">#?</span>';
-        }
-
-        div.innerHTML =
-          '<div class="review-note-text">' + badge + esc(n.text) + '</div>' +
-          '<div class="review-note-time">' + n.time + '</div>' +
-          '<button class="review-note-del" data-idx="' + i + '">&times;</button>';
-        notesList.appendChild(div);
-      });
-
-      notesList.querySelectorAll('.note-badge[data-eid]').forEach(function(b) {
-        b.addEventListener('click', function() {
-          var id = b.dataset.eid;
-          setTool('select');
-          select(id);
-          var d = ovl.querySelector('[data-id="' + id + '"]');
-          if (d) d.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-      });
-
-      notesList.querySelectorAll('.review-note-del').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          notes.splice(parseInt(btn.dataset.idx), 1);
-          persist(NK, notes); renderNotes();
-        });
-      });
-
-      notesList.scrollTop = notesList.scrollHeight;
-    }
-
-    ta.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        var txt = ta.value.trim();
-        if (!txt) return;
-        var t = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
-        notes.push({ text: txt, eid: selId || null, time: t });
-        persist(NK, notes); ta.value = ''; renderNotes();
-      }
-    });
-
-    /* ═══ Export with Context ═══ */
-    btnExport.addEventListener('click', function() {
-      if (!notes.length && !elems.length) {
-        btnExport.textContent = 'Nothing';
-        setTimeout(function() { btnExport.textContent = 'Export'; }, 1200);
-        return;
-      }
-
-      // Build element data with context
-      var elemData = elems.map(function(el, i) {
-        var ref = '#' + (i + 1);
-        var obj = {
-          ref: ref, type: 'rect',
-          x: Math.round(el.x), y: Math.round(el.y),
-          color: el.color
-        };
-        if (el.w) obj.w = Math.round(el.w);
-        if (el.h) obj.h = Math.round(el.h);
-        // Capture DOM context under this rect
-        obj.context = captureContext(el);
-        // Attach notes for this element
-        var elNotes = notes.filter(function(n) { return n.eid === el.id; });
-        if (elNotes.length) {
-          obj.notes = elNotes.map(function(n) { return n.text; });
-        }
-        return obj;
-      });
-
-      // General notes (not attached to elements)
-      var generalNotes = notes.filter(function(n) { return !n.eid; }).map(function(n) {
-        return { text: n.text, time: n.time };
-      });
-
-      var data = {
-        exportedAt: new Date().toISOString(),
-        elements: elemData,
-        generalNotes: generalNotes,
-        summary: elems.length + ' boxes, ' + notes.length + ' notes'
-      };
-
-      var json = JSON.stringify(data, null, 2);
-
-      // Clipboard
-      function copyFB(t) {
-        var el = document.createElement('textarea'); el.value = t;
-        el.style.cssText = 'position:fixed;left:-9999px';
-        document.body.appendChild(el); el.select();
-        try { document.execCommand('copy'); } catch(ex) {}
-        document.body.removeChild(el);
-      }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(json).catch(function() { copyFB(json); });
-      } else { copyFB(json); }
-
-      // Download
-      var blob = new Blob([json], { type: 'application/json' });
-      var url = URL.createObjectURL(blob);
-      var a = document.createElement('a'); a.href = url; a.download = 'review-export.json'; a.click();
-      URL.revokeObjectURL(url);
-
-      btnExport.textContent = 'Copied!';
-      setTimeout(function() { btnExport.textContent = 'Export'; }, 1500);
-    });
-
-    btnClear.addEventListener('click', function() {
-      if (!notes.length) return;
-      if (!confirm('Clear all notes?')) return;
-      notes = []; persist(NK, notes); renderNotes();
-    });
-
-    /* ═══ Open / Close ═══ */
-    function open() {
-      active = true;
-      document.documentElement.classList.add('review-active');
-      panel.classList.remove('review-hidden');
-      ovl.classList.add('active');
-      toggle.classList.add('active');
-      toggle.innerHTML = '&#10006;';
-      setTimeout(function() { resizeAll(); }, 320);
-      setTool('rect');
-      renderNotes();
-    }
-
-    function close() {
-      active = false;
-      document.documentElement.classList.remove('review-active');
-      panel.classList.add('review-hidden');
-      ovl.classList.remove('active');
-      toggle.classList.remove('active');
-      toggle.innerHTML = '&#9998;';
-      deselect();
-    }
-
-    toggle.addEventListener('click', function() { active ? close() : open(); });
-    btnClose.addEventListener('click', close);
-
-    /* ═══ Keyboard ═══ */
-    document.addEventListener('keydown', function(e) {
-      if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
-      if (!active && (e.key === 'r' || e.key === 'R')) { e.preventDefault(); open(); return; }
-      if (!active) return;
-
-      var k = e.key.toLowerCase();
-      if (k === 'r') { e.preventDefault(); close(); return; }
-      if (k === 'escape') { deselect(); return; }
-      if ((k === 'delete' || k === 'backspace') && selId) { e.preventDefault(); removeElem(selId); return; }
-      if (k === 'b') { e.preventDefault(); setTool('rect'); return; }
-      if (k === 'v') { e.preventDefault(); setTool('select'); return; }
-      if (e.key === 'z' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); btnUndo.click(); }
-    });
-
-    /* ═══ Init ═══ */
-    renderElems();
-    renderNotes();
-    resizeAll();
-  })();
-  </script>
 
 </body>
 </html>
