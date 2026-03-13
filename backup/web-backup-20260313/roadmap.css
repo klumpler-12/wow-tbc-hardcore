@@ -664,3 +664,60 @@ body.show-dev-notes .rm-dev-note {
   .rm-controls { display: none; }
   .nav { position: static !important; }
 }
+
+/* ═══════════════════════════════════════════
+   Checkpoints
+   ═══════════════════════════════════════════ */
+.rm-checkpoint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 14px;
+  background: rgba(57,255,20,0.06);
+  border: 1px solid rgba(57,255,20,0.15);
+  border-left: 3px solid var(--neon-green);
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+.rm-checkpoint-icon { font-size: 1rem; }
+.rm-checkpoint-label { font-weight: 700; color: var(--neon-green); white-space: nowrap; }
+.rm-checkpoint-text { color: var(--text-dim); }
+
+/* ═══════════════════════════════════════════
+   Expandable details
+   ═══════════════════════════════════════════ */
+.rm-expandable {
+  margin-top: 8px;
+  cursor: pointer;
+  border: 1px solid rgba(128,64,212,0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.rm-expandable:hover { border-color: rgba(128,64,212,0.35); }
+.rm-expand-label {
+  display: block;
+  padding: 8px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--purple);
+  transition: background 0.2s;
+}
+.rm-expandable:hover .rm-expand-label { background: rgba(128,64,212,0.06); }
+.rm-expand-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 12px;
+}
+.rm-expandable.open .rm-expand-label span:first-child { display: inline-block; transform: rotate(90deg); }
+.rm-expandable.open .rm-expand-content {
+  max-height: 300px;
+  padding: 0 12px 10px;
+}
+.rm-expand-content p {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}

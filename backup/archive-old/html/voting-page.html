@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Vote — TBC Hardcore</title>
+    <meta name="description"
+        content="Shape the rules for TBC Hardcore. Vote on death penalties, SSF rules, boosting, and scoring.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ═══ Navigation ═══ -->
+    <nav class="nav scrolled" id="nav">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <div class="nav-logo-icon">⚔️</div>
+                <span class="nav-logo-text">TBC Hardcore</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#modes">Modes</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#streamer">Streamer</a></li>
+                <li><a href="index.html#scoring">Scoring</a></li>
+                <li><a href="voting.html" style="color: var(--portal-purple);">Community Vote</a></li>
+            </ul>
+            <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══ Community Voting ═══ -->
+    <section class="voting" id="voting" style="padding-top: calc(var(--section-pad) + 80px);">
+        <div class="ambient-orb orb-orange" style="top: 100px; right: -200px;"></div>
+        <div class="container">
+            <div class="voting-header reveal">
+                <div class="section-label">Shape The Rules</div>
+                <h2 class="section-title">Community Vote</h2>
+                <p class="section-desc">
+                    This addon is built by the community, for the community.
+                    Cast your vote on the rules that matter most.
+                </p>
+            </div>
+
+            <div class="voting-stats reveal">
+                <div class="voting-stat">
+                    <div class="voting-stat-num" id="totalVotes">0</div>
+                    <div class="voting-stat-label">Total Votes</div>
+                </div>
+                <div class="voting-stat">
+                    <div class="voting-stat-num">6</div>
+                    <div class="voting-stat-label">Active Polls</div>
+                </div>
+                <div class="voting-stat">
+                    <div class="voting-stat-num" id="votersCount">0</div>
+                    <div class="voting-stat-label">Participants</div>
+                </div>
+            </div>
+
+            <div class="polls-grid" id="pollsGrid">
+                <!-- Polls injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand">⚔️ TBC Hardcore</div>
+            <p class="footer-desc">
+                An open-source addon project making hardcore TBC feasible.
+                Built for OnlyFangs 3 and the wider WoW community.
+            </p>
+            <ul class="footer-links">
+                <li><a href="https://github.com/klumpler-12/wow-tbc-hardcore" target="_blank">GitHub</a></li>
+                <li><a href="index.html#modes">Modes</a></li>
+                <li><a href="index.html#scoring">Scoring</a></li>
+                <li><a href="index.html#ideas">Research Hub</a></li>
+            </ul>
+            <p class="footer-copy">© 2026 TBC Hardcore Project · Not affiliated with Blizzard Entertainment</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -7,26 +7,40 @@
   <meta name="description" content="Development roadmap for Hardcore Plus, the hybrid hardcore addon for WoW: The Burning Crusade. Track our progress from concept to launch.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="roadmap.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=27">
+  <link rel="stylesheet" href="css/review.css?v=2">
+  <link rel="stylesheet" href="css/roadmap.css?v=2">
 </head>
 <body>
+
+  <!-- ═══ Background (matches main page) ═══ -->
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
 
   <!-- ═══ Navigation ═══ -->
   <nav class="nav" id="nav">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo">
-        HARDCORE<span class="accent">+</span>
-        <span class="nav-logo-sub">Hybrid Hardcore</span>
-      </a>
+      <a href="index.html" class="nav-logo"><span class="nav-hybrid">Hybrid</span><span class="nav-hc">HC</span><span class="nav-subtitle">Designed for <span class="nav-subtitle-tbc">The Burning Crusade</span></span></a>
       <div class="nav-links" id="navLinks">
-        <a href="index.html#features">Features</a>
-        <a href="index.html#for-you">For You</a>
-        <a href="index.html#scoring">Scoring</a>
-        <a href="index.html#houses">Houses</a>
-        <a href="index.html#download">Guild Sites</a>
+        <a href="index.html#rule-config">Features</a>
+        <a href="index.html#guild-tools">Guild Tools</a>
         <a href="roadmap.html" class="nav-link-active">Roadmap</a>
+        <a href="index.html#get-started" class="nav-cta">Get Started</a>
+      </div>
+      <div class="nav-toggles">
+        <div class="review-mode-toggle" id="reviewModeToggle" title="Toggle Review Mode">
+          <span class="review-mode-label">Review</span>
+          <label class="review-switch">
+            <input type="checkbox" id="reviewModeCheck">
+            <span class="review-slider"></span>
+          </label>
+        </div>
+        <div class="lang-toggle" id="langToggle" title="Language">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -123,6 +137,11 @@
                   <span class="rm-dev-note-tag">Dev Note</span>
                   Architecture is modular by design so guilds can enable/disable individual systems. Priority is getting the death detection and rule engine stable before anything else.
                 </div>
+                <div class="rm-checkpoint">
+                  <span class="rm-checkpoint-icon">🏁</span>
+                  <span class="rm-checkpoint-label">Checkpoint:</span>
+                  <span class="rm-checkpoint-text">Architecture doc reviewed and approved. Module dependency graph locked.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -172,9 +191,11 @@
                     <div class="rm-step-content">
                       <span class="rm-step-label">Addon communication protocol</span>
                       <ul class="rm-substeps">
-                        <li>Prefix registration</li>
-                        <li>Message serialization / deserialization</li>
-                        <li>Throttling and queue management</li>
+                        <li>Prefix registration (GUILD, WHISPER, RAID channels)</li>
+                        <li>Message types: death events, life updates, score changes, rule sync, draft picks, house assignments</li>
+                        <li>Serialization format: compact string encoding for bandwidth efficiency</li>
+                        <li>Throttling: max 10 msg/sec per channel, queue overflow handling</li>
+                        <li>Sync protocol: full state on login, delta updates during play</li>
                       </ul>
                     </div>
                   </li>
@@ -193,6 +214,11 @@
                 <div class="rm-dev-note">
                   <span class="rm-dev-note-tag">Dev Note</span>
                   Death detection is the single most critical piece. Must handle edge cases: disconnect deaths, instance resets, battleground deaths (excluded), and spirit healer interactions.
+                </div>
+                <div class="rm-checkpoint">
+                  <span class="rm-checkpoint-icon">🏁</span>
+                  <span class="rm-checkpoint-label">Checkpoint:</span>
+                  <span class="rm-checkpoint-text">Addon loads in TBC client. Character data persists between sessions. Basic death event fires.</span>
                 </div>
               </div>
             </div>
@@ -225,6 +251,12 @@
                         <li>Condition evaluator (level ranges, zones, group size)</li>
                         <li>Action dispatcher (punish, reward, announce)</li>
                       </ul>
+                      <div class="rm-expandable" onclick="this.classList.toggle('open')">
+                        <span class="rm-expand-label">&#9656; How rule sync works</span>
+                        <div class="rm-expand-content">
+                          <p>When a GM changes a rule, the addon broadcasts a GUILD message with the full ruleset hash. Members compare hashes — if different, they request a full sync. This prevents stale rules and ensures everyone plays by the same settings. Rule changes are version-stamped so rollbacks are possible.</p>
+                        </div>
+                      </div>
                     </div>
                   </li>
                   <li class="rm-step">
@@ -253,6 +285,11 @@
                 <div class="rm-dev-note">
                   <span class="rm-dev-note-tag">Dev Note</span>
                   The rule engine is the core differentiator. It needs to be flexible enough for any guild's ruleset while being simple enough for non-technical GMs to configure.
+                </div>
+                <div class="rm-checkpoint">
+                  <span class="rm-checkpoint-icon">🏁</span>
+                  <span class="rm-checkpoint-label">Checkpoint:</span>
+                  <span class="rm-checkpoint-text">GM can configure rules in-game. Rules sync to all guild members. Import/export works.</span>
                 </div>
               </div>
             </div>
@@ -292,7 +329,7 @@
                     <div class="rm-step-content">
                       <span class="rm-step-label">Achievement system</span>
                       <ul class="rm-substeps">
-                        <li>Micro-achievement definitions (1000+ possible)</li>
+                        <li>Custom guild achievement definitions</li>
                         <li>Progress tracking and toast notifications</li>
                         <li>Achievement point aggregation</li>
                       </ul>
@@ -324,6 +361,11 @@
                 <div class="rm-dev-note">
                   <span class="rm-dev-note-tag">Dev Note</span>
                   Scoring needs careful balancing. Survival-time scoring is straightforward but weighted-points needs tuning. Plan to ship with conservative defaults and expose multipliers to GMs.
+                </div>
+                <div class="rm-checkpoint">
+                  <span class="rm-checkpoint-icon">🏁</span>
+                  <span class="rm-checkpoint-label">Checkpoint:</span>
+                  <span class="rm-checkpoint-text">Deaths tracked with full context. Scoring calculates correctly. Leaderboard displays in-game.</span>
                 </div>
               </div>
             </div>
@@ -396,6 +438,11 @@
                   <span class="rm-dev-note-tag">Dev Note</span>
                   Houses are the social glue. Draft system is stretch goal but even basic random assignment creates immediate team identity and rivalry.
                 </div>
+                <div class="rm-checkpoint">
+                  <span class="rm-checkpoint-icon">🏁</span>
+                  <span class="rm-checkpoint-label">Checkpoint:</span>
+                  <span class="rm-checkpoint-text">Houses created, players assigned. House scores aggregate. Weekly standings resolve.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -456,6 +503,11 @@
                   <span class="rm-dev-note-tag">Dev Note</span>
                   Punishments must be fun, not frustrating. The RP-walk and gear lock are crowd favorites from testing. Shame announcements add the social pressure that makes HC exciting.
                 </div>
+                <div class="rm-checkpoint">
+                  <span class="rm-checkpoint-icon">🏁</span>
+                  <span class="rm-checkpoint-label">Checkpoint:</span>
+                  <span class="rm-checkpoint-text">Punishments trigger on death. Rewards trigger on milestones. All configurable by GM.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -487,6 +539,12 @@
                         <li>Desktop notifications for deaths and events</li>
                         <li>Overlay / OBS integration for streamers</li>
                       </ul>
+                      <div class="rm-expandable" onclick="this.classList.toggle('open')">
+                        <span class="rm-expand-label">&#9656; How real-time sync works</span>
+                        <div class="rm-expand-content">
+                          <p>The companion app watches the WTF/SavedVariables folder for file changes. When the game writes new data (on logout, /reload, or zone change), the app detects it, parses the Lua table, and pushes a diff to the web API. Guild sites update within seconds. For streamers, an OBS overlay websocket provides sub-second death notifications.</p>
+                        </div>
+                      </div>
                     </div>
                   </li>
                   <li class="rm-step">
@@ -526,6 +584,11 @@
                 <div class="rm-dev-note">
                   <span class="rm-dev-note-tag">Dev Note</span>
                   The companion app is ambitious but the streamer overlay alone could drive adoption. Guild sites should be zero-config: install addon, data appears on your page.
+                </div>
+                <div class="rm-checkpoint">
+                  <span class="rm-checkpoint-icon">🏁</span>
+                  <span class="rm-checkpoint-label">Checkpoint:</span>
+                  <span class="rm-checkpoint-text">Companion app syncs data. Guild site auto-generates. Player profiles accessible via URL.</span>
                 </div>
               </div>
             </div>
@@ -598,6 +661,11 @@
                   <span class="rm-dev-note-tag">Dev Note</span>
                   Launch timing ideally coincides with a new OnlyFangs season. CurseForge listing is critical for discoverability. Discord bot can mirror in-game death feeds.
                 </div>
+                <div class="rm-checkpoint">
+                  <span class="rm-checkpoint-icon">🏁</span>
+                  <span class="rm-checkpoint-label">Checkpoint:</span>
+                  <span class="rm-checkpoint-text">CurseForge listing live. Zero critical bugs. Setup guide published. Partner guilds onboarded.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -612,13 +680,13 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <span class="nav-logo">HARDCORE<span class="accent">+</span></span>
+        <span class="nav-logo"><span class="nav-hybrid">Hybrid</span><span class="nav-hc">HC</span></span>
         <p>Hybrid Hardcore for WoW: The Burning Crusade</p>
       </div>
       <div class="footer-links">
         <a href="#">GitHub</a>
         <a href="#">CurseForge</a>
-        <a href="#">Patreon</a>
+        <a href="roadmap.html">Roadmap</a>
         <a href="#">Discord</a>
       </div>
       <div class="footer-copy">
@@ -701,6 +769,30 @@
       observer.observe(el);
     });
   </script>
+
+  <!-- ═══ Review & Language Toggle ═══ -->
+  <button id="reviewToggle" title="Toggle annotations (R)">📝</button>
+  <div id="elemOverlay"></div>
+  <div id="reviewPanel" class="review-hidden">
+    <div id="reviewHeader">
+      <span>Annotations</span>
+      <div>
+        <button id="btnClaude" title="Export for Claude">📋 Claude</button>
+        <button id="btnJSON" title="Export/Import JSON">💾 JSON</button>
+        <button id="reviewClose" title="Close panel">✕</button>
+      </div>
+    </div>
+    <div class="rv-hint">
+      <b>Select</b> tool — click boxes to edit.<br>
+      <b>Create</b> tool — drag to draw new boxes.
+    </div>
+    <div id="reviewNotes"></div>
+    <div id="reviewInput">
+      <textarea id="reviewText" placeholder="Type a note and press Enter…"></textarea>
+    </div>
+  </div>
+  <script src="js/review.js?v=2"></script>
+  <script src="js/lang-toggle.js?v=4"></script>
 
 </body>
 </html>

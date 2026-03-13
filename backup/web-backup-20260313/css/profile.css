@@ -1,0 +1,560 @@
+/* Profile Page Specific */
+.profile-page {
+    padding: 100px 0 60px;
+    min-height: 100vh;
+}
+
+.profile-banner {
+    position: relative;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: -50px;
+}
+
+.profile-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+}
+
+.profile-banner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(transparent, var(--bg-base));
+}
+
+.profile-main {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .profile-main {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Sidebar */
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.profile-card {
+    padding: 20px;
+    border-radius: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+
+.profile-avatar-wrap {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.profile-avatar-wrap img {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    border: 3px solid var(--purple);
+    box-shadow: 0 0 20px rgba(155, 89, 240, 0.3);
+}
+
+.profile-char-name {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.profile-char-class {
+    font-size: 0.85rem;
+    color: #f58cba;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.profile-char-mode {
+    font-size: 0.72rem;
+    color: var(--purple);
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.profile-links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 14px;
+}
+
+.pfl {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(19, 16, 42, 0.4);
+    font-size: 0.8rem;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.pfl:hover {
+    background: rgba(19, 16, 42, 0.8);
+    color: var(--text-bright);
+}
+
+.pfl.twitch {
+    color: #9146ff;
+}
+
+.pfl.youtube {
+    color: #ff0000;
+}
+
+.profile-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.ps-box {
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(19, 16, 42, 0.6);
+    text-align: center;
+}
+
+.ps-num {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--neon-green);
+}
+
+.ps-lbl {
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Content Area */
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pc-section {
+    padding: 20px;
+    border-radius: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+
+.pc-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pc-title span {
+    font-size: 18px;
+}
+
+/* Gear Grid */
+.gear-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+}
+
+.gi {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(19, 16, 42, 0.4);
+    border-left: 3px solid;
+}
+
+.gi.epic {
+    border-color: #a335ee;
+}
+
+.gi.rare {
+    border-color: #0070dd;
+}
+
+.gi.uncommon {
+    border-color: #1eff00;
+}
+
+.gi.legendary {
+    border-color: #ff8000;
+}
+
+.gi-slot {
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    min-width: 50px;
+}
+
+.gi-name {
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+.gi.epic .gi-name {
+    color: #a335ee;
+}
+
+.gi.rare .gi-name {
+    color: #0070dd;
+}
+
+.gi.uncommon .gi-name {
+    color: #1eff00;
+}
+
+.gi.legendary .gi-name {
+    color: #ff8000;
+}
+
+/* Characters Table */
+.char-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.char-table th {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.char-table td {
+    font-size: 0.8rem;
+    color: var(--text);
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(240, 238, 245, 0.03);
+}
+
+.char-table tr:hover td {
+    background: rgba(19, 16, 42, 0.4);
+}
+
+.ct-status {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+
+.ct-status.live {
+    color: var(--neon-green);
+    background: rgba(57, 255, 20, 0.08);
+}
+
+.ct-status.voided {
+    color: var(--red);
+    background: rgba(212, 64, 64, 0.08);
+}
+
+/* Death Log */
+.death-entry {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(212, 64, 64, 0.08);
+    border: 1px solid rgba(220, 38, 38, 0.12);
+    margin-bottom: 8px;
+}
+
+.death-entry img {
+    width: 80px;
+    height: 64px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    flex-shrink: 0;
+}
+
+.de-info {
+    flex: 1;
+}
+
+.de-char {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--red);
+}
+
+.de-detail {
+    font-size: 0.72rem;
+    color: var(--text);
+    margin-top: 2px;
+}
+
+.de-time {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    margin-top: 2px;
+}
+
+/* Deathclip */
+.dc-wrap {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    margin-top: 10px;
+}
+
+.dc-video {
+    width: 100%;
+    display: block;
+    max-height: 300px;
+    background: #000;
+}
+
+.dc-caption {
+    padding: 8px 12px;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Achievements */
+.ach-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.ach {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: rgba(19, 16, 42, 0.4);
+    border: 1px solid rgba(240, 238, 245, 0.04);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ach-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.ach-info {
+    flex: 1;
+}
+
+.ach-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-bright);
+}
+
+.ach-desc {
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    margin-top: 2px;
+}
+
+.ach-date {
+    font-size: 0.6rem;
+    color: var(--gold-loot);
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ember-orange);
+    font-size: 0.85rem;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: var(--gold-loot);
+}
+
+/* Gear Icons (Wowhead) */
+.gi-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.gi.epic .gi-icon {
+    border-color: #a335ee;
+    box-shadow: 0 0 6px rgba(163, 53, 238, 0.3);
+}
+
+.gi.rare .gi-icon {
+    border-color: #0070dd;
+    box-shadow: 0 0 6px rgba(0, 112, 221, 0.3);
+}
+
+.gi.uncommon .gi-icon {
+    border-color: #1eff00;
+}
+
+.gi.legendary .gi-icon {
+    border-color: #ff8000;
+    box-shadow: 0 0 6px rgba(255, 128, 0, 0.3);
+}
+
+/* Raid Achievements */
+.raid-ach-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.raid-ach {
+    border-radius: 10px;
+    background: rgba(19, 16, 42, 0.4);
+    border: 1px solid rgba(240, 238, 245, 0.04);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.raid-ach:hover {
+    border-color: rgba(240, 238, 245, 0.1);
+}
+
+.raid-ach-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+}
+
+.raid-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.raid-ach-info {
+    flex: 1;
+}
+
+.raid-ach-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-bright);
+}
+
+.raid-ach-meta {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    margin-top: 2px;
+}
+
+.raid-expand-arrow {
+    color: var(--text-dim);
+    font-size: 14px;
+    transition: transform 0.2s;
+}
+
+.raid-ach.expanded .raid-expand-arrow {
+    transform: rotate(90deg);
+}
+
+.raid-ach-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.raid-ach.expanded .raid-ach-details {
+    max-height: 500px;
+}
+
+.raid-detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 16px;
+    font-size: 0.75rem;
+    color: var(--text);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.rd-lbl {
+    color: var(--text-dim);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.raid-battle-log {
+    padding: 8px 16px 12px;
+}
+
+.rbl-entry {
+    font-size: 0.7rem;
+    color: var(--text);
+    padding: 2px 0;
+}
+
+.rbl-entry.dim {
+    color: var(--red);
+    font-weight: 500;
+}
+
+/* Deathless notice */
+.deathless-notice {
+    padding: 14px;
+    border-radius: 10px;
+    background: rgba(57, 255, 20, 0.06);
+    border: 1px solid rgba(57, 255, 20, 0.12);
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--neon-green);
+    font-weight: 500;
+}
+
+.deathless-notice .streak {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+    font-weight: 400;
+}

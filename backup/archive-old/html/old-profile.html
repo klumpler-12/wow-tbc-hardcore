@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pupi — TBC Hardcore Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Profile Page Specific */
+        .profile-page {
+            padding: 100px 0 60px;
+            min-height: 100vh;
+        }
+
+        .profile-banner {
+            position: relative;
+            height: 200px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: -50px;
+        }
+
+        .profile-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+
+        .profile-banner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(transparent, var(--bg-base));
+        }
+
+        .profile-main {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .profile-main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sidebar */
+        .profile-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .profile-card {
+            padding: 20px;
+            border-radius: 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+        }
+
+        .profile-avatar-wrap {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .profile-avatar-wrap img {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            border: 3px solid var(--portal-purple);
+            box-shadow: 0 0 20px rgba(155, 89, 240, 0.3);
+        }
+
+        .profile-char-name {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .profile-char-class {
+            font-size: 0.85rem;
+            color: #f58cba;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .profile-char-mode {
+            font-size: 0.72rem;
+            color: var(--portal-purple);
+            text-align: center;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .profile-links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 14px;
+        }
+
+        .pfl {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(19, 16, 42, 0.4);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .pfl:hover {
+            background: rgba(19, 16, 42, 0.8);
+            color: var(--text-primary);
+        }
+
+        .pfl.twitch {
+            color: #9146ff;
+        }
+
+        .pfl.youtube {
+            color: #ff0000;
+        }
+
+        .profile-stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .ps-box {
+            padding: 12px;
+            border-radius: 8px;
+            background: rgba(19, 16, 42, 0.6);
+            text-align: center;
+        }
+
+        .ps-num {
+            display: block;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--fel-green);
+        }
+
+        .ps-lbl {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Content Area */
+        .profile-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .pc-section {
+            padding: 20px;
+            border-radius: 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+        }
+
+        .pc-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pc-title span {
+            font-size: 18px;
+        }
+
+        /* Gear Grid */
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+
+        .gi {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            background: rgba(19, 16, 42, 0.4);
+            border-left: 3px solid;
+        }
+
+        .gi.epic {
+            border-color: #a335ee;
+        }
+
+        .gi.rare {
+            border-color: #0070dd;
+        }
+
+        .gi.uncommon {
+            border-color: #1eff00;
+        }
+
+        .gi.legendary {
+            border-color: #ff8000;
+        }
+
+        .gi-slot {
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            min-width: 50px;
+        }
+
+        .gi-name {
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        .gi.epic .gi-name {
+            color: #a335ee;
+        }
+
+        .gi.rare .gi-name {
+            color: #0070dd;
+        }
+
+        .gi.uncommon .gi-name {
+            color: #1eff00;
+        }
+
+        .gi.legendary .gi-name {
+            color: #ff8000;
+        }
+
+        /* Characters Table */
+        .char-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .char-table th {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: left;
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .char-table td {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            padding: 8px 10px;
+            border-bottom: 1px solid rgba(240, 238, 245, 0.03);
+        }
+
+        .char-table tr:hover td {
+            background: rgba(19, 16, 42, 0.4);
+        }
+
+        .ct-status {
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+
+        .ct-status.live {
+            color: var(--fel-green);
+            background: var(--fel-green-dim);
+        }
+
+        .ct-status.voided {
+            color: var(--blood-red);
+            background: var(--blood-dim);
+        }
+
+        /* Death Log */
+        .death-entry {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 10px;
+            background: var(--blood-dim);
+            border: 1px solid rgba(220, 38, 38, 0.12);
+            margin-bottom: 8px;
+        }
+
+        .death-entry img {
+            width: 80px;
+            height: 64px;
+            border-radius: 6px;
+            object-fit: cover;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            flex-shrink: 0;
+        }
+
+        .de-info {
+            flex: 1;
+        }
+
+        .de-char {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--blood-red);
+        }
+
+        .de-detail {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .de-time {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* Deathclip */
+        .dc-wrap {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            margin-top: 10px;
+        }
+
+        .dc-video {
+            width: 100%;
+            display: block;
+            max-height: 300px;
+            background: #000;
+        }
+
+        .dc-caption {
+            padding: 8px 12px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Achievements */
+        .ach-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .ach {
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: rgba(19, 16, 42, 0.4);
+            border: 1px solid rgba(240, 238, 245, 0.04);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ach-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .ach-info {
+            flex: 1;
+        }
+
+        .ach-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .ach-desc {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .ach-date {
+            font-size: 0.6rem;
+            color: var(--gold-loot);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--ember-orange);
+            font-size: 0.85rem;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--gold-loot);
+        }
+
+        /* Gear Icons (Wowhead) */
+        .gi-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .gi.epic .gi-icon {
+            border-color: #a335ee;
+            box-shadow: 0 0 6px rgba(163, 53, 238, 0.3);
+        }
+
+        .gi.rare .gi-icon {
+            border-color: #0070dd;
+            box-shadow: 0 0 6px rgba(0, 112, 221, 0.3);
+        }
+
+        .gi.uncommon .gi-icon {
+            border-color: #1eff00;
+        }
+
+        .gi.legendary .gi-icon {
+            border-color: #ff8000;
+            box-shadow: 0 0 6px rgba(255, 128, 0, 0.3);
+        }
+
+        /* Raid Achievements */
+        .raid-ach-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .raid-ach {
+            border-radius: 10px;
+            background: rgba(19, 16, 42, 0.4);
+            border: 1px solid rgba(240, 238, 245, 0.04);
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .raid-ach:hover {
+            border-color: rgba(240, 238, 245, 0.1);
+        }
+
+        .raid-ach-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+        }
+
+        .raid-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .raid-ach-info {
+            flex: 1;
+        }
+
+        .raid-ach-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .raid-ach-meta {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .raid-expand-arrow {
+            color: var(--text-muted);
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .raid-ach.expanded .raid-expand-arrow {
+            transform: rotate(90deg);
+        }
+
+        .raid-ach-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .raid-ach.expanded .raid-ach-details {
+            max-height: 500px;
+        }
+
+        .raid-detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 16px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .rd-lbl {
+            color: var(--text-muted);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .raid-battle-log {
+            padding: 8px 16px 12px;
+        }
+
+        .rbl-entry {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            padding: 2px 0;
+        }
+
+        .rbl-entry.dim {
+            color: var(--blood-red);
+            font-weight: 500;
+        }
+
+        /* Module Customization */
+        .module-controls {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: -10px;
+        }
+
+        .btn-sm {
+            padding: 8px 14px;
+            font-size: 0.8rem;
+        }
+
+        .pc-section {
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+            position: relative;
+        }
+
+        .editing .pc-section {
+            border: 1px dashed rgba(255, 255, 255, 0.4);
+            cursor: grab;
+            background: rgba(19, 16, 42, 0.85);
+        }
+
+        .editing .pc-section:active {
+            cursor: grabbing;
+        }
+
+        .editing .pc-section::before {
+            content: '⠿';
+            position: absolute;
+            top: 14px;
+            right: 45px;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: grab;
+        }
+
+        .mod-hide-btn {
+            display: none;
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--blood-red);
+            border: none;
+            border-radius: 4px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mod-hide-btn:hover {
+            background: var(--blood-red);
+            color: white;
+        }
+
+        .editing .mod-hide-btn {
+            display: flex;
+        }
+
+        .module-tray {
+            display: none;
+            background: var(--bg-deep);
+            border: 1px solid var(--portal-purple);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .module-tray.open {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tray-grid {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .tray-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tray-item:hover {
+            background: var(--portal-purple-dim);
+            border-color: var(--portal-purple);
+            color: white;
+        }
+
+        .tray-item.active {
+            opacity: 0.5;
+            pointer-events: none;
+            border-color: transparent;
+        }
+
+        .drag-over {
+            border: 2px dashed var(--portal-purple) !important;
+            opacity: 0.5;
+        }
+
+        /* Hidden Modules defaults */
+        #mod-session,
+        #mod-walking {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Nav -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo">
+                    <span class="nav-logo-text">TBC HARDCORE PLUS</span>
+                </a>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" data-i18n="nav.home">Home</a>
+                    <a href="research.html" data-i18n="nav.ideas">Research Hub</a>
+                    <a href="profile.html" class="active" data-i18n="nav.profile">Profile</a>
+                    <a href="development.html" data-i18n="nav.dev">Development</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="nav-lang-toggle">
+                    <button id="lang-en" class="btn-lang" title="English">EN</button>
+                    <button id="lang-de" class="btn-lang" title="Deutsch">DE</button>
+                </div>
+                <button class="nav-mobile-toggle" id="navToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-page">
+        <div class="container">
+            <a href="index.html#streamer" class="back-link">← Back to Streamer Tools</a>
+
+            <!-- Banner -->
+            <div class="profile-banner">
+                <img src="assets/stream_bg.png" alt="Banner">
+                <div class="profile-banner-overlay"></div>
+            </div>
+
+            <div class="profile-main">
+                <!-- Sidebar -->
+                <div class="profile-sidebar">
+                    <div class="profile-card hcplus-highlight">
+                        <div class="profile-avatar-wrap">
+                            <img src="assets/paladin_armory.png" alt="Pupi">
+                        </div>
+                        <div class="profile-char-name">Pupi</div>
+                        <div class="profile-char-class">Retribution Paladin</div>
+                        <div class="profile-char-mode">HC Plus · Level 68</div>
+                        <div class="profile-links-list">
+                            <a href="#" class="pfl twitch">📺 twitch.tv/pupi</a>
+                            <a href="#" class="pfl youtube">▶️ YouTube Channel</a>
+                            <a href="#" class="pfl">🌐 WoW Armory</a>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-stat-grid">
+                            <div class="ps-box"><span class="ps-num">3,475</span><span class="ps-lbl">Score</span></div>
+                            <div class="ps-box"><span class="ps-num">#3</span><span class="ps-lbl">Rank</span></div>
+                            <div class="ps-box"><span class="ps-num">1</span><span class="ps-lbl">Deaths</span></div>
+                            <div class="ps-box"><span class="ps-num">1/0</span><span class="ps-lbl">GB W/L</span></div>
+                            <div class="ps-box"><span class="ps-num">142h</span><span class="ps-lbl">Playtime</span>
+                            </div>
+                            <div class="ps-box"><span class="ps-num">3</span><span class="ps-lbl">Characters</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="pc-title"><span>📝</span> Current Plan</div>
+                        <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.6; font-style:italic;">
+                            "Pushing Pupi to 70 for Karazhan. Looking for an HC Plus guild on Firemaw. Stream schedule:
+                            Tue/Thu 8pm CET."</p>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="profile-content">
+
+                    <div class="module-controls">
+                        <button id="editLayoutBtn" class="btn btn-ghost btn-sm">⚙️ Customize Modules</button>
+                    </div>
+
+                    <div class="module-tray" id="moduleTray">
+                        <div style="font-size: 0.9rem; font-weight: 600; color: white;">Available Modules</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">Click to add to
+                            your profile layout. Drag sections below to reorder.</div>
+                        <div class="tray-grid" id="trayGrid">
+                            <div class="tray-item active" data-mod="mod-gear">⚔️ Equipped Gear</div>
+                            <div class="tray-item active" data-mod="mod-chars">👥 Characters</div>
+                            <div class="tray-item active" data-mod="mod-boosts">⚡ Boost Dashboard</div>
+                            <div class="tray-item active" data-mod="mod-deathlog">💀 Death Log</div>
+                            <div class="tray-item active" data-mod="mod-achieves">🏆 Achievements</div>
+                            <div class="tray-item active" data-mod="mod-raid">🏰 Raid Achievements</div>
+                            <div class="tray-item" data-mod="mod-session">⏱️ Session Time</div>
+                            <div class="tray-item" data-mod="mod-walking">🥾 Walking Distance</div>
+                        </div>
+                    </div>
+
+                    <div id="moduleContainer" style="display: flex; flex-direction: column; gap: 20px;">
+
+                        <!-- Hardcore Plus Boost Dashboard -->
+                        <div class="pc-section" id="mod-boosts" draggable="false">
+                            <button class="mod-hide-btn" title="Hide Module">×</button>
+                            <div class="pc-title"><span>⚡</span> Hardcore Plus: Boost Dashboard</div>
+                            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+                                One Level 58 boost is earned every time a character reaches Level 70 in Hardcore Plus
+                                mode.
+                            </p>
+                            <div class="boost-grid">
+                                <!-- Paladin Unlocked (Current Class) -->
+                                <div class="boost-card paladin unlocked">
+                                    <div class="boost-header">
+                                        <div class="boost-icon-wrap">🛡️</div>
+                                        <div class="boost-info">
+                                            <div class="boost-class">Paladin</div>
+                                            <div class="boost-status">Unlocked</div>
+                                        </div>
+                                    </div>
+                                    <div class="boost-body">
+                                        <div class="boost-usage">
+                                            <span class="boost-usage-label">Boosts Used</span>
+                                            <span class="boost-usage-count">1 / 2</span>
+                                        </div>
+                                        <div class="boost-progress-bg">
+                                            <div class="boost-progress-fill" style="width: 50%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="boost-footer">
+                                        <span>🕒 Unlocked: Mar 01, 2026</span>
+                                    </div>
+                                </div>
+
+                                <!-- Warrior Unlocked -->
+                                <div class="boost-card warrior unlocked">
+                                    <div class="boost-header">
+                                        <div class="boost-icon-wrap">⚔️</div>
+                                        <div class="boost-info">
+                                            <div class="boost-class">Warrior</div>
+                                            <div class="boost-status">Unlocked</div>
+                                        </div>
+                                    </div>
+                                    <div class="boost-body">
+                                        <div class="boost-usage">
+                                            <span class="boost-usage-label">Boosts Used</span>
+                                            <span class="boost-usage-count">0 / 1</span>
+                                        </div>
+                                        <div class="boost-progress-bg">
+                                            <div class="boost-progress-fill" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="boost-footer">
+                                        <span>🕒 Unlocked: Feb 20, 2026</span>
+                                    </div>
+                                </div>
+
+                                <!-- Mage Locked -->
+                                <div class="boost-card mage locked">
+                                    <div class="boost-header">
+                                        <div class="boost-icon-wrap">🔮</div>
+                                        <div class="boost-info">
+                                            <div class="boost-class">Mage</div>
+                                            <div class="boost-status">Locked</div>
+                                        </div>
+                                    </div>
+                                    <div class="boost-body">
+                                        <div class="boost-usage">
+                                            <span class="boost-usage-label">Boosts Used</span>
+                                            <span class="boost-usage-count">0 / 0</span>
+                                        </div>
+                                        <div class="boost-progress-bg">
+                                            <div class="boost-progress-fill" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="boost-footer">
+                                        <span>Reach Lvl 70 as Mage to unlock</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Equipped Gear with Wowhead Icons -->
+                        <div class="pc-section" id="mod-gear" draggable="false">
+                            <button class="mod-hide-btn" title="Hide Module">×</button>
+                            <div class="pc-title"><span>⚔️</span> Equipped Gear — Pupi</div>
+                            <div class="gear-grid">
+                                <div class="gi epic"><img class="gi-icon"
+                                        src="https://wow.zamimg.com/images/wow/icons/medium/inv_sword_62.jpg"
+                                        alt=""><span class="gi-slot">Main Hand</span><span class="gi-name">Lionheart
+                                        Blade</span></div>
+                                <div class="gi rare"><img class="gi-icon"
+                                        src="https://wow.zamimg.com/images/wow/icons/medium/inv_shield_30.jpg"
+                                        alt=""><span class="gi-slot">Off Hand</span><span class="gi-name">Jade
+                                        Defender</span></div>
+                                <div class="gi epic"><img class="gi-icon"
+                                        src="https://wow.zamimg.com/images/wow/icons/medium/inv_helmet_15.jpg"
+                                        alt=""><span class="gi-slot">Head</span><span class="gi-name">Justicar
+                                        Crown</span></div>
+                                <div class="gi epic"><img class="gi-icon"
+                                        src="https://wow.zamimg.com/images/wow/icons/medium/inv_shoulder_22.jpg"
+                                        alt=""><span class="gi-slot">Shoulders</span><span class="gi-name">Justicar
+                                        Shoulderguards</span></div>
+                                <div class="gi epic"><img class="gi-icon"
+                                        src="https://wow.zamimg.com/images/wow/icons/medium/inv_chest_plate16.jpg"
+                                        alt=""><span class="gi-slot">Chest</span><span class="gi-name">Justicar
+                                        Breastplate</span></div>
+                                <div class="gi rare"><img class="gi-icon"
+                                        src="https://wow.zamimg.com/images/wow/icons/medium/inv_pants_plate_17.jpg"
+                                        alt=""><span class="gi-slot">Legs</span><span class="gi-name">Legplates of the
+                                        Bold</span></div>
+                                <div class="gi rare"><img class="gi-icon"
+                                        src="https://wow.zamimg.com/images/wow/icons/medium/inv_gauntlets_29.jpg"
+                                        alt=""><span class="gi-slot">Hands</span><span class="gi-name">Gauntlets of the
+                                        Sun
+                                        King</span></div>
+                                <div class="gi uncommon"><img class="gi-icon"
+                                        src="https://wow.zamimg.com/images/wow/icons/medium/inv_boots_plate_06.jpg"
+                                        alt=""><span class="gi-slot">Feet</span><span class="gi-name">Boots of the
+                                        Righteous</span></div>
+                                <div class="gi epic"><img class="gi-icon"
+                                        src="https://wow.zamimg.com/images/wow/icons/medium/inv_jewelry_necklace_13.jpg"
+                                        alt=""><span class="gi-slot">Neck</span><span class="gi-name">Medallion of
+                                        Karabor</span></div>
+                                <div class="gi rare"><img class="gi-icon"
+                                        src="https://wow.zamimg.com/images/wow/icons/medium/inv_misc_cape_18.jpg"
+                                        alt=""><span class="gi-slot">Back</span><span class="gi-name">Cloak of the Pit
+                                        Stalker</span></div>
+                                <div class="gi epic"><img class="gi-icon"
+                                        src="https://wow.zamimg.com/images/wow/icons/medium/inv_jewelry_ring_47.jpg"
+                                        alt=""><span class="gi-slot">Ring 1</span><span class="gi-name">Band of Eternal
+                                        Defender</span></div>
+                                <div class="gi rare"><img class="gi-icon"
+                                        src="https://wow.zamimg.com/images/wow/icons/medium/inv_jewelry_ring_36.jpg"
+                                        alt=""><span class="gi-slot">Ring 2</span><span class="gi-name">Ring of
+                                        Reciprocity</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Characters -->
+                        <div class="pc-section" id="mod-chars" draggable="false">
+                            <button class="mod-hide-btn" title="Hide Module">×</button>
+                            <div class="pc-title"><span>👥</span> Account Characters</div>
+                            <table class="char-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Class</th>
+                                        <th>Level</th>
+                                        <th>Mode</th>
+                                        <th>Score</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="color:#f58cba; font-weight:600;">Pupi</td>
+                                        <td>Ret Paladin</td>
+                                        <td>68</td>
+                                        <td>HC Plus</td>
+                                        <td style="color:var(--fel-green);">3,475</td>
+                                        <td><span class="ct-status live">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color:#9482c9; font-weight:600;">Hexmaw</td>
+                                        <td>Aff Warlock</td>
+                                        <td>61</td>
+                                        <td>HC Plus</td>
+                                        <td style="color:var(--fel-green);">1,840</td>
+                                        <td><span class="ct-status live">Active</span></td>
+                                    </tr>
+                                    <tr style="opacity:0.5">
+                                        <td style="color:#fff; font-weight:600;">Zuzu</td>
+                                        <td>Shadow Priest</td>
+                                        <td>62</td>
+                                        <td>HC Classic</td>
+                                        <td style="color:var(--text-muted);">—</td>
+                                        <td><span class="ct-status voided">Voided</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Death Log -->
+                        <div class="pc-section" id="mod-deathlog" draggable="false">
+                            <button class="mod-hide-btn" title="Hide Module">×</button>
+                            <div class="pc-title"><span>💀</span> Death Log</div>
+                            <div class="death-entry">
+                                <img src="assets/death_map.png" alt="Death location">
+                                <div class="de-info">
+                                    <div class="de-char">Zuzu (Shadow Priest) — VOIDED</div>
+                                    <div class="de-detail">💀 Killed by <strong>Fel Reaver</strong> · 📍 Hellfire
+                                        Peninsula
+                                        (51.4, 48.2)</div>
+                                    <div class="de-time">🕐 2 days ago · Level 62 · Score lost: 1,240</div>
+                                </div>
+                            </div>
+                            <div class="pc-title" style="margin-top: 16px;"><span>🎬</span> Deathclip — Zuzu</div>
+                            <div class="dc-wrap">
+                                <video class="dc-video" controls preload="metadata">
+                                    <source src="assets/deathclip.mp4" type="video/mp4">
+                                </video>
+                                <div class="dc-caption">💀 Zuzu walks into Fel Reaver patrol near (51.4, 48.2) — instant
+                                    death at full HP. RIP.</div>
+                            </div>
+                        </div>
+
+                        <!-- Achievements -->
+                        <div class="pc-section" id="mod-achieves" draggable="false">
+                            <button class="mod-hide-btn" title="Hide Module">×</button>
+                            <div class="pc-title"><span>🏆</span> Achievements</div>
+                            <div class="ach-grid">
+                                <div class="ach">
+                                    <div class="ach-icon">🌍</div>
+                                    <div class="ach-info">
+                                        <div class="ach-name">Unlocked Outland</div>
+                                        <div class="ach-desc">Reached Hellfire Peninsula on Paladin "Pupi"</div>
+                                        <div class="ach-date">Feb 28, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="ach">
+                                    <div class="ach-icon">⚔️</div>
+                                    <div class="ach-info">
+                                        <div class="ach-name">First Blood</div>
+                                        <div class="ach-desc">Won first Gear Battle vs Thokk</div>
+                                        <div class="ach-date">Mar 1, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="ach">
+                                    <div class="ach-icon">🎖️</div>
+                                    <div class="ach-info">
+                                        <div class="ach-name">Level 60 Club</div>
+                                        <div class="ach-desc">3 characters reached Level 60+</div>
+                                        <div class="ach-date">Feb 25, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="ach">
+                                    <div class="ach-icon">💀</div>
+                                    <div class="ach-info">
+                                        <div class="ach-name">First Fall</div>
+                                        <div class="ach-desc">Lost first HC character — Zuzu</div>
+                                        <div class="ach-date">Mar 1, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="ach">
+                                    <div class="ach-icon">🏅</div>
+                                    <div class="ach-info">
+                                        <div class="ach-name">Top 5</div>
+                                        <div class="ach-desc">Reached Rank #3 on the leaderboard</div>
+                                        <div class="ach-date">Mar 2, 2026</div>
+                                    </div>
+                                </div>
+                                <div class="ach">
+                                    <div class="ach-icon">🔐</div>
+                                    <div class="ach-info">
+                                        <div class="ach-name">True Solo</div>
+                                        <div class="ach-desc">Completed 50 quests in SSF mode</div>
+                                        <div class="ach-date">Feb 20, 2026</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Raid Achievements (Expandable) -->
+                        <div class="pc-section" id="mod-raid" draggable="false">
+                            <button class="mod-hide-btn" title="Hide Module">×</button>
+                            <div class="pc-title"><span>🏰</span> Raid Achievements</div>
+                            <div class="raid-ach-list">
+                                <div class="raid-ach" onclick="this.classList.toggle('expanded')">
+                                    <div class="raid-ach-header">
+                                        <img class="raid-icon"
+                                            src="https://wow.zamimg.com/images/wow/icons/medium/spell_fire_incinerate.jpg"
+                                            alt="">
+                                        <div class="raid-ach-info">
+                                            <div class="raid-ach-name">🔥 Survived Molten Core</div>
+                                            <div class="raid-ach-meta">Pupi · Feb 28, 2026 · HC Plus · 0 Deaths</div>
+                                        </div>
+                                        <span class="raid-expand-arrow">▸</span>
+                                    </div>
+                                    <div class="raid-ach-details">
+                                        <div class="raid-detail-row"><span class="rd-lbl">Duration</span><span>4h
+                                                38m</span>
+                                        </div>
+                                        <div class="raid-detail-row"><span class="rd-lbl">Group Size</span><span>10
+                                                players</span></div>
+                                        <div class="raid-detail-row"><span class="rd-lbl">Group Deaths</span><span
+                                                style="color:var(--blood-red);">2 (Morkoth L58, Kezzik L56)</span></div>
+                                        <div class="raid-detail-row"><span class="rd-lbl">Score Earned</span><span
+                                                style="color:var(--fel-green);">+350</span></div>
+                                        <div class="raid-battle-log">
+                                            <div class="rd-lbl" style="margin-bottom:4px;">Battle Log</div>
+                                            <div class="rbl-entry">19:42 — Lucifron downed · 10/10 alive</div>
+                                            <div class="rbl-entry">20:15 — Magmadar downed · 10/10 alive</div>
+                                            <div class="rbl-entry dim">20:48 — Gehennas: Morkoth (Warrior) killed by
+                                                Rain of
+                                                Fire</div>
+                                            <div class="rbl-entry">21:33 — Baron Geddon downed · 9/10 alive</div>
+                                            <div class="rbl-entry dim">22:01 — Golemagg: Kezzik (Mage) killed by
+                                                Pyroblast
+                                            </div>
+                                            <div class="rbl-entry">23:20 — Ragnaros downed · 8/10 alive · +350 pts</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="raid-ach" onclick="this.classList.toggle('expanded')">
+                                    <div class="raid-ach-header">
+                                        <img class="raid-icon"
+                                            src="https://wow.zamimg.com/images/wow/icons/medium/inv_misc_key_07.jpg"
+                                            alt="">
+                                        <div class="raid-ach-info">
+                                            <div class="raid-ach-name">🏰 Cleared Karazhan</div>
+                                            <div class="raid-ach-meta">Pupi · Mar 2, 2026 · HC Plus · 0 Deaths</div>
+                                        </div>
+                                        <span class="raid-expand-arrow">▸</span>
+                                    </div>
+                                    <div class="raid-ach-details">
+                                        <div class="raid-detail-row"><span class="rd-lbl">Duration</span><span>3h
+                                                22m</span>
+                                        </div>
+                                        <div class="raid-detail-row"><span class="rd-lbl">Group Size</span><span>10
+                                                players</span></div>
+                                        <div class="raid-detail-row"><span class="rd-lbl">Group Deaths</span><span
+                                                style="color:var(--fel-green);">0 — Full clear, no losses!</span></div>
+                                        <div class="raid-detail-row"><span class="rd-lbl">Score Earned</span><span
+                                                style="color:var(--fel-green);">+500 (bonus: deathless)</span></div>
+                                        <div class="raid-battle-log">
+                                            <div class="rd-lbl" style="margin-bottom:4px;">Battle Log</div>
+                                            <div class="rbl-entry">20:00 — Attumen downed · 10/10 alive</div>
+                                            <div class="rbl-entry">20:28 — Moroes downed · 10/10 alive</div>
+                                            <div class="rbl-entry">21:05 — Opera Event (Wizard of Oz) · 10/10 alive
+                                            </div>
+                                            <div class="rbl-entry">22:15 — Shade of Aran downed · 10/10 alive</div>
+                                            <div class="rbl-entry">23:22 — Prince Malchezaar downed · 10/10 alive · +500
+                                                pts
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Hidden Modules for the Showcase -->
+
+                        <!-- Session Time -->
+                        <div class="pc-section" id="mod-session" draggable="false">
+                            <button class="mod-hide-btn" title="Hide Module">×</button>
+                            <div class="pc-title"><span>⏱️</span> Current Session Stats</div>
+                            <div class="profile-stat-grid" style="grid-template-columns: repeat(3, 1fr);">
+                                <div class="ps-box"><span class="ps-num">4h 12m</span><span class="ps-lbl">Session
+                                        Length</span></div>
+                                <div class="ps-box"><span class="ps-num"
+                                        style="color:var(--text-primary)">+12.5g</span><span class="ps-lbl">Gold
+                                        Delta</span></div>
+                                <div class="ps-box"><span class="ps-num"
+                                        style="color:var(--portal-purple)">98.4%</span><span class="ps-lbl">Time
+                                        Alive</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Walking Distance -->
+                        <div class="pc-section" id="mod-walking" draggable="false">
+                            <button class="mod-hide-btn" title="Hide Module">×</button>
+                            <div class="pc-title"><span>🥾</span> Travel Stats</div>
+                            <div class="profile-stat-grid" style="grid-template-columns: repeat(2, 1fr);">
+                                <div class="ps-box"><span class="ps-num">1,402 km</span><span class="ps-lbl">Total
+                                        Distance Walked</span></div>
+                                <div class="ps-box"><span class="ps-num">842 km</span><span class="ps-lbl">Mounted
+                                        Distance</span></div>
+                            </div>
+                        </div>
+
+                    </div> <!-- End moduleContainer -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>TBC Hardcore Concept · Mock Profile Page</p>
+        </div>
+    </footer>
+
+    <script>
+        // Module Drag and Drop & Customization Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const editBtn = document.getElementById('editLayoutBtn');
+            const container = document.getElementById('moduleContainer');
+            const tray = document.getElementById('moduleTray');
+            const trayItems = document.querySelectorAll('.tray-item');
+
+            let isEditing = false;
+            let draggedMod = null;
+
+            // Toggle Edit Mode
+            if (editBtn) {
+                editBtn.addEventListener('click', () => {
+                    isEditing = !isEditing;
+                    if (isEditing) {
+                        editBtn.innerHTML = '💾 Save Layout';
+                        editBtn.classList.remove('btn-ghost');
+                        editBtn.classList.add('btn-primary');
+                        container.classList.add('editing');
+                        tray.classList.add('open');
+
+                        // Enable drag on visible sections
+                        container.querySelectorAll('.pc-section').forEach(mod => {
+                            if (getComputedStyle(mod).display !== 'none') {
+                                mod.setAttribute('draggable', 'true');
+                            }
+                        });
+                    } else {
+                        editBtn.innerHTML = '⚙️ Customize Modules';
+                        editBtn.classList.add('btn-ghost');
+                        editBtn.classList.remove('btn-primary');
+                        container.classList.remove('editing');
+                        tray.classList.remove('open');
+
+                        // Disable drag
+                        container.querySelectorAll('.pc-section').forEach(mod => {
+                            mod.setAttribute('draggable', 'false');
+                        });
+                    }
+                });
+            }
+
+            // Tray add modules
+            if (trayItems.length > 0) {
+                trayItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        if (item.classList.contains('active')) return;
+                        const modId = item.getAttribute('data-mod');
+                        const mod = document.getElementById(modId);
+                        if (mod) {
+                            mod.style.display = 'block';
+                            mod.style.opacity = '0';
+                            setTimeout(() => mod.style.opacity = '1', 50);
+                            if (isEditing) mod.setAttribute('draggable', 'true');
+                            item.classList.add('active');
+                        }
+                    });
+                });
+            }
+
+            // Hide modules
+            if (container) {
+                container.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.mod-hide-btn');
+                    if (btn) {
+                        const mod = btn.closest('.pc-section');
+                        mod.style.display = 'none';
+                        mod.setAttribute('draggable', 'false');
+
+                        // Re-enable in tray
+                        const trayItem = document.querySelector(`.tray-item[data-mod="${mod.id}"]`);
+                        if (trayItem) trayItem.classList.remove('active');
+                    }
+                });
+
+                // Drag and Drop implementation
+                container.addEventListener('dragstart', (e) => {
+                    if (!isEditing) return;
+                    const mod = e.target.closest('.pc-section');
+                    if (mod) {
+                        draggedMod = mod;
+                        setTimeout(() => mod.style.opacity = '0.4', 0);
+                        e.dataTransfer.effectAllowed = 'move';
+                    }
+                });
+
+                container.addEventListener('dragend', (e) => {
+                    if (draggedMod) {
+                        draggedMod.style.opacity = '1';
+                        draggedMod = null;
+                    }
+                    container.querySelectorAll('.pc-section').forEach(el => el.classList.remove('drag-over'));
+                });
+
+                container.addEventListener('dragover', (e) => {
+                    if (!isEditing || !draggedMod) return;
+                    e.preventDefault();
+                    const overMod = e.target.closest('.pc-section');
+                    if (overMod && overMod !== draggedMod) {
+                        overMod.classList.add('drag-over');
+                    }
+                });
+
+                container.addEventListener('dragleave', (e) => {
+                    const overMod = e.target.closest('.pc-section');
+                    if (overMod) {
+                        overMod.classList.remove('drag-over');
+                    }
+                });
+
+                container.addEventListener('drop', (e) => {
+                    if (!isEditing || !draggedMod) return;
+                    e.preventDefault();
+                    const overMod = e.target.closest('.pc-section');
+                    if (overMod && overMod !== draggedMod) {
+                        overMod.classList.remove('drag-over');
+
+                        // Determine if we drop before or after the target based on mouse position
+                        const rect = overMod.getBoundingClientRect();
+                        const next = (e.clientY - rect.top) / (rect.bottom - rect.top) > 0.5;
+
+                        if (next) {
+                            overMod.parentNode.insertBefore(draggedMod, overMod.nextSibling);
+                        } else {
+                            overMod.parentNode.insertBefore(draggedMod, overMod);
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

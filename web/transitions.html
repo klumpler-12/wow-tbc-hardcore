@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title Transition Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Russo+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-green: #39ff14;
+      --bg: #0a0a0f;
+      --card-bg: #111118;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      background: var(--bg);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    .page-title {
+      text-align: center;
+      padding: 12px 16px 4px;
+      font-family: 'Russo One', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      flex-shrink: 0;
+    }
+    .page-sub {
+      text-align: center;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 8px;
+      flex-shrink: 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      padding: 0 12px 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+    .card-label {
+      padding: 6px 12px;
+      font-family: 'Russo One', sans-serif;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.4);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .card-label .num {
+      background: rgba(57,255,20,0.15);
+      color: var(--neon-green);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.55rem;
+    }
+    .card-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+      padding: 12px;
+      position: relative;
+      overflow: hidden;
+      background-color: #0a0a0f;
+    }
+    /* Grid background with vignette fade */
+    .card-stage .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(57,255,20,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57,255,20,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      z-index: 0;
+      -webkit-mask-image: radial-gradient(ellipse 55% 60% at 50% 55%, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 55%, transparent 85%);
+      mask-image: radial-gradient(ellipse 55% 60% at 50% 55%, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 55%, transparent 85%);
+    }
+    .card-stage::before {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      top: 30%; left: 20%;
+      border-radius: 50%;
+      background: rgba(57,255,20,0.06);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .card-stage::after {
+      content: '';
+      position: absolute;
+      width: 150px; height: 150px;
+      bottom: 20%; right: 15%;
+      border-radius: 50%;
+      background: rgba(232,166,36,0.04);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .title-wrap {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      font-family: 'Russo One', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 400;
+    }
+    .t-line1 {
+      display: block;
+      position: relative;
+    }
+    .t-tbc, .t-hybrid { display: block; }
+    .t-tbc {
+      font-size: 1.34rem;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+    .t-hybrid {
+      font-size: 1.6rem;
+      color: var(--neon-green);
+    }
+    .t-line2 {
+      display: block;
+      font-size: 1.6rem;
+      color: #fff;
+    }
+    .replay-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.5);
+      padding: 3px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+    }
+    .replay-btn:hover {
+      border-color: var(--neon-green);
+      color: var(--neon-green);
+    }
+
+    /* ═══ Shared pulse ═══ */
+    @keyframes pulse-glow {
+      0%,100% { text-shadow: 0 0 2px rgba(57,255,20,0.4), 0 0 8px rgba(57,255,20,0.15); }
+      50% { text-shadow: 0 0 4px rgba(57,255,20,0.6), 0 0 16px rgba(57,255,20,0.3), 0 0 32px rgba(57,255,20,0.1); }
+    }
+    /* ═══ Shared done state for all variants ═══ */
+    .done .t-tbc { opacity: 0 !important; animation: none !important; }
+    .done .t-hybrid {
+      opacity: 1 !important; filter: none !important;
+      color: var(--neon-green) !important;
+      -webkit-text-stroke: 0 !important;
+      text-shadow: 0 0 8px rgba(57,255,20,0.6), 0 0 20px rgba(57,255,20,0.3);
+      animation: pulse-glow 4s ease-in-out infinite !important;
+    }
+    .done .portal-ring, .done .wipe-line { opacity: 0 !important; }
+
+    /* ═══ V1: Glitch Morph — JS-driven crossfade ═══ */
+    .v1 .t-line1 { position: relative; }
+    .v1 .t-tbc {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+    .v1 .t-hybrid { opacity: 0; }
+
+    @keyframes v1-glitch {
+      0%   { transform: translate(-50%,-50%) translate(0,0); }
+      25%  { transform: translate(-50%,-50%) translate(-2px,1px) skewX(-1deg); }
+      50%  { transform: translate(-50%,-50%) translate(2px,-1px) skewX(1deg); }
+      75%  { transform: translate(-50%,-50%) translate(-1px,0); }
+      100% { transform: translate(-50%,-50%) translate(1px,1px); }
+    }
+    @keyframes v1-glitch-intense {
+      0%   { transform: translate(-50%,-50%) translate(0,0); }
+      25%  { transform: translate(-50%,-50%) translate(-3px,2px) skewX(-2deg); }
+      50%  { transform: translate(-50%,-50%) translate(3px,-1px) skewX(2deg); }
+      75%  { transform: translate(-50%,-50%) translate(-2px,0); }
+      100% { transform: translate(-50%,-50%) translate(2px,1px); }
+    }
+
+    /* ═══ V2: Dark Portal — subtle glow, no solid ring ═══ */
+    .v2 .t-line1 { position: relative; }
+    .v2 .t-tbc {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+    .v2 .t-hybrid { opacity: 0; }
+
+    /* V3 grid canvas */
+    .v3-grid-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ═══ V3: Wireframe Wipe L→R ═══ */
+    .v3 .t-line1 { position: relative; }
+    .v3 .t-tbc {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+    .v3 .t-hybrid {
+      opacity: 0;
+      -webkit-text-stroke: 1px var(--neon-green);
+      color: transparent;
+    }
+    .v3 .wipe-line {
+      position: absolute; top: -10%; left: 0;
+      width: 2px; height: 120%;
+      background: var(--neon-green);
+      box-shadow: 0 0 6px rgba(57,255,20,0.5);
+      opacity: 0;
+      z-index: 3;
+    }
+
+    /* ═══ V4: Typewriter ═══ */
+    .v4 .t-line1 { position: relative; min-height: 2.4rem; }
+    .v4 .t-tbc {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+    .v4 .t-hybrid { opacity: 0; }
+    .v4 .cursor-blink {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background: var(--neon-green);
+      vertical-align: middle;
+      margin-left: 2px;
+      animation: v4-blink 0.6s step-end infinite;
+    }
+    @keyframes v4-blink {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ═══ V5: 3D Flip ═══ */
+    .v5 .t-line1 {
+      position: relative;
+      perspective: 600px;
+    }
+    .v5 .t-tbc {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      backface-visibility: hidden;
+    }
+    .v5 .t-hybrid {
+      opacity: 0;
+      backface-visibility: hidden;
+    }
+    /* V5 flip animations — JS-driven for green glow control */
+
+  </style>
+</head>
+<body>
+
+<div class="page-title">Title Transition Showcase</div>
+<p class="page-sub">Click "Replay" on any variant &middot; TBC HC &rarr; HYBRID HC</p>
+
+<div class="grid">
+
+  <div class="card" id="card1">
+    <div class="card-label"><span><span class="num">1</span> Glitch Morph</span><button class="replay-btn" onclick="runV1()">Replay</button></div>
+    <div class="card-stage"><canvas class="v3-grid-canvas" id="v1gridCanvas"></canvas>
+      <div class="title-wrap v1" id="v1">
+        <span class="t-line1">
+          <span class="t-tbc">THE BURNING CRUSADE</span>
+          <span class="t-hybrid">HYBRID</span>
+        </span>
+        <span class="t-line2">HARDCORE</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="card2">
+    <div class="card-label"><span><span class="num">2</span> Dark Portal Reveal</span><button class="replay-btn" onclick="runV2()">Replay</button></div>
+    <div class="card-stage"><canvas class="v3-grid-canvas" id="v2gridCanvas"></canvas><canvas class="v3-grid-canvas" id="v2portalCanvas" style="z-index:2"></canvas>
+      <div class="title-wrap v2" id="v2">
+        <span class="t-line1">
+          <span class="t-tbc">THE BURNING CRUSADE</span>
+          <span class="t-hybrid">HYBRID</span>
+        </span>
+        <span class="t-line2">HARDCORE</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="card3">
+    <div class="card-label"><span><span class="num">3</span> Wireframe Wipe L&rarr;R</span><button class="replay-btn" onclick="runV3()">Replay</button></div>
+    <div class="card-stage"><canvas class="v3-grid-canvas" id="v3gridCanvas"></canvas>
+      <div class="title-wrap v3" id="v3">
+        <span class="t-line1">
+          <span class="t-tbc">THE BURNING CRUSADE</span>
+          <span class="t-hybrid">HYBRID</span>
+          <div class="wipe-line"></div>
+        </span>
+        <span class="t-line2">HARDCORE</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="card4">
+    <div class="card-label"><span><span class="num">4</span> Typewriter Delete &amp; Type</span><button class="replay-btn" onclick="runV4()">Replay</button></div>
+    <div class="card-stage"><canvas class="v3-grid-canvas" id="v4gridCanvas"></canvas>
+      <div class="title-wrap v4" id="v4">
+        <span class="t-line1">
+          <span class="t-tbc" id="v4tbc">THE BURNING CRUSADE<span class="cursor-blink"></span></span>
+          <span class="t-hybrid" id="v4hybrid"></span>
+        </span>
+        <span class="t-line2">HARDCORE</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="card5">
+    <div class="card-label"><span><span class="num">5</span> 3D Flip</span><button class="replay-btn" onclick="runV5()">Replay</button></div>
+    <div class="card-stage"><canvas class="v3-grid-canvas" id="v5gridCanvas"></canvas>
+      <div class="title-wrap v5" id="v5">
+        <span class="t-line1">
+          <span class="t-tbc">THE BURNING CRUSADE</span>
+          <span class="t-hybrid">HYBRID</span>
+        </span>
+        <span class="t-line2">HARDCORE</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  function reset(el) {
+    el.className = el.className.replace(/\b(running|phase1|phase2|phase3|done)\b/g, '').trim();
+    var tbc = el.querySelector('.t-tbc');
+    var hyb = el.querySelector('.t-hybrid');
+    if (tbc) tbc.style.cssText = '';
+    if (hyb) hyb.style.cssText = '';
+  }
+
+  // Shared: init a grid canvas, returns {ctx, cw, ch, draw(bx,by,str,rad,glow)}
+  function initGridCanvas(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return null;
+    var stage = canvas.parentElement;
+    var rect = stage.getBoundingClientRect();
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = rect.height + 'px';
+    var ctx = canvas.getContext('2d');
+    ctx.scale(dpr, dpr);
+    var g = {
+      ctx: ctx, cw: rect.width, ch: rect.height,
+      draw: function(bx, by, str, rad, glow) {
+        drawGrid(ctx, rect.width, rect.height, 24, bx, by, str, rad, glow);
+      },
+      flat: function() {
+        drawGrid(ctx, rect.width, rect.height, 24, 0, 0, 0, 0, 0);
+      }
+    };
+    g.flat(); // Draw initial flat grid
+    return g;
+  }
+
+  // Init all grids on load
+  var grids = {};
+  setTimeout(function() {
+    ['v1','v2','v3','v4','v5','v6'].forEach(function(id) {
+      grids[id] = initGridCanvas(id + 'gridCanvas');
+    });
+  }, 100);
+
+  /* ══════════════════════════════════════════════════════
+     V1: Glitch Morph — JS-driven crossfade (TBC down = HYBRID up)
+  ══════════════════════════════════════════════════════ */
+  window.runV1 = function() {
+    var el = document.getElementById('v1');
+    reset(el);
+    var g = grids.v1 || initGridCanvas('v1gridCanvas');
+    var tbc = el.querySelector('.t-tbc');
+    var hyb = el.querySelector('.t-hybrid');
+    tbc.style.opacity = '1';
+    tbc.style.color = '#fff';
+    hyb.style.opacity = '0';
+    void el.offsetWidth;
+
+    if (g) g.flat();
+
+    // Phase 1 (0-0.8s): mild glitch, TBC starts turning green + grid tremor
+    setTimeout(function() {
+      tbc.style.animation = 'v1-glitch 0.1s steps(2) infinite';
+      var greenStart = performance.now();
+      function greenShift(now) {
+        var t = Math.min((now - greenStart) / 800, 1);
+        // Shift TBC color from white → green
+        var r = Math.round(255 - (255 - 57) * t);
+        var gVal = Math.round(255 - (255 - 255) * t);
+        var b = Math.round(255 - (255 - 20) * t);
+        tbc.style.color = 'rgb(' + r + ',' + gVal + ',' + b + ')';
+        // Increasing green glow
+        var glowSize = 4 + t * 12;
+        var glowAlpha = 0.1 + t * 0.4;
+        tbc.style.textShadow = '0 0 ' + glowSize + 'px rgba(57,255,20,' + glowAlpha + '), 0 0 ' + (glowSize * 2) + 'px rgba(57,255,20,' + (glowAlpha * 0.4) + ')';
+        if (g) {
+          var str = 4 * Math.sin(t * Math.PI * 6) * (1 - t);
+          g.draw(g.cw / 2, g.ch / 2, Math.abs(str), 40, t * 0.5);
+        }
+        if (t < 1) requestAnimationFrame(greenShift);
+      }
+      requestAnimationFrame(greenShift);
+    }, 800);
+
+    // Phase 2 (1.6s): intense glitch, green TBC with max glow+blur → crossfade to HYBRID
+    setTimeout(function() {
+      tbc.style.animation = 'v1-glitch-intense 0.06s steps(2) infinite';
+      var crossStart = performance.now();
+      var crossDur = 800;
+      function crossfade(now) {
+        var t = Math.min((now - crossStart) / crossDur, 1);
+        var ease = t * t * (3 - 2 * t);
+        // TBC: green, increasing blur+glow, fading out
+        var tbcBlur = ease * 8;
+        var tbcGlow = 16 + ease * 20;
+        var tbcGlowAlpha = 0.5 + ease * 0.3;
+        tbc.style.opacity = String(1 - ease);
+        tbc.style.color = 'rgb(57,255,20)';
+        tbc.style.filter = 'blur(' + tbcBlur + 'px) brightness(' + (1 + ease * 0.6) + ')';
+        tbc.style.textShadow = '0 0 ' + tbcGlow + 'px rgba(57,255,20,' + tbcGlowAlpha + '), 0 0 ' + (tbcGlow * 2) + 'px rgba(57,255,20,' + (tbcGlowAlpha * 0.3) + ')';
+        // HYBRID: appears with blur+glow → decreasing to final
+        var hybBlur = (1 - ease) * 8;
+        var hybGlow = 20 * ease;
+        var hybGlowAlpha = 0.6 * ease;
+        hyb.style.opacity = String(ease);
+        hyb.style.filter = 'blur(' + hybBlur + 'px) brightness(' + (1 + (1 - ease) * 0.4) + ')';
+        hyb.style.textShadow = '0 0 ' + hybGlow + 'px rgba(57,255,20,' + hybGlowAlpha + '), 0 0 ' + (hybGlow * 2) + 'px rgba(57,255,20,' + (hybGlowAlpha * 0.3) + ')';
+        // Grid bulge peaks at midpoint
+        if (g) {
+          var bulge = Math.sin(t * Math.PI) * 12;
+          g.draw(g.cw / 2, g.ch / 2, bulge, 45, Math.sin(t * Math.PI));
+        }
+        if (t < 1) requestAnimationFrame(crossfade);
+        else {
+          tbc.style.animation = 'none';
+          tbc.style.opacity = '0';
+          tbc.style.filter = '';
+          tbc.style.color = '#fff';
+          hyb.style.filter = 'none';
+          if (g) g.flat();
+        }
+      }
+      requestAnimationFrame(crossfade);
+    }, 1600);
+
+    // Done
+    setTimeout(function() { el.classList.add('done'); }, 2500);
+  };
+
+  /* ══════════════════════════════════════════════════════
+     V2: Dark Portal — canvas swirling vortex
+  ══════════════════════════════════════════════════════ */
+  window.runV2 = function() {
+    var el = document.getElementById('v2');
+    el._v2PulseActive = false; // stop any running pulse loop
+    reset(el);
+    var g = grids.v2 || initGridCanvas('v2gridCanvas');
+    var tbc = el.querySelector('.t-tbc');
+    var hyb = el.querySelector('.t-hybrid');
+    var pCanvas = document.getElementById('v2portalCanvas');
+    tbc.style.opacity = '1';
+    tbc.style.color = '#fff';
+    tbc.style.textShadow = 'none';
+    tbc.style.filter = '';
+    hyb.style.opacity = '0';
+    hyb.style.transform = '';
+    if (g) g.flat();
+
+    // Measure natural widths to match TBC end = HYBRID squeezed start
+    var tbcW = tbc.getBoundingClientRect().width;
+    var hybW = hyb.getBoundingClientRect().width;
+    var HYB_START_SX = 0.65; // hybrid initial horizontal squeeze
+    var TBC_END_SX = Math.min((hybW * HYB_START_SX) / tbcW, 1.0); // TBC shrinks to match
+    var TBC_END_SY = 0.98; // barely changes vertically
+
+    // Setup portal canvas
+    var stage = pCanvas.parentElement;
+    var rect = stage.getBoundingClientRect();
+    var dpr = window.devicePixelRatio || 1;
+    pCanvas.width = rect.width * dpr;
+    pCanvas.height = rect.height * dpr;
+    pCanvas.style.width = rect.width + 'px';
+    pCanvas.style.height = rect.height + 'px';
+    var pCtx = pCanvas.getContext('2d');
+    pCtx.scale(dpr, dpr);
+    var pw = rect.width, ph = rect.height;
+    // Center portal on the text position (t-line1), not card center
+    var textEl = el.querySelector('.t-line1');
+    var textRect = textEl.getBoundingClientRect();
+    var pcx = pw / 2;
+    var pcy = textRect.top + textRect.height / 2 - rect.top;
+
+    // Create spiral wisps — many small particles, spread further out
+    var wisps = [];
+    for (var i = 0; i < 80; i++) {
+      var a = Math.random() * Math.PI * 2;
+      var r = 30 + Math.random() * 100;
+      wisps.push({
+        angle: a, radius: r, baseRadius: r,
+        speed: 1.2 + Math.random() * 2.0,
+        size: 0.3 + Math.random() * 0.5,
+        brightness: 0.3 + Math.random() * 0.7,
+        spoutSpeed: 0.1 + Math.random() * 1.0, // varied: some barely move, some fly out
+        trail: []
+      });
+    }
+
+    // Timeline: 0-2s TBC static, 2-4s portal builds (TBC effects after 1s of portal),
+    // 4-5s crossfade, 5-6s dissipate
+    var STATIC_DUR = 2000;   // TBC visible, nothing happening
+    var BUILD_DUR  = 2400;   // portal builds, TBC effects start at ~1s into this
+    var CROSS_DUR  = 1000;   // crossfade TBC→HYBRID
+    var FADE_DUR   = 1400;   // portal dissipate + hybrid settles (slower shake-off)
+    var totalDur = STATIC_DUR + BUILD_DUR + CROSS_DUR + FADE_DUR; // 5600ms
+    var animStart = performance.now();
+    var crossStarted = false;
+
+    function animate(now) {
+      var elapsed = now - animStart;
+      var t = Math.min(elapsed / totalDur, 1);
+      pCtx.clearRect(0, 0, pw, ph);
+
+      // Bell-curve time warp: slow→fast→slow for the active animation portion
+      // Remap portal-phase elapsed through (1 - cos(πx))/2 for bell-curve speed
+      var PARTICLE_EARLY = 1000;
+      var rawPortalElapsed = Math.max(elapsed - STATIC_DUR, 0);
+      var activeDur = BUILD_DUR + CROSS_DUR + FADE_DUR;
+      var rawActiveT = Math.min(rawPortalElapsed / activeDur, 1);
+      // Bell curve remap: slow at start, fast in middle, slow at end
+      var bellT = (1 - Math.cos(rawActiveT * Math.PI)) / 2;
+      var portalElapsed = bellT * activeDur;
+      var particleElapsed = Math.max(elapsed - (STATIC_DUR - PARTICLE_EARLY), 0);
+      var buildT = Math.min(portalElapsed / BUILD_DUR, 1);
+      // Portal intensity: builds with bell-curve pacing
+      var intensity = buildT * buildT * buildT;
+      // Cross and fade use warped portalElapsed for bell-curve pacing
+      var crossT = portalElapsed > BUILD_DUR ? Math.min((portalElapsed - BUILD_DUR) / CROSS_DUR, 1) : 0;
+      var fadeT = portalElapsed > (BUILD_DUR + CROSS_DUR) ? Math.min((portalElapsed - BUILD_DUR - CROSS_DUR) / FADE_DUR, 1) : 0;
+      var portalAlpha = fadeT > 0 ? (1 - fadeT) : intensity;
+
+      // TBC text effects only kick in after portal has built for ~1s (buildT > 0.5)
+      var tbcEffectT = buildT > 0.5 ? (buildT - 0.5) / 0.5 : 0; // 0→1 over second half of build
+      // Real-time (unwarped) version for smooth green spread — not compressed by bell curve
+      var realBuildT = Math.min(rawPortalElapsed / BUILD_DUR, 1);
+      var realTbcEffectT = realBuildT > 0.5 ? (realBuildT - 0.5) / 0.5 : 0;
+      // Overall effect progress for TBC deformation (0→1 from effect start to end of crossfade)
+      var effectElapsed = Math.max(portalElapsed - BUILD_DUR * 0.5, 0);
+      var effectDur = BUILD_DUR * 0.5 + CROSS_DUR;
+      var overallT = Math.min(effectElapsed / effectDur, 1);
+
+      // --- TBC: scale, letter-spacing, skew, shake — delayed until portal is significant ---
+      // Scale: ease in & out (smoothstep) so TBC horizontal smoothly reaches HYBRID width
+      var easeIO = overallT * overallT * (3 - 2 * overallT); // smoothstep ease in & out
+      var tbcScaleX = 1.0 - (1.0 - TBC_END_SX) * easeIO;  // 1.0 → TBC_END_SX (matches hybrid squeezed width)
+      var tbcScaleY = 1.0 - (1.0 - TBC_END_SY) * easeIO;  // 1.0 → 0.98 (nearly no vertical change)
+      // Letter-spacing: heavy squeeze synced with scaleX
+      var letterSpacing = 0.02 - 0.16 * easeIO; // 0.02em → -0.14em
+      // Shake: ramps in with tbcEffectT, stays during cross, slow cubic decay during fade
+      var fadeCubic = fadeT > 0 ? (1 - fadeT) * (1 - fadeT) * (1 - fadeT) : 1; // cubic ease — holds longer, drops late
+      var shakeEnvelope = fadeT > 0 ? fadeCubic : Math.min(tbcEffectT * 2, 1);
+      var shake = Math.sin(elapsed * 0.08) * 1.8 * shakeEnvelope;
+      // Skew/distort: more horizontal than vertical, peaks mid-effect
+      var distortEnvelope = Math.sin(overallT * Math.PI); // peaks at 50%
+      var skewX = Math.sin(elapsed * 0.02) * 6 * distortEnvelope;  // stronger horizontal
+      var skewY = Math.cos(elapsed * 0.015) * 1.0 * distortEnvelope; // subtle vertical
+
+      if (tbcEffectT > 0 || crossT > 0 || fadeT > 0) {
+        tbc.style.transformOrigin = '50% 50%';
+        tbc.style.transform = 'translate(calc(-50% + ' + shake + 'px), -50%) scaleX(' + tbcScaleX.toFixed(3) + ') scaleY(' + tbcScaleY.toFixed(3) + ') skew(' + skewX.toFixed(2) + 'deg, ' + skewY.toFixed(2) + 'deg)';
+        tbc.style.letterSpacing = letterSpacing.toFixed(4) + 'em';
+      }
+
+      // --- TBC: RADIAL green shift + glow + blur — color fades in from white, spreads from center ---
+      if (realTbcEffectT > 0) {
+        var greenT = Math.min(realTbcEffectT * 1.5, 1);
+        // Cubic ease-in: truly invisible start, accelerating reveal
+        var greenEase = greenT * greenT * greenT;
+        // Center color: blend from white (255,255,255) to green (57,255,20)
+        var cR = Math.round(255 - greenEase * 198); // 255→57
+        var cG = 255; // stays 255
+        var cB = Math.round(255 - greenEase * 235); // 255→20
+        // Mid color: blend from white to light green
+        var mR = Math.round(255 - greenEase * 75);  // 255→180
+        var mB = Math.round(255 - greenEase * 85);  // 255→170
+        // Core radius grows outward
+        var coreR = greenEase * 100;
+        var edgeR = Math.min(coreR + 25, 100);
+        tbc.style.background = 'radial-gradient(circle at 50% 50%, rgb(' + cR + ',' + cG + ',' + cB + ') ' + coreR + '%, rgb(' + mR + ',255,' + mB + ') ' + edgeR + '%, #fff 100%)';
+        tbc.style.webkitBackgroundClip = 'text';
+        tbc.style.webkitTextFillColor = 'transparent';
+        tbc.style.backgroundClip = 'text';
+        // Glow fades in from nothing
+        var glowSize = greenEase * 10;
+        var glowAlpha = greenEase * 0.35;
+        tbc.style.textShadow = '0 0 ' + glowSize + 'px rgba(57,255,20,' + glowAlpha + ')';
+        var tbcBlur = greenEase * 1.5;
+        tbc.style.filter = 'blur(' + tbcBlur + 'px) brightness(' + (1 + greenEase * 0.25) + ')';
+      }
+
+      // --- Crossfade: TBC out, HYBRID in — radial effects continue ---
+      if (crossT > 0 && !crossStarted) crossStarted = true;
+      if (crossStarted) {
+        var ease = crossT * crossT * (3 - 2 * crossT);
+        var crossBlur = Math.sin(crossT * Math.PI) * 6;
+        tbc.style.opacity = String(1 - ease);
+        // TBC: fully green during crossfade, intensifying glow
+        var tbcBlurCross = 1.5 + crossBlur + ease * 5;
+        tbc.style.filter = 'blur(' + tbcBlurCross + 'px) brightness(' + (1 + ease * 0.8) + ')';
+        tbc.style.textShadow = '0 0 ' + (10 + ease * 20) + 'px rgba(57,255,20,' + (0.35 + ease * 0.3) + ')';
+        tbc.style.background = 'rgb(57,255,20)';
+        tbc.style.webkitBackgroundClip = 'text';
+        tbc.style.webkitTextFillColor = 'transparent';
+        tbc.style.backgroundClip = 'text';
+        // HYBRID: radial green — starts concentrated, spreads to cover full text by end of crossfade
+        var hybCore = ease * 70; // 0→70% by end of crossfade
+        var hybEdge = Math.min(hybCore + 20, 100);
+        hyb.style.opacity = String(ease);
+        hyb.style.background = 'radial-gradient(circle at 50% 50%, rgb(57,255,20) ' + hybCore + '%, rgb(120,230,100) ' + hybEdge + '%, rgb(200,255,190) 100%)';
+        hyb.style.webkitBackgroundClip = 'text';
+        hyb.style.webkitTextFillColor = 'transparent';
+        hyb.style.backgroundClip = 'text';
+        // Blur: starts high, decreases as HYBRID stretches out and sharpens
+        var hybBlur = (1 - ease) * 8;
+        hyb.style.filter = 'blur(' + hybBlur + 'px)';
+        hyb.style.textShadow = '0 0 ' + (16 * ease) + 'px rgba(57,255,20,' + (0.4 * ease) + ')';
+      }
+
+      // --- HYBRID: transition gradient to full green during fade ---
+      if (fadeT > 0) {
+        // Continue radial green expansion: 70% at fade start → 100% at fade end
+        var fadeEase = fadeT * fadeT * (3 - 2 * fadeT);
+        var hybCoreFade = 70 + fadeEase * 30; // 70% → 100%
+        var hybEdgeFade = Math.min(hybCoreFade + 15, 100);
+        // Outer color transitions from light green to full green
+        var outerG = Math.round(200 - fadeEase * 143);
+        var outerB = Math.round(190 - fadeEase * 170);
+        hyb.style.background = 'radial-gradient(circle at 50% 50%, rgb(57,255,20) ' + hybCoreFade + '%, rgb(' + outerG + ',255,' + outerB + ') ' + hybEdgeFade + '%, rgb(' + outerG + ',255,' + outerB + ') 100%)';
+        hyb.style.webkitBackgroundClip = 'text';
+        hyb.style.webkitTextFillColor = 'transparent';
+        hyb.style.backgroundClip = 'text';
+        hyb.style.filter = 'brightness(' + (1 + (1 - fadeEase) * 0.25) + ')';
+        // Glow: peaks mid-fade, settles to 0 at end → pulse picks up from 0
+        var glowEnvelope = Math.sin(fadeT * Math.PI); // 0→1→0 over fade
+        var hybGlowFade = 30 * glowEnvelope;
+        var hybGlowAlpha = 0.6 * glowEnvelope;
+        hyb.style.textShadow = hybGlowFade > 0.1 ? '0 0 ' + hybGlowFade + 'px rgba(57,255,20,' + hybGlowAlpha + '), 0 0 ' + (hybGlowFade * 2.5) + 'px rgba(57,255,20,' + (hybGlowAlpha * 0.3) + ')' : 'none';
+      }
+
+      // --- HYBRID: starts at TBC's compressed scale, bounces back to 1.0 ---
+      if (crossT > 0 || fadeT > 0) {
+        var hybFadeCubic = fadeT > 0 ? (1 - fadeT) * (1 - fadeT) * (1 - fadeT) : 1;
+        var hybEnvelope = fadeT > 0 ? hybFadeCubic : 1;
+        var hybShake = Math.sin(elapsed * 0.07) * 1.2 * hybEnvelope;
+        // HYBRID stretch spans crossfade + fade for visible bounce
+        // Use real elapsed (not bell-warped) so bounce timing feels natural
+        var stretchElapsed = Math.max(rawPortalElapsed - BUILD_DUR, 0);
+        var stretchDur = CROSS_DUR + FADE_DUR; // full 2400ms for bounce
+        var sp = Math.min(stretchElapsed / stretchDur, 1);
+        // Elastic ease-out: pronounced overshoot bounce, fully settles by sp=1
+        var elasticStretch = 1 - Math.pow(2, -8 * sp) * Math.cos(sp * Math.PI * 3.5);
+        var hybSX = HYB_START_SX + (1.0 - HYB_START_SX) * elasticStretch; // starts at squeezed = TBC end width
+        var hybSY = TBC_END_SY + (1.0 - TBC_END_SY) * elasticStretch; // barely changes vertically
+        hyb.style.transform = 'translateX(' + hybShake + 'px) scaleX(' + hybSX.toFixed(4) + ') scaleY(' + hybSY.toFixed(4) + ')';
+      }
+
+      // Draw vortex — particles sucked in during build, spout out during fade
+      if (particleElapsed > 0) {
+        var particleFadeIn = portalElapsed > 0 ? 1 : Math.min(particleElapsed / PARTICLE_EARLY, 1);
+        for (var i = 0; i < wisps.length; i++) {
+          var w = wisps[i];
+          var dt = (now - (w._lastTime || now)) / 1000;
+          w._lastTime = now;
+
+          // Speed: starts slow, accelerates as sucked in — faster spin near center
+          var suckT = portalElapsed > 0 ? intensity : 0;
+          var speedMul = Math.max(0.3 + suckT * 3.0, 0.15 * particleFadeIn);
+          w.angle += w.speed * dt * speedMul;
+
+          // Spout synced with hybrid stretch (real time, not bell-warped)
+          var realSpoutElapsed = Math.max(rawPortalElapsed - BUILD_DUR, 0);
+          var spoutDur = CROSS_DUR + FADE_DUR;
+          var fullSpoutT = Math.min(realSpoutElapsed / spoutDur, 1.5); // allow overshoot for fade
+
+          // Radius: shrinks during build (sucked in), EXPLODES outward during spout
+          if (fullSpoutT > 0) {
+            // Explosion: fast initial burst (ease-out), per-particle speed for scatter
+            var burstEase = 1 - Math.pow(1 - Math.min(fullSpoutT, 1), 2); // quadratic ease-out = fast start
+            w.radius += w.spoutSpeed * (200 + burstEase * 300) * dt;
+          } else if (portalElapsed > 0) {
+            // Sucked inward — radius shrinks from baseRadius toward ~15% of base
+            w.radius = w.baseRadius * (1 - suckT * 0.85);
+          }
+
+          // Size: shrinks as sucked in, stays small during explosion
+          var sizeScale = fullSpoutT > 0 ? Math.max(0.8 - fullSpoutT * 0.5, 0.1) : (1 - suckT * 0.6);
+          var curSize = w.size * Math.max(sizeScale, 0.1);
+
+          var x = pcx + Math.cos(w.angle) * w.radius;
+          var y = pcy + Math.sin(w.angle) * w.radius * 0.6;
+
+          // Wide vignette for explosion scatter
+          var nx = (x - pcx) / (pw * 0.6);
+          var ny = (y - pcy) / (ph * 0.6);
+          var vig = Math.max(1 - (nx*nx + ny*ny), 0);
+
+          // Spout: radial falloff + exponential time fade (visible longer, then rapid drop)
+          var radialFade = 1;
+          if (fullSpoutT > 0) {
+            var dist = Math.sqrt((x - pcx) * (x - pcx) + (y - pcy) * (y - pcy));
+            // Soft radial falloff — wider range
+            var radialDim = Math.max(1 - dist / 200, 0);
+            // Exponential time fade: holds near 1.0, then drops sharply
+            // e^(-3t²) — stays bright until ~0.5, then plunges
+            var timeFade = Math.exp(-3 * fullSpoutT * fullSpoutT);
+            radialFade = radialDim * timeFade;
+          }
+
+          w.trail.push({x: x, y: y});
+          if (w.trail.length > 6) w.trail.shift();
+
+          for (var j = 0; j < w.trail.length; j++) {
+            var tp = w.trail[j];
+            // During spout, use portalAlpha directly (no particleFadeIn floor)
+            var pAlpha = (fullSpoutT > 0 ? portalAlpha : Math.max(portalAlpha, particleFadeIn * 0.4)) * radialFade;
+            var trailAlpha = (j / w.trail.length) * 0.3 * w.brightness * pAlpha * vig;
+            pCtx.globalAlpha = trailAlpha;
+            pCtx.fillStyle = '#39ff14';
+            pCtx.beginPath();
+            pCtx.arc(tp.x, tp.y, curSize * 0.6, 0, Math.PI * 2);
+            pCtx.fill();
+          }
+
+          var wPAlpha = (fullSpoutT > 0 ? portalAlpha : Math.max(portalAlpha, particleFadeIn * 0.4)) * radialFade;
+          var wAlpha = w.brightness * wPAlpha * vig;
+          pCtx.globalAlpha = wAlpha;
+          pCtx.fillStyle = '#39ff14';
+          pCtx.shadowColor = '#39ff14';
+          pCtx.shadowBlur = Math.max(8 * intensity, 4 * particleFadeIn);
+          pCtx.beginPath();
+          pCtx.arc(x, y, curSize, 0, Math.PI * 2);
+          pCtx.fill();
+        }
+
+        // Central glow
+        if (portalAlpha > 0.1) {
+          var grad = pCtx.createRadialGradient(pcx, pcy, 0, pcx, pcy, 40 * intensity);
+          grad.addColorStop(0, 'rgba(57,255,20,' + (0.15 * portalAlpha) + ')');
+          grad.addColorStop(0.5, 'rgba(57,255,20,' + (0.05 * portalAlpha) + ')');
+          grad.addColorStop(1, 'transparent');
+          pCtx.globalAlpha = 1;
+          pCtx.shadowBlur = 0;
+          pCtx.fillStyle = grad;
+          pCtx.beginPath();
+          pCtx.arc(pcx, pcy, 40 * intensity, 0, Math.PI * 2);
+          pCtx.fill();
+        }
+
+        // Radial bloom during crossfade — compact, consistent falloff
+        if (crossT > 0 && fadeT < 1) {
+          var bloomPeak = Math.sin(crossT * Math.PI);
+          var bloomFade = fadeT > 0 ? (1 - fadeT) : 1;
+          var bloomAlpha = bloomPeak * bloomFade;
+          var bloomRadius = 35 + bloomPeak * 35; // tighter: 35-70px
+          var bGrad = pCtx.createRadialGradient(pcx, pcy, 0, pcx, pcy, bloomRadius);
+          bGrad.addColorStop(0, 'rgba(57,255,20,' + (0.5 * bloomAlpha) + ')');
+          bGrad.addColorStop(0.4, 'rgba(57,255,20,' + (0.15 * bloomAlpha) + ')');
+          bGrad.addColorStop(1, 'transparent');
+          pCtx.globalAlpha = 1;
+          pCtx.shadowBlur = 0;
+          pCtx.fillStyle = bGrad;
+          pCtx.beginPath();
+          pCtx.arc(pcx, pcy, bloomRadius, 0, Math.PI * 2);
+          pCtx.fill();
+        }
+      }
+
+      pCtx.globalAlpha = 1;
+      pCtx.shadowBlur = 0;
+
+      // Grid bulge
+      if (g) {
+        var gStr = portalAlpha * 12;
+        g.draw(g.cw / 2, g.ch / 2, gStr, 45, portalAlpha * 0.7);
+      }
+
+      if (t < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        pCtx.clearRect(0, 0, pw, ph);
+        tbc.style.cssText = 'opacity:0';
+        hyb.style.opacity = '1';
+        hyb.style.transform = 'scaleX(1) scaleY(1)';
+        hyb.style.filter = '';
+        hyb.style.background = '';
+        hyb.style.webkitBackgroundClip = '';
+        hyb.style.webkitTextFillColor = '';
+        hyb.style.backgroundClip = '';
+        el.classList.add('done');
+        // Persistent pulsing glow — runs until next replay clears _v2PulseActive
+        el._v2PulseActive = true;
+        var pulseStart = performance.now();
+        function pulseLoop(now) {
+          if (!el._v2PulseActive) return;
+          var pt = (now - pulseStart) / 1000;
+          // Pulse: starts at 0, rises, hangs near peak, drops back to 0
+          // pow(sin, 0.4) flattens top = hang time near peak, smooth at zero
+          var rawSin = Math.sin(pt * Math.PI * 0.7); // ~2.85s full cycle
+          var pulse = rawSin > 0 ? Math.pow(rawSin, 0.4) : 0;
+          hyb.style.color = 'rgb(57,255,20)';
+          hyb.style.background = '';
+          hyb.style.webkitBackgroundClip = '';
+          hyb.style.webkitTextFillColor = '';
+          hyb.style.backgroundClip = '';
+          var gs = 12 + pulse * 22;
+          var ga = pulse * 0.65;
+          hyb.style.textShadow = '0 0 ' + gs + 'px rgba(57,255,20,' + ga + '), 0 0 ' + (gs * 2.5) + 'px rgba(57,255,20,' + (ga * 0.3) + ')';
+          hyb.style.filter = 'brightness(' + (1 + pulse * 0.25) + ')';
+          if (g) {
+            g.draw(g.cw / 2, g.ch / 2, pulse * 20, 60, pulse * 0.9);
+          }
+          requestAnimationFrame(pulseLoop);
+        }
+        requestAnimationFrame(pulseLoop);
+      }
+    }
+    requestAnimationFrame(animate);
+  };
+
+  /* ══════════════════════════════════════════════════════
+     V3: Wireframe Wipe — canvas grid with radial bulge
+  ══════════════════════════════════════════════════════ */
+  // Draw a flat grid with optional radial bulge at (bx, by)
+  // Grid fades toward edges (top/sides) and brightens near bulge
+  function drawGrid(ctx, w, h, spacing, bulgeX, bulgeY, bulgeStrength, bulgeRadius, glowAlpha) {
+    ctx.clearRect(0, 0, w, h);
+
+    var cols = Math.ceil(w / spacing) + 2;
+    var rows = Math.ceil(h / spacing) + 2;
+    var ox = (w % spacing) / 2;
+    var oy = (h % spacing) / 2;
+    var cx = w / 2;
+    var cy = h * 0.6; // center biased slightly below middle (ground feel)
+
+    function displace(px, py) {
+      if (bulgeStrength <= 0) return [px, py];
+      var dx = px - bulgeX;
+      var dy = py - bulgeY;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist > bulgeRadius || dist < 0.1) return [px, py];
+      var factor = 1 - dist / bulgeRadius;
+      factor = factor * factor;
+      var push = bulgeStrength * factor;
+      return [px + (dx / dist) * push, py + (dy / dist) * push];
+    }
+
+    // Vignette: fade alpha based on distance from center
+    // Stronger fade at top and sides, less at bottom
+    function vignette(px, py) {
+      var nx = (px - cx) / (w * 0.5); // -1..1 horizontal
+      var ny = (py - cy) / (h * 0.55); // vertical, asymmetric
+      var d = nx * nx + ny * ny;
+      // Smooth falloff: fully visible in center, fades from ~0.4 radius
+      var v = 1 - Math.min(d * 0.8, 1);
+      return Math.max(v * v, 0); // quadratic falloff
+    }
+
+    // Glow boost near bulge
+    function bulgeGlow(px, py) {
+      if (bulgeStrength <= 0 || glowAlpha <= 0) return 0;
+      var dx = px - bulgeX;
+      var dy = py - bulgeY;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist > bulgeRadius * 1.5) return 0;
+      var f = 1 - dist / (bulgeRadius * 1.5);
+      return f * f * glowAlpha;
+    }
+
+    // Draw grid segments with per-segment alpha (vignette + glow)
+    var baseAlpha = 0.05;
+
+    // Horizontal lines — draw segment by segment for per-segment alpha
+    for (var r = -1; r <= rows; r++) {
+      var baseY = oy + r * spacing;
+      for (var c = -1; c < cols; c++) {
+        var x0 = ox + c * spacing;
+        var x1 = ox + (c + 1) * spacing;
+        var midX = (x0 + x1) / 2;
+        var p0 = displace(x0, baseY);
+        var p1 = displace(x1, baseY);
+        var vig = vignette(midX, baseY);
+        var glow = bulgeGlow(midX, baseY);
+        var alpha = baseAlpha * vig + glow * 0.2;
+        if (alpha < 0.003) continue;
+        ctx.beginPath();
+        ctx.moveTo(p0[0], p0[1]);
+        ctx.lineTo(p1[0], p1[1]);
+        ctx.lineWidth = glow > 0.1 ? 0.8 : 0.5;
+        ctx.strokeStyle = 'rgba(57,255,20,' + alpha.toFixed(4) + ')';
+        ctx.stroke();
+      }
+    }
+
+    // Vertical lines — segment by segment
+    for (var c = -1; c <= cols; c++) {
+      var baseX = ox + c * spacing;
+      for (var r = -1; r < rows; r++) {
+        var y0 = oy + r * spacing;
+        var y1 = oy + (r + 1) * spacing;
+        var midY = (y0 + y1) / 2;
+        var p0 = displace(baseX, y0);
+        var p1 = displace(baseX, y1);
+        var vig = vignette(baseX, midY);
+        var glow = bulgeGlow(baseX, midY);
+        var alpha = baseAlpha * vig + glow * 0.2;
+        if (alpha < 0.003) continue;
+        ctx.beginPath();
+        ctx.moveTo(p0[0], p0[1]);
+        ctx.lineTo(p1[0], p1[1]);
+        ctx.lineWidth = glow > 0.1 ? 0.8 : 0.5;
+        ctx.strokeStyle = 'rgba(57,255,20,' + alpha.toFixed(4) + ')';
+        ctx.stroke();
+      }
+    }
+  }
+
+  window.runV3 = function() {
+    var el = document.getElementById('v3');
+    reset(el);
+    var tbc = el.querySelector('.t-tbc');
+    var hyb = el.querySelector('.t-hybrid');
+    var wipeLine = el.querySelector('.wipe-line');
+    var g = grids.v3 || initGridCanvas('v3gridCanvas');
+    tbc.style.opacity = '1';
+    tbc.style.color = '#fff';
+    tbc.style.textShadow = 'none';
+    hyb.style.opacity = '1';
+    hyb.style.webkitTextStroke = '1px var(--neon-green)';
+    hyb.style.color = 'transparent';
+    hyb.style.clipPath = 'inset(0 100% 0 0)';
+    tbc.style.clipPath = 'inset(0 0 0 0)';
+    wipeLine.style.opacity = '0';
+    wipeLine.style.left = '0';
+    if (g) g.flat();
+
+    var cw = g ? g.cw : 300;
+    var ch = g ? g.ch : 150;
+    var bulgeRadius = 45;
+    var maxBulgeStrength = 10; // reduced to avoid "lens flare" look
+
+    void el.offsetWidth;
+    var wipeDur = 1400;
+    var wipeStart;
+    // Track green fade-out for TBC traces
+    var greenTraceStart = 0;
+
+    setTimeout(function() {
+      wipeLine.style.opacity = '1';
+      wipeStart = performance.now();
+
+      function wipe(now) {
+        var t = Math.min((now - wipeStart) / wipeDur, 1);
+        var ease = t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+        var pct = ease * 100;
+        var wipeX = ease * cw;
+        wipeLine.style.left = pct + '%';
+
+        // TBC turns green at/near wipe point — color shifts as wipe progresses
+        // t=0: white, t=0.3+: shifting green, t=0.7+: dark green + fading
+        if (t > 0.1) {
+          var greenT = Math.min((t - 0.1) / 0.4, 1); // 0→1 over t=0.1→0.5
+          var r = Math.round(255 - (255 - 57) * greenT);
+          var gVal = 255;
+          var b = Math.round(255 - (255 - 20) * greenT);
+          tbc.style.color = 'rgb(' + r + ',' + gVal + ',' + b + ')';
+          var glowStr = greenT * 10;
+          var glowA = greenT * 0.5;
+          tbc.style.textShadow = '0 0 ' + glowStr + 'px rgba(57,255,20,' + glowA + ')';
+        }
+        // After midpoint, TBC traces go dark green and fade
+        if (t > 0.5) {
+          var fadeT = (t - 0.5) / 0.5; // 0→1 over t=0.5→1.0
+          var darkR = Math.round(57 - 57 * fadeT * 0.6);
+          var darkG = Math.round(255 - (255 - 100) * fadeT);
+          var darkB = Math.round(20 - 20 * fadeT * 0.6);
+          tbc.style.color = 'rgb(' + darkR + ',' + darkG + ',' + darkB + ')';
+          var fadeAlpha = 0.5 * (1 - fadeT);
+          tbc.style.textShadow = '0 0 8px rgba(57,255,20,' + fadeAlpha + ')';
+        }
+
+        // Draw grid with bulge at wipe point (reduced glow to avoid lens flare)
+        var edgeFade = Math.min(t * 5, 1) * Math.min((1 - t) * 5, 1);
+        if (g) g.draw(wipeX, ch / 2, maxBulgeStrength * edgeFade, bulgeRadius, edgeFade * 0.5);
+
+        tbc.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+        hyb.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+
+        if (t < 1) requestAnimationFrame(wipe);
+        else {
+          wipeLine.style.opacity = '0';
+          tbc.style.color = '#fff';
+          tbc.style.textShadow = 'none';
+
+          // Fill phase: wireframe → solid with bloom, grid settles flat
+          var fillStart = performance.now();
+          var fillDur = 700;
+          function fill(now2) {
+            var t2 = Math.min((now2 - fillStart) / fillDur, 1);
+            var e2 = t2 * t2 * (3 - 2 * t2);
+            var strokeW = 1 - e2;
+            hyb.style.webkitTextStroke = strokeW + 'px var(--neon-green)';
+            hyb.style.color = 'rgba(57,255,20,' + e2 + ')';
+            var glowSize = 12 * e2;
+            var glowAlpha = 0.5 * e2;
+            hyb.style.textShadow = '0 0 ' + glowSize + 'px rgba(57,255,20,' + glowAlpha + '), 0 0 ' + (glowSize * 2) + 'px rgba(57,255,20,' + (glowAlpha * 0.4) + ')';
+            // Grid returns to flat
+            if (g) g.draw(cw, ch / 2, maxBulgeStrength * (1 - e2), bulgeRadius, 0);
+            if (t2 < 1) requestAnimationFrame(fill);
+            else {
+              hyb.style.clipPath = '';
+              if (g) g.flat();
+              el.classList.add('done');
+            }
+          }
+          requestAnimationFrame(fill);
+        }
+      }
+      requestAnimationFrame(wipe);
+    }, 500);
+  };
+
+  /* ══════════════════════════════════════════════════════
+     V4: Typewriter
+  ══════════════════════════════════════════════════════ */
+  var v4timer = null;
+  window.runV4 = function() {
+    if (v4timer) clearTimeout(v4timer);
+    var el = document.getElementById('v4');
+    reset(el);
+    var g = grids.v4 || initGridCanvas('v4gridCanvas');
+    var tbcEl = document.getElementById('v4tbc');
+    var hybEl = document.getElementById('v4hybrid');
+    var fullTbc = 'THE BURNING CRUSADE';
+    var fullHyb = 'HYBRID';
+    tbcEl.innerHTML = fullTbc + '<span class="cursor-blink"></span>';
+    tbcEl.style.opacity = '1';
+    hybEl.textContent = '';
+    hybEl.style.opacity = '0';
+    if (g) g.flat();
+
+    var i = fullTbc.length;
+    function deleteChar() {
+      if (i <= 0) {
+        tbcEl.style.opacity = '0';
+        hybEl.style.opacity = '1';
+        hybEl.innerHTML = '<span class="cursor-blink"></span>';
+        var j = 0;
+        function typeChar() {
+          if (j >= fullHyb.length) {
+            hybEl.innerHTML = fullHyb;
+            hybEl.style.color = 'var(--neon-green)';
+            hybEl.style.textShadow = '0 0 8px rgba(57,255,20,0.6), 0 0 20px rgba(57,255,20,0.3)';
+            if (g) g.flat();
+            setTimeout(function() { el.classList.add('done'); }, 300);
+            return;
+          }
+          j++;
+          hybEl.innerHTML = fullHyb.substring(0, j) + '<span class="cursor-blink"></span>';
+          // Small grid pulse on each typed char
+          if (g) g.draw(g.cw / 2, g.ch / 2, 3 + j * 1.5, 40, j / fullHyb.length);
+          v4timer = setTimeout(typeChar, 80 + Math.random() * 40);
+        }
+        typeChar();
+        return;
+      }
+      i--;
+      tbcEl.innerHTML = fullTbc.substring(0, i) + '<span class="cursor-blink"></span>';
+      // Subtle grid tremor during delete
+      if (g) {
+        var progress = 1 - i / fullTbc.length;
+        g.draw(g.cw / 2, g.ch / 2, progress * 5, 35, progress * 0.3);
+      }
+      v4timer = setTimeout(deleteChar, 40 + Math.random() * 20);
+    }
+    v4timer = setTimeout(deleteChar, 600);
+  };
+
+  /* ══════════════════════════════════════════════════════
+     V5: 3D Flip
+  ══════════════════════════════════════════════════════ */
+  window.runV5 = function() {
+    var el = document.getElementById('v5');
+    reset(el);
+    var g = grids.v5 || initGridCanvas('v5gridCanvas');
+    var tbc = el.querySelector('.t-tbc');
+    var hyb = el.querySelector('.t-hybrid');
+    tbc.style.opacity = '1';
+    tbc.style.color = '#fff';
+    tbc.style.transform = 'translate(-50%, -50%)';
+    hyb.style.opacity = '0';
+    hyb.style.transform = 'rotateX(-90deg) scale(0.8)';
+    if (g) g.flat();
+    void el.offsetWidth;
+
+    // Phase 1 (0.6s delay, then 0.8s flip-out): TBC flips + turns green with glow+blur
+    setTimeout(function() {
+      var flipOutStart = performance.now();
+      var flipOutDur = 800;
+      function flipOut(now) {
+        var t = Math.min((now - flipOutStart) / flipOutDur, 1);
+        var ease = t * t; // ease-in
+        // Rotate and scale down
+        var rotX = ease * 90;
+        var scale = 1 - ease * 0.2;
+        tbc.style.transform = 'translate(-50%,-50%) rotateX(' + rotX + 'deg) scale(' + scale + ')';
+        tbc.style.opacity = String(1 - ease);
+        // Turn green with glow + blur
+        var r = Math.round(255 - (255 - 57) * ease);
+        var gVal = 255;
+        var b = Math.round(255 - (255 - 20) * ease);
+        tbc.style.color = 'rgb(' + r + ',' + gVal + ',' + b + ')';
+        var blurAmt = ease * 6;
+        var glowSize = ease * 16;
+        var glowAlpha = ease * 0.6;
+        tbc.style.filter = 'blur(' + blurAmt + 'px)';
+        tbc.style.textShadow = '0 0 ' + glowSize + 'px rgba(57,255,20,' + glowAlpha + '), 0 0 ' + (glowSize * 2) + 'px rgba(57,255,20,' + (glowAlpha * 0.3) + ')';
+
+        if (g) {
+          var bulge = Math.sin(t * Math.PI) * 12;
+          g.draw(g.cw / 2, g.ch / 2, bulge, 45, Math.sin(t * Math.PI) * 0.8);
+        }
+        if (t < 1) requestAnimationFrame(flipOut);
+      }
+      requestAnimationFrame(flipOut);
+
+      // Phase 2 (0.6s after flip-out starts, 0.8s flip-in): HYBRID flips in
+      setTimeout(function() {
+        var flipInStart = performance.now();
+        var flipInDur = 800;
+        function flipIn(now) {
+          var t = Math.min((now - flipInStart) / flipInDur, 1);
+          var ease;
+          if (t < 0.6) {
+            ease = t / 0.6;
+            var rotX = -90 + 95 * ease; // -90 → +5
+            var scale = 0.8 + 0.22 * ease;
+            hyb.style.transform = 'rotateX(' + rotX + 'deg) scale(' + scale + ')';
+            hyb.style.opacity = String(Math.min(ease * 1.5, 1));
+          } else {
+            ease = (t - 0.6) / 0.4;
+            var rotX = 5 - 5 * ease; // 5 → 0
+            var scale = 1.02 - 0.02 * ease;
+            hyb.style.transform = 'rotateX(' + rotX + 'deg) scale(' + scale + ')';
+            hyb.style.opacity = '1';
+            hyb.style.textShadow = '0 0 ' + (8 + 12 * ease) + 'px rgba(57,255,20,' + (0.3 + 0.3 * ease) + '), 0 0 20px rgba(57,255,20,0.3)';
+          }
+          if (g && t > 0.3) {
+            var gt = (t - 0.3) / 0.7;
+            g.draw(g.cw / 2, g.ch / 2, Math.sin(gt * Math.PI) * 8, 45, Math.sin(gt * Math.PI) * 0.5);
+          }
+          if (t < 1) requestAnimationFrame(flipIn);
+          else {
+            if (g) g.flat();
+          }
+        }
+        requestAnimationFrame(flipIn);
+      }, 600);
+    }, 600);
+
+    setTimeout(function() { el.classList.add('done'); }, 2200);
+  };
+
+
+})();
+</script>
+
+</body>
+</html>
