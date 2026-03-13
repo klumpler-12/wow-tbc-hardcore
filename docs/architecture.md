@@ -115,7 +115,7 @@ Bridges WoW addon (no HTTP) and web backend.
 - **deaths**: player ref, timestamp, zone, level, killer, cause, overkill, verified
 - **scores**: player ref, timestamp, source, points, metadata
 - **guilds**: name, server, ruleset, fractions, members, settings, premium status
-- **houses**: name, guild ref, team, leader, officers, members, scores
+- **fractions**: name, guild ref, team, leader, officers, members, scores (houses are sub-teams within fractions)
 - **votes**: poll ref, voter, choice, timestamp
 - **achievements**: player ref, achievement ID, timestamp, verified
 
@@ -141,7 +141,7 @@ Bridges WoW addon (no HTTP) and web backend.
 | `/leaderboard` | Player/fraction rankings |
 | `/player/:id` | Player profile |
 | `/rules` | Ruleset editor |
-| `/houses` | Fraction management |
+| `/fractions` | Fraction management |
 | `/draft` | Draft interface |
 | `/punishments` | Punishment designer |
 | `/rewards` | Reward designer |

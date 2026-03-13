@@ -46,10 +46,10 @@ For events where leaders draft players:
 ## Data Structure
 
 ```lua
-House = {
-    id = "fraction_alpha_1",
+Fraction = {
+    id = "fraction_1",
     name = "Vanguard",
-    team = "alpha",
+    team = "fraction_a",
     leader = "PlayerName-Server",
     officers = {"Officer1-Server", "Officer2-Server"},
     members = {},
