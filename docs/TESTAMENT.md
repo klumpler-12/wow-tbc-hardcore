@@ -1,4 +1,4 @@
-# TESTAMENT — Hardcore Plus Source of Truth
+# TESTAMENT — TBC Hybrid Hardcore Source of Truth
 
 > Canonical reference for all core rulesets and parameters.
 > Checked against during every final verification pass.

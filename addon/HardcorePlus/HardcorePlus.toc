@@ -1,0 +1,72 @@
+## Interface: 20400
+## Title: TBC Hybrid Hardcore
+## Notes: Hybrid Hardcore Mode — Death tracking, instance lives, verification & more
+## Author: Rick
+## Version: 0.1.0-alpha
+## SavedVariables: HardcorePlusDB
+## DefaultState: enabled
+
+# Libraries
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+Libs\AceAddon-3.0\AceAddon-3.0.lua
+Libs\AceDB-3.0\AceDB-3.0.lua
+Libs\AceEvent-3.0\AceEvent-3.0.lua
+Libs\AceTimer-3.0\AceTimer-3.0.lua
+Libs\AceComm-3.0\ChatThrottleLib.lua
+Libs\AceComm-3.0\AceComm-3.0.lua
+Libs\AceSerializer-3.0\AceSerializer-3.0.lua
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfigRegistry-3.0\AceConfigRegistry-3.0.lua
+Libs\AceConfig-3.0\AceConfigCmd-3.0\AceConfigCmd-3.0.lua
+Libs\AceConfig-3.0\AceConfigDialog-3.0\AceConfigDialog-3.0.lua
+Libs\AceConfig-3.0\AceConfig-3.0.lua
+Libs\AceConsole-3.0\AceConsole-3.0.lua
+Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+Libs\LibDBIcon-1.0\LibDBIcon-1.0.lua
+
+# Core
+Constants.lua
+Compat.lua
+Utils.lua
+Core.lua
+
+# Systems
+Systems\Registration.lua
+Systems\Checkpoint.lua
+Systems\SoftReset.lua
+
+# Tracking (core)
+Tracking\DeathTracker.lua
+Tracking\UptimeTracker.lua
+Tracking\VerificationTracker.lua
+Tracking\InstanceTracker.lua
+
+# Tracking (plugin trackers — each toggleable via debug panel)
+Tracking\GoldTracker.lua
+Tracking\KillTracker.lua
+Tracking\TradeTracker.lua
+Tracking\MailTracker.lua
+Tracking\AHTracker.lua
+Tracking\DistanceTracker.lua
+Tracking\ProfessionTracker.lua
+Tracking\EquipmentTracker.lua
+Tracking\LootTracker.lua
+
+# Network (experimental — toggleable via debug panel)
+Network\Protocol.lua
+Network\Heartbeat.lua
+Network\Verification.lua
+
+# UI
+UI\MinimapButton.lua
+UI\MainPanel.lua
+UI\Settings.lua
+UI\SetupWizard.lua
+UI\DeathMonitor.lua
+UI\StatusDisplay.lua
+UI\LivesPanel.lua
+UI\NetworkPanel.lua
+UI\CheckpointPanel.lua
+UI\SoftResetPanel.lua
+UI\DebugPanel.lua

@@ -1,16 +1,22 @@
 # Documentation Index
 
-> Modular documentation for Hardcore Plus.
+> Modular documentation for TBC Hybrid Hardcore.
 > For core rulesets and parameters, see [TESTAMENT.md](TESTAMENT.md).
 
-## Structure
+## Active Documents
 
 | File | Contents |
 |------|----------|
-| [TESTAMENT.md](TESTAMENT.md) | Source of truth — core rules, parameters, consistency targets |
+| **[PROJECT_PLAN_REVISED.md](PROJECT_PLAN_REVISED.md)** | **CURRENT source of truth — revised plan with April 2026 public alpha deadline** |
+| [TESTAMENT.md](TESTAMENT.md) | Core rules, parameters, consistency targets |
 | [overview.md](overview.md) | Vision, target audience, design principles |
+| [WEBSITE_LOGIC_ERRORS.md](WEBSITE_LOGIC_ERRORS.md) | Known website inconsistencies — fix later |
+
+### Reference Documents
+
+| File | Contents |
+|------|----------|
 | [monetization.md](monetization.md) | Free vs premium tiers, pricing |
-| [phases.md](phases.md) | Development phases 0–8 with tasks and acceptance criteria |
 | [architecture.md](architecture.md) | Addon, companion app, backend, dashboard tech stack |
 | [competitors.md](competitors.md) | Competitor analysis and unique value proposition |
 | [onlyfangs3.md](onlyfangs3.md) | OnlyFangs 3 requirements mapping |
@@ -29,10 +35,24 @@
 | [features/houses.md](features/houses.md) | Fractions, competition, draft system |
 | [features/mini-games.md](features/mini-games.md) | Built-in and custom mini-games |
 | [features/web-interface.md](features/web-interface.md) | Dashboard sections and premium web features |
+| [features/challenges.md](features/challenges.md) | Challenge modes (Onlyfists, Flex Raiding, Fishing Frenzy) |
+| [features/verification-system.md](features/verification-system.md) | Anti-cheat, trust levels, verification pipeline |
 
-### Legacy
+### Project Operations (`project/`)
 
 | File | Contents |
 |------|----------|
-| [PROJECT_PLAN_EN.md](PROJECT_PLAN_EN.md) | Original monolithic plan (archived, do not edit) |
-| [PROJECT_PLAN_DE.md](PROJECT_PLAN_DE.md) | German translation of original plan |
+| [project/STATUS_DASHBOARD.md](project/STATUS_DASHBOARD.md) | At-a-glance project health, phase status, system readiness |
+| [project/BACKLOG.md](project/BACKLOG.md) | Prioritized task list by phase (P0–P4), bug tracker |
+| [project/CHANGELOG.md](project/CHANGELOG.md) | Version history, all changes by release |
+| [project/DECISION_LOG.md](project/DECISION_LOG.md) | Architectural decisions with context and rationale |
+| [project/DEPENDENCY_MAP.md](project/DEPENDENCY_MAP.md) | Module load order, event bus, API dependencies |
+| [project/RELEASE_CHECKLIST.md](project/RELEASE_CHECKLIST.md) | Gate checks for each phase transition |
+| [project/VERSION_ARCHIVE.md](project/VERSION_ARCHIVE.md) | Document registry, file counts, version tracking |
+
+### Legacy (Archived — Do Not Edit)
+
+| File | Contents |
+|------|----------|
+| [legacy/phases-original.md](legacy/phases-original.md) | Old development phases 0–8 (superseded by REVISED) |
+| [concepts-archive.md](concepts-archive.md) | Rejected/archived concept ideas |

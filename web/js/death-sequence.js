@@ -5,7 +5,7 @@
   var logBody = document.getElementById('dsLogBody');
   var overlay = document.getElementById('dsOverlay');
   var pips = section.querySelectorAll('.ds-pip');
-  var livesLabel = section.querySelector('.ds-lives-label');
+  var lifesLabel = section.querySelector('.ds-lives-label');
 
   // 2 death sequences: first death = revive, second death = permadeath
   var COMBAT_LOG = [
@@ -43,7 +43,7 @@
       pips[pipIdx].classList.remove('full');
       pips[pipIdx].classList.add('empty');
     }
-    if (livesLabel) livesLabel.textContent = currentLife + ' / 2';
+    if (lifesLabel) lifesLabel.textContent = currentLife + ' / 2';
   }
 
   function resetState() {
@@ -51,7 +51,7 @@
     logBody.innerHTML = '';
     overlay.classList.remove('active');
     pips.forEach(function(p) { p.classList.remove('empty'); p.classList.add('full'); });
-    if (livesLabel) livesLabel.textContent = '2 / 2';
+    if (lifesLabel) lifesLabel.textContent = '2 / 2';
   }
 
   function playSequence(seqIdx, startDelay) {

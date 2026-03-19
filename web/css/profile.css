@@ -277,15 +277,44 @@
     border-radius: 3px;
 }
 
-.ct-status.live {
+.ct-status.pending {
+    color: var(--text-dim);
+    background: rgba(138, 135, 127, 0.08);
+}
+
+.ct-status.unverified {
+    color: var(--gold);
+    background: rgba(232, 166, 36, 0.08);
+}
+
+.ct-status.verified {
     color: var(--neon-green);
     background: rgba(57, 255, 20, 0.08);
 }
 
-.ct-status.voided {
+.ct-status.tarnished {
+    color: #ffbe3d;
+    background: rgba(255, 190, 61, 0.08);
+}
+
+.ct-status.dead {
     color: var(--red);
     background: rgba(212, 64, 64, 0.08);
 }
+
+.ct-status.soft-reset {
+    color: #8040d4;
+    background: rgba(128, 64, 212, 0.08);
+}
+
+.ct-status.late-reg {
+    color: var(--text-dim);
+    background: rgba(138, 135, 127, 0.08);
+}
+
+/* Backward compat aliases */
+.ct-status.live { color: var(--neon-green); background: rgba(57, 255, 20, 0.08); }
+.ct-status.voided { color: var(--red); background: rgba(212, 64, 64, 0.08); }
 
 /* Death Log */
 .death-entry {

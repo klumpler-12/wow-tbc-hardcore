@@ -96,14 +96,14 @@
   if (!tbody) return;
 
   var ROSTER = [
-    { name: 'Theron', cls: 'paladin', lvl: 70, note: 'Team Alpha \u00B7 House Ironforge \u00B7 \u2605\u2605\u2605', score: '12,450', lives: 3, status: 'Alive', achievements: 84, heroics: 12, deaths: 0, joined: 'Season 1, Week 1' },
-    { name: 'Pupi', cls: 'priest', lvl: 70, note: 'Team Alpha \u00B7 House Dawnblade \u00B7 \u2605\u2605\u2605', score: '9,870', lives: 2, status: 'Alive', achievements: 61, heroics: 8, deaths: 1, joined: 'Season 1, Week 1' },
-    { name: 'Grimjaw', cls: 'rogue', lvl: 68, note: 'Team Omega \u00B7 House Ironforge \u00B7 \u2605\u2605', score: '7,230', lives: 3, status: 'Alive', achievements: 44, heroics: 3, deaths: 0, joined: 'Season 1, Week 2' },
-    { name: 'Moonwhisper', cls: 'druid', lvl: 70, note: 'Team Alpha \u00B7 House Ashwind \u00B7 \u2605\u2605\u2605', score: '8,540', lives: 1, status: '1 life remaining', achievements: 52, heroics: 6, deaths: 2, joined: 'Season 1, Week 1' },
-    { name: 'Vex', cls: 'hunter', lvl: 69, note: 'Team Omega \u00B7 House Stormgarde \u00B7 \u2605\u2605', score: '6,800', lives: 3, status: 'Alive', achievements: 38, heroics: 2, deaths: 0, joined: 'Season 1, Week 3' },
-    { name: 'Frostleaf', cls: 'mage', lvl: 70, note: 'Team Omega \u00B7 House Thornwall \u00B7 \u2605\u2605\u2605', score: '10,100', lives: 2, status: 'Alive', achievements: 67, heroics: 9, deaths: 1, joined: 'Season 1, Week 1' },
-    { name: 'Korrak', cls: 'warrior', lvl: 70, note: 'Team Alpha \u00B7 House Ashwind \u00B7 \u2605\u2605', score: '11,200', lives: 0, status: 'DEAD', achievements: 71, heroics: 11, deaths: 3, joined: 'Season 1, Week 1' },
-    { name: 'Hexmaw', cls: 'warlock', lvl: 65, note: 'Team Omega \u00B7 \u2605', score: '5,120', lives: 3, status: 'Alive', achievements: 29, heroics: 0, deaths: 0, joined: 'Season 1, Week 4' },
+    { name: 'Theron', cls: 'paladin', lvl: 70, note: 'Team Alpha \u00B7 House Ironforge \u00B7 \u2605\u2605\u2605', score: '12,450', lives: 3, status: 'Verified', achievements: 84, heroics: 12, deaths: 0, joined: 'Season 1, Week 1' },
+    { name: 'Pupi', cls: 'priest', lvl: 70, note: 'Team Alpha \u00B7 House Dawnblade \u00B7 \u2605\u2605\u2605', score: '9,870', lives: 2, status: 'Tarnished', achievements: 61, heroics: 8, deaths: 1, joined: 'Season 1, Week 1' },
+    { name: 'Grimjaw', cls: 'rogue', lvl: 68, note: 'Team Omega \u00B7 House Ironforge \u00B7 \u2605\u2605', score: '7,230', lives: 3, status: 'Verified', achievements: 44, heroics: 3, deaths: 0, joined: 'Season 1, Week 2' },
+    { name: 'Moonwhisper', cls: 'druid', lvl: 70, note: 'Team Alpha \u00B7 House Ashwind \u00B7 \u2605\u2605\u2605', score: '8,540', lives: 1, status: 'Tarnished', achievements: 52, heroics: 6, deaths: 2, joined: 'Season 1, Week 1' },
+    { name: 'Vex', cls: 'hunter', lvl: 69, note: 'Team Omega \u00B7 House Stormgarde \u00B7 \u2605\u2605', score: '6,800', lives: 3, status: 'Verified', achievements: 38, heroics: 2, deaths: 0, joined: 'Season 1, Week 3' },
+    { name: 'Frostleaf', cls: 'mage', lvl: 70, note: 'Team Omega \u00B7 House Thornwall \u00B7 \u2605\u2605\u2605', score: '10,100', lives: 2, status: 'Tarnished', achievements: 67, heroics: 9, deaths: 1, joined: 'Season 1, Week 1' },
+    { name: 'Korrak', cls: 'warrior', lvl: 70, note: 'Team Alpha \u00B7 House Ashwind \u00B7 \u2605\u2605', score: '11,200', lives: 0, status: 'Dead', achievements: 71, heroics: 11, deaths: 3, joined: 'Season 1, Week 1' },
+    { name: 'Hexmaw', cls: 'warlock', lvl: 65, note: 'Team Omega \u00B7 \u2605', score: '5,120', lives: 3, status: 'Pending', achievements: 29, heroics: 0, deaths: 0, joined: 'Season 1, Week 4' },
   ];
 
   // Add detail panel under the table
@@ -139,7 +139,7 @@
     var nameEl = document.getElementById('rdName');
     var bodyEl = document.getElementById('rdBody');
     nameEl.innerHTML = '<span style="color:' + CLASS_COLORS[m.cls] + '">' + m.name + '</span> <span style="color:var(--text-dim);font-size:0.7rem">' + m.cls.charAt(0).toUpperCase() + m.cls.slice(1) + ' \u00B7 Lvl ' + m.lvl + '</span>';
-    var statusColor = m.status === 'DEAD' ? '#ff4444' : m.lives <= 1 ? '#ffaa00' : 'var(--neon-green)';
+    var statusColor = m.status === 'Dead' ? '#ff4444' : m.status === 'Tarnished' ? '#ffbe3d' : m.status === 'Pending' ? '#8a877f' : 'var(--neon-green)';
     bodyEl.innerHTML = '<div class="rd-stats">' +
       '<div class="rd-stat"><span class="rd-stat-val" style="color:' + statusColor + '">' + m.status + '</span><span class="rd-stat-lbl">Status</span></div>' +
       '<div class="rd-stat"><span class="rd-stat-val">' + m.score + '</span><span class="rd-stat-lbl">Score</span></div>' +

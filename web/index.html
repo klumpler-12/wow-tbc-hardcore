@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HYBRID HARDCORE - TBC</title>
+  <title>TBC Hybrid Hardcore</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="description" content="The hybrid hardcore addon for WoW: The Burning Crusade. Customizable checkpoints, creative punishments, house competition, scoring systems, and guild management.">
-  <meta property="og:title" content="HYBRID HARDCORE - TBC">
+  <meta property="og:title" content="TBC Hybrid Hardcore">
   <meta property="og:description" content="Make Hardcore viable for TBC. Customizable rules, houses, scoring, creative punishments. Free on CurseForge.">
   <meta property="og:image" content="https://data-sh.com/tbc/HYBRIDHC.png">
   <meta property="og:url" content="https://data-sh.com/tbc/">
@@ -262,8 +262,9 @@
   <!-- ═══ Instance Lifes Map ═══ -->
   <section class="section instance-lives-section" id="instanceLives">
     <div class="container">
+      <div class="section-label hybrid-accent">Instance Lifes <span class="experimental-badge">WIP &mdash; Subject to Change</span></div>
       <h2 class="section-title text-center">Dungeon &amp; Raid <span class="hybrid-glow">Lifes</span></h2>
-      <p class="section-desc text-center-narrow">Don&rsquo;t limit yourself &mdash; <strong class="text-green">challenge yourself.</strong> Difficulty-based lifes protect against <span class="text-white">one-shot</span> wipes while keeping <span class="text-green">stakes high.</span></p>
+      <p class="section-desc text-center-narrow">Don&rsquo;t limit yourself &mdash; <strong class="text-green">challenge yourself.</strong> Difficulty-based lifes protect against <span class="text-white">one-shot</span> wipes while keeping <span class="text-green">stakes high.</span> <em style="opacity:0.6">Life counts and difficulty tiers are work-in-progress and will be refined during alpha testing.</em></p>
 
       <p class="il-base-note text-center">These are <strong>base&nbsp;mode defaults</strong>. <span class="text-purple">Premium</span> unlocks full customization of every value.</p>
 
@@ -515,7 +516,7 @@
   <!-- ═══ Guild Sites & Player Profiles ═══ -->
   <section class="section section-dark" id="guild-sites">
     <div class="container cta-center">
-      <div class="section-label hybrid-accent">Web Platform</div>
+      <div class="section-label hybrid-accent">Web Platform <span class="experimental-badge">Coming Soon &mdash; Phase 3</span></div>
       <h2 class="section-title">Guild Sites &amp; <span class="accent">Player Profiles</span></h2>
       <p class="section-desc" style="margin:0 auto 40px;text-align:center">Every guild gets a web presence. Every player gets a profile. Preview the interactive demos below.</p>
 
@@ -546,7 +547,7 @@
               <div class="mp-name">Theron</div>
               <div class="mp-class">Prot Paladin &bull; Lvl 70</div>
               <div class="mp-house">House Ironforge</div>
-              <div class="mp-status"><span class="mp-alive">&#9679; Alive</span></div>
+              <div class="mp-status"><span class="mp-alive">&#9679; Verified</span></div>
               <div class="mp-stats-grid">
                 <div><span class="mp-val">12,450</span><span class="mp-lbl">Score</span></div>
                 <div><span class="mp-val">#2</span><span class="mp-lbl">Rank</span></div>
@@ -575,7 +576,7 @@
         <a href="profile.html" target="_blank" class="mock-preview-card" style="text-decoration:none;color:inherit;cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s">
           <div class="mock-pv-header"><span class="mock-pv-icon">&#128737;</span> <strong>Theron</strong> <span style="color:var(--text-dim);font-size:0.65rem">Paladin &bull; 70</span></div>
           <div class="mock-pv-stats">
-            <span>Score: 12,450</span><span>Deaths: 0</span><span style="color:var(--neon-green)">&#9679; Alive</span>
+            <span>Score: 12,450</span><span>Deaths: 0</span><span style="color:var(--neon-green)">&#9679; Verified</span>
           </div>
           <div style="font-size:0.68rem;color:var(--text-dim);margin-top:6px">Full profile with gear, death log, achievements &amp; deathclip</div>
           <span class="mock-pv-btn" style="display:inline-block;margin-top:8px">Open Player Profile &rarr;</span>
@@ -656,6 +657,117 @@
 
 
   <!-- Punishments section removed per review #2 -->
+
+  <!-- ═══ Challenge Modes ═══ -->
+  <section class="section section-gradient" id="challenges">
+    <div class="container">
+      <div class="section-label hybrid-accent">Challenge Modes <span class="experimental-badge">Future Feature</span></div>
+      <h2 class="section-title">Create Your Own <span class="hybrid-glow">Meta</span></h2>
+      <p class="section-desc">Weapon restrictions, meme builds, and self-imposed handicaps &mdash; tracked, scored, and celebrated. Forfeit early and wear the Chicken title of shame.</p>
+
+      <div class="challenges-grid" id="challengesGrid">
+        <!-- JS renders from HCData.challenges -->
+      </div>
+
+      <div class="challenge-tier-example fade-in" style="margin-top:2rem">
+        <h3 style="color:var(--accent);margin-bottom:1rem">Onlyfists &mdash; Tier Progression</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px">
+          <div style="background:rgba(205,127,50,0.12);border:1px solid rgba(205,127,50,0.3);border-radius:var(--radius);padding:16px;text-align:center">
+            <div style="font-size:1.5rem">&#129351;</div>
+            <div style="font-weight:700;color:#cd7f32;margin:6px 0">Bronze</div>
+            <div style="font-size:0.75rem;color:var(--text-dim)">Reach level 40</div>
+            <div style="font-size:0.8rem;color:var(--neon-green);margin-top:4px">+300 pts</div>
+          </div>
+          <div style="background:rgba(192,192,192,0.1);border:1px solid rgba(192,192,192,0.3);border-radius:var(--radius);padding:16px;text-align:center">
+            <div style="font-size:1.5rem">&#129352;</div>
+            <div style="font-weight:700;color:#c0c0c0;margin:6px 0">Silver</div>
+            <div style="font-size:0.75rem;color:var(--text-dim)">Reach level 60</div>
+            <div style="font-size:0.8rem;color:var(--neon-green);margin-top:4px">+750 pts</div>
+          </div>
+          <div style="background:rgba(255,215,0,0.1);border:1px solid rgba(255,215,0,0.3);border-radius:var(--radius);padding:16px;text-align:center">
+            <div style="font-size:1.5rem">&#129351;</div>
+            <div style="font-weight:700;color:#ffd700;margin:6px 0">Gold</div>
+            <div style="font-size:0.75rem;color:var(--text-dim)">Reach level 70</div>
+            <div style="font-size:0.8rem;color:var(--neon-green);margin-top:4px">+1500 pts</div>
+          </div>
+          <div style="background:rgba(255,68,68,0.08);border:1px solid rgba(255,68,68,0.3);border-radius:var(--radius);padding:16px;text-align:center">
+            <div style="font-size:1.5rem">&#128020;</div>
+            <div style="font-weight:700;color:var(--red);margin:6px 0">Chicken</div>
+            <div style="font-size:0.75rem;color:var(--text-dim)">Forfeit before checkpoint</div>
+            <div style="font-size:0.8rem;color:var(--red);margin-top:4px">-100 pts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Flex Raiding & Group Rules ═══ -->
+  <section class="section section-dark" id="flex-raiding">
+    <div class="container">
+      <div class="section-label hybrid-accent">Flex Raiding <span class="experimental-badge">Future Feature</span></div>
+      <h2 class="section-title">Smaller Group, <span class="hybrid-glow">More Lives</span></h2>
+      <p class="section-desc">Dynamic life scaling rewards smaller raid groups with bonus lives to compensate for the extra difficulty. Hard-capped to prevent abuse.</p>
+
+      <div class="flex-table-wrap fade-in" style="margin-top:1.5rem">
+        <table class="guild-roster-table" id="flexTable">
+          <thead>
+            <tr><th>Group Size</th><th>Bonus Lives</th><th>Total Lives</th><th>Note</th></tr>
+          </thead>
+          <tbody>
+            <!-- JS renders from HCData.flexRaiding.examples -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flex-rules fade-in" style="margin-top:1.5rem">
+        <h3 style="color:var(--accent);margin-bottom:0.75rem">Group Rules</h3>
+        <ul class="flex-rules-list" id="flexRulesList" style="list-style:none;padding:0">
+          <!-- JS renders from HCData.flexRaiding.rules + mixedGroupRules -->
+        </ul>
+      </div>
+
+      <div class="disconnect-info fade-in" style="margin-top:1.5rem;background:rgba(255,68,68,0.06);border:1px solid rgba(255,68,68,0.2);border-radius:var(--radius);padding:16px">
+        <h4 style="color:var(--red);margin-bottom:0.5rem">&#9888; Disconnect During Instance</h4>
+        <p style="font-size:0.85rem;color:var(--text-dim);margin:0">If a group member disconnects, all remaining members receive an <strong>out-of-combat warning</strong>. A 5-minute grace period starts. If the player doesn't reconnect, their instance life status is flagged as <em>"contested"</em> &mdash; not voided. GM review can resolve it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Fishing Frenzy ═══ -->
+  <section class="section section-gradient" id="fishing-frenzy">
+    <div class="container">
+      <div class="section-label hybrid-accent">Fishing Frenzy <span class="experimental-badge">Future Feature</span></div>
+      <h2 class="section-title">Cast, Catch, <span class="hybrid-glow">Compete</span></h2>
+      <p class="section-desc">Zone-wide and server-wide fishing competitions with titles, points, and bragging rights. Win a Server Frenzy and your title is visible to every TBC Hybrid Hardcore user.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:1.5rem" class="fade-in">
+        <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
+          <div style="font-size:1.3rem;margin-bottom:8px">&#127907;</div>
+          <h4 style="color:var(--accent);margin-bottom:6px">Zone Frenzy</h4>
+          <p style="font-size:0.8rem;color:var(--text-dim);margin:0">All addon users in the same zone compete for 15&ndash;30 minutes. GM or auto-triggered.</p>
+        </div>
+        <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
+          <div style="font-size:1.3rem;margin-bottom:8px">&#127758;</div>
+          <h4 style="color:var(--accent);margin-bottom:6px">Server Frenzy</h4>
+          <p style="font-size:0.8rem;color:var(--text-dim);margin:0">All active addon users server-wide. 1 hour. Winner gets addon-wide title for a day or week.</p>
+        </div>
+        <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
+          <div style="font-size:1.3rem;margin-bottom:8px">&#9876;</div>
+          <h4 style="color:var(--accent);margin-bottom:6px">Guild Frenzy</h4>
+          <p style="font-size:0.8rem;color:var(--text-dim);margin:0">Guild members only, GM-configurable duration. Great for weekly guild events.</p>
+        </div>
+      </div>
+
+      <div class="frenzy-rewards fade-in" style="margin-top:1.5rem">
+        <table class="guild-roster-table" id="frenzyRewardsTable">
+          <thead><tr><th>Placement</th><th>Reward</th></tr></thead>
+          <tbody>
+            <!-- JS renders from HCData.fishingFrenzy.rewards -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
   <!-- ═══ Early Concepts (Brainstorm) ═══ -->
   <section class="section section-dark" id="early-concepts">
@@ -824,7 +936,7 @@
         <a href="#">Discord</a>
       </div>
       <div class="footer-copy">
-        &copy; 2026 Hardcore Plus. Not affiliated with Blizzard Entertainment.
+        &copy; 2026 TBC Hybrid Hardcore. Not affiliated with Blizzard Entertainment.
       </div>
     </div>
   </footer>
@@ -839,6 +951,9 @@
     <div class="side-nav-dot" data-section="for-you" title="Guild"><span class="side-nav-label">Guild</span></div>
     <div class="side-nav-dot" data-section="houses" title="Houses"><span class="side-nav-label">Houses</span></div>
     <div class="side-nav-dot" data-section="guild-sites" title="Web"><span class="side-nav-label">Web</span></div>
+    <div class="side-nav-dot" data-section="challenges" title="Challenges"><span class="side-nav-label">Challenges</span></div>
+    <div class="side-nav-dot" data-section="flex-raiding" title="Flex"><span class="side-nav-label">Flex</span></div>
+    <div class="side-nav-dot" data-section="fishing-frenzy" title="Fishing"><span class="side-nav-label">Fishing</span></div>
     <div class="side-nav-dot" data-section="get-started" title="Start"><span class="side-nav-label">Start</span></div>
     <div class="side-nav-dot" data-section="archConcept" title="Addon"><span class="side-nav-label">Addon</span></div>
     <div class="side-nav-dot" data-section="project-phases" title="Phases"><span class="side-nav-label">Phases</span></div>
@@ -876,6 +991,7 @@
   <script src="js/death-ticker.js"></script>
   <script src="js/death-sequence.js?v=3"></script>
   <script src="js/draft-roster.js"></script>
+  <script src="js/challenges.js"></script>
   <script src="js/houses.js"></script>
   <script src="js/punishments.js"></script>
   <script src="js/scoring-tree.js"></script>

@@ -250,7 +250,7 @@
         md += '\n';
       }
 
-      md += '---\n*' + elems.length + ' boxes, ' + notes.length + ' notes \u2014 Hardcore Plus review mode*\n';
+      md += '---\n*' + elems.length + ' boxes, ' + notes.length + ' notes \u2014 TBC Hybrid Hardcore review mode*\n';
 
       function copyFB(t) { var el = document.createElement('textarea'); el.value = t; el.style.cssText = 'position:fixed;left:-9999px'; document.body.appendChild(el); el.select(); try { document.execCommand('copy'); } catch(ex) {} document.body.removeChild(el); }
       if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(md).catch(function() { copyFB(md); }); } else { copyFB(md); }

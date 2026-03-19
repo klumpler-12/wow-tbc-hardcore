@@ -36,7 +36,7 @@
 
 ## Unique Value Proposition
 
-| Feature | Sauercrowd | HardcoreTBC | Base HC | Deathlog | **HC Plus** |
+| Feature | Sauercrowd | HardcoreTBC | Base HC | Deathlog | **TBC Hybrid HC** |
 |---------|-----------|-------------|---------|----------|-------------|
 | Customizable Rulesets | No | No | No | No | **Yes** |
 | Fractions / Sub-Guilds | No | No | No | No | **Yes** |
@@ -49,4 +49,4 @@
 | Hybrid HC Mode | No | No | No | No | **Yes** |
 | Instance Lives | No | No | No | No | **Yes** |
 
-Hardcore Plus is the **only** addon combining all of these for TBC.
+TBC Hybrid Hardcore is the **only** addon combining all of these for TBC.

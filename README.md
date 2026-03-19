@@ -1,4 +1,4 @@
-# Hardcore Plus
+# TBC Hybrid Hardcore
 
 **Hybrid Hardcore for WoW: The Burning Crusade**
 
@@ -6,7 +6,7 @@ TBC was never meant for permadeath. We're changing that. Customizable rulesets, 
 
 ## What Is This?
 
-Hardcore Plus is a WoW TBC addon that introduces **Hybrid Hardcore** — a single, unified mode that keeps the thrill of permadeath leveling while making endgame viable through configurable checkpoints, instance lives, creative penalties, and a deep competition layer.
+TBC Hybrid Hardcore is a WoW TBC addon that introduces **Hybrid Hardcore** — a single, unified mode that keeps the thrill of permadeath leveling while making endgame viable through configurable checkpoints, instance lives, creative penalties, and a deep competition layer.
 
 ### Hybrid HC — One Mode, Fully Configurable
 
@@ -31,32 +31,45 @@ Hardcore Plus is a WoW TBC addon that introduces **Hybrid Hardcore** — a singl
 
 ### OnlyFangs 3 Ready
 
-Every feature discussed for OF3 — fractions within Aldor/Scryer, point systems for heroics, micro-achievements, player drafts, weekly tallies — is a core feature of Hardcore Plus.
+Every feature discussed for OF3 — fractions within Aldor/Scryer, point systems for heroics, micro-achievements, player drafts, weekly tallies — is a core feature of TBC Hybrid Hardcore.
 
 ## Project Structure
 
 ```
 wow-tbc-hardcore/
-├── web/                  # Presentation website (static HTML/CSS/JS)
-│   ├── index.html        # Main page
-│   ├── roadmap.html      # Development roadmap
-│   ├── profile.html      # Player profile demo
-│   ├── guild-profile.html # Guild profile demo
-│   ├── styles.css        # Main styles
-│   ├── css/              # Page-specific styles
-│   └── js/               # Modular JS (14 files)
-├── docs/                 # Documentation
-│   ├── TESTAMENT.md      # Source of truth — core rules & parameters
-│   ├── features/         # Feature specs (8 files)
-│   └── ...               # Architecture, monetization, phases, etc.
-├── Dockerfile
+├── addon/                    # WoW TBC addon (Lua 5.1, Ace3)
+│   └── HardcorePlus/         # Addon folder — copy to Interface/AddOns/
+│       ├── HardcorePlus.toc  # Addon manifest
+│       ├── Core.lua           # Main initialization & slash commands
+│       ├── Constants.lua      # Static data, enums, config
+│       ├── Utils.lua          # Utility functions
+│       ├── Compat.lua         # Compatibility layer
+│       ├── Libs/              # Ace3 libraries
+│       ├── Systems/           # Registration, Checkpoint, SoftReset
+│       ├── Tracking/          # 13 tracker modules (death, instance, gold, etc.)
+│       ├── Network/           # Peer communication (Protocol, Heartbeat, Verification)
+│       └── UI/                # 11 UI panels (Main, Settings, Wizard, Debug, etc.)
+├── web/                      # Presentation website (static HTML/CSS/JS)
+│   ├── index.html            # Main page
+│   ├── roadmap.html          # Development roadmap
+│   ├── profile.html          # Player profile demo
+│   ├── guild-profile.html    # Guild profile demo
+│   ├── styles.css            # Main styles
+│   ├── css/                  # Page-specific styles
+│   └── js/                   # Modular JS (14 files)
+├── docs/                     # Documentation (Markdown source)
+│   ├── TESTAMENT.md          # Source of truth — core rules & parameters
+│   ├── PROJECT_PLAN_REVISED.md # Master project plan
+│   ├── features/             # Feature specs (8 files)
+│   ├── project/              # Changelog, backlog, decision log, status
+│   └── pdf/                  # PDF exports (openable in Mac Preview)
 ├── docker-compose.yml
 └── README.md
 ```
 
 ## Tech Stack
 
-- **Addon:** Lua 5.1, WoW TBC 2.4.3 API, Ace3 libraries
+- **Addon:** Lua 5.1, WoW TBC 2.4.3 API, Ace3 libraries (AceAddon, AceDB, AceEvent, AceTimer, AceComm, AceSerializer, AceConsole, AceGUI, AceConfig, LibDataBroker, LibDBIcon)
 - **Web:** Static HTML/CSS/JS (no build step)
 - **Backend (planned):** Node.js/Express, MongoDB/SQLite
 - **Companion App (planned):** Electron
@@ -64,7 +77,17 @@ wow-tbc-hardcore/
 
 ## Status
 
-Phase 0: Concept & Architecture — Active
+Phase 0: Pre-Alpha PoC — Active (target: Public Alpha by April 30, 2026)
+
+### Addon Modules Implemented
+
+| Category | Modules | Status |
+|----------|---------|--------|
+| Core | Core, Constants, Utils, Compat | Built |
+| Systems | Registration, Checkpoint, SoftReset | Built |
+| Tracking | Death, Uptime, Verification, Instance, Gold, Kill, Trade, Mail, AH, Distance, Profession, Equipment, Loot | Built |
+| Network | Protocol, Heartbeat, Verification | Built (experimental) |
+| UI | MinimapButton, MainPanel, Settings, SetupWizard, DeathMonitor, StatusDisplay, LivesPanel, NetworkPanel, CheckpointPanel, SoftResetPanel, DebugPanel | Built |
 
 ## Monetization
 

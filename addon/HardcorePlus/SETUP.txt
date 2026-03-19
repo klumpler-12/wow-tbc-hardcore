@@ -1,0 +1,150 @@
+═══════════════════════════════════════════════════
+  HardcorePlus v0.1.0-alpha — Setup & Testing Guide
+═══════════════════════════════════════════════════
+
+INSTALL
+-------
+1. Copy the entire "HardcorePlus" folder into:
+   <WoW TBC Classic>\Interface\AddOns\HardcorePlus\
+2. Ensure the Libs\ folder is included (Ace3 framework).
+3. Launch WoW TBC 2.4.3 (Interface: 20400).
+4. Character select → AddOns → verify "HardcorePlus" is enabled.
+
+FIRST LOGIN
+-----------
+- Gold text confirms addon loaded: "HardcorePlus v0.1.0-alpha loaded."
+- Minimap skull button appears (left-click = main panel, right-click = settings).
+- Setup wizard auto-appears for unregistered characters.
+
+SETUP WIZARD (new character)
+----------------------------
+1. Freshness Check: Level ≤5, <50s gold, no professions, no talents, <2h /played.
+   Fail = "Late Registration" (tracked, reduced trust, can't soft reset).
+2. Trade Mode: SSF / Guildfound / Open — locked permanently.
+3. Instance Lives: Enabled / Disabled — locked permanently.
+4. Checkpoint at 58: Enabled / Disabled — locked permanently.
+5. Confirm → character registered, status = PENDING.
+
+STATUS FLOW
+-----------
+PENDING → UNVERIFIED (peer sees you, or 5 min auto-promote if solo)
+UNVERIFIED → VERIFIED (Soul of Iron buff detected)
+VERIFIED → TARNISHED (SoI lost) → DEAD (open world death)
+DEAD → new char via Checkpoint (58+) or Soft Reset (SSF/Guildfound 58+)
+
+SLASH COMMANDS
+--------------
+/hcp              Help
+/hcp show         Toggle main panel
+/hcp status       Print status to chat
+/hcp deaths       Print death log
+/hcp lives        Print instance lives
+/hcp monitor      Toggle death monitor widget
+/hcp network      Network tab
+/hcp checkpoint   Checkpoint panel
+/hcp reset        Soft reset wizard
+/hcp reset scan   Strip verification (chat)
+/hcp config       Settings (AceConfig)
+/hcp debug        TESTER MODE (toggle systems)
+/hcp debug verbose  Toggle verbose debug logging
+
+TESTER MODE (/hcp debug)
+-------------------------
+Opens a panel with ON/OFF toggles for every system:
+  Death Tracking (P2)    Uptime/Gap Detect (P2)
+  Soul of Iron (P3)      Status Verification (P3)
+  Network/Peers (P4)     Instance Lives (P5)
+  Checkpoint (P6)        Soft Reset (P7)
+
+- Turn OFF systems you're not testing to isolate bugs.
+- "Enable All" / "Disable All" quick buttons.
+- Verbose Logging: prints [DBG] messages to chat showing which
+  systems are skipping work when disabled.
+- Network Stats section shows: msgs sent/recv, rates/min,
+  bytes/min, breakdown by message type, online peers,
+  active offline pings. Reset button to zero the counters.
+
+TESTING: SOLO (1 player)
+--------------------------
+1. Register via wizard. Status = PENDING.
+2. After 5 min with no peers → auto-promotes to UNVERIFIED.
+3. All tracking works: deaths, /played gaps, SoI, instance lives.
+4. Network: no peers = no heartbeats sent (nothing to send to).
+5. Test: /hcp debug → disable "Network/Peers" → everything else
+   still works independently.
+
+TESTING: 2 PLAYERS (party, no guild needed)
+--------------------------------------------
+1. Both install addon. Both register via wizard.
+2. Invite to party. Heartbeats flow via PARTY channel.
+3. Peer sees you → PENDING auto-promotes to UNVERIFIED.
+4. Test death verification: die near the other player →
+   "Death verified by 1 peer" message.
+5. Test offline detection: Player A disables addon (/reload without addon).
+   Player B sees "peer offline" after 5 min, starts exponential
+   backoff pings. If A re-enables addon, B gets ping response.
+6. /hcp debug → Network Stats shows msg rates, bytes, peer count.
+
+TESTING: GUILD
+--------------
+Same as party, but messages also flow via GUILD channel.
+Multi-channel dedup prevents double-processing.
+
+TESTING: INSTANCE LIVES
+------------------------
+1. Register with Instance Lives = Enabled.
+2. Enter a heroic dungeon listed in BonusLifeHeroics
+   (Shattered Halls, Magisters' Terrace, Shadow Lab, Arcatraz,
+    Black Morass, Steamvault, Sethekk Halls).
+3. Lives widget appears (moveable frame).
+4. Die → life consumed message. Die again → weekly pool used.
+5. Exhaust all → permadeath.
+6. Normal dungeons = 0 lives, death = instant permadeath.
+
+TESTING: CHECKPOINT
+-------------------
+1. Character with Checkpoint enabled reaches 58 → "Checkpoint unlocked!"
+2. Die at 58+ → token generated in global SavedVariables.
+3. Log onto new level 58 character.
+4. /hcp checkpoint claim → consumes token, registers as HC.
+5. Token expires after 24 hours, single-use.
+
+TESTING: SOFT RESET
+-------------------
+1. Must be DEAD + SSF or Guildfound + Level 58+ + Checkpoints enabled.
+2. /hcp reset → wizard shows eligibility.
+3. "Begin Soft Reset" → 2-hour /played timer starts.
+4. Strip everything: delete items, unequip, unlearn professions,
+   reset talents, abandon quests, spend/drop gold.
+5. /hcp reset scan → real-time checklist.
+6. All green → "Confirm Soft Reset" → status = SOFT_RESET x[N].
+
+CHECKING FOR ERRORS
+-------------------
+- /hcp debug verbose → enables [DBG] chat messages.
+- WoW's /console scriptErrors 1 → shows Lua errors on screen.
+- BugSack/BugGrabber addon → captures errors with stack traces.
+- !swatter addon → alternative error catcher.
+- Check: Interface\AddOns\HardcorePlus\Libs\ has all Ace3 folders.
+- SavedVariables: WTF\Account\<NAME>\SavedVariables\HardcorePlusDB.lua
+
+KNOWN LIMITATIONS (alpha)
+--------------------------
+- Reputation can't be removed in TBC. Soft reset chars keep it.
+- SoI buff unreliable after level 58 (expected, documented).
+- Offline ping detection: can only detect addon-re-enable, not
+  addon-off play (whisper requires addon to process).
+- No host/master mode yet (planned for later).
+- Peer validation is optional — solo play is fully functional.
+
+FILE STRUCTURE (34 files)
+--------------------------
+Core: Constants.lua, Utils.lua, Core.lua
+Systems: Registration.lua, Checkpoint.lua, SoftReset.lua
+Tracking: DeathTracker.lua, UptimeTracker.lua,
+          VerificationTracker.lua, InstanceTracker.lua
+Network: Protocol.lua, Heartbeat.lua, Verification.lua
+UI: MinimapButton.lua, MainPanel.lua, Settings.lua,
+    SetupWizard.lua, DeathMonitor.lua, StatusDisplay.lua,
+    LivesPanel.lua, NetworkPanel.lua, CheckpointPanel.lua,
+    SoftResetPanel.lua, DebugPanel.lua

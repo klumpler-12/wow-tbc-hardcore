@@ -1,6 +1,6 @@
 # Ruleset Engine
 
-The Ruleset Engine is the foundation of Hardcore Plus. It defines what rules are active, who can modify them, and how they are enforced.
+The Ruleset Engine is the foundation of TBC Hybrid Hardcore. It defines what rules are active, who can modify them, and how they are enforced.
 
 ---
 
