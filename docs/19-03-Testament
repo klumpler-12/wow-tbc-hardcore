@@ -1,0 +1,68 @@
+# TESTAMENT — TBC Hybrid Hardcore Source of Truth
+
+> Canonical reference for all core rulesets and parameters.
+> Checked against during every final verification pass.
+> Update this file FIRST when any core rule changes.
+
+**Last verified:** 2026-03-12
+
+---
+
+## Game Mode: Hybrid Hardcore
+
+There is **one mode**: Hybrid HC. It has a **base ruleset** (always active), **free customization options** (minor toggles like SSF), and **premium customization options** (guild management, guild-wide rulesets, advanced features).
+
+### Base Ruleset (Always Active)
+- Permadeath 1–70 in open world
+- Checkpoint at level 58 (see below)
+- Death tracking with full context
+- Scoring system enabled
+
+### Free Customization
+- Self-found toggle: Full SSF / Guildfound (guild trading only) / Off
+- PvP rules (Scored / Exempt / Disabled)
+- Minor rule toggles
+- Soft reset eligibility (requires SSF or Guildfound from start)
+
+---
+
+## Checkpoints
+
+- **Default checkpoint: level 58**
+- When a character reaches the checkpoint level, that **class** is checkpointed
+- On death after checkpoint, 2 restart options:
+  1. **Blizzard boost**: Buy official 58 boost for a new character of that class
+  2. **Soft reset**: Strip dead character of all progress (see below), re-register as HC with "Soft Reset ×N" flag. Only available after lvl 58.
+- **Premium**: choose any checkpoint level, set class-wide or character-specific, enable multiple checkpoints
+- **Dynamic checkpoints**: experimental/future feature, not in current scope
+
+### Soft Reset
+
+Soft reset allows a dead character to re-enter HC without creating a new character or buying a boost. The addon enforces full progress deletion to simulate a fresh start.
+
+**What must be deleted:**
+- **Items**: All equipped gear, bags, bank contents, inventory (addon verifies empty slots)
+- **Gold**: Must be below 1g (addon checks < 1g)
+- **Professions**: Unlearn all (addon checks 0 professions)
+- **Talents**: Full respec at trainer (addon verifies 0 spent points)
+- **Active quests**: Abandon all (addon checks quest log empty)
+
+**Cannot be reset in TBC 2.4.3:** Completed quests, reputation, flight paths, learned spells/skills, honor/arena points history. These remain — this is the trade-off vs. a fresh character.
+
+**Addon verification:** Scans inventory/bank/professions/talents/quest log/gold → all must be zero/empty (gold < 1g) before allowing re-registration. Character is flagged "Soft Reset ×N" permanently.
+
+**Eligibility restriction (early concept):**
+- Soft reset is **only available to SSF or Guildfound (GF) characters**
+- Guildfound = base addon feature (not premium) — allows guild trading only, no AH/external trade
+- The SSF/GF mode must be active **from character creation or from boost** — cannot be enabled later
+- If a character ever circumvents SSF/GF rules (flagged by addon), they lose soft reset eligibility permanently
+- Rationale: without this restriction, players could bank gear/gold on alts before soft resetting, trivializing the penalty
+
+---
+
+
+## Scoring Categories
+
+- 500 on death
++ 1 on kill for grey mob, 2 for green, 3 for yellow, 5 for red, 10 for skull. onl counts if no one else made more dmg on same mob.
+---
